@@ -531,3 +531,28 @@ max-height:350px;
 object-fit:cover;
 border-radius:20px;
 }
+.services-bar{
+padding:25px 0;
+background:#111;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.service-item{
+background:#1d1d1d;
+color:white;
+padding:18px;
+text-align:center;
+border-radius:12px;
+font-weight:600;
+}
+
+@media(max-width:900px){
+.services-grid{
+grid-template-columns:1fr 1fr;
+}
+}
