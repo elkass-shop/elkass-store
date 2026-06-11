@@ -289,7 +289,33 @@ box-shadow:0 8px 20px rgba(0,0,0,.05);
 color:#e30613;
 font-size:22px;
 }
+.why-us{
+padding:60px 0;
+background:#f7f8fa;
+}
 
+.why-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.why-card{
+background:white;
+padding:25px;
+border-radius:16px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.why-card h3{
+margin-bottom:10px;
+}
+
+@media(max-width:900px){
+.why-grid{
+grid-template-columns:1fr 1fr;
+}
+}
 /* KONTAKT */
 
 .contact-bar{
