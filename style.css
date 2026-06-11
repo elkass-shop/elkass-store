@@ -474,8 +474,9 @@ gap:25px;
 
 .stat-card{
 background:white;
-padding:40px 20px;
-border-radius:20px;
+padding:25px 15px;
+border-radius:16px;
+}
 text-align:center;
 box-shadow:0 10px 25px rgba(0,0,0,.06);
 transition:.3s;
