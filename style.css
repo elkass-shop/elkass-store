@@ -486,10 +486,10 @@ transform:translateY(-8px);
 }
 
 .stat-card h2{
-font-size:52px;
-font-weight:800;
+font-size:36px;
+font-weight:700;
 color:#e30613;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .stat-card p{
