@@ -89,13 +89,11 @@ font-weight:600;
 
 .hero{
 padding:15px 0 25px;
-}
-background:
-linear-gradient(
+background:linear-gradient(
 180deg,
 #ffffff 0%,
 #f3f5f7 100%
-
+);
 }
 
 .hero-inner{
