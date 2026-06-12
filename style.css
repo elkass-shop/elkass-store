@@ -750,3 +750,58 @@ grid-template-columns:1fr;
 }
 
 }
+/* ODWIEDŹ NASZ SKLEP */
+
+.visit-store{
+padding:70px 0;
+background:white;
+}
+
+.visit-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.visit-image img{
+width:100%;
+height:420px;
+object-fit:cover;
+border-radius:24px;
+box-shadow:0 15px 35px rgba(0,0,0,.1);
+}
+
+.visit-content h3{
+font-size:32px;
+margin-bottom:15px;
+}
+
+.visit-content p{
+color:#666;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.visit-content ul{
+list-style:none;
+padding:0;
+margin-bottom:25px;
+}
+
+.visit-content li{
+margin-bottom:10px;
+font-size:16px;
+}
+
+@media(max-width:900px){
+
+.visit-grid{
+grid-template-columns:1fr;
+}
+
+.visit-image img{
+height:280px;
+}
+
+}
