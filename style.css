@@ -587,3 +587,27 @@ font-weight:600;
 grid-template-columns:1fr 1fr;
 }
 }
+.slider{
+position:relative;
+}
+
+.slide{
+display:none;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:30px;
+}
+
+.slide.active{
+display:grid;
+animation:fade .8s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
