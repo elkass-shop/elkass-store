@@ -683,3 +683,21 @@ grid-template-columns:1fr;
 }
 
 }
+/* RESPONSIVE LICZNIKI */
+
+@media(max-width:768px){
+
+.stats-grid{
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.stat-card{
+padding:15px;
+}
+
+.stat-card h2{
+font-size:28px;
+}
+
+}
