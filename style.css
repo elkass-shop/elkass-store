@@ -701,3 +701,52 @@ font-size:28px;
 }
 
 }
+/* OPINIE KLIENTÓW */
+
+.reviews{
+padding:60px 0;
+background:#f8f9fb;
+}
+
+.reviews-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-top:30px;
+}
+
+.review-card{
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+transition:.3s;
+}
+
+.review-card:hover{
+transform:translateY(-6px);
+}
+
+.stars{
+font-size:22px;
+margin-bottom:15px;
+color:#f5b301;
+}
+
+.review-card p{
+color:#666;
+line-height:1.7;
+margin-bottom:15px;
+}
+
+.review-card h4{
+color:#111;
+}
+
+@media(max-width:900px){
+
+.reviews-grid{
+grid-template-columns:1fr;
+}
+
+}
