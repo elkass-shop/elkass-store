@@ -666,3 +666,20 @@ display:none;
 }
 
 }
+/* RESPONSIVE KATEGORIE */
+
+@media(max-width:992px){
+
+.category-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.category-grid{
+grid-template-columns:1fr;
+}
+
+}
