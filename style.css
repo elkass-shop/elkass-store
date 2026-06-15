@@ -871,3 +871,35 @@ grid-template-columns:repeat(2,1fr) !important;
 }
 
 }
+/* PREMIUM ELKASS */
+
+.premium-badge{
+display:inline-block;
+background:#e30613;
+color:#fff;
+padding:10px 18px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+margin-bottom:20px;
+}
+
+.visit-content{
+text-align:center;
+max-width:650px;
+margin:0 auto;
+}
+
+.visit-content h3{
+font-size:38px;
+font-weight:800;
+margin-bottom:18px;
+}
+
+.visit-content p{
+max-width:600px;
+margin:0 auto 30px auto;
+line-height:1.8;
+color:#666;
+}
