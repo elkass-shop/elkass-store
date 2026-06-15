@@ -149,7 +149,7 @@ RTV / AGD / MULTIMEDIA / SERWIS
 
 <!-- STATS -->
 
-<section class="stats">
+<section class="stats reveal">
 
 <div class="container">
 
@@ -209,7 +209,7 @@ RTV / AGD / MULTIMEDIA / SERWIS
 </section>
 <!-- KATEGORIE -->
 
-<section id="oferta" class="categories">
+<section id="oferta" class="categories reveal">
 
 <div class="container">
 
@@ -501,7 +501,7 @@ Od ponad 20 lat dostarczamy mieszkańcom Olesna i okolic sprawdzony sprzęt RTV,
 </section>
 <!-- KONTAKT -->
 
-<section id="kontakt" class="contact-bar">
+<section id="kontakt" class="contact-bar reveal">
 
 <div class="container contact-grid">
 
@@ -562,7 +562,7 @@ Sobota 9-13
 
 <!-- PARTNERZY -->
 
-<section class="brands">
+<section class="brands reveal">
 
 <div class="container">
 
@@ -657,6 +657,28 @@ slides[current].classList.add('active');
 }, 5000);
 
 </script>
+<script>
 
+const reveals =
+document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll',()=>{
+
+reveals.forEach(el=>{
+
+const top =
+el.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+
+el.classList.add('active');
+
+}
+
+});
+
+});
+
+</script>
 </body>
 </html>
