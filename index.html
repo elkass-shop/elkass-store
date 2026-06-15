@@ -452,34 +452,7 @@ Dlaczego klienci wybierają ELKASS?
 Opinie naszych klientów
 </h2>
 
-<div class="reviews-grid">
-
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Profesjonalna obsługa i świetne doradztwo przy wyborze sprzętu.
-</p>
-<h4>Klient z Olesna</h4>
-</div>
-
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Duży wybór produktów i bardzo konkurencyjne ceny.
-</p>
-<h4>Klientka z Kluczborka</h4>
-</div>
-
-<div class="review-card">
-<div class="stars">★★★★★</div>
-<p>
-Polecam. Zakup telewizora przebiegł szybko i bez problemów.
-</p>
-<h4>Klient z Dobrodzienia</h4>
-</div>
-
-</div>
-
+<div class="reviews-grid" id="reviews-grid">
 </div>
 
 </section>
@@ -678,6 +651,125 @@ el.classList.add('active');
 });
 
 });
+
+</script>
+  <script>
+
+const reviews = [
+
+{
+text:"Profesjonalna obsługa i świetne doradztwo przy wyborze sprzętu.",
+author:"Jan K., Olesno"
+},
+{
+text:"Duży wybór produktów i bardzo konkurencyjne ceny.",
+author:"Anna M., Kluczbork"
+},
+{
+text:"Polecam. Zakup telewizora przebiegł szybko i bez problemów.",
+author:"Piotr W., Dobrodzień"
+},
+{
+text:"Bardzo miła obsługa i fachowa pomoc przy wyborze lodówki.",
+author:"Katarzyna S., Praszka"
+},
+{
+text:"Kupuję tutaj od lat. Zawsze profesjonalnie.",
+author:"Marek N., Olesno"
+},
+{
+text:"Najlepszy sklep RTV AGD w okolicy.",
+author:"Tomasz P., Gorzów Śląski"
+},
+{
+text:"Szybka realizacja zamówienia i atrakcyjne ceny.",
+author:"Paweł K., Radłów"
+},
+{
+text:"Polecam zakupy oraz serwis sprzętu.",
+author:"Monika D., Kluczbork"
+},
+{
+text:"Świetny kontakt i fachowe doradztwo.",
+author:"Łukasz M., Olesno"
+},
+{
+text:"Bardzo dobra oferta telewizorów.",
+author:"Agnieszka P., Dobrodzień"
+},
+{
+text:"Profesjonalna obsługa od początku do końca.",
+author:"Robert K., Rudniki"
+},
+{
+text:"Miła atmosfera i pomocny personel.",
+author:"Ewa N., Olesno"
+},
+{
+text:"Raty załatwione szybko i bez problemów.",
+author:"Andrzej W., Kluczbork"
+},
+{
+text:"Dobre ceny i duży wybór sprzętu AGD.",
+author:"Joanna K., Praszka"
+},
+{
+text:"Zakup pralki przebiegł sprawnie.",
+author:"Marcin T., Olesno"
+},
+{
+text:"BLIK działa bez problemu, szybka obsługa.",
+author:"Krzysztof S., Lubliniec"
+},
+{
+text:"Polecam wszystkim mieszkańcom regionu.",
+author:"Anna W., Wołczyn"
+},
+{
+text:"Telewizor kupiony w świetnej cenie.",
+author:"Piotr M., Olesno"
+},
+{
+text:"Duży wybór laptopów i komputerów.",
+author:"Mateusz K., Zawadzkie"
+},
+{
+text:"Fachowy serwis i pomoc po zakupie.",
+author:"Karolina P., Gorzów Śląski"
+}
+];
+
+let current = 0;
+
+function renderReviews(){
+
+const grid =
+document.getElementById('reviews-grid');
+
+grid.innerHTML = '';
+
+for(let i=0;i<3;i++){
+
+const review =
+reviews[(current+i)%reviews.length];
+
+grid.innerHTML += `
+<div class="review-card">
+<div class="stars">★★★★★</div>
+<p>${review.text}</p>
+<h4>${review.author}</h4>
+</div>
+`;
+
+}
+
+current = (current + 3) % reviews.length;
+
+}
+
+renderReviews();
+
+setInterval(renderReviews,10000);
 
 </script>
 </body>
