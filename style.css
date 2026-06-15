@@ -367,8 +367,8 @@ filter:grayscale(100%);
 
 .brands-row img:hover{
 opacity:1;
-transform:scale(1.08);
 filter:none;
+transform:translateY(-4px) scale(1.05);
 }
 
 /* STOPKA */
