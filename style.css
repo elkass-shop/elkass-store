@@ -904,4 +904,15 @@ margin:0 auto 30px auto;
 line-height:1.8;
 color:#666;
 }
+/* ANIMACJE PREMIUM */
 
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
