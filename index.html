@@ -592,7 +592,7 @@ OLESNO
 
 const slides = document.querySelectorAll('.slide');
 
-let current = 0;
+let currentReview = 0;
 
 setInterval(() => {
 
@@ -611,25 +611,7 @@ slides[current].classList.add('active');
 </script>
 <script>
 
-const slides = document.querySelectorAll('.slide');
 
-let current = 0;
-
-setInterval(() => {
-
-slides[current].classList.remove('active');
-
-current++;
-
-if(current >= slides.length){
-current = 0;
-}
-
-slides[current].classList.add('active');
-
-}, 5000);
-
-</script>
 <script>
 
 const reveals =
@@ -751,7 +733,7 @@ grid.innerHTML = '';
 for(let i=0;i<3;i++){
 
 const review =
-reviews[(current+i)%reviews.length];
+reviews[(currentReview+i)%reviews.length];
 
 grid.innerHTML += `
 <div class="review-card">
@@ -763,7 +745,7 @@ grid.innerHTML += `
 
 }
 
-current = (current + 3) % reviews.length;
+currentReview = (currentReview + 3) % reviews.length;
 
 }
 
