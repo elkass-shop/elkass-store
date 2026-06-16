@@ -916,3 +916,57 @@ transition:all .8s ease;
 opacity:1;
 transform:translateY(0);
 }
+/* CTA PREMIUM */
+
+.cta-section{
+padding:80px 20px;
+background:
+linear-gradient(
+135deg,
+#e30613,
+#b5000f
+);
+color:white;
+text-align:center;
+border-radius:30px;
+margin:80px auto;
+width:90%;
+max-width:1400px;
+}
+
+.cta-section h2{
+font-size:42px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.cta-section p{
+max-width:700px;
+margin:0 auto 35px auto;
+font-size:18px;
+opacity:.95;
+}
+
+.cta-buttons{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.cta-btn-light{
+background:white;
+color:#111;
+padding:18px 34px;
+border-radius:12px;
+text-decoration:none;
+font-weight:700;
+}
+
+@media(max-width:768px){
+
+.cta-section h2{
+font-size:30px;
+}
+
+}
