@@ -1057,3 +1057,111 @@ color:#111 !important;
 color:#666 !important;
 line-height:1.8 !important;
 }
+/* OFERTY TYGODNIA */
+
+.offers-section{
+padding:60px 0;
+background:#fff;
+}
+
+.offers-grid{
+display:grid;
+grid-template-columns:1.1fr 2fr;
+gap:30px;
+}
+
+.offer-big{
+background:#fafafa;
+padding:30px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.offer-badge{
+display:inline-block;
+background:#e30613;
+color:#fff;
+padding:8px 16px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+margin-bottom:20px;
+}
+
+.offer-big h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.offer-price{
+font-size:52px;
+font-weight:800;
+color:#e30613;
+margin:20px 0;
+}
+
+.offer-big img{
+width:100%;
+margin-top:20px;
+border-radius:16px;
+}
+
+.offer-btn{
+display:inline-block;
+background:#ffd400;
+color:#111;
+padding:14px 30px;
+border-radius:999px;
+text-decoration:none;
+font-weight:700;
+}
+
+.offer-right{
+background:#fafafa;
+padding:30px;
+border-radius:24px;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+.offer-right h2{
+margin-bottom:25px;
+}
+
+.mini-products{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+}
+
+.mini-product{
+text-align:center;
+}
+
+.mini-product img{
+width:100%;
+height:220px;
+object-fit:contain;
+}
+
+.mini-product h4{
+font-size:16px;
+margin-top:10px;
+}
+
+.mini-price{
+font-size:34px;
+font-weight:800;
+margin-top:10px;
+}
+
+@media(max-width:992px){
+
+.offers-grid{
+grid-template-columns:1fr;
+}
+
+.mini-products{
+grid-template-columns:1fr;
+}
+
+}
