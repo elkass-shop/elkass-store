@@ -1002,8 +1002,23 @@ color:#111;
 .about-badges{
 display:flex;
 flex-wrap:wrap;
-gap:12px;
-margin-top:30px;
+justify-content:center;
+gap:15px;
+margin-top:35px;
+}
+
+.about-badges span{
+background:white;
+padding:14px 22px;
+border-radius:999px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
+font-weight:600;
+transition:.3s;
+}
+
+.about-badges span:hover{
+transform:translateY(-3px);
+
 }
 
 .about-badges span{
