@@ -564,23 +564,44 @@ object-fit:cover;
 border-radius:20px;
 }
 .services-bar{
-padding:25px 0;
-background:#111;
+padding:40px 0;
+background:#fff;
 }
 
 .services-grid{
 display:grid;
 grid-template-columns:repeat(4,1fr);
-gap:15px;
+gap:20px;
 }
 
 .service-item{
-background:#1d1d1d;
-color:white;
-padding:18px;
+background:white;
+padding:25px;
+border-radius:20px;
 text-align:center;
-border-radius:12px;
-font-weight:600;
+box-shadow:0 10px 30px rgba(0,0,0,.06);
+transition:.3s;
+}
+
+.service-item:hover{
+transform:translateY(-8px);
+}
+
+.service-item span{
+font-size:34px;
+display:block;
+margin-bottom:12px;
+}
+
+.service-item h4{
+font-size:18px;
+margin-bottom:5px;
+}
+
+.service-item p{
+font-size:14px;
+color:#666;
+}
 }
 
 @media(max-width:900px){
