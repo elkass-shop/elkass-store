@@ -576,7 +576,7 @@ gap:20px;
 
 .services-bar{
 padding:20px 0;
-background:#fff;
+background:#f8f9fb;
 border-top:1px solid #eee;
 border-bottom:1px solid #eee;
 }
@@ -1449,7 +1449,7 @@ margin:0;
 .service-card{
     background:#fff;
     border-radius:24px;
-    padding:35px;
+    padding:24px;
     text-align:center;
 
     box-shadow:
@@ -1463,18 +1463,18 @@ margin:0;
 }
 
 .service-icon{
-    font-size:48px;
-    margin-bottom:15px;
+    font-size:34px;
+    margin-bottom:10px;
 }
 
 .service-card h3{
-    font-size:22px;
-    margin-bottom:12px;
+    font-size:18px;
+    margin-bottom:8px;
 }
 
 .service-card p{
     color:#666;
-    line-height:1.7;
+    line-height:1.5;
 }
 
 .services-grid{
@@ -1483,4 +1483,8 @@ margin:0;
     repeat(auto-fit,minmax(260px,1fr));
 
     gap:30px;
+}
+.services-bar .section-title{
+    font-size:28px;
+    margin-bottom:30px;
 }
