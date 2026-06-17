@@ -1093,7 +1093,8 @@ border-radius:18px;
 .offer-big-content{
 display:flex;
 flex-direction:column;
-justify-content:center;
+justify-content:flex-start;
+height:100%;
 }
 
 .offer-badge{
@@ -1129,11 +1130,14 @@ margin-bottom:20px;
 display:inline-block;
 background:#ffd400;
 color:#111;
-padding:14px 30px;
+padding:12px 24px;
 border-radius:999px;
 text-decoration:none;
 font-weight:700;
 width:max-content;
+
+margin-top:auto;
+margin-left:0;
 }
 
 
