@@ -1085,8 +1085,8 @@ height:380px;
 
 .offer-big-image img{
 width:100%;
-height:260px;
-object-fit:cover;
+height:220px;
+object-fit:contain;
 border-radius:18px;
 }
 
@@ -1108,7 +1108,8 @@ margin-bottom:15px;
 }
 
 .offer-big-content h3{
-font-size:30px;
+font-size:18px;
+line-height:1.4;
 margin-bottom:10px;
 }
 
@@ -1118,7 +1119,7 @@ margin-bottom:20px;
 }
 
 .offer-price{
-font-size:52px;
+font-size:42px;
 font-weight:800;
 color:#e30613;
 margin-bottom:20px;
