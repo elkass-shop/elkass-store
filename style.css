@@ -1690,3 +1690,11 @@ grid-template-columns:1fr;
     }
 
 }
+.stats .section-title{
+font-size:24px !important;
+margin-bottom:20px !important;
+}
+
+.stats{
+padding:10px 0 20px !important;
+}
