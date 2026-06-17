@@ -575,20 +575,22 @@ gap:20px;
 }
 
 .service-item{
-background:white;
+background:#fff;
 padding:25px;
-border-radius:20px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,.06);
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.06);
 transition:.3s;
+border:1px solid #eee;
 }
 
 .service-item:hover{
 transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(0,0,0,.10);
 }
 
 .service-item span{
-font-size:34px;
+font-size:38px;
 display:block;
 margin-bottom:12px;
 }
@@ -601,7 +603,6 @@ margin-bottom:5px;
 .service-item p{
 font-size:14px;
 color:#666;
-}
 }
 
 @media(max-width:900px){
