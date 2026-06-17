@@ -634,7 +634,115 @@ Nasi partnerzy
 </section>
 
 <!-- STOPKA -->
+<!-- WHY ELKASS PREMIUM -->
 
+<section class="why-us-premium">
+
+<div class="container">
+
+<h2 class="section-title">
+Dlaczego mieszkańcy Olesna wybierają ELKASS?
+</h2>
+
+<div class="premium-grid">
+
+<div class="premium-card">
+<h3>🎯 Fachowe doradztwo</h3>
+<p>Pomagamy dobrać sprzęt idealnie do potrzeb klienta.</p>
+</div>
+
+<div class="premium-card">
+<h3>💳 Raty 0%</h3>
+<p>Wygodne finansowanie zakupów.</p>
+</div>
+
+<div class="premium-card">
+<h3>🚚 Dostawa</h3>
+<p>Dostarczamy sprzęt do klientów.</p>
+</div>
+
+<div class="premium-card">
+<h3>🔧 Serwis</h3>
+<p>Wsparcie również po zakupie.</p>
+</div>
+
+<div class="premium-card">
+<h3>📱 Najnowsze technologie</h3>
+<p>RTV, AGD, komputery, smartfony i audio.</p>
+</div>
+
+<div class="premium-card">
+<h3>🏆 20+ lat doświadczenia</h3>
+<p>Marka znana mieszkańcom Olesna i okolic.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ PREMIUM -->
+
+<section id="faq" class="faq-section">
+
+<div class="container">
+
+<h2 class="section-title">
+Najczęściej zadawane pytania
+</h2>
+
+<div class="faq-item">
+
+<button class="faq-question">
+Czy oferujecie raty?
+</button>
+
+<div class="faq-answer">
+Tak. Oferujemy wygodne formy finansowania.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+Czy dowozicie sprzęt?
+</button>
+
+<div class="faq-answer">
+Tak. Oferujemy dostawę wybranych produktów.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+Czy prowadzicie serwis?
+</button>
+
+<div class="faq-answer">
+Tak. Pomagamy również po zakupie sprzętu.
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button class="faq-question">
+Czy można płacić BLIK?
+</button>
+
+<div class="faq-answer">
+Tak.
+</div>
+
+</div>
+
+</div>
+
+</section>
 <footer>
 
 <div class="container footer-inner">
