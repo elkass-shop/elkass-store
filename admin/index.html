@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=16">
+  <link rel="stylesheet" href="admin.css?v=25">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -57,6 +57,7 @@
               <label>Kategoria<select id="product-category"></select></label>
               <label>Podkategoria<select id="product-subcategory"></select></label>
               <label>Badge<input id="product-badge" placeholder="PROMOCJA / HIT DNIA / NOWOŚĆ"></label>
+              <label>Dostępność<select id="product-availability"><option>Dostępny w sklepie</option><option>Na zamówienie</option><option>Chwilowo niedostępny</option></select></label>
               <label>Ścieżka zdjęcia<input id="product-img" placeholder="assets/products/product-01.jpg"></label>
             </div>
             <label>Opis / cechy produktu<textarea id="product-features" rows="4" placeholder="Każda cecha od nowej linii"></textarea></label>
@@ -86,31 +87,53 @@
       </section>
 
       <section id="categories" class="tab-panel">
-        <div class="panel-grid">
+        <div class="admin-note success-note">
+          <strong>WOW18:</strong> Kategorie i podkategorie są teraz osobnymi elementami. Najpierw dodaj kategorię, potem dodaj podkategorię i wybierz, do której kategorii ma należeć. Produkty przypisujesz do kategorii i podkategorii w zakładce Produkty.
+        </div>
+
+        <div class="panel-grid categories-admin-grid">
           <form id="category-form" class="editor-card">
             <h2>Dodaj / edytuj kategorię</h2>
             <input type="hidden" id="category-id">
             <label>Nazwa kategorii<input id="category-name" required placeholder="np. RTV"></label>
-            <label>Opis kategorii<input id="category-description" placeholder="Telewizory, audio, akcesoria"></label>
+            <label>Opis kategorii<input id="category-description" placeholder="Telewizory, soundbary, kino domowe"></label>
             <label>Ścieżka zdjęcia<input id="category-img" placeholder="assets/rtv.jpg"></label>
             <label class="upload-box">Wgraj zdjęcie kategorii<input id="category-upload" type="file" accept="image/*"></label>
             <div class="image-preview-box">
               <strong>Podgląd zdjęcia kategorii</strong>
               <div class="admin-image-preview"><img id="category-preview" src="../assets/rtv.jpg" alt="Podgląd kategorii"></div>
-              <div class="size-tip">Zdjęcia kategorii są przycinane jako tło kafla. Zalecane: szerokie zdjęcia 1200×800 px lub większe.</div>
+              <div class="size-tip">Zdjęcia kategorii mogą mieć różny rozmiar. Na stronie są przycinane w stałej ramce, żeby kafle nigdy się nie rozjeżdżały. Zalecane: szerokie zdjęcie 1200×800 px.</div>
             </div>
-            <label>Podkategorie<textarea id="category-subcategories" rows="8" placeholder="Dodajesz i usuwasz podkategorie tutaj. Każda linia to jedna podkategoria. Format: Nazwa | opis&#10;Telewizory | Smart TV, QLED, OLED i 4K&#10;Soundbary | Lepszy dźwięk do telewizora&#10;Audio | Głośniki, wieże i kino domowe"></textarea></label>
-            <div class="size-tip"><strong>Ważne:</strong> produkty przypisujesz do kategorii i podkategorii z listy w zakładce Produkty. Zdjęcia produktu mogą mieć dowolny rozmiar — strona zawsze dopasuje je do stałej ramki.</div>
             <div class="form-actions">
               <button type="submit" class="primary">Zapisz kategorię</button>
-              <button type="button" id="clear-category" class="secondary">Wyczyść formularz</button>
+              <button type="button" id="clear-category" class="secondary">Wyczyść</button>
+            </div>
+          </form>
+
+          <form id="subcategory-form" class="editor-card subcategory-editor-card">
+            <h2>Dodaj / edytuj podkategorię</h2>
+            <input type="hidden" id="subcategory-id">
+            <input type="hidden" id="subcategory-original-parent">
+            <label>Do której kategorii?<select id="subcategory-parent" required></select></label>
+            <label>Nazwa podkategorii<input id="subcategory-name" required placeholder="np. Telewizory"></label>
+            <label>Krótki opis podkategorii<input id="subcategory-description" placeholder="Smart TV, OLED, QLED i 4K"></label>
+            <div class="size-tip">Podkategorie pojawią się jako kapsułki pod daną kategorią na stronie i jako lista wyboru przy dodawaniu produktu.</div>
+            <div class="form-actions">
+              <button type="submit" class="primary">Zapisz podkategorię</button>
+              <button type="button" id="clear-subcategory" class="secondary">Wyczyść</button>
             </div>
           </form>
 
           <div class="list-card">
-            <h2>Kategorie i podkategorie</h2>
-            <p class="hint">Te kafle zasilają sekcję „Najpopularniejsze kategorie”.</p>
+            <h2>Kategorie</h2>
+            <p class="hint">Kliknij „Edytuj”, aby zmienić nazwę, opis lub grafikę kategorii.</p>
             <div id="categories-list" class="items-list"></div>
+          </div>
+
+          <div class="list-card">
+            <h2>Podkategorie</h2>
+            <p class="hint">Podkategorię możesz dodać do wybranej kategorii, edytować lub usunąć.</p>
+            <div id="subcategories-list" class="items-list"></div>
           </div>
         </div>
       </section>
@@ -129,6 +152,6 @@
     </section>
   </main>
 
-  <script src="admin.js?v=16"></script>
+  <script src="admin.js?v=25"></script>
 </body>
 </html>

@@ -82,3 +82,49 @@
   border-radius:12px;
   padding:6px;
 }
+
+/* WOW18 — osobne zarządzanie kategoriami i podkategoriami */
+.admin-note{
+  background:#fff;
+  border:1px solid #e5eaf2;
+  border-radius:18px;
+  padding:16px 18px;
+  margin-bottom:18px;
+  box-shadow:0 10px 28px rgba(15,23,42,.06);
+  color:#344054;
+  line-height:1.6;
+}
+.success-note{
+  border-left:5px solid var(--red);
+}
+.categories-admin-grid{
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+}
+.subcategory-editor-card{
+  border:1px solid rgba(227,6,19,.12);
+}
+.mini-icon{
+  width:72px;
+  height:72px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0f1117,#2a1114);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.category-row small,
+.subcategory-row small{
+  display:block;
+  margin-top:4px;
+  line-height:1.45;
+}
+@media(max-width:1180px){
+  .categories-admin-grid{grid-template-columns:1fr;}
+}
+
+/* WOW25 */
+.admin-image-preview img{object-fit:contain;}
