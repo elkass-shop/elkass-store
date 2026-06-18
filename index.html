@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-wow-v5.png">
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
   <header class="site-header">
@@ -28,6 +28,7 @@
         <a href="#promocje">Promocje</a>
         <a href="#oferta">Oferta</a>
         <a href="#opinie">Opinie</a>
+        <a href="#galeria">Galeria</a>
         <a href="#onas">O nas</a>
         <a href="#kontakt">Kontakt</a>
         <a href="admin/">Panel</a>
@@ -227,9 +228,63 @@
       </div>
     </section>
 
+    <section class="section store-showcase reveal">
+      <div class="container">
+        <div class="section-head compact">
+          <span class="eyebrow">Salon ELKASS</span>
+          <h2>Zobacz sklep od środka</h2>
+          <p>Prawdziwa ekspozycja RTV, AGD, małego AGD i akcesoriów dostępnych w naszym sklepie.</p>
+        </div>
+        <div class="store-slider" id="storeSlider" aria-label="Zdjęcia sklepu ELKASS">
+          <article class="store-slide active"><img src="assets/gallery/gallery-16-salon-elkass.jpg" alt="Salon ELKASS" loading="lazy"><div><strong>RTV i AGD w jednym miejscu</strong><span>Sprawdź dostępność w sklepie w Oleśnie.</span></div></article>
+          <article class="store-slide"><img src="assets/gallery/gallery-05-pralki-suszarki.jpg" alt="Pralki i suszarki" loading="lazy"><div><strong>Duży wybór AGD</strong><span>Pralki, lodówki, piekarniki i sprzęt do domu.</span></div></article>
+          <article class="store-slide"><img src="assets/gallery/gallery-11-odkurzacze.jpg" alt="Odkurzacze" loading="lazy"><div><strong>Małe AGD i akcesoria</strong><span>Odkurzacze, czajniki, ekspresy i sprzęt osobisty.</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section local-advantages reveal">
+      <div class="container local-grid">
+        <div>
+          <span class="eyebrow">Kupujesz lokalnie</span>
+          <h2>Dlaczego warto kupić w ELKASS?</h2>
+          <p>U nas nie zostajesz sam z wyborem sprzętu. Doradzamy, pomagamy porównać modele, sprawdzamy dostępność i wspieramy po zakupie.</p>
+        </div>
+        <div class="local-cards">
+          <article>🎯 <strong>Fachowe doradztwo</strong><span>Dobór sprzętu do potrzeb i budżetu.</span></article>
+          <article>📦 <strong>Odbiór w sklepie</strong><span>Możliwość obejrzenia sprzętu przed zakupem.</span></article>
+          <article>🛠 <strong>Pomoc po zakupie</strong><span>Wsparcie, konfiguracja i serwis.</span></article>
+          <article>📞 <strong>Kontakt z człowiekiem</strong><span>Telefonicznie lub na miejscu w Oleśnie.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="section gallery-section reveal">
+      <div class="container">
+        <div class="gallery-hero">
+          <span class="eyebrow center">Galeria ELKASS</span>
+          <h2>Salon, ekspozycja i oferta na miejscu</h2>
+          <p>Zobacz wybrane zdjęcia ze sklepu. Kliknij zdjęcie, aby je powiększyć.</p>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-card gallery-card-wide" data-gallery-src="assets/gallery/gallery-16-salon-elkass.jpg" data-gallery-title="Salon ELKASS"><img src="assets/gallery/gallery-16-salon-elkass.jpg" alt="Salon ELKASS" loading="lazy"><span class="gallery-overlay"><strong>Salon ELKASS</strong><span>RTV, AGD i multimedia</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-05-pralki-suszarki.jpg" data-gallery-title="Pralki i suszarki"><img src="assets/gallery/gallery-05-pralki-suszarki.jpg" alt="Pralki i suszarki" loading="lazy"><span class="gallery-overlay"><strong>Pralki i suszarki</strong><span>AGD do domu</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-06-lodowki.jpg" data-gallery-title="Lodówki"><img src="assets/gallery/gallery-06-lodowki.jpg" alt="Lodówki" loading="lazy"><span class="gallery-overlay"><strong>Lodówki</strong><span>Chłodziarki i zamrażarki</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-10-zelazka.jpg" data-gallery-title="Żelazka i stacje parowe"><img src="assets/gallery/gallery-10-zelazka.jpg" alt="Żelazka" loading="lazy"><span class="gallery-overlay"><strong>Żelazka</strong><span>Stacje parowe i prasowanie</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-11-odkurzacze.jpg" data-gallery-title="Odkurzacze"><img src="assets/gallery/gallery-11-odkurzacze.jpg" alt="Odkurzacze" loading="lazy"><span class="gallery-overlay"><strong>Odkurzacze</strong><span>Domowe i piorące</span></span></button>
+          <button class="gallery-card gallery-card-wide" data-gallery-src="assets/gallery/gallery-13-agd-kuchenne.jpg" data-gallery-title="AGD kuchenne"><img src="assets/gallery/gallery-13-agd-kuchenne.jpg" alt="AGD kuchenne" loading="lazy"><span class="gallery-overlay"><strong>AGD kuchenne</strong><span>Ekspresy, czajniki, roboty</span></span></button>
+        </div>
+      </div>
+    </section>
+
+    <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+      <button class="gallery-lightbox-close" id="galleryClose" aria-label="Zamknij">×</button>
+      <figure><img id="galleryLightboxImg" src="" alt=""><figcaption id="galleryLightboxCaption"></figcaption></figure>
+    </div>
+
     <section id="onas" class="section about-section reveal">
       <div class="container about-grid">
-        <div class="about-image"><img src="assets/sklep.jpg" alt="Sklep ELKASS Olesno" loading="lazy"></div>
+        <div class="about-image"><img src="assets/gallery/gallery-16-salon-elkass.jpg" alt="Sklep ELKASS Olesno" loading="lazy"></div>
         <div class="about-content">
           <span class="eyebrow">ELKASS Olesno</span>
           <h2>Lokalny sklep RTV/AGD z fachowym doradztwem</h2>
@@ -358,6 +413,6 @@
   <a class="desktop-call" href="tel:343582442">📞 34 358 24 42</a>
   <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
   <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=25"></script>
 </body>
 </html>

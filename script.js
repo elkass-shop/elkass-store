@@ -54,6 +54,19 @@ document.addEventListener('DOMContentLoaded', () => {
     return new Intl.NumberFormat('pl-PL', { style:'currency', currency:'PLN', minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(value || 0));
   }
 
+  function productAvailability(product) {
+    return product.availability || product.status || 'Dostępny w sklepie';
+  }
+  function availabilityClass(product) {
+    const value = productAvailability(product).toLowerCase();
+    if (value.includes('niedost')) return 'unavailable';
+    if (value.includes('zamów') || value.includes('zamow')) return 'order';
+    return 'available';
+  }
+  function productUrl(product) {
+    return `product.html?id=${encodeURIComponent(product.id || product.name)}`;
+  }
+
   const data = getData();
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
@@ -214,12 +227,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('article');
         card.className = 'product-card';
         card.innerHTML = `
-          <div class="product-badge">${product.badge || 'PROMOCJA'}</div>
-          ${discount ? `<div class="discount">-${discount}%</div>` : ''}
-          <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
-          <h3>${product.name}</h3>
-          <ul class="features">${features.map(item => `<li>• ${item}</li>`).join('')}</ul>
-          <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+          <a class="product-link-card" href="${productUrl(product)}" aria-label="Zobacz produkt ${product.name}">
+            <div class="product-badge">${product.badge || 'PROMOCJA'}</div>
+            ${discount ? `<div class="discount">-${discount}%</div>` : ''}
+            <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+            <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
+            <h3>${product.name}</h3>
+            <ul class="features">${features.map(item => `<li>• ${item}</li>`).join('')}</ul>
+            <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+          </a>
         `;
         productsGrid.appendChild(card);
       }
@@ -299,19 +315,88 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'product-card category-page-product';
       card.innerHTML = `
-        <div class="product-badge">${product.badge || 'OFERTA'}</div>
-        ${discount ? `<div class="discount">-${discount}%</div>` : ''}
-        <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
-        <h3>${product.name}</h3>
-        <ul class="features">${features.slice(0,4).map(item => `<li>• ${item}</li>`).join('')}</ul>
-        <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
-        <a class="product-contact" href="index.html#kontakt">Zapytaj o produkt →</a>
+        <a class="product-link-card" href="${productUrl(product)}" aria-label="Zobacz produkt ${product.name}">
+          <div class="product-badge">${product.badge || 'OFERTA'}</div>
+          ${discount ? `<div class="discount">-${discount}%</div>` : ''}
+          <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+          <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
+          <h3>${product.name}</h3>
+          <ul class="features">${features.slice(0,4).map(item => `<li>• ${item}</li>`).join('')}</ul>
+          <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+        </a>
       `;
       categoryPageProducts.appendChild(card);
     });
   }
 
   renderCategoryPage();
+
+
+  function renderSmallProductCard(product) {
+    const discount = stableDiscount(product);
+    const price = Number(product.price || 0);
+    const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
+    const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+    return `<article class="product-card">
+      <a class="product-link-card" href="${productUrl(product)}">
+        <div class="product-badge">${product.badge || 'OFERTA'}</div>
+        ${discount ? `<div class="discount">-${discount}%</div>` : ''}
+        <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+        <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
+        <h3>${product.name}</h3>
+        <ul class="features">${features.slice(0,3).map(item => `<li>• ${item}</li>`).join('')}</ul>
+        <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+      </a>
+    </article>`;
+  }
+
+  function renderProductDetailPage(){
+    const detail = document.getElementById('productDetail');
+    if(!detail) return;
+    const id = new URLSearchParams(window.location.search).get('id');
+    const all = (data.products || defaultProducts).filter(p => p.visible !== false);
+    const product = all.find(p => String(p.id) === String(id)) || all.find(p => String(p.name) === String(id)) || all[0];
+    if(!product){ detail.innerHTML = '<div class="product-detail-empty">Nie znaleziono produktu.</div>'; return; }
+    document.title = `${product.name} | ELKASS Olesno`;
+    const discount = stableDiscount(product);
+    const price = Number(product.price || 0);
+    const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
+    const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+    detail.innerHTML = `
+      <div class="product-detail-media"><img src="${product.img}" alt="${product.name}"></div>
+      <div class="product-detail-info">
+        <span class="product-badge static">${product.badge || 'OFERTA'}</span>
+        <h1>${product.name}</h1>
+        <div class="product-detail-category"><span>${product.category || 'Oferta'}</span><span>${product.subcategory || 'Produkt'}</span></div>
+        <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
+        <div class="product-detail-price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+        <p>Zapytaj o aktualną dostępność, odbiór w sklepie lub możliwość dostawy. Nasi doradcy pomogą dobrać najlepszy sprzęt do Twoich potrzeb.</p>
+        <ul class="product-specs">${features.map(f => `<li>${f}</li>`).join('') || '<li>Fachowe doradztwo</li><li>Możliwość zakupu na raty</li>'}</ul>
+        <div class="product-detail-actions">
+          <a class="btn btn-primary" href="tel:343582442">📞 Zapytaj telefonicznie</a>
+          <a class="btn btn-outline" href="mailto:elkass@wp.pl?subject=Zapytanie o produkt ${encodeURIComponent(product.name)}">✉️ Napisz e-mail</a>
+          <a class="btn btn-outline" href="index.html#kontakt">📍 Odwiedź sklep</a>
+        </div>
+      </div>`;
+    const relatedBox = document.getElementById('relatedProducts');
+    if(relatedBox){
+      const related = all.filter(p => p.id !== product.id && (p.category === product.category || p.subcategory === product.subcategory)).slice(0,4);
+      relatedBox.innerHTML = (related.length ? related : all.filter(p => p.id !== product.id).slice(0,4)).map(renderSmallProductCard).join('');
+    }
+  }
+  renderProductDetailPage();
+
+  function startStoreSlider(){
+    const slides = Array.from(document.querySelectorAll('.store-slide'));
+    if(!slides.length) return;
+    let currentStoreSlide = 0;
+    window.setInterval(() => {
+      slides[currentStoreSlide].classList.remove('active');
+      currentStoreSlide = (currentStoreSlide + 1) % slides.length;
+      slides[currentStoreSlide].classList.add('active');
+    }, 4500);
+  }
+  startStoreSlider();
 
   const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
@@ -542,3 +627,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 1000);
 
 });
+
+
+// WOW19: Galeria ELKASS - podgląd zdjęć
+(function(){
+  const cards=document.querySelectorAll('[data-gallery-src]');
+  const box=document.getElementById('galleryLightbox');
+  const img=document.getElementById('galleryLightboxImg');
+  const caption=document.getElementById('galleryLightboxCaption');
+  const close=document.getElementById('galleryClose');
+  if(!cards.length||!box||!img||!caption) return;
+  function openGallery(src,title){img.src=src;caption.textContent=title||'Galeria ELKASS';box.classList.add('active');box.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+  function closeGallery(){box.classList.remove('active');box.setAttribute('aria-hidden','true');document.body.style.overflow='';setTimeout(()=>{img.src=''},160)}
+  cards.forEach(card=>card.addEventListener('click',()=>openGallery(card.dataset.gallerySrc,card.dataset.galleryTitle)));
+  if(close) close.addEventListener('click',closeGallery);
+  box.addEventListener('click',e=>{if(e.target===box) closeGallery()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('active')) closeGallery()});
+})();
