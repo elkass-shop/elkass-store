@@ -8,26 +8,108 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
 
+  // === PROMOCJE / NOWOŚCI ===
+  // Tutaj podmieniasz produkty: nazwę, cenę główną, opis i grafikę.
+  // Grafiki produktów trzymaj w folderze: assets/products/
+  // Pole "price" to cena, którą wpisujesz jako główną. Rabat 5-25% generuje się automatycznie,
+  // a cena przekreślona jest wyliczana od tej ceny.
   const products = [
-    {badge:'HIT DNIA', img:'assets/promocje/hit-dnia.jpg', name:'Lodówka TCL RP318BXE2', features:['No Frost','Multi Air Flow','AAT'], price:'1 699,00 zł'},
-    {badge:'PROMOCJA', discount:'-21%', img:'assets/promocje/xiaomi17t.jpg', name:'Pralka Philco PLD 106EPL', features:['6 kg załadunku','Programy szybkie','Klasa ekonomiczna'], price:'1 149,00 zł', old:'1 449,00 zł'},
-    {badge:'PROMOCJA', discount:'-18%', img:'assets/promocje/samsung-a37.jpg', name:'Zamrażarka Kernau KFUF 17153', features:['No Frost','Pojemne szuflady','Cicha praca'], price:'1 799,00 zł', old:'2 199,00 zł'},
-    {badge:'HIT DNIA', img:'assets/promocje/insta360.jpg', name:'Piekarnik Amica X-TYPE Steam', features:['Steam','Prowadnice','Nowoczesny design'], price:'1 399,00 zł'},
+    {badge:'HIT DNIA', img:'assets/products/product-01-lodowka-tcl.jpg', name:'Lodówka TCL RP318BXE2', features:['No Frost','Multi Air Flow','Pojemna chłodziarka'], price:1699},
+    {badge:'PROMOCJA', img:'assets/products/product-02-pralka-beko.jpg', name:'Pralka BEKO WUE7636XOA', features:['7 kg załadunku','1200 obr./min','Program szybki'], price:1349},
+    {badge:'PROMOCJA', img:'assets/products/product-03-chlodziarka-amica.jpg', name:'Chłodziarka Amica FM170.4', features:['122 l pojemności','3 półki','Komora FreshZone'], price:899},
+    {badge:'HIT DNIA', img:'assets/products/product-04-piekarnik-samsung.jpg', name:'Piekarnik Samsung NV7B44305AK', features:['Dual Cook','Air Fry','Prowadnice teleskopowe'], price:1799},
+
+    {badge:'NOWOŚĆ', img:'assets/products/product-05-telewizor-samsung.jpg', name:'Telewizor Samsung 55” 4K UHD', features:['Smart TV','HDR','Krystaliczny obraz'], price:2299},
+    {badge:'PROMOCJA', img:'assets/products/product-06-soundbar-lg.jpg', name:'Soundbar LG S60Q', features:['Bluetooth','Mocny bas','HDMI ARC'], price:899},
+    {badge:'PROMOCJA', img:'assets/products/product-07-laptop-lenovo.jpg', name:'Laptop Lenovo IdeaPad 15', features:['Intel Core i5','SSD 512 GB','15,6 cala'], price:2499},
+    {badge:'HIT CENOWY', img:'assets/products/product-08-smartfon-samsung.jpg', name:'Smartfon Samsung Galaxy A35', features:['Ekran AMOLED','Aparat 50 MP','Duża bateria'], price:1399},
+
+    {badge:'PROMOCJA', img:'assets/products/product-09-odkurzacz-bosch.jpg', name:'Odkurzacz Bosch Serie 4', features:['Duża moc ssania','Cicha praca','Filtr HEPA'], price:649},
+    {badge:'NOWOŚĆ', img:'assets/products/product-10-zmywarka-bosch.jpg', name:'Zmywarka Bosch 60 cm', features:['EcoSilence Drive','AquaStop','Pojemne kosze'], price:2199},
+    {badge:'PROMOCJA', img:'assets/products/product-11-mikrofala-amica.jpg', name:'Kuchenka mikrofalowa Amica', features:['20 l pojemności','Grill','Szybkie podgrzewanie'], price:399},
+    {badge:'HIT DNIA', img:'assets/products/product-12-ekspres-philips.jpg', name:'Ekspres Philips LatteGo', features:['Kawa ziarnista','Spienianie mleka','Łatwe czyszczenie'], price:1999},
+
+    {badge:'PROMOCJA', img:'assets/products/product-13-zamrazarka-kernau.jpg', name:'Zamrażarka Kernau KFUF 17153', features:['No Frost','Pojemne szuflady','Cicha praca'], price:1799},
+    {badge:'NOWOŚĆ', img:'assets/products/product-14-pralka-philco.jpg', name:'Pralka Philco PLD 106EPL', features:['6 kg załadunku','Programy szybkie','Klasa ekonomiczna'], price:1149},
+    {badge:'PROMOCJA', img:'assets/products/product-15-robot-sprzatajacy.jpg', name:'Robot sprzątający Sencor', features:['Mapa pomieszczeń','Sterowanie aplikacją','Mopowanie'], price:999},
+    {badge:'HIT CENOWY', img:'assets/products/product-16-lodowka-lg.jpg', name:'Lodówka LG No Frost', features:['Total No Frost','DoorCooling','Cicha praca'], price:2699},
+
+    {badge:'PROMOCJA', img:'assets/products/product-17-monitor-gaming.jpg', name:'Monitor gamingowy 27”', features:['165 Hz','IPS','Niski czas reakcji'], price:999},
+    {badge:'NOWOŚĆ', img:'assets/products/product-18-sluchawki-sony.jpg', name:'Słuchawki bezprzewodowe Sony', features:['ANC','Długi czas pracy','Czyste brzmienie'], price:599},
+    {badge:'PROMOCJA', img:'assets/products/product-19-tablet-lenovo.jpg', name:'Tablet Lenovo Tab M10', features:['10,1 cala','Wi-Fi','Dla domu i szkoły'], price:749},
+    {badge:'HIT DNIA', img:'assets/products/product-20-plyta-indukcyjna.jpg', name:'Płyta indukcyjna Bosch', features:['4 pola grzewcze','PowerBoost','Sterowanie dotykowe'], price:1499}
   ];
 
-  const productsGrid = document.getElementById('products-grid');
-  if (productsGrid) {
-    productsGrid.innerHTML = products.map(product => `
-      <article class="product-card">
-        <div class="product-badge">${product.badge}</div>
-        ${product.discount ? `<div class="discount">${product.discount}</div>` : ''}
-        <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
-        <h3>${product.name}</h3>
-        <ul class="features">${product.features.map(item => `<li>• ${item}</li>`).join('')}</ul>
-        <div class="price"><strong>${product.price}</strong>${product.old ? `<del>${product.old}</del>` : ''}</div>
-      </article>
-    `).join('');
+  function randomDiscount() {
+    return Math.floor(Math.random() * 21) + 5; // 5-25%
   }
+
+  function formatPrice(value) {
+    return new Intl.NumberFormat('pl-PL', {
+      style: 'currency',
+      currency: 'PLN',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(value);
+  }
+
+  const productsWithDiscounts = products.map(product => {
+    const discount = randomDiscount();
+    const oldPrice = Math.round(product.price / (1 - discount / 100));
+    return { ...product, discount, oldPrice };
+  });
+
+  const productsGrid = document.getElementById('products-grid');
+  let productIndex = 0;
+  let productTimer = null;
+
+  function visibleProductCount() {
+    if (window.innerWidth <= 720) return 1;
+    if (window.innerWidth <= 1100) return 2;
+    return 4;
+  }
+
+  function renderProducts() {
+    if (!productsGrid) return;
+    const count = visibleProductCount();
+    productsGrid.classList.add('is-changing');
+
+    window.setTimeout(() => {
+      productsGrid.innerHTML = '';
+
+      for (let i = 0; i < count; i++) {
+        const product = productsWithDiscounts[(productIndex + i) % productsWithDiscounts.length];
+        const card = document.createElement('article');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-badge">${product.badge}</div>
+          <div class="discount">-${product.discount}%</div>
+          <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+          <h3>${product.name}</h3>
+          <ul class="features">${product.features.map(item => `<li>• ${item}</li>`).join('')}</ul>
+          <div class="price"><strong>${formatPrice(product.price)}</strong><del>${formatPrice(product.oldPrice)}</del></div>
+        `;
+        productsGrid.appendChild(card);
+      }
+
+      productsGrid.classList.remove('is-changing');
+    }, 160);
+  }
+
+  function startProductRotation() {
+    if (productTimer) window.clearInterval(productTimer);
+    productTimer = window.setInterval(() => {
+      productIndex = (productIndex + visibleProductCount()) % productsWithDiscounts.length;
+      renderProducts();
+    }, 5000);
+  }
+
+  renderProducts();
+  startProductRotation();
+  window.addEventListener('resize', () => {
+    renderProducts();
+    startProductRotation();
+  });
 
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver(entries => {
