@@ -1,155 +1,118 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ELKASS Olesno | RTV AGD Komputery Telefony</title>
-  <meta name="description" content="ELKASS Olesno - lokalny sklep RTV, AGD, komputery, telefony i serwis. Fachowe doradztwo, raty, dostawa i promocje." />
-  <meta property="og:title" content="ELKASS Olesno | RTV AGD Komputery" />
-  <meta property="og:description" content="Nowoczesna elektronika dla domu. RTV, AGD, komputery, telefony, serwis i aktualne promocje w Oleśnie." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-premium.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ElectronicsStore",
-    "name":"ELKASS Olesno",
-    "address":{"@type":"PostalAddress","streetAddress":"Armii Krajowej 5","postalCode":"46-300","addressLocality":"Olesno","addressCountry":"PL"},
-    "telephone":["+48343582442","+48604503471"],
-    "email":"elkass@wp.pl",
-    "openingHours":["Mo-Fr 09:00-17:00","Sa 09:00-13:00"]
-  }
-  </script>
+  <meta name="description" content="ELKASS Olesno - lokalny sklep RTV, AGD, komputery, telefony i serwis. Promocje, raty, BLIK, dostawa i fachowe doradztwo.">
+  <meta property="og:title" content="ELKASS Olesno | RTV AGD Komputery">
+  <meta property="og:description" content="Nowoczesna elektronika dla Twojego domu. RTV, AGD, komputery, telefony, audio i serwis w Oleśnie.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-premium.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="mobile-call" href="tel:343582442">📞 Zadzwoń</a>
-  <button class="top-btn" id="topBtn" aria-label="Do góry">↑</button>
-
-  <header class="site-header" id="siteHeader">
+  <header class="site-header">
     <div class="container header-inner">
       <a href="#home" class="brand" aria-label="ELKASS Olesno">
         <span class="brand-main"><span>ELKASS</span> <em>OLESNO</em></span>
-        <span class="brand-sub">RTV • AGD • KOMPUTERY • SERWIS</span>
+        <span class="brand-sub">RTV / AGD / MULTIMEDIA / SERWIS</span>
       </a>
 
       <nav class="nav" id="nav">
+        <a href="#home">Strona główna</a>
         <a href="#promocje">Promocje</a>
         <a href="#oferta">Oferta</a>
         <a href="#opinie">Opinie</a>
-        <a href="#onas">O firmie</a>
+        <a href="#onas">O nas</a>
         <a href="#kontakt">Kontakt</a>
       </nav>
 
       <div class="header-actions">
-        <a class="header-phone" href="tel:343582442">34 358 24 42</a>
-        <button class="burger" id="burger" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
+        <a href="tel:343582442" class="header-phone">📞 34 358 24 42</a>
+        <button class="burger" id="burger" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
   <main>
     <section id="home" class="hero-premium">
-      <div class="hero-bg"></div>
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-layout">
         <div class="hero-copy reveal active">
           <div class="hero-badges">
             <span>⭐ 25+ lat doświadczenia</span>
             <span>🏆 Partner NeoPunkt</span>
-            <span>📍 Olesno i okolice</span>
+            <span>👥 15 000+ klientów</span>
           </div>
           <h1>Nowoczesna elektronika dla Twojego domu</h1>
-          <p>RTV, AGD, komputery, telefony i akcesoria. Fachowe doradztwo, lokalna obsługa, atrakcyjne promocje i wsparcie po zakupie.</p>
+          <p>RTV • AGD • KOMPUTERY • TELEFONY • AUDIO • SERWIS</p>
           <div class="hero-buttons">
-            <a href="#promocje" class="btn btn-primary">🔥 Zobacz promocje</a>
-            <a href="tel:343582442" class="btn btn-primary">📞 Zadzwoń teraz</a>
-          </div>
-        </div>
-
-        <div class="hero-panel reveal active">
-          <div class="panel-label">Polecane dzisiaj</div>
-          <h2>Sprzęt do domu dostępny lokalnie</h2>
-          <ul>
-            <li>Telewizory i audio</li>
-            <li>Pralki, lodówki, AGD</li>
-            <li>Smartfony, komputery i akcesoria</li>
-          </ul>
-          <a href="#oferta" class="panel-link">Sprawdź ofertę →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-strip">
-      <div class="container trust-strip-inner">
-        <div><strong>25+</strong><span>lat doświadczenia</span></div>
-        <div><strong>15 000+</strong><span>zadowolonych klientów</span></div>
-        <div><strong>27 000+</strong><span>produktów w ofercie</span></div>
-        <div><strong>4.8/5</strong><span>ocena klientów</span></div>
-      </div>
-    </section>
-
-    <section id="promocje" class="section offers-section reveal">
-      <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Aktualna oferta</span>
-          <h2>Promocje i polecane produkty</h2>
-          <p>Najciekawsze okazje i nowości dostępne w ELKASS Olesno.</p>
-        </div>
-
-        <div class="offers-layout">
-          <article class="deal-card deal-main">
-            <div class="deal-badge">HIT DNIA</div>
-            <img src="assets/promocje/hit-dnia.jpg" alt="Lodówka TCL RP318BXE2" loading="lazy" />
-            <div class="deal-content">
-              <h3>Lodówka TCL RP318BXE2</h3>
-              <p>No Frost • Multi Air Flow • energooszczędna praca</p>
-              <div class="deal-bottom"><strong>1599 zł</strong><a href="tel:343582442">Zapytaj</a></div>
-            </div>
-          </article>
-
-          <div class="mini-deals">
-            <article class="deal-card">
-              <img src="assets/promocje/xiaomi17t.jpg" alt="Pralka Philco" loading="lazy" />
-              <h3>Pralka Philco PLD 106EPL</h3>
-              <strong>1149 zł</strong>
-            </article>
-            <article class="deal-card">
-              <img src="assets/promocje/samsung-a37.jpg" alt="Zamrażarka Kernau" loading="lazy" />
-              <h3>Zamrażarka Kernau KFUF 17153 NF W</h3>
-              <strong>1799 zł</strong>
-            </article>
-            <article class="deal-card">
-              <img src="assets/promocje/insta360.jpg" alt="Piekarnik Amica" loading="lazy" />
-              <h3>Piekarnik Amica ED37614B X-TYPE Steam</h3>
-              <strong>1399 zł</strong>
-            </article>
+            <a href="#promocje" class="btn btn-primary">Zobacz promocje 🛒</a>
+            <a href="tel:343582442" class="btn btn-outline">Skontaktuj się 📞</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="oferta" class="section categories reveal">
+    <section class="trust-strip" aria-label="Najważniejsze informacje o ELKASS">
+      <div class="container trust-card">
+        <div class="trust-item">
+          <div class="trust-icon">🛡</div>
+          <div><strong>25+ lat</strong><span>doświadczenia</span><small>Jesteśmy z Wami od lat</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">👥</div>
+          <div><strong>15 000+</strong><span>klientów</span><small>Dziękujemy za zaufanie</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">📦</div>
+          <div><strong>Szeroki wybór</strong><span>produktów</span><small>Tysiące produktów w ofercie</small></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">☆</div>
+          <div><strong>4.8/5</strong><span>średnia ocena</span><small>Na podstawie opinii klientów</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="promocje" class="section promotions-section">
       <div class="container">
-        <div class="section-head">
-          <span class="eyebrow">Co znajdziesz w sklepie?</span>
-          <h2>Najważniejsze kategorie</h2>
-          <p>Wybierz kategorię i zapytaj o dostępność lub aktualne promocje.</p>
+        <div class="section-toolbar">
+          <div>
+            <span class="eyebrow">Aktualna oferta</span>
+            <h2>Nowości i promocje</h2>
+          </div>
+          <a href="#kontakt" class="ghost-link">Zapytaj o dostępność →</a>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+      </div>
+    </section>
+
+    <section id="oferta" class="section categories-section reveal">
+      <div class="container">
+        <div class="section-head compact">
+          <span class="eyebrow">Oferta sklepu</span>
+          <h2>Najpopularniejsze kategorie</h2>
+          <p>Wybierz kategorię i skontaktuj się z nami, aby sprawdzić dostępność oraz aktualne promocje.</p>
         </div>
         <div class="category-grid">
-          <article class="category-card"><img src="assets/rtv.jpg" alt="RTV" loading="lazy"><div><h3>RTV</h3><p>Telewizory, audio i akcesoria</p></div></article>
-          <article class="category-card"><img src="assets/agd.jpg" alt="AGD" loading="lazy"><div><h3>AGD</h3><p>Pralki, lodówki, zmywarki</p></div></article>
-          <article class="category-card"><img src="assets/komputery.jpg" alt="Komputery" loading="lazy"><div><h3>Komputery</h3><p>Laptopy, PC i peryferia</p></div></article>
+          <article class="category-card"><img src="assets/rtv.jpg" alt="RTV" loading="lazy"><div><h3>RTV</h3><p>Telewizory, audio, akcesoria</p></div></article>
+          <article class="category-card"><img src="assets/agd.jpg" alt="AGD" loading="lazy"><div><h3>AGD</h3><p>Lodówki, pralki, piekarniki</p></div></article>
+          <article class="category-card"><img src="assets/komputery.jpg" alt="Komputery" loading="lazy"><div><h3>Komputery</h3><p>Laptopy, komputery, peryferia</p></div></article>
           <article class="category-card"><img src="assets/telefony.jpg" alt="Telefony" loading="lazy"><div><h3>Telefony</h3><p>Smartfony i akcesoria</p></div></article>
           <article class="category-card"><img src="assets/audio.jpg" alt="Audio" loading="lazy"><div><h3>Audio</h3><p>Głośniki, soundbary, słuchawki</p></div></article>
-          <article class="category-card"><img src="assets/gaming.jpg" alt="Serwis" loading="lazy"><div><h3>Serwis</h3><p>Pomoc i wsparcie po zakupie</p></div></article>
+          <article class="category-card"><img src="assets/gaming.jpg" alt="Serwis" loading="lazy"><div><h3>Serwis</h3><p>Pomoc techniczna po zakupie</p></div></article>
         </div>
       </div>
     </section>
 
-    <section class="quick-info reveal">
+    <section class="quick-info">
       <div class="container quick-grid">
         <div class="quick-item">💳 <span>Zakupy na raty</span></div>
         <div class="quick-item">⚡ <span>Płatność BLIK</span></div>
@@ -173,34 +136,40 @@
       </div>
     </section>
 
-    <section id="onas" class="section about reveal">
+    <section id="onas" class="section about-section reveal">
       <div class="container about-grid">
         <div class="about-image"><img src="assets/sklep.jpg" alt="Sklep ELKASS Olesno" loading="lazy"></div>
         <div class="about-content">
           <span class="eyebrow">ELKASS Olesno</span>
-          <h2>Lokalny sklep z elektroniką i realnym doradztwem</h2>
-          <p>Od lat pomagamy mieszkańcom Olesna i okolic wybierać sprawdzony sprzęt RTV, AGD, komputery, telefony oraz akcesoria.</p>
-          <p>Stawiamy na fachową obsługę, wygodne finansowanie, wsparcie po zakupie i ofertę dopasowaną do potrzeb lokalnych klientów.</p>
-          <div class="about-tags"><span>Fachowe doradztwo</span><span>Raty</span><span>BLIK</span><span>NeoPunkt</span></div>
+          <h2>Lokalny sklep RTV/AGD z fachowym doradztwem</h2>
+          <p>Od lat pomagamy mieszkańcom Olesna i okolic wybierać sprawdzony sprzęt RTV, AGD, komputery, telefony oraz akcesoria renomowanych producentów.</p>
+          <p>Łączymy profesjonalną obsługę, atrakcyjne ceny, możliwość zakupu na raty, płatności BLIK oraz wsparcie po zakupie.</p>
+          <div class="about-tags">
+            <span>✓ Fachowe doradztwo</span>
+            <span>✓ Raty</span>
+            <span>✓ BLIK</span>
+            <span>✓ Dostawa</span>
+            <span>✓ Serwis</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="kontakt" class="section contact reveal">
+    <section id="kontakt" class="section contact-section reveal">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head compact">
           <span class="eyebrow">Kontakt</span>
           <h2>Odwiedź ELKASS Olesno</h2>
-          <p>Zapraszamy do sklepu w centrum Olesna lub do kontaktu telefonicznego.</p>
+          <p>Zapraszamy do sklepu w centrum Olesna. Zadzwoń lub wyznacz trasę.</p>
         </div>
         <div class="contact-grid">
-          <div class="contact-card"><h3>📍 Adres</h3><p>Armii Krajowej 5<br>46-300 Olesno</p></div>
-          <div class="contact-card"><h3>📞 Telefon</h3><p><a href="tel:343582442">34 358 24 42</a><br><a href="tel:604503471">604 503 471</a></p></div>
-          <div class="contact-card"><h3>✉️ E-mail</h3><p><a href="mailto:elkass@wp.pl">elkass@wp.pl</a></p></div>
-          <div class="contact-card"><h3>🕒 Godziny</h3><p>Pon-Pt 9:00-17:00<br>Sobota 9:00-13:00</p></div>
+          <article class="contact-card"><h3>📍 Adres</h3><p>Armii Krajowej 5<br>46-300 Olesno</p></article>
+          <article class="contact-card"><h3>📞 Telefon</h3><p><a href="tel:343582442">34 358 24 42</a><br><a href="tel:604503471">604 503 471</a></p></article>
+          <article class="contact-card"><h3>✉️ E-mail</h3><p><a href="mailto:elkass@wp.pl">elkass@wp.pl</a></p></article>
+          <article class="contact-card"><h3>🕒 Godziny</h3><p>Pon-Pt 9-17<br>Sobota 9-13</p></article>
         </div>
         <div class="map-card">
-          <iframe title="Mapa ELKASS Olesno" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Armii%20Krajowej%205%20Olesno&output=embed"></iframe>
+          <iframe title="Mapa ELKASS Olesno" loading="lazy" src="https://www.google.com/maps?q=Armii%20Krajowej%205%20Olesno&output=embed"></iframe>
         </div>
       </div>
     </section>
@@ -208,12 +177,15 @@
     <section class="cta-section">
       <div class="container cta-box">
         <h2>Potrzebujesz nowego sprzętu?</h2>
-        <p>Zadzwoń lub odwiedź nas w sklepie. Pomożemy dobrać produkt, sprawdzić dostępność i aktualną cenę.</p>
-        <div class="hero-buttons"><a href="tel:343582442" class="btn btn-primary">📞 Zadzwoń teraz</a><a href="https://maps.google.com/?q=Armii+Krajowej+5+Olesno" target="_blank" class="btn btn-primary" rel="noopener">📍 Wyznacz trasę</a></div>
+        <p>Zadzwoń, zapytaj o dostępność lub odwiedź nasz sklep. Pomożemy dobrać najlepszy sprzęt do domu.</p>
+        <div class="hero-buttons center">
+          <a href="tel:343582442" class="btn btn-primary">Zadzwoń teraz</a>
+          <a href="https://maps.google.com/?q=Armii+Krajowej+5+Olesno" target="_blank" rel="noopener" class="btn btn-outline light">Wyznacz trasę</a>
+        </div>
       </div>
     </section>
 
-    <section class="brands reveal">
+    <section class="brands-section">
       <div class="container">
         <h2 class="brands-title">Nasi partnerzy</h2>
         <div class="brands-row">
@@ -232,14 +204,16 @@
 
   <footer class="footer">
     <div class="container footer-grid">
-      <div><strong><span>ELKASS</span> OLESNO</strong><p>RTV • AGD • Komputery • Telefony • Serwis</p></div>
-      <div><h4>Oferta</h4><a href="#oferta">Kategorie</a><a href="#promocje">Promocje</a><a href="#opinie">Opinie</a></div>
+      <div><strong><span>ELKASS</span> OLESNO</strong><p>RTV / AGD / MULTIMEDIA / SERWIS</p></div>
+      <div><h4>Oferta</h4><a href="#promocje">Promocje</a><a href="#oferta">Kategorie</a><a href="#opinie">Opinie</a></div>
       <div><h4>Kontakt</h4><a href="tel:343582442">34 358 24 42</a><a href="mailto:elkass@wp.pl">elkass@wp.pl</a></div>
-      <div><h4>Godziny</h4><p>Pon-Pt 9:00-17:00<br>Sobota 9:00-13:00</p></div>
+      <div><h4>Godziny</h4><p>Pon-Pt 9-17</p><p>Sobota 9-13</p></div>
     </div>
     <div class="footer-bottom">© 2025 ELKASS OLESNO</div>
   </footer>
 
+  <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
+  <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
   <script src="script.js"></script>
 </body>
 </html>

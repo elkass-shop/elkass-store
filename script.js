@@ -8,17 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
 
+  const products = [
+    {badge:'HIT DNIA', img:'assets/promocje/hit-dnia.jpg', name:'Lodówka TCL RP318BXE2', features:['No Frost','Multi Air Flow','AAT'], price:'1 699,00 zł'},
+    {badge:'PROMOCJA', discount:'-21%', img:'assets/promocje/xiaomi17t.jpg', name:'Pralka Philco PLD 106EPL', features:['6 kg załadunku','Programy szybkie','Klasa ekonomiczna'], price:'1 149,00 zł', old:'1 449,00 zł'},
+    {badge:'PROMOCJA', discount:'-18%', img:'assets/promocje/samsung-a37.jpg', name:'Zamrażarka Kernau KFUF 17153', features:['No Frost','Pojemne szuflady','Cicha praca'], price:'1 799,00 zł', old:'2 199,00 zł'},
+    {badge:'HIT DNIA', img:'assets/promocje/insta360.jpg', name:'Piekarnik Amica X-TYPE Steam', features:['Steam','Prowadnice','Nowoczesny design'], price:'1 399,00 zł'},
+  ];
+
+  const productsGrid = document.getElementById('products-grid');
+  if (productsGrid) {
+    productsGrid.innerHTML = products.map(product => `
+      <article class="product-card">
+        <div class="product-badge">${product.badge}</div>
+        ${product.discount ? `<div class="discount">${product.discount}</div>` : ''}
+        <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+        <h3>${product.name}</h3>
+        <ul class="features">${product.features.map(item => `<li>• ${item}</li>`).join('')}</ul>
+        <div class="price"><strong>${product.price}</strong>${product.old ? `<del>${product.old}</del>` : ''}</div>
+      </article>
+    `).join('');
+  }
+
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('active');
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.14 });
   revealElements.forEach(el => revealObserver.observe(el));
 
   window.addEventListener('scroll', () => {
     if (!topBtn) return;
-    topBtn.classList.toggle('show', window.scrollY > 500);
+    topBtn.classList.toggle('show', window.scrollY > 480);
   });
   if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
