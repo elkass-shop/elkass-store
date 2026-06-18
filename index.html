@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-wow-v5.png">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <header class="site-header">
@@ -137,12 +137,11 @@
 
     <section class="deal-banner-section">
       <div class="container">
-        <div class="deal-banner">
-          <img src="assets/banners/weekend-sale.jpg" alt="Weekend RTV promocje ELKASS" loading="lazy">
+        <div class="deal-banner deal-clean">
           <div class="deal-content">
-            <span>🔥 HIT TYGODNIA</span>
+            <span class="deal-badge">🔥 HIT TYGODNIA</span>
             <h2 id="hitName">Telewizor Samsung 55” 4K UHD</h2>
-            <p>Promocja, raty 0% i fachowe doradztwo w sklepie.</p>
+            <p id="hitDesc">Promocja, raty 0% i fachowe doradztwo w sklepie.</p>
             <div class="deal-row">
               <strong id="hitPrice">2299,00 zł</strong>
               <a href="#kontakt" class="btn btn-primary small">Zapytaj o produkt</a>
@@ -151,6 +150,12 @@
               <span><b id="cdDays">02</b><small>dni</small></span>
               <span><b id="cdHours">12</b><small>godz.</small></span>
               <span><b id="cdMinutes">45</b><small>min.</small></span>
+            </div>
+          </div>
+          <div class="deal-visual" aria-hidden="true">
+            <div class="deal-product-stage">
+              <img id="hitImage" src="assets/products/product-05-telewizor-samsung.jpg" alt="">
+              <div class="deal-discount" id="hitDiscount">-15%</div>
             </div>
           </div>
         </div>
@@ -301,6 +306,6 @@
   <a class="desktop-call" href="tel:343582442">📞 34 358 24 42</a>
   <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
   <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

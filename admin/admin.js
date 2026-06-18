@@ -56,3 +56,46 @@ function renderAll(){renderProducts();renderCategories()}
 $('save-all').onclick=saveData;$('reset-data').onclick=()=>{if(confirm('Przywrócić dane demonstracyjne?')){data=structuredClone(defaultData);saveData();renderAll()}};
 $('export-json').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='elkass-dane.json';a.click();URL.revokeObjectURL(a.href)};
 $('import-json').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const imported=JSON.parse(r.result);if(!Array.isArray(imported.products)||!Array.isArray(imported.categories))throw new Error('Zły format');data=imported;saveData();renderAll()}catch(err){alert('Nieprawidłowy plik JSON')}};r.readAsText(f)});
+
+// WOW11 — automatyczny podgląd grafik w panelu admina
+(function(){
+  const productImg = document.getElementById('product-img');
+  const categoryImg = document.getElementById('category-img');
+  const productPreview = document.getElementById('product-preview');
+  const categoryPreview = document.getElementById('category-preview');
+
+  function normalizeAdminSrc(src){
+    if(!src) return '';
+    if(src.startsWith('data:') || src.startsWith('http://') || src.startsWith('https://')) return src;
+    return src.startsWith('../') ? src : '../' + src;
+  }
+
+  function updateProductPreview(){
+    if(productImg && productPreview && productImg.value.trim()){
+      productPreview.src = normalizeAdminSrc(productImg.value.trim());
+    }
+  }
+
+  function updateCategoryPreview(){
+    if(categoryImg && categoryPreview && categoryImg.value.trim()){
+      categoryPreview.src = normalizeAdminSrc(categoryImg.value.trim());
+    }
+  }
+
+  if(productImg){
+    productImg.addEventListener('input', updateProductPreview);
+    productImg.addEventListener('change', updateProductPreview);
+  }
+  if(categoryImg){
+    categoryImg.addEventListener('input', updateCategoryPreview);
+    categoryImg.addEventListener('change', updateCategoryPreview);
+  }
+
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList && e.target.classList.contains('edit')){
+      setTimeout(function(){updateProductPreview(); updateCategoryPreview();}, 80);
+    }
+  });
+
+  setTimeout(function(){updateProductPreview(); updateCategoryPreview();}, 300);
+})();

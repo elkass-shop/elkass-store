@@ -229,13 +229,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const hitName = document.getElementById('hitName');
   const hitPrice = document.getElementById('hitPrice');
-  const hitProducts = productList().filter(p => /hit|nowość|promocja/i.test(p.badge || '')).slice(0,6);
+  const hitDesc = document.getElementById('hitDesc');
+  const hitImage = document.getElementById('hitImage');
+  const hitDiscount = document.getElementById('hitDiscount');
+  const hitProducts = productList().filter(p => /hit|nowość|promocja/i.test(p.badge || '')).slice(0,8);
   let hitIndex = 0;
   function renderHit(){
     if(!hitName || !hitPrice || !hitProducts.length) return;
     const p = hitProducts[hitIndex % hitProducts.length];
+    const discount = stableDiscount(p);
     hitName.textContent = p.name;
     hitPrice.textContent = formatPrice(p.price);
+    if(hitDesc) hitDesc.textContent = `${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
+    if(hitImage) hitImage.src = p.img;
+    if(hitDiscount) hitDiscount.textContent = discount ? `-${discount}%` : 'HIT';
     hitIndex++;
   }
   renderHit();
