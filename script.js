@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const defaultCategories = [
-    {id:'c1', name:'RTV', description:'Telewizory, audio, akcesoria', img:'assets/rtv.jpg', subcategories:[{name:'Telewizory', description:'Smart TV i ekrany 4K'}, {name:'Audio', description:'Soundbary i kino domowe'}]},
-    {id:'c2', name:'AGD', description:'Lodówki, pralki, piekarniki', img:'assets/agd.jpg', subcategories:[{name:'Lodówki', description:'No Frost i duże pojemności'}, {name:'Pralki', description:'Pralki ładowane od frontu'}]},
-    {id:'c3', name:'Komputery', description:'Laptopy, komputery, peryferia', img:'assets/komputery.jpg', subcategories:[{name:'Laptopy', description:'Do pracy i nauki'}, {name:'Monitory', description:'Gaming i biuro'}]},
-    {id:'c4', name:'Telefony', description:'Smartfony i akcesoria', img:'assets/telefony.jpg', subcategories:[{name:'Smartfony', description:'Android i akcesoria'}, {name:'Tablety', description:'Do domu i szkoły'}]},
-    {id:'c5', name:'Audio', description:'Głośniki, soundbary, słuchawki', img:'assets/audio.jpg', subcategories:[{name:'Słuchawki', description:'Bluetooth i ANC'}, {name:'Głośniki', description:'Domowe i przenośne'}]},
-    {id:'c6', name:'Serwis', description:'Pomoc techniczna po zakupie', img:'assets/gaming.jpg', subcategories:[{name:'Wsparcie', description:'Konfiguracja i pomoc'}, {name:'Doradztwo', description:'Dobór sprzętu'}]}
+    {id:'c1', name:'RTV', description:'Telewizory, soundbary, kino domowe', img:'assets/rtv.jpg', subcategories:[{name:'Telewizory', description:'Smart TV, QLED, OLED i 4K'}, {name:'Soundbary', description:'Lepszy dźwięk do telewizora'}, {name:'Audio', description:'Głośniki, wieże i kino domowe'}]},
+    {id:'c2', name:'AGD', description:'Lodówki, pralki, zmywarki', img:'assets/agd.jpg', subcategories:[{name:'Lodówki', description:'No Frost i duże pojemności'}, {name:'Pralki', description:'Slim, standard i pralko-suszarki'}, {name:'Zmywarki', description:'45 cm, 60 cm i do zabudowy'}]},
+    {id:'c3', name:'Komputery', description:'Laptopy, monitory, akcesoria', img:'assets/komputery.jpg', subcategories:[{name:'Laptopy', description:'Do pracy, nauki i domu'}, {name:'Monitory', description:'Biuro, gaming i multimedia'}, {name:'Akcesoria', description:'Myszy, klawiatury, drukarki'}]},
+    {id:'c4', name:'Telefony', description:'Smartfony, tablety, akcesoria', img:'assets/telefony.jpg', subcategories:[{name:'Smartfony', description:'Android, 5G i duże baterie'}, {name:'Tablety', description:'Do szkoły, pracy i rozrywki'}, {name:'Akcesoria GSM', description:'Ładowarki, szkła i etui'}]},
+    {id:'c5', name:'Audio', description:'Słuchawki, głośniki, soundbary', img:'assets/audio.jpg', subcategories:[{name:'Słuchawki', description:'Bluetooth, ANC i sportowe'}, {name:'Głośniki', description:'Przenośne i domowe'}, {name:'Soundbary', description:'Do telewizora i kina domowego'}]},
+    {id:'c6', name:'Serwis', description:'Pomoc, konfiguracja, doradztwo', img:'assets/gaming.jpg', subcategories:[{name:'Wsparcie', description:'Pomoc po zakupie'}, {name:'Konfiguracja', description:'Ustawienie sprzętu i aplikacji'}, {name:'Doradztwo', description:'Dobór sprzętu do potrzeb'}]}
   ];
 
   function getData() {
@@ -65,21 +65,84 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const categoriesGrid = document.getElementById('categories-grid');
+  let activeCategory = null;
+  let activeSubcategory = null;
+
+  function normalizeCategoryData(categories) {
+    const fallback = Object.fromEntries(defaultCategories.map(c => [c.name, c]));
+    return (categories || defaultCategories).map(cat => {
+      const base = fallback[cat.name] || {};
+      const subcategories = Array.isArray(cat.subcategories) && cat.subcategories.length
+        ? cat.subcategories
+        : (base.subcategories || []);
+      return { ...cat, subcategories: subcategories.slice(0, 3) };
+    });
+  }
+
+  function applyCategoryFilter(category, subcategory) {
+    activeCategory = category || null;
+    activeSubcategory = subcategory || null;
+    productIndex = 0;
+    renderProducts();
+    updateActiveFilter();
+    const target = document.getElementById('promocje');
+    if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  function clearCategoryFilter() {
+    activeCategory = null;
+    activeSubcategory = null;
+    productIndex = 0;
+    renderProducts();
+    updateActiveFilter();
+  }
+
+  function updateActiveFilter() {
+    const box = document.getElementById('activeFilter');
+    if (!box) return;
+    if (!activeCategory && !activeSubcategory) {
+      box.hidden = true;
+      box.innerHTML = '';
+      return;
+    }
+    const label = activeSubcategory ? `${activeCategory} / ${activeSubcategory}` : activeCategory;
+    box.hidden = false;
+    box.innerHTML = `<span>Pokazuję produkty: <strong>${label}</strong></span><button type="button" id="clearFilter">Pokaż wszystkie</button>`;
+    const btn = document.getElementById('clearFilter');
+    if (btn) btn.addEventListener('click', clearCategoryFilter);
+  }
+
   function renderCategories() {
     if (!categoriesGrid) return;
     categoriesGrid.innerHTML = '';
-    data.categories.forEach(cat => {
-      const sub = (cat.subcategories || []).slice(0, 3).map(s => `<span>${s.name}</span>`).join('');
+    normalizeCategoryData(data.categories).forEach(cat => {
       const card = document.createElement('article');
-      card.className = 'category-card';
+      card.className = 'category-card category-clickable';
+      const sub = (cat.subcategories || []).slice(0, 3).map(s =>
+        `<button type="button" class="subcategory-pill" data-category="${cat.name}" data-subcategory="${s.name}">${s.name}</button>`
+      ).join('');
       card.innerHTML = `
         <img src="${cat.img}" alt="${cat.name}" loading="lazy">
         <div>
           <h3>${cat.name}</h3>
           <p>${cat.description || ''}</p>
           <div class="subcategory-pills">${sub}</div>
+          <button type="button" class="category-open" data-category="${cat.name}">Wejdź do kategorii →</button>
         </div>
       `;
+      card.addEventListener('click', (e) => {
+        const subBtn = e.target.closest('.subcategory-pill');
+        const catBtn = e.target.closest('.category-open');
+        if (subBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          applyCategoryFilter(subBtn.dataset.category, subBtn.dataset.subcategory);
+          return;
+        }
+        if (catBtn || e.target.closest('.category-card')) {
+          applyCategoryFilter(cat.name, null);
+        }
+      });
       categoriesGrid.appendChild(card);
     });
   }
@@ -96,7 +159,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function productList() {
-    const list = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    let list = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    if (activeCategory) {
+      list = list.filter(p => String(p.category || '').toLowerCase() === String(activeCategory).toLowerCase());
+    }
+    if (activeSubcategory) {
+      list = list.filter(p => String(p.subcategory || '').toLowerCase() === String(activeSubcategory).toLowerCase());
+    }
+    if (!list.length && (activeCategory || activeSubcategory)) return [];
     return list.length ? list : defaultProducts;
   }
 
@@ -107,6 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
     productsGrid.classList.add('is-changing');
     window.setTimeout(() => {
       productsGrid.innerHTML = '';
+      if (!list.length) {
+        productsGrid.innerHTML = `<div class="empty-products"><strong>Nie ma jeszcze produktów w tej kategorii.</strong><span>Dodaj produkt w panelu administratora albo zapytaj nas telefonicznie o dostępność.</span></div>`;
+        productsGrid.classList.remove('is-changing');
+        return;
+      }
       for (let i = 0; i < count; i++) {
         const product = list[(productIndex + i) % list.length];
         const discount = stableDiscount(product);
@@ -132,7 +207,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function startProductRotation() {
     if (productTimer) window.clearInterval(productTimer);
     productTimer = window.setInterval(() => {
-      productIndex = (productIndex + visibleProductCount()) % productList().length;
+      const list = productList();
+      if (!list.length) { renderProducts(); return; }
+      productIndex = (productIndex + visibleProductCount()) % list.length;
       renderProducts();
     }, 5000);
   }
@@ -227,62 +304,146 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   if(searchInput) searchInput.addEventListener('input', runSearch);
 
+  // WOW13: 5 hitów tygodnia, każdy z osobnym żywym licznikiem
   const hitName = document.getElementById('hitName');
   const hitPrice = document.getElementById('hitPrice');
   const hitDesc = document.getElementById('hitDesc');
   const hitImage = document.getElementById('hitImage');
   const hitDiscount = document.getElementById('hitDiscount');
-  const hitProducts = productList().filter(p => /hit|nowość|promocja/i.test(p.badge || '')).slice(0,8);
-  let hitIndex = 0;
-  function renderHit(){
-    if(!hitName || !hitPrice || !hitProducts.length) return;
-    const p = hitProducts[hitIndex % hitProducts.length];
+  const dealMiniList = document.getElementById('dealMiniList');
+
+  const weeklyDealSource = productList();
+  const weeklyDeals = [
+    { id:'deal-tv', product: weeklyDealSource.find(p => p.id === 'p5') || weeklyDealSource[0], label:'HIT TYGODNIA', durationMs:(2*24*60*60 + 7*60*60 + 15*60 + 12) * 1000 },
+    { id:'deal-lodowka', product: weeklyDealSource.find(p => p.id === 'p1') || weeklyDealSource[1], label:'OKAZJA AGD', durationMs:(4*24*60*60 + 3*60*60 + 42*60 + 8) * 1000 },
+    { id:'deal-pralka', product: weeklyDealSource.find(p => p.id === 'p2') || weeklyDealSource[2], label:'RATY 0%', durationMs:(1*24*60*60 + 18*60*60 + 9*60 + 55) * 1000 },
+    { id:'deal-ekspres', product: weeklyDealSource.find(p => p.id === 'p12') || weeklyDealSource[3], label:'PREMIUM DEAL', durationMs:(5*24*60*60 + 11*60*60 + 24*60 + 33) * 1000 },
+    { id:'deal-smartfon', product: weeklyDealSource.find(p => p.id === 'p8') || weeklyDealSource[4], label:'HIT CENOWY', durationMs:(0*24*60*60 + 23*60*60 + 36*60 + 17) * 1000 }
+  ].filter(item => item.product);
+
+  const DEAL_DEADLINES_KEY = 'elkassDealDeadlinesWOW13';
+
+  function getDealDeadlines(){
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(DEAL_DEADLINES_KEY) || '{}') || {}; }
+    catch(e){ saved = {}; }
+    const now = Date.now();
+    weeklyDeals.forEach(deal => {
+      if(!saved[deal.id] || Number(saved[deal.id]) <= now){
+        saved[deal.id] = now + deal.durationMs;
+      }
+    });
+    localStorage.setItem(DEAL_DEADLINES_KEY, JSON.stringify(saved));
+    return saved;
+  }
+
+  let dealDeadlines = getDealDeadlines();
+  let activeDealIndex = 0;
+
+  function timeParts(ms){
+    let diff = Math.max(0, ms);
+    const d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    const h = Math.floor(diff / 3600000); diff -= h * 3600000;
+    const m = Math.floor(diff / 60000); diff -= m * 60000;
+    const s = Math.floor(diff / 1000);
+    return {d,h,m,s};
+  }
+
+  function dealTimeLeft(deal){
+    const now = Date.now();
+    if(!dealDeadlines[deal.id] || Number(dealDeadlines[deal.id]) <= now){
+      dealDeadlines[deal.id] = now + deal.durationMs;
+      localStorage.setItem(DEAL_DEADLINES_KEY, JSON.stringify(dealDeadlines));
+    }
+    return Number(dealDeadlines[deal.id]) - now;
+  }
+
+  function renderMainDeal(){
+    if(!hitName || !hitPrice || !weeklyDeals.length) return;
+    const deal = weeklyDeals[activeDealIndex % weeklyDeals.length];
+    const p = deal.product;
     const discount = stableDiscount(p);
     hitName.textContent = p.name;
     hitPrice.textContent = formatPrice(p.price);
-    if(hitDesc) hitDesc.textContent = `${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
-    if(hitImage) hitImage.src = p.img;
+    if(hitDesc) hitDesc.textContent = `${deal.label} • ${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
+    if(hitImage){
+      hitImage.src = p.img;
+      hitImage.alt = p.name;
+    }
     if(hitDiscount) hitDiscount.textContent = discount ? `-${discount}%` : 'HIT';
-    hitIndex++;
+    updateMainCountdown();
+    updateMiniDealsActiveState();
   }
-  renderHit();
-  setInterval(renderHit, 7000);
 
-  const bestGrid = document.getElementById('bestsellers-grid');
-  function renderBestSellers(){
-    if(!bestGrid) return;
-    const best = productList().slice(4,10);
-    bestGrid.innerHTML = best.map((p,i)=>`<article class="bestseller-card">
-      <div class="bestseller-tag">TOP ${i+1}</div>
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
-      <div class="bestseller-stars">★★★★★ 4.${8 - (i%2)}</div>
-      <h3>${p.name}</h3>
-      <div class="bestseller-price">${formatPrice(p.price)}</div>
-    </article>`).join('');
-  }
-  renderBestSellers();
-
-  function updateCountdown(){
-    const now = new Date();
-    const end = new Date();
-    end.setDate(now.getDate() + (7 - now.getDay()));
-    end.setHours(23,59,59,999);
-    let diff = Math.max(0, end - now);
-    const d = Math.floor(diff / 86400000); diff -= d*86400000;
-    const h = Math.floor(diff / 3600000); diff -= h*3600000;
-    const m = Math.floor(diff / 60000);
+  function updateMainCountdown(){
+    if(!weeklyDeals.length) return;
+    const deal = weeklyDeals[activeDealIndex % weeklyDeals.length];
+    const t = timeParts(dealTimeLeft(deal));
     const cdDays = document.getElementById('cdDays');
     const cdHours = document.getElementById('cdHours');
     const cdMinutes = document.getElementById('cdMinutes');
-    diff -= m*60000;
-    const s = Math.floor(diff / 1000);
     const cdSeconds = document.getElementById('cdSeconds');
-    if(cdDays) cdDays.textContent = String(d).padStart(2,'0');
-    if(cdHours) cdHours.textContent = String(h).padStart(2,'0');
-    if(cdMinutes) cdMinutes.textContent = String(m).padStart(2,'0');
-    if(cdSeconds) cdSeconds.textContent = String(s).padStart(2,'0');
+    if(cdDays) cdDays.textContent = String(t.d).padStart(2,'0');
+    if(cdHours) cdHours.textContent = String(t.h).padStart(2,'0');
+    if(cdMinutes) cdMinutes.textContent = String(t.m).padStart(2,'0');
+    if(cdSeconds) cdSeconds.textContent = String(t.s).padStart(2,'0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+
+  function renderMiniDeals(){
+    if(!dealMiniList || !weeklyDeals.length) return;
+    dealMiniList.innerHTML = weeklyDeals.map((deal, index) => {
+      const p = deal.product;
+      const discount = stableDiscount(p);
+      const t = timeParts(dealTimeLeft(deal));
+      return `<button class="deal-mini-card ${index === activeDealIndex ? 'active' : ''}" data-deal-index="${index}" type="button">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <span>${deal.label}</span>
+        <strong>${p.name}</strong>
+        <small>${discount ? '-' + discount + '% • ' : ''}${String(t.d).padStart(2,'0')}d ${String(t.h).padStart(2,'0')}h ${String(t.m).padStart(2,'0')}m ${String(t.s).padStart(2,'0')}s</small>
+      </button>`;
+    }).join('');
+    dealMiniList.querySelectorAll('[data-deal-index]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeDealIndex = Number(btn.dataset.dealIndex || 0);
+        renderMainDeal();
+        renderMiniDeals();
+      });
+    });
+  }
+
+  function updateMiniDealsCountdowns(){
+    if(!dealMiniList || !weeklyDeals.length) return;
+    const buttons = dealMiniList.querySelectorAll('.deal-mini-card');
+    buttons.forEach((btn, index) => {
+      const deal = weeklyDeals[index];
+      if(!deal) return;
+      const p = deal.product;
+      const discount = stableDiscount(p);
+      const t = timeParts(dealTimeLeft(deal));
+      const small = btn.querySelector('small');
+      if(small) small.textContent = `${discount ? '-' + discount + '% • ' : ''}${String(t.d).padStart(2,'0')}d ${String(t.h).padStart(2,'0')}h ${String(t.m).padStart(2,'0')}m ${String(t.s).padStart(2,'0')}s`;
+    });
+  }
+
+  function updateMiniDealsActiveState(){
+    if(!dealMiniList) return;
+    dealMiniList.querySelectorAll('.deal-mini-card').forEach((btn, index) => {
+      btn.classList.toggle('active', index === activeDealIndex);
+    });
+  }
+
+  renderMainDeal();
+  renderMiniDeals();
+
+  window.setInterval(() => {
+    activeDealIndex = (activeDealIndex + 1) % weeklyDeals.length;
+    renderMainDeal();
+    renderMiniDeals();
+  }, 7000);
+
+  window.setInterval(() => {
+    updateMainCountdown();
+    updateMiniDealsCountdowns();
+  }, 1000);
 
 });

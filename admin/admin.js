@@ -24,12 +24,12 @@ products:[
 {id:'p20',visible:true,promo:true,randomDiscount:true,badge:'HIT DNIA',img:'assets/products/product-20-plyta-indukcyjna.jpg',name:'Płyta indukcyjna Bosch',category:'AGD',subcategory:'Płyty indukcyjne',features:['4 pola grzewcze','PowerBoost','Sterowanie dotykowe'],price:1499}
 ],
 categories:[
-{id:'c1',name:'RTV',description:'Telewizory, audio, akcesoria',img:'assets/rtv.jpg',subcategories:[{name:'Telewizory',description:'Smart TV i ekrany 4K'},{name:'Audio',description:'Soundbary i kino domowe'}]},
-{id:'c2',name:'AGD',description:'Lodówki, pralki, piekarniki',img:'assets/agd.jpg',subcategories:[{name:'Lodówki',description:'No Frost i duże pojemności'},{name:'Pralki',description:'Pralki ładowane od frontu'}]},
-{id:'c3',name:'Komputery',description:'Laptopy, komputery, peryferia',img:'assets/komputery.jpg',subcategories:[{name:'Laptopy',description:'Do pracy i nauki'},{name:'Monitory',description:'Gaming i biuro'}]},
-{id:'c4',name:'Telefony',description:'Smartfony i akcesoria',img:'assets/telefony.jpg',subcategories:[{name:'Smartfony',description:'Android i akcesoria'},{name:'Tablety',description:'Do domu i szkoły'}]},
-{id:'c5',name:'Audio',description:'Głośniki, soundbary, słuchawki',img:'assets/audio.jpg',subcategories:[{name:'Słuchawki',description:'Bluetooth i ANC'},{name:'Głośniki',description:'Domowe i przenośne'}]},
-{id:'c6',name:'Serwis',description:'Pomoc techniczna po zakupie',img:'assets/gaming.jpg',subcategories:[{name:'Wsparcie',description:'Konfiguracja i pomoc'},{name:'Doradztwo',description:'Dobór sprzętu'}]}
+{id:'c1',name:'RTV',description:'Telewizory, soundbary, kino domowe',img:'assets/rtv.jpg',subcategories:[{name:'Telewizory',description:'Smart TV, QLED, OLED i 4K'},{name:'Soundbary',description:'Lepszy dźwięk do telewizora'},{name:'Audio',description:'Głośniki, wieże i kino domowe'}]},
+{id:'c2',name:'AGD',description:'Lodówki, pralki, zmywarki',img:'assets/agd.jpg',subcategories:[{name:'Lodówki',description:'No Frost i duże pojemności'},{name:'Pralki',description:'Slim, standard i pralko-suszarki'},{name:'Zmywarki',description:'45 cm, 60 cm i do zabudowy'}]},
+{id:'c3',name:'Komputery',description:'Laptopy, monitory, akcesoria',img:'assets/komputery.jpg',subcategories:[{name:'Laptopy',description:'Do pracy, nauki i domu'},{name:'Monitory',description:'Biuro, gaming i multimedia'},{name:'Akcesoria',description:'Myszy, klawiatury, drukarki'}]},
+{id:'c4',name:'Telefony',description:'Smartfony, tablety, akcesoria',img:'assets/telefony.jpg',subcategories:[{name:'Smartfony',description:'Android, 5G i duże baterie'},{name:'Tablety',description:'Do szkoły, pracy i rozrywki'},{name:'Akcesoria GSM',description:'Ładowarki, szkła i etui'}]},
+{id:'c5',name:'Audio',description:'Słuchawki, głośniki, soundbary',img:'assets/audio.jpg',subcategories:[{name:'Słuchawki',description:'Bluetooth, ANC i sportowe'},{name:'Głośniki',description:'Przenośne i domowe'},{name:'Soundbary',description:'Do telewizora i kina domowego'}]},
+{id:'c6',name:'Serwis',description:'Pomoc, konfiguracja, doradztwo',img:'assets/gaming.jpg',subcategories:[{name:'Wsparcie',description:'Pomoc po zakupie'},{name:'Konfiguracja',description:'Ustawienie sprzętu i aplikacji'},{name:'Doradztwo',description:'Dobór sprzętu do potrzeb'}]}
 ]};
 let data=loadData();
 function loadData(){try{return JSON.parse(localStorage.getItem(DATA_KEY))||structuredClone(defaultData)}catch(e){return structuredClone(defaultData)}}
