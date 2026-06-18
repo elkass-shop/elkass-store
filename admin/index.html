@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="admin.css?v=15">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -54,8 +54,8 @@
             <div class="form-grid">
               <label>Nazwa produktu<input id="product-name" required placeholder="np. Lodówka TCL RP318BXE2"></label>
               <label>Cena główna PLN<input id="product-price" required type="number" min="1" step="1" placeholder="1699"></label>
-              <label>Kategoria<input id="product-category" placeholder="AGD"></label>
-              <label>Podkategoria<input id="product-subcategory" placeholder="Lodówki"></label>
+              <label>Kategoria<select id="product-category"></select></label>
+              <label>Podkategoria<select id="product-subcategory"></select></label>
               <label>Badge<input id="product-badge" placeholder="PROMOCJA / HIT DNIA / NOWOŚĆ"></label>
               <label>Ścieżka zdjęcia<input id="product-img" placeholder="assets/products/product-01.jpg"></label>
             </div>
@@ -99,7 +99,8 @@
               <div class="admin-image-preview"><img id="category-preview" src="../assets/rtv.jpg" alt="Podgląd kategorii"></div>
               <div class="size-tip">Zdjęcia kategorii są przycinane jako tło kafla. Zalecane: szerokie zdjęcia 1200×800 px lub większe.</div>
             </div>
-            <label>Podkategorie<textarea id="category-subcategories" rows="8" placeholder="Wpisz 3 najpopularniejsze podkategorie, każda w osobnej linii. Format: Nazwa | opis&#10;Telewizory | Smart TV, QLED, OLED i 4K&#10;Soundbary | Lepszy dźwięk do telewizora&#10;Audio | Głośniki, wieże i kino domowe"></textarea></label>
+            <label>Podkategorie<textarea id="category-subcategories" rows="8" placeholder="Dodajesz i usuwasz podkategorie tutaj. Każda linia to jedna podkategoria. Format: Nazwa | opis&#10;Telewizory | Smart TV, QLED, OLED i 4K&#10;Soundbary | Lepszy dźwięk do telewizora&#10;Audio | Głośniki, wieże i kino domowe"></textarea></label>
+            <div class="size-tip"><strong>Ważne:</strong> produkty przypisujesz do kategorii i podkategorii z listy w zakładce Produkty. Zdjęcia produktu mogą mieć dowolny rozmiar — strona zawsze dopasuje je do stałej ramki.</div>
             <div class="form-actions">
               <button type="submit" class="primary">Zapisz kategorię</button>
               <button type="button" id="clear-category" class="secondary">Wyczyść formularz</button>
@@ -128,6 +129,6 @@
     </section>
   </main>
 
-  <script src="admin.js"></script>
+  <script src="admin.js?v=15"></script>
 </body>
 </html>

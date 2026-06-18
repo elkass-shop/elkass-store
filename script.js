@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const subcategories = Array.isArray(cat.subcategories) && cat.subcategories.length
         ? cat.subcategories
         : (base.subcategories || []);
-      return { ...cat, subcategories: subcategories.slice(0, 3) };
+      return { ...cat, subcategories: subcategories };
     });
   }
 
@@ -117,13 +117,15 @@ document.addEventListener('DOMContentLoaded', () => {
     categoriesGrid.innerHTML = '';
     normalizeCategoryData(data.categories).forEach(cat => {
       const card = document.createElement('article');
-      card.className = 'category-card category-clickable';
-      const sub = (cat.subcategories || []).slice(0, 3).map(s =>
-        `<button type="button" class="subcategory-pill" data-category="${cat.name}" data-subcategory="${s.name}">${s.name}</button>`
-      ).join('');
+      const isActive = activeCategory && String(activeCategory).toLowerCase() === String(cat.name).toLowerCase() && !activeSubcategory;
+      card.className = `category-card category-clickable${isActive ? ' active' : ''}`;
+      const sub = (cat.subcategories || []).map(s => {
+        const subActive = activeSubcategory && String(activeSubcategory).toLowerCase() === String(s.name).toLowerCase() && String(activeCategory).toLowerCase() === String(cat.name).toLowerCase();
+        return `<button type="button" class="subcategory-pill${subActive ? ' active' : ''}" data-category="${cat.name}" data-subcategory="${s.name}">${s.name}</button>`;
+      }).join('');
       card.innerHTML = `
         <img src="${cat.img}" alt="${cat.name}" loading="lazy">
-        <div>
+        <div class="category-content">
           <h3>${cat.name}</h3>
           <p>${cat.description || ''}</p>
           <div class="subcategory-pills">${sub}</div>
@@ -137,10 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           e.stopPropagation();
           applyCategoryFilter(subBtn.dataset.category, subBtn.dataset.subcategory);
+          renderCategories();
           return;
         }
         if (catBtn || e.target.closest('.category-card')) {
           applyCategoryFilter(cat.name, null);
+          renderCategories();
         }
       });
       categoriesGrid.appendChild(card);
@@ -159,14 +163,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function productList() {
-    let list = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    const all = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    let list = all;
+    if (activeCategory && activeSubcategory) {
+      list = all.filter(p =>
+        String(p.category || '').toLowerCase() === String(activeCategory).toLowerCase() &&
+        String(p.subcategory || '').toLowerCase() === String(activeSubcategory).toLowerCase()
+      );
+      // Jeśli w danej podkategorii nie ma jeszcze produktów, pokaż produkty z tej podkategorii globalnie.
+      // Dzięki temu kliknięcie nigdy nie wygląda jak zepsute, a panel admin może później dopisać dokładne przypisania.
+      if (!list.length) {
+        list = all.filter(p => String(p.subcategory || '').toLowerCase() === String(activeSubcategory).toLowerCase());
+      }
+      // Ostatni fallback: pokaż kategorię główną, żeby sekcja zawsze żyła.
+      if (!list.length) {
+        list = all.filter(p => String(p.category || '').toLowerCase() === String(activeCategory).toLowerCase());
+      }
+      return list;
+    }
     if (activeCategory) {
-      list = list.filter(p => String(p.category || '').toLowerCase() === String(activeCategory).toLowerCase());
+      list = all.filter(p => String(p.category || '').toLowerCase() === String(activeCategory).toLowerCase());
+      return list;
     }
     if (activeSubcategory) {
-      list = list.filter(p => String(p.subcategory || '').toLowerCase() === String(activeSubcategory).toLowerCase());
+      list = all.filter(p => String(p.subcategory || '').toLowerCase() === String(activeSubcategory).toLowerCase());
+      return list;
     }
-    if (!list.length && (activeCategory || activeSubcategory)) return [];
     return list.length ? list : defaultProducts;
   }
 
