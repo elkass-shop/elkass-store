@@ -91,3 +91,7 @@ a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.container
 .discount{
   box-shadow:0 12px 24px rgba(227,6,19,.24);
 }
+
+/* ===== WOW7: PANEL ADMIN + DYNAMICZNE KATEGORIE ===== */
+.subcategory-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.subcategory-pills span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;color:#fff}.nav a[href="admin/"]{font-size:12px;color:#98a2b3}.nav a[href="admin/"]:hover{color:var(--red)}
+@media(max-width:720px){.subcategory-pills span{font-size:10px}.category-card div{left:18px;right:18px}}

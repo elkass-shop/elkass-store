@@ -1,4 +1,60 @@
+
 document.addEventListener('DOMContentLoaded', () => {
+  const DATA_KEY = 'elkassAdminData';
+
+  const defaultProducts = [
+    {id:'p1', visible:true, promo:true, randomDiscount:true, badge:'HIT DNIA', img:'assets/products/product-01-lodowka-tcl.jpg', name:'Lodówka TCL RP318BXE2', category:'AGD', subcategory:'Lodówki', features:['No Frost','Multi Air Flow','Pojemna chłodziarka'], price:1699},
+    {id:'p2', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-02-pralka-beko.jpg', name:'Pralka BEKO WUE7636XOA', category:'AGD', subcategory:'Pralki', features:['7 kg załadunku','1200 obr./min','Program szybki'], price:1349},
+    {id:'p3', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-03-chlodziarka-amica.jpg', name:'Chłodziarka Amica FM170.4', category:'AGD', subcategory:'Chłodziarki', features:['122 l pojemności','3 półki','Komora FreshZone'], price:899},
+    {id:'p4', visible:true, promo:true, randomDiscount:true, badge:'HIT DNIA', img:'assets/products/product-04-piekarnik-samsung.jpg', name:'Piekarnik Samsung NV7B44305AK', category:'AGD', subcategory:'Piekarniki', features:['Dual Cook','Air Fry','Prowadnice teleskopowe'], price:1799},
+    {id:'p5', visible:true, promo:true, randomDiscount:true, badge:'NOWOŚĆ', img:'assets/products/product-05-telewizor-samsung.jpg', name:'Telewizor Samsung 55” 4K UHD', category:'RTV', subcategory:'Telewizory', features:['Smart TV','HDR','Krystaliczny obraz'], price:2299},
+    {id:'p6', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-06-soundbar-lg.jpg', name:'Soundbar LG S60Q', category:'Audio', subcategory:'Soundbary', features:['Bluetooth','Mocny bas','HDMI ARC'], price:899},
+    {id:'p7', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-07-laptop-lenovo.jpg', name:'Laptop Lenovo IdeaPad 15', category:'Komputery', subcategory:'Laptopy', features:['Intel Core i5','SSD 512 GB','15,6 cala'], price:2499},
+    {id:'p8', visible:true, promo:true, randomDiscount:true, badge:'HIT CENOWY', img:'assets/products/product-08-smartfon-samsung.jpg', name:'Smartfon Samsung Galaxy A35', category:'Telefony', subcategory:'Smartfony', features:['Ekran AMOLED','Aparat 50 MP','Duża bateria'], price:1399},
+    {id:'p9', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-09-odkurzacz-bosch.jpg', name:'Odkurzacz Bosch Serie 4', category:'AGD', subcategory:'Odkurzacze', features:['Duża moc ssania','Cicha praca','Filtr HEPA'], price:649},
+    {id:'p10', visible:true, promo:true, randomDiscount:true, badge:'NOWOŚĆ', img:'assets/products/product-10-zmywarka-bosch.jpg', name:'Zmywarka Bosch 60 cm', category:'AGD', subcategory:'Zmywarki', features:['EcoSilence Drive','AquaStop','Pojemne kosze'], price:2199},
+    {id:'p11', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-11-mikrofala-amica.jpg', name:'Kuchenka mikrofalowa Amica', category:'AGD', subcategory:'Mikrofalówki', features:['20 l pojemności','Grill','Szybkie podgrzewanie'], price:399},
+    {id:'p12', visible:true, promo:true, randomDiscount:true, badge:'HIT DNIA', img:'assets/products/product-12-ekspres-philips.jpg', name:'Ekspres Philips LatteGo', category:'AGD', subcategory:'Ekspresy do kawy', features:['Kawa ziarnista','Spienianie mleka','Łatwe czyszczenie'], price:1999},
+    {id:'p13', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-13-zamrazarka-kernau.jpg', name:'Zamrażarka Kernau KFUF 17153', category:'AGD', subcategory:'Zamrażarki', features:['No Frost','Pojemne szuflady','Cicha praca'], price:1799},
+    {id:'p14', visible:true, promo:true, randomDiscount:true, badge:'NOWOŚĆ', img:'assets/products/product-14-pralka-philco.jpg', name:'Pralka Philco PLD 106EPL', category:'AGD', subcategory:'Pralki', features:['6 kg załadunku','Programy szybkie','Klasa ekonomiczna'], price:1149},
+    {id:'p15', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-15-robot-sprzatajacy.jpg', name:'Robot sprzątający Sencor', category:'AGD', subcategory:'Roboty sprzątające', features:['Mapa pomieszczeń','Sterowanie aplikacją','Mopowanie'], price:999},
+    {id:'p16', visible:true, promo:true, randomDiscount:true, badge:'HIT CENOWY', img:'assets/products/product-16-lodowka-lg.jpg', name:'Lodówka LG No Frost', category:'AGD', subcategory:'Lodówki', features:['Total No Frost','DoorCooling','Cicha praca'], price:2699},
+    {id:'p17', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-17-monitor-gaming.jpg', name:'Monitor gamingowy 27”', category:'Komputery', subcategory:'Monitory', features:['165 Hz','IPS','Niski czas reakcji'], price:999},
+    {id:'p18', visible:true, promo:true, randomDiscount:true, badge:'NOWOŚĆ', img:'assets/products/product-18-sluchawki-sony.jpg', name:'Słuchawki bezprzewodowe Sony', category:'Audio', subcategory:'Słuchawki', features:['ANC','Długi czas pracy','Czyste brzmienie'], price:599},
+    {id:'p19', visible:true, promo:true, randomDiscount:true, badge:'PROMOCJA', img:'assets/products/product-19-tablet-lenovo.jpg', name:'Tablet Lenovo Tab M10', category:'Telefony', subcategory:'Tablety', features:['10,1 cala','Wi-Fi','Dla domu i szkoły'], price:749},
+    {id:'p20', visible:true, promo:true, randomDiscount:true, badge:'HIT DNIA', img:'assets/products/product-20-plyta-indukcyjna.jpg', name:'Płyta indukcyjna Bosch', category:'AGD', subcategory:'Płyty indukcyjne', features:['4 pola grzewcze','PowerBoost','Sterowanie dotykowe'], price:1499}
+  ];
+
+  const defaultCategories = [
+    {id:'c1', name:'RTV', description:'Telewizory, audio, akcesoria', img:'assets/rtv.jpg', subcategories:[{name:'Telewizory', description:'Smart TV i ekrany 4K'}, {name:'Audio', description:'Soundbary i kino domowe'}]},
+    {id:'c2', name:'AGD', description:'Lodówki, pralki, piekarniki', img:'assets/agd.jpg', subcategories:[{name:'Lodówki', description:'No Frost i duże pojemności'}, {name:'Pralki', description:'Pralki ładowane od frontu'}]},
+    {id:'c3', name:'Komputery', description:'Laptopy, komputery, peryferia', img:'assets/komputery.jpg', subcategories:[{name:'Laptopy', description:'Do pracy i nauki'}, {name:'Monitory', description:'Gaming i biuro'}]},
+    {id:'c4', name:'Telefony', description:'Smartfony i akcesoria', img:'assets/telefony.jpg', subcategories:[{name:'Smartfony', description:'Android i akcesoria'}, {name:'Tablety', description:'Do domu i szkoły'}]},
+    {id:'c5', name:'Audio', description:'Głośniki, soundbary, słuchawki', img:'assets/audio.jpg', subcategories:[{name:'Słuchawki', description:'Bluetooth i ANC'}, {name:'Głośniki', description:'Domowe i przenośne'}]},
+    {id:'c6', name:'Serwis', description:'Pomoc techniczna po zakupie', img:'assets/gaming.jpg', subcategories:[{name:'Wsparcie', description:'Konfiguracja i pomoc'}, {name:'Doradztwo', description:'Dobór sprzętu'}]}
+  ];
+
+  function getData() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(DATA_KEY) || 'null');
+      if (saved && Array.isArray(saved.products) && Array.isArray(saved.categories)) return saved;
+    } catch (e) { console.warn('Błąd odczytu panelu admin:', e); }
+    return { products: defaultProducts, categories: defaultCategories };
+  }
+
+  function stableDiscount(product) {
+    if (product.randomDiscount === false) return 0;
+    const source = String(product.id || product.name || Math.random());
+    let sum = 0;
+    for (let i = 0; i < source.length; i++) sum += source.charCodeAt(i) * (i + 3);
+    return 5 + (sum % 21); // 5-25
+  }
+
+  function formatPrice(value) {
+    return new Intl.NumberFormat('pl-PL', { style:'currency', currency:'PLN', minimumFractionDigits:2, maximumFractionDigits:2 }).format(Number(value || 0));
+  }
+
+  const data = getData();
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
   const topBtn = document.getElementById('topBtn');
@@ -8,56 +64,26 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => nav.classList.remove('open')));
   }
 
-  // === PROMOCJE / NOWOŚCI ===
-  // Tutaj podmieniasz produkty: nazwę, cenę główną, opis i grafikę.
-  // Grafiki produktów trzymaj w folderze: assets/products/
-  // Pole "price" to cena, którą wpisujesz jako główną. Rabat 5-25% generuje się automatycznie,
-  // a cena przekreślona jest wyliczana od tej ceny.
-  const products = [
-    {badge:'HIT DNIA', img:'assets/products/product-01-lodowka-tcl.jpg', name:'Lodówka TCL RP318BXE2', features:['No Frost','Multi Air Flow','Pojemna chłodziarka'], price:1699},
-    {badge:'PROMOCJA', img:'assets/products/product-02-pralka-beko.jpg', name:'Pralka BEKO WUE7636XOA', features:['7 kg załadunku','1200 obr./min','Program szybki'], price:1349},
-    {badge:'PROMOCJA', img:'assets/products/product-03-chlodziarka-amica.jpg', name:'Chłodziarka Amica FM170.4', features:['122 l pojemności','3 półki','Komora FreshZone'], price:899},
-    {badge:'HIT DNIA', img:'assets/products/product-04-piekarnik-samsung.jpg', name:'Piekarnik Samsung NV7B44305AK', features:['Dual Cook','Air Fry','Prowadnice teleskopowe'], price:1799},
-
-    {badge:'NOWOŚĆ', img:'assets/products/product-05-telewizor-samsung.jpg', name:'Telewizor Samsung 55” 4K UHD', features:['Smart TV','HDR','Krystaliczny obraz'], price:2299},
-    {badge:'PROMOCJA', img:'assets/products/product-06-soundbar-lg.jpg', name:'Soundbar LG S60Q', features:['Bluetooth','Mocny bas','HDMI ARC'], price:899},
-    {badge:'PROMOCJA', img:'assets/products/product-07-laptop-lenovo.jpg', name:'Laptop Lenovo IdeaPad 15', features:['Intel Core i5','SSD 512 GB','15,6 cala'], price:2499},
-    {badge:'HIT CENOWY', img:'assets/products/product-08-smartfon-samsung.jpg', name:'Smartfon Samsung Galaxy A35', features:['Ekran AMOLED','Aparat 50 MP','Duża bateria'], price:1399},
-
-    {badge:'PROMOCJA', img:'assets/products/product-09-odkurzacz-bosch.jpg', name:'Odkurzacz Bosch Serie 4', features:['Duża moc ssania','Cicha praca','Filtr HEPA'], price:649},
-    {badge:'NOWOŚĆ', img:'assets/products/product-10-zmywarka-bosch.jpg', name:'Zmywarka Bosch 60 cm', features:['EcoSilence Drive','AquaStop','Pojemne kosze'], price:2199},
-    {badge:'PROMOCJA', img:'assets/products/product-11-mikrofala-amica.jpg', name:'Kuchenka mikrofalowa Amica', features:['20 l pojemności','Grill','Szybkie podgrzewanie'], price:399},
-    {badge:'HIT DNIA', img:'assets/products/product-12-ekspres-philips.jpg', name:'Ekspres Philips LatteGo', features:['Kawa ziarnista','Spienianie mleka','Łatwe czyszczenie'], price:1999},
-
-    {badge:'PROMOCJA', img:'assets/products/product-13-zamrazarka-kernau.jpg', name:'Zamrażarka Kernau KFUF 17153', features:['No Frost','Pojemne szuflady','Cicha praca'], price:1799},
-    {badge:'NOWOŚĆ', img:'assets/products/product-14-pralka-philco.jpg', name:'Pralka Philco PLD 106EPL', features:['6 kg załadunku','Programy szybkie','Klasa ekonomiczna'], price:1149},
-    {badge:'PROMOCJA', img:'assets/products/product-15-robot-sprzatajacy.jpg', name:'Robot sprzątający Sencor', features:['Mapa pomieszczeń','Sterowanie aplikacją','Mopowanie'], price:999},
-    {badge:'HIT CENOWY', img:'assets/products/product-16-lodowka-lg.jpg', name:'Lodówka LG No Frost', features:['Total No Frost','DoorCooling','Cicha praca'], price:2699},
-
-    {badge:'PROMOCJA', img:'assets/products/product-17-monitor-gaming.jpg', name:'Monitor gamingowy 27”', features:['165 Hz','IPS','Niski czas reakcji'], price:999},
-    {badge:'NOWOŚĆ', img:'assets/products/product-18-sluchawki-sony.jpg', name:'Słuchawki bezprzewodowe Sony', features:['ANC','Długi czas pracy','Czyste brzmienie'], price:599},
-    {badge:'PROMOCJA', img:'assets/products/product-19-tablet-lenovo.jpg', name:'Tablet Lenovo Tab M10', features:['10,1 cala','Wi-Fi','Dla domu i szkoły'], price:749},
-    {badge:'HIT DNIA', img:'assets/products/product-20-plyta-indukcyjna.jpg', name:'Płyta indukcyjna Bosch', features:['4 pola grzewcze','PowerBoost','Sterowanie dotykowe'], price:1499}
-  ];
-
-  function randomDiscount() {
-    return Math.floor(Math.random() * 21) + 5; // 5-25%
+  const categoriesGrid = document.getElementById('categories-grid');
+  function renderCategories() {
+    if (!categoriesGrid) return;
+    categoriesGrid.innerHTML = '';
+    data.categories.forEach(cat => {
+      const sub = (cat.subcategories || []).slice(0, 3).map(s => `<span>${s.name}</span>`).join('');
+      const card = document.createElement('article');
+      card.className = 'category-card';
+      card.innerHTML = `
+        <img src="${cat.img}" alt="${cat.name}" loading="lazy">
+        <div>
+          <h3>${cat.name}</h3>
+          <p>${cat.description || ''}</p>
+          <div class="subcategory-pills">${sub}</div>
+        </div>
+      `;
+      categoriesGrid.appendChild(card);
+    });
   }
-
-  function formatPrice(value) {
-    return new Intl.NumberFormat('pl-PL', {
-      style: 'currency',
-      currency: 'PLN',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(value);
-  }
-
-  const productsWithDiscounts = products.map(product => {
-    const discount = randomDiscount();
-    const oldPrice = Math.round(product.price / (1 - discount / 100));
-    return { ...product, discount, oldPrice };
-  });
+  renderCategories();
 
   const productsGrid = document.getElementById('products-grid');
   let productIndex = 0;
@@ -69,29 +95,36 @@ document.addEventListener('DOMContentLoaded', () => {
     return 4;
   }
 
+  function productList() {
+    const list = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    return list.length ? list : defaultProducts;
+  }
+
   function renderProducts() {
     if (!productsGrid) return;
+    const list = productList();
     const count = visibleProductCount();
     productsGrid.classList.add('is-changing');
-
     window.setTimeout(() => {
       productsGrid.innerHTML = '';
-
       for (let i = 0; i < count; i++) {
-        const product = productsWithDiscounts[(productIndex + i) % productsWithDiscounts.length];
+        const product = list[(productIndex + i) % list.length];
+        const discount = stableDiscount(product);
+        const price = Number(product.price || 0);
+        const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
+        const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
         const card = document.createElement('article');
         card.className = 'product-card';
         card.innerHTML = `
-          <div class="product-badge">${product.badge}</div>
-          <div class="discount">-${product.discount}%</div>
+          <div class="product-badge">${product.badge || 'PROMOCJA'}</div>
+          ${discount ? `<div class="discount">-${discount}%</div>` : ''}
           <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
           <h3>${product.name}</h3>
-          <ul class="features">${product.features.map(item => `<li>• ${item}</li>`).join('')}</ul>
-          <div class="price"><strong>${formatPrice(product.price)}</strong><del>${formatPrice(product.oldPrice)}</del></div>
+          <ul class="features">${features.map(item => `<li>• ${item}</li>`).join('')}</ul>
+          <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
         `;
         productsGrid.appendChild(card);
       }
-
       productsGrid.classList.remove('is-changing');
     }, 160);
   }
@@ -99,31 +132,30 @@ document.addEventListener('DOMContentLoaded', () => {
   function startProductRotation() {
     if (productTimer) window.clearInterval(productTimer);
     productTimer = window.setInterval(() => {
-      productIndex = (productIndex + visibleProductCount()) % productsWithDiscounts.length;
+      productIndex = (productIndex + visibleProductCount()) % productList().length;
       renderProducts();
     }, 5000);
   }
 
   renderProducts();
   startProductRotation();
-  window.addEventListener('resize', () => {
-    renderProducts();
-    startProductRotation();
-  });
+  window.addEventListener('resize', () => { renderProducts(); startProductRotation(); });
 
   const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('active');
-    });
-  }, { threshold: 0.14 });
-  revealElements.forEach(el => revealObserver.observe(el));
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.14 });
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    revealElements.forEach(el => el.classList.add('active'));
+  }
 
   window.addEventListener('scroll', () => {
     if (!topBtn) return;
     topBtn.classList.toggle('show', window.scrollY > 480);
   });
-  if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (topBtn) topBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 
   const opinions = [
     {name:'Marek K.', city:'Olesno', text:'Profesjonalne doradztwo i bardzo dobra obsługa. Zawsze można liczyć na pomoc przy wyborze sprzętu.'},
@@ -150,38 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
     {name:'Daniel P.', city:'Byczyna', text:'Sklep godny polecenia. Szybko, konkretnie i bez niepotrzebnego zamieszania.'},
     {name:'Sylwia R.', city:'Radłów', text:'Bardzo dobra jakość obsługi oraz atrakcyjne ceny. Polecam zakupy w ELKASS.'},
     {name:'Paweł M.', city:'Zębowice', text:'Zakupy przebiegły sprawnie. Dostałem pomoc w wyborze sprzętu do mieszkania.'},
-    {name:'Renata K.', city:'Lasowice Wielkie', text:'Pomoc przy wyborze sprzętu była bardzo wartościowa. Polecam za cierpliwość i wiedzę.'},
-    {name:'Marcin D.', city:'Wołczyn', text:'Szeroka oferta i profesjonalne podejście do klienta. Dobry lokalny sklep.'},
-    {name:'Joanna B.', city:'Lubliniec', text:'Polecam za fachową pomoc i dużą wiedzę pracowników. Sprzęt działa bez zarzutu.'},
-    {name:'Rafał W.', city:'Kochanowice', text:'Kupowałem telewizor i jestem bardzo zadowolony z zakupu oraz doradztwa.'},
-    {name:'Ewelina S.', city:'Dobrodzień', text:'Miła obsługa i szybka realizacja zamówienia. Wszystko zgodnie z ustaleniami.'},
-    {name:'Adrian K.', city:'Pawonków', text:'Profesjonalizm i duży wybór sprzętu w jednym miejscu. Polecam.'},
-    {name:'Martyna P.', city:'Praszka', text:'Zakupy przebiegły bezproblemowo. Obsługa pomogła wybrać najlepszy model.'},
-    {name:'Mariusz J.', city:'Olesno', text:'Bardzo dobre ceny i szeroki wybór produktów. Warto sprawdzić ofertę lokalnie.'},
-    {name:'Dorota G.', city:'Dobrodzień', text:'Świetna obsługa klienta i fachowe doradztwo przy wyborze AGD.'},
-    {name:'Jakub N.', city:'Praszka', text:'Duży wybór elektroniki oraz szybka realizacja zamówień. Polecam.'},
-    {name:'Izabela T.', city:'Kluczbork', text:'Bardzo pomocna obsługa oraz atrakcyjne promocje. Zakup udany.'},
-    {name:'Grzegorz P.', city:'Rudniki', text:'Wysoka jakość obsługi i duża wiedza pracowników. Wszystko konkretnie wyjaśnione.'},
-    {name:'Elżbieta M.', city:'Gorzów Śląski', text:'Od wielu lat korzystam z oferty sklepu i zawsze jestem zadowolona.'},
-    {name:'Kamil S.', city:'Radłów', text:'Zakup sprzętu przebiegł szybko i profesjonalnie. Dobre doradztwo.'},
-    {name:'Aleksandra W.', city:'Zębowice', text:'Polecam za profesjonalne podejście do klienta i przyjazną obsługę.'},
-    {name:'Norbert D.', city:'Lasowice Wielkie', text:'Bardzo dobra obsługa i szeroki wybór produktów. Dobre miejsce na zakupy RTV AGD.'},
-    {name:'Teresa K.', city:'Byczyna', text:'Świetne miejsce na zakup sprzętu RTV i AGD. Fachowa pomoc i dobre ceny.'},
-    {name:'Patryk B.', city:'Wołczyn', text:'Profesjonalna pomoc przy wyborze sprzętu do domu. Wszystko przebiegło sprawnie.'},
-    {name:'Weronika L.', city:'Lubliniec', text:'Bardzo miła obsługa i atrakcyjne ceny. Warto sprawdzić przed zakupem.'},
-    {name:'Arkadiusz R.', city:'Pawonków', text:'Polecam za fachowe doradztwo i szybką realizację. Dobry kontakt.'},
-    {name:'Natalia Z.', city:'Kochanowice', text:'Duży wybór produktów oraz profesjonalna obsługa klienta.'}
+    {name:'Renata K.', city:'Lasowice Wielkie', text:'Pomoc przy wyborze sprzętu była bardzo wartościowa. Polecam za cierpliwość i wiedzę.'}
   ];
 
   const reviewsGrid = document.getElementById('reviews-grid');
   let reviewIndex = 0;
-
-  function visibleReviewCount() {
-    if (window.innerWidth <= 720) return 1;
-    if (window.innerWidth <= 1100) return 3;
-    return 5;
-  }
-
+  function visibleReviewCount() { if (window.innerWidth <= 720) return 1; if (window.innerWidth <= 1100) return 3; return 5; }
   function renderReviews() {
     if (!reviewsGrid) return;
     const count = visibleReviewCount();
@@ -190,20 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const review = opinions[(reviewIndex + i) % opinions.length];
       const card = document.createElement('article');
       card.className = 'review-card';
-      card.innerHTML = `
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">${review.text}</p>
-        <div class="review-author">${review.name}</div>
-        <div class="review-location">${review.city}</div>
-      `;
+      card.innerHTML = `<div class="review-stars">★★★★★</div><p class="review-text">${review.text}</p><div class="review-author">${review.name}</div><div class="review-location">${review.city}</div>`;
       reviewsGrid.appendChild(card);
     }
   }
-
   renderReviews();
-  setInterval(() => {
-    reviewIndex = (reviewIndex + visibleReviewCount()) % opinions.length;
-    renderReviews();
-  }, 5000);
+  setInterval(() => { reviewIndex = (reviewIndex + visibleReviewCount()) % opinions.length; renderReviews(); }, 5000);
   window.addEventListener('resize', renderReviews);
 });

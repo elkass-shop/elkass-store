@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel administracyjny ELKASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <main id="login-screen" class="login-screen">
+    <form class="login-card" id="login-form">
+      <div class="logo"><span>ELKASS</span> ADMIN</div>
+      <h1>Panel administracyjny</h1>
+      <p>Zaloguj się, aby zarządzać produktami, promocjami, kategoriami i podkategoriami.</p>
+      <label>Login<input id="login" type="text" autocomplete="username" value="admin"></label>
+      <label>Hasło<input id="password" type="password" autocomplete="current-password" value="admin"></label>
+      <button type="submit">Zaloguj</button>
+      <small>Domyślnie: admin / admin. Dane demo zapisują się w przeglądarce.</small>
+    </form>
+  </main>
+
+  <main id="panel" class="panel hidden">
+    <aside class="sidebar">
+      <div class="logo"><span>ELKASS</span> ADMIN</div>
+      <button class="tab active" data-tab="products">📦 Produkty</button>
+      <button class="tab" data-tab="categories">🧭 Kategorie</button>
+      <button class="tab" data-tab="settings">⚙️ Ustawienia</button>
+      <a href="../index.html" class="site-link">↗ Zobacz stronę</a>
+      <button id="logout" class="logout">Wyloguj</button>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div>
+          <h1>Panel ELKASS</h1>
+          <p>Edytuj treść strony bez wchodzenia w kod.</p>
+        </div>
+        <div class="actions">
+          <button id="export-json" class="secondary">Eksport JSON</button>
+          <label class="secondary file-label">Import JSON<input id="import-json" type="file" accept="application/json"></label>
+          <button id="reset-data" class="danger">Reset demo</button>
+          <button id="save-all" class="primary">Zapisz zmiany</button>
+        </div>
+      </header>
+
+      <section id="products" class="tab-panel active">
+        <div class="panel-grid">
+          <form id="product-form" class="editor-card">
+            <h2>Dodaj / edytuj produkt</h2>
+            <input type="hidden" id="product-id">
+            <div class="form-grid">
+              <label>Nazwa produktu<input id="product-name" required placeholder="np. Lodówka TCL RP318BXE2"></label>
+              <label>Cena główna PLN<input id="product-price" required type="number" min="1" step="1" placeholder="1699"></label>
+              <label>Kategoria<input id="product-category" placeholder="AGD"></label>
+              <label>Podkategoria<input id="product-subcategory" placeholder="Lodówki"></label>
+              <label>Badge<input id="product-badge" placeholder="PROMOCJA / HIT DNIA / NOWOŚĆ"></label>
+              <label>Ścieżka zdjęcia<input id="product-img" placeholder="assets/products/product-01.jpg"></label>
+            </div>
+            <label>Opis / cechy produktu<textarea id="product-features" rows="4" placeholder="Każda cecha od nowej linii"></textarea></label>
+            <div class="checks">
+              <label><input id="product-visible" type="checkbox" checked> Widoczny na stronie</label>
+              <label><input id="product-promo" type="checkbox" checked> Pokazuj w Nowościach i promocjach</label>
+              <label><input id="product-discount" type="checkbox" checked> Losowy rabat 5-25%</label>
+            </div>
+            <label class="upload-box">Wgraj zdjęcie produktu<input id="product-upload" type="file" accept="image/*"></label>
+            <div class="form-actions">
+              <button type="submit" class="primary">Zapisz produkt</button>
+              <button type="button" id="clear-product" class="secondary">Wyczyść formularz</button>
+            </div>
+          </form>
+
+          <div class="list-card">
+            <h2>Produkty</h2>
+            <p class="hint">Kliknij „Edytuj”, aby zmienić nazwę, cenę, opis, zdjęcie lub rabat.</p>
+            <div id="products-list" class="items-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories" class="tab-panel">
+        <div class="panel-grid">
+          <form id="category-form" class="editor-card">
+            <h2>Dodaj / edytuj kategorię</h2>
+            <input type="hidden" id="category-id">
+            <label>Nazwa kategorii<input id="category-name" required placeholder="np. RTV"></label>
+            <label>Opis kategorii<input id="category-description" placeholder="Telewizory, audio, akcesoria"></label>
+            <label>Ścieżka zdjęcia<input id="category-img" placeholder="assets/rtv.jpg"></label>
+            <label class="upload-box">Wgraj zdjęcie kategorii<input id="category-upload" type="file" accept="image/*"></label>
+            <label>Podkategorie<textarea id="category-subcategories" rows="8" placeholder="Format: Nazwa | opis, jedna podkategoria w jednej linii&#10;Telewizory | Smart TV i ekrany 4K&#10;Soundbary | Kino domowe"></textarea></label>
+            <div class="form-actions">
+              <button type="submit" class="primary">Zapisz kategorię</button>
+              <button type="button" id="clear-category" class="secondary">Wyczyść formularz</button>
+            </div>
+          </form>
+
+          <div class="list-card">
+            <h2>Kategorie i podkategorie</h2>
+            <p class="hint">Te kafle zasilają sekcję „Najpopularniejsze kategorie”.</p>
+            <div id="categories-list" class="items-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="settings" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>Dane logowania i uwagi techniczne</h2>
+          <p>Obecna wersja panelu działa jako szybki panel statyczny dla Vercel/GitHub. Zmiany zapisują się w przeglądarce w <strong>localStorage</strong>, więc od razu zobaczysz je na stronie na tym samym urządzeniu.</p>
+          <p>Do wersji produkcyjnej z prawdziwym zapisem dla wszystkich użytkowników podłączymy bazę danych lub CMS. Wtedy login i hasło będzie można bezpiecznie zmieniać na serwerze.</p>
+          <div class="credentials">
+            <strong>Aktualny login:</strong> admin<br>
+            <strong>Aktualne hasło:</strong> admin
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
