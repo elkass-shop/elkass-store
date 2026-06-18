@@ -3,69 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria ELKASS Olesno | Salon RTV AGD</title>
-  <meta name="description" content="Galeria salonu ELKASS Olesno. Zobacz ekspozycję RTV, AGD, małego AGD i akcesoriów w sklepie.">
+  <title>Galeria ELKASS Olesno | Salon RTV i AGD</title>
+  <meta name="description" content="Galeria sklepu ELKASS Olesno - ekspozycja RTV, AGD, małego AGD, odkurzaczy, lodówek, pralek i akcesoriów.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
-<body>
-  <header class="site-header">
+<body class="gallery-page">
+<header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="brand" aria-label="ELKASS Olesno">
+      <a href="index.html#home" class="brand" aria-label="ELKASS Olesno">
         <span class="brand-main"><span>ELKASS</span> <em>OLESNO</em></span>
         <span class="brand-sub">RTV / AGD / MULTIMEDIA / SERWIS</span>
       </a>
+
       <nav class="nav" id="nav">
-        <a href="index.html">Strona główna</a>
+        <a href="index.html#home">Strona główna</a>
         <a href="index.html#promocje">Promocje</a>
         <a href="index.html#oferta">Oferta</a>
+        <a href="index.html#opinie">Opinie</a>
         <a href="gallery.html">Galeria</a>
+        <a href="index.html#onas">O nas</a>
         <a href="index.html#kontakt">Kontakt</a>
         <a href="admin/">Panel</a>
       </nav>
+
+      <div class="mega-menu" id="megaMenu" aria-label="Kategorie sklepu">
+        <div>
+          <h4>RTV</h4>
+          <a href="index.html#promocje">Telewizory 4K</a>
+          <a href="index.html#promocje">Soundbary</a>
+          <a href="index.html#promocje">Audio domowe</a>
+        </div>
+        <div>
+          <h4>AGD</h4>
+          <a href="index.html#promocje">Lodówki</a>
+          <a href="index.html#promocje">Pralki</a>
+          <a href="index.html#promocje">Piekarniki</a>
+          <a href="index.html#promocje">Zmywarki</a>
+        </div>
+        <div>
+          <h4>Komputery</h4>
+          <a href="index.html#promocje">Laptopy</a>
+          <a href="index.html#promocje">Monitory</a>
+          <a href="index.html#promocje">Akcesoria</a>
+        </div>
+        <div>
+          <h4>Telefonia</h4>
+          <a href="index.html#promocje">Smartfony</a>
+          <a href="index.html#promocje">Tablety</a>
+          <a href="index.html#promocje">Akcesoria GSM</a>
+        </div>
+      </div>
+
       <div class="header-actions">
         <a href="tel:343582442" class="header-phone">📞 34 358 24 42</a>
-        <button class="burger" id="burger" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
+        <button class="burger" id="burger" aria-label="Otwórz menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
-
-  <main>
-    <section class="section gallery-page-hero">
-      <div class="container gallery-hero">
+<main>
+  <section class="section gallery-section gallery-page-section reveal active">
+    <div class="container">
+      <div class="gallery-hero">
         <span class="eyebrow center">Galeria ELKASS</span>
         <h1>Salon, ekspozycja i oferta na miejscu</h1>
-        <p>Zobacz zdjęcia ze sklepu ELKASS w Oleśnie. Kliknij zdjęcie, aby je powiększyć.</p>
+        <p>Zobacz prawdziwe zdjęcia ze sklepu ELKASS w Oleśnie. Kliknij zdjęcie, aby je powiększyć.</p>
+        <a class="btn btn-outline light" href="index.html">← Wróć na stronę główną</a>
       </div>
-    </section>
-    <section class="section gallery-section gallery-page">
-      <div class="container">
-        <div class="gallery-grid">
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-16-salon-elkass.jpg" data-gallery-title="Salon ELKASS"><img src="assets/gallery/gallery-16-salon-elkass.jpg" alt="Salon ELKASS" loading="lazy"><span class="gallery-overlay"><strong>Salon ELKASS</strong><span>RTV, AGD i multimedia</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-01-gabloty-rtv-akcesoria.jpg" data-gallery-title="Gabloty z elektroniką"><img src="assets/gallery/gallery-01-gabloty-rtv-akcesoria.jpg" alt="Gabloty z elektroniką" loading="lazy"><span class="gallery-overlay"><strong>Gabloty z elektroniką</strong><span>Akcesoria, golarki i sprzęt osobisty</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-02-piekarniki-agd.jpg" data-gallery-title="Piekarniki do zabudowy"><img src="assets/gallery/gallery-02-piekarniki-agd.jpg" alt="Piekarniki do zabudowy" loading="lazy"><span class="gallery-overlay"><strong>Piekarniki do zabudowy</strong><span>Ekspozycja AGD w sklepie</span></span></button>
+      <div class="gallery-grid gallery-page-grid">
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-01-gabloty-rtv-akcesoria.jpg" data-gallery-title="Golarki, maszynki i elektronika osobista"><img src="assets/gallery/gallery-01-gabloty-rtv-akcesoria.jpg" alt="Golarki, maszynki i elektronika osobista" loading="lazy"><span class="gallery-overlay"><strong>Golarki, maszynki i elektronika osobista</strong><span>Gablota z akcesoriami i sprzętem osobistym</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-02-piekarniki-agd.jpg" data-gallery-title="Żelazka i stacje parowe"><img src="assets/gallery/gallery-02-piekarniki-agd.jpg" alt="Żelazka i stacje parowe" loading="lazy"><span class="gallery-overlay"><strong>Żelazka i stacje parowe</strong><span>Ekspozycja sprzętu do prasowania</span></span></button>
           <button class="gallery-card" data-gallery-src="assets/gallery/gallery-03-ekspresy-czajniki.jpg" data-gallery-title="Ekspresy i czajniki"><img src="assets/gallery/gallery-03-ekspresy-czajniki.jpg" alt="Ekspresy i czajniki" loading="lazy"><span class="gallery-overlay"><strong>Ekspresy i czajniki</strong><span>Małe AGD do kuchni</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-04-roboty-kuchenne.jpg" data-gallery-title="Roboty kuchenne"><img src="assets/gallery/gallery-04-roboty-kuchenne.jpg" alt="Roboty kuchenne" loading="lazy"><span class="gallery-overlay"><strong>Roboty kuchenne</strong><span>Sprzęt do gotowania i pieczenia</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-05-pralki-suszarki.jpg" data-gallery-title="Pralki i suszarki"><img src="assets/gallery/gallery-05-pralki-suszarki.jpg" alt="Pralki i suszarki" loading="lazy"><span class="gallery-overlay"><strong>Pralki i suszarki</strong><span>AGD dostępne w salonie</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-06-lodowki.jpg" data-gallery-title="Lodówki"><img src="assets/gallery/gallery-06-lodowki.jpg" alt="Lodówki" loading="lazy"><span class="gallery-overlay"><strong>Lodówki</strong><span>Chłodziarki i zamrażarki</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-10-zelazka.jpg" data-gallery-title="Żelazka i stacje parowe"><img src="assets/gallery/gallery-10-zelazka.jpg" alt="Żelazka i stacje parowe" loading="lazy"><span class="gallery-overlay"><strong>Żelazka i stacje parowe</strong><span>Prasowanie i małe AGD</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-11-odkurzacze.jpg" data-gallery-title="Odkurzacze"><img src="assets/gallery/gallery-11-odkurzacze.jpg" alt="Odkurzacze" loading="lazy"><span class="gallery-overlay"><strong>Odkurzacze</strong><span>Domowe i pionowe</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-13-agd-kuchenne.jpg" data-gallery-title="Drobny sprzęt AGD"><img src="assets/gallery/gallery-13-agd-kuchenne.jpg" alt="Drobny sprzęt AGD" loading="lazy"><span class="gallery-overlay"><strong>Drobny sprzęt AGD</strong><span>Kuchnia, dom i akcesoria</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-08-rtv-telewizory.jpg" data-gallery-title="RTV i telewizory"><img src="assets/gallery/gallery-08-rtv-telewizory.jpg" alt="RTV i telewizory" loading="lazy"><span class="gallery-overlay"><strong>RTV i telewizory</strong><span>Ekspozycja RTV</span></span></button>
-          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-14-ekspozycja-sklepu.jpg" data-gallery-title="Ekspozycja sklepu"><img src="assets/gallery/gallery-14-ekspozycja-sklepu.jpg" alt="Ekspozycja sklepu" loading="lazy"><span class="gallery-overlay"><strong>Ekspozycja sklepu</strong><span>Wybrane strefy salonu</span></span></button>
-        </div>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-07-czajniki-male-agd.jpg" data-gallery-title="Roboty kuchenne"><img src="assets/gallery/gallery-07-czajniki-male-agd.jpg" alt="Roboty kuchenne" loading="lazy"><span class="gallery-overlay"><strong>Roboty kuchenne</strong><span>Roboty, miksery i drobny sprzęt AGD</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-05-pralki-suszarki.jpg" data-gallery-title="Pralki i suszarki"><img src="assets/gallery/gallery-05-pralki-suszarki.jpg" alt="Pralki i suszarki" loading="lazy"><span class="gallery-overlay"><strong>Pralki i suszarki</strong><span>AGD wolnostojące i promocje</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-06-lodowki.jpg" data-gallery-title="Lodówki i chłodziarki"><img src="assets/gallery/gallery-06-lodowki.jpg" alt="Lodówki i chłodziarki" loading="lazy"><span class="gallery-overlay"><strong>Lodówki i chłodziarki</strong><span>Ekspozycja lodówek w sklepie</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-08-rtv-telewizory.jpg" data-gallery-title="Drobny sprzęt AGD"><img src="assets/gallery/gallery-08-rtv-telewizory.jpg" alt="Drobny sprzęt AGD" loading="lazy"><span class="gallery-overlay"><strong>Drobny sprzęt AGD</strong><span>Czajniki, opiekacze i akcesoria kuchenne</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-10-zelazka.jpg" data-gallery-title="Lodówki w ekspozycji"><img src="assets/gallery/gallery-10-zelazka.jpg" alt="Lodówki w ekspozycji" loading="lazy"><span class="gallery-overlay"><strong>Lodówki w ekspozycji</strong><span>Chłodziarki i zamrażarki dostępne na miejscu</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-11-odkurzacze.jpg" data-gallery-title="Odkurzacze domowe"><img src="assets/gallery/gallery-11-odkurzacze.jpg" alt="Odkurzacze domowe" loading="lazy"><span class="gallery-overlay"><strong>Odkurzacze domowe</strong><span>Odkurzacze tradycyjne i akcesoria</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-14-ekspozycja-sklepu.jpg" data-gallery-title="RTV, telewizory i audio"><img src="assets/gallery/gallery-14-ekspozycja-sklepu.jpg" alt="RTV, telewizory i audio" loading="lazy"><span class="gallery-overlay"><strong>RTV, telewizory i audio</strong><span>Ekspozycja telewizorów i sprzętu multimedialnego</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-15-drobny-sprzet.jpg" data-gallery-title="Pralki w promocji"><img src="assets/gallery/gallery-15-drobny-sprzet.jpg" alt="Pralki w promocji" loading="lazy"><span class="gallery-overlay"><strong>Pralki w promocji</strong><span>Wybrane modele dostępne w sklepie</span></span></button>
+          <button class="gallery-card" data-gallery-src="assets/gallery/gallery-16-salon-elkass.jpg" data-gallery-title="Salon ELKASS"><img src="assets/gallery/gallery-16-salon-elkass.jpg" alt="Salon ELKASS" loading="lazy"><span class="gallery-overlay"><strong>Salon ELKASS</strong><span>RTV i AGD w jednym miejscu</span></span></button>
       </div>
-    </section>
-  </main>
-
+    </div>
+  </section>
   <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
     <button class="gallery-lightbox-close" id="galleryClose" aria-label="Zamknij">×</button>
     <figure><img id="galleryLightboxImg" src="" alt=""><figcaption id="galleryLightboxCaption"></figcaption></figure>
   </div>
-  <a href="tel:343582442" class="mobile-call">📞 Zadzwoń teraz</a>
-  <button class="top-btn" id="topBtn" aria-label="Do góry">↑</button>
-  <script src="script.js?v=26"></script>
+</main>
+<footer class="footer">
+    <div class="container footer-grid">
+      <div><strong><span>ELKASS</span> OLESNO</strong><p>RTV / AGD / MULTIMEDIA / SERWIS</p></div>
+      <div><h4>Oferta</h4><a href="index.html#promocje">Promocje</a><a href="index.html#oferta">Kategorie</a><a href="#opinie">Opinie</a></div>
+      <div><h4>Kontakt</h4><a href="tel:343582442">34 358 24 42</a><a href="mailto:elkass@wp.pl">elkass@wp.pl</a></div>
+      <div><h4>Godziny</h4><p>Pon-Pt 9-17</p><p>Sobota 9-13</p></div>
+    </div>
+    <div class="footer-bottom">© 2025 ELKASS OLESNO</div>
+  </footer>
+<a href="tel:343582442" class="mobile-call">📞 Zadzwoń teraz</a>
+<button class="top-btn" id="topBtn" aria-label="Do góry">↑</button>
+<script src="script.js?v=27"></script>
 </body>
 </html>

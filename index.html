@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-wow-v5.png">
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
   <header class="site-header">
@@ -227,15 +227,34 @@
         <div class="reviews-grid" id="reviews-grid"></div>
       </div>
     </section>
-
-    <section class="section gallery-teaser reveal">
-      <div class="container gallery-teaser-box">
+    <section class="section local-advantages reveal">
+      <div class="container local-grid">
         <div>
-          <span class="eyebrow">Salon ELKASS</span>
-          <h2>Zobacz sklep od środka</h2>
-          <p>Pełną galerię przenieśliśmy na osobną podstronę, żeby strona główna została szybka, czytelna i sprzedażowa.</p>
+          <span class="eyebrow">Kupujesz lokalnie</span>
+          <h2>Dlaczego warto kupić w ELKASS?</h2>
+          <p>U nas nie zostajesz sam z wyborem sprzętu. Doradzamy, pomagamy porównać modele, sprawdzamy dostępność i wspieramy po zakupie.</p>
         </div>
-        <a href="gallery.html" class="btn btn-primary">Przejdź do galerii →</a>
+        <div class="local-cards">
+          <article>🎯 <strong>Fachowe doradztwo</strong><span>Dobór sprzętu do potrzeb i budżetu.</span></article>
+          <article>📦 <strong>Odbiór w sklepie</strong><span>Możliwość obejrzenia sprzętu przed zakupem.</span></article>
+          <article>🛠 <strong>Pomoc po zakupie</strong><span>Wsparcie, konfiguracja i serwis.</span></article>
+          <article>📞 <strong>Kontakt z człowiekiem</strong><span>Telefonicznie lub na miejscu w Oleśnie.</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="section gallery-teaser reveal">
+      <div class="container gallery-teaser-grid">
+        <div class="gallery-teaser-copy">
+          <span class="eyebrow">Galeria ELKASS</span>
+          <h2>Zobacz sklep od środka</h2>
+          <p>Pełną galerię salonu, ekspozycji RTV/AGD i małego AGD przenieśliśmy na osobną podstronę, żeby strona główna została szybka i czytelna.</p>
+          <a class="btn btn-primary" href="gallery.html">Otwórz galerię →</a>
+        </div>
+        <a class="gallery-teaser-photo" href="gallery.html" aria-label="Otwórz galerię ELKASS">
+          <img src="assets/sklep.jpg" alt="Sklep ELKASS Olesno" loading="lazy">
+          <span>Salon ELKASS</span>
+        </a>
       </div>
     </section>
 
@@ -370,6 +389,6 @@
   <a class="desktop-call" href="tel:343582442">📞 34 358 24 42</a>
   <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
   <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
-  <script src="script.js?v=14"></script>
+  <script src="script.js?v=27"></script>
 </body>
 </html>

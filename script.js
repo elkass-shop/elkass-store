@@ -332,6 +332,28 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCategoryPage();
 
 
+  // WOW27: uzupełnienie sekcji „Najczęściej wybierane”, żeby nie była pusta.
+  const bestsellersGrid = document.getElementById('bestsellers-grid');
+  function renderBestsellers(){
+    if(!bestsellersGrid) return;
+    const source = (data.products || defaultProducts).filter(p => p.visible !== false);
+    const preferredIds = ['p5','p1','p2','p12','p8','p9'];
+    const picked = preferredIds.map(id => source.find(p => p.id === id)).filter(Boolean);
+    const fallback = source.filter(p => !picked.some(x => x.id === p.id)).slice(0, 6 - picked.length);
+    const list = [...picked, ...fallback].slice(0,6);
+    bestsellersGrid.innerHTML = list.map((p, i) => `
+      <a class="bestseller-card" href="${productUrl(p)}" aria-label="Zobacz ${p.name}">
+        <span class="bestseller-tag">${i < 2 ? 'HIT' : 'POPULARNE'}</span>
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <h3>${p.name}</h3>
+        <div class="bestseller-stars">★★★★★ <span>4.${8 - (i % 3)}</span></div>
+        <div class="bestseller-price">${formatPrice(p.price)}</div>
+      </a>
+    `).join('');
+  }
+  renderBestsellers();
+
+
   function renderSmallProductCard(product) {
     const discount = stableDiscount(product);
     const price = Number(product.price || 0);
@@ -466,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchResults = document.getElementById('searchResults');
 
   function productCardSmall(product){
-    return `<a class="search-result" href="#kontakt">
+    return `<a class="search-result" href="${productUrl(product)}">
       <img src="${product.img}" alt="${product.name}">
       <div><b>${product.name}</b><span>${formatPrice(product.price)}</span></div>
     </a>`;
