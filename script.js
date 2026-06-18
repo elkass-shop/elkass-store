@@ -79,14 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function buildCategoryUrl(category, subcategory) {
+    const params = new URLSearchParams();
+    if (category) params.set('category', category);
+    if (subcategory) params.set('subcategory', subcategory);
+    return `category.html?${params.toString()}`;
+  }
+
   function applyCategoryFilter(category, subcategory) {
-    activeCategory = category || null;
-    activeSubcategory = subcategory || null;
-    productIndex = 0;
-    renderProducts();
-    updateActiveFilter();
-    const target = document.getElementById('promocje');
-    if (target) target.scrollIntoView({ behavior:'smooth', block:'start' });
+    window.location.href = buildCategoryUrl(category, subcategory);
   }
 
   function clearCategoryFilter() {
@@ -121,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.className = `category-card category-clickable${isActive ? ' active' : ''}`;
       const sub = (cat.subcategories || []).map(s => {
         const subActive = activeSubcategory && String(activeSubcategory).toLowerCase() === String(s.name).toLowerCase() && String(activeCategory).toLowerCase() === String(cat.name).toLowerCase();
-        return `<button type="button" class="subcategory-pill${subActive ? ' active' : ''}" data-category="${cat.name}" data-subcategory="${s.name}">${s.name}</button>`;
+        return `<a href="${buildCategoryUrl(cat.name, s.name)}" class="subcategory-pill${subActive ? ' active' : ''}" data-category="${cat.name}" data-subcategory="${s.name}">${s.name}</a>`;
       }).join('');
       card.innerHTML = `
         <img src="${cat.img}" alt="${cat.name}" loading="lazy">
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3>${cat.name}</h3>
           <p>${cat.description || ''}</p>
           <div class="subcategory-pills">${sub}</div>
-          <button type="button" class="category-open" data-category="${cat.name}">Wejdź do kategorii →</button>
+          <a href="${buildCategoryUrl(cat.name, null)}" class="category-open" data-category="${cat.name}">Wejdź do kategorii →</a>
         </div>
       `;
       card.addEventListener('click', (e) => {
@@ -239,6 +240,78 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   startProductRotation();
   window.addEventListener('resize', () => { renderProducts(); startProductRotation(); });
+
+  // WOW16 — osobne podstrony kategorii i podkategorii.
+  // Dzięki category.html?category=RTV&subcategory=Telewizory działa normalny przycisk Wstecz w przeglądarce.
+  const categoryPageProducts = document.getElementById('categoryPageProducts');
+  const categoryPageTitle = document.getElementById('categoryPageTitle');
+  const categoryPageSubtitle = document.getElementById('categoryPageSubtitle');
+  const categoryPageCount = document.getElementById('categoryPageCount');
+  const categoryPageSubcategories = document.getElementById('categoryPageSubcategories');
+
+  function getRouteParams(){
+    const params = new URLSearchParams(window.location.search);
+    return {
+      category: params.get('category') || '',
+      subcategory: params.get('subcategory') || ''
+    };
+  }
+
+  function renderCategoryPage(){
+    if(!categoryPageProducts) return;
+    const route = getRouteParams();
+    const categoryName = route.category || 'Wszystkie produkty';
+    const currentCategory = normalizeCategoryData(data.categories).find(c => String(c.name).toLowerCase() === String(route.category).toLowerCase());
+    let list = (data.products || defaultProducts).filter(p => p.visible !== false);
+    if(route.category){
+      list = list.filter(p => String(p.category || '').toLowerCase() === String(route.category).toLowerCase());
+    }
+    if(route.subcategory){
+      list = list.filter(p => String(p.subcategory || '').toLowerCase() === String(route.subcategory).toLowerCase());
+    }
+    if(categoryPageTitle) categoryPageTitle.textContent = route.subcategory ? `${route.category}: ${route.subcategory}` : categoryName;
+    if(categoryPageSubtitle){
+      categoryPageSubtitle.textContent = route.subcategory
+        ? `Produkty z podkategorii ${route.subcategory}. Wróć do kategorii lub sprawdź dostępność telefonicznie.`
+        : (currentCategory?.description || 'Wybierz podkategorię albo sprawdź aktualne produkty w ofercie.');
+    }
+    if(categoryPageCount) categoryPageCount.textContent = `${list.length} produktów`;
+
+    if(categoryPageSubcategories){
+      const subs = currentCategory?.subcategories || [];
+      const allUrl = buildCategoryUrl(route.category, null);
+      categoryPageSubcategories.innerHTML = route.category ? `<a class="category-page-chip ${!route.subcategory ? 'active' : ''}" href="${allUrl}">Wszystkie</a>` + subs.map(s => {
+        const active = String(s.name).toLowerCase() === String(route.subcategory).toLowerCase();
+        return `<a class="category-page-chip ${active ? 'active' : ''}" href="${buildCategoryUrl(route.category, s.name)}">${s.name}</a>`;
+      }).join('') : '';
+    }
+
+    categoryPageProducts.innerHTML = '';
+    if(!list.length){
+      categoryPageProducts.innerHTML = `<div class="empty-products category-empty"><strong>Brak produktów w tej podkategorii.</strong><span>Dodaj produkt w panelu administratora albo wróć do kategorii głównej.</span><a class="btn btn-primary small" href="admin/">Dodaj w panelu</a></div>`;
+      return;
+    }
+    list.forEach(product => {
+      const discount = stableDiscount(product);
+      const price = Number(product.price || 0);
+      const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
+      const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+      const card = document.createElement('article');
+      card.className = 'product-card category-page-product';
+      card.innerHTML = `
+        <div class="product-badge">${product.badge || 'OFERTA'}</div>
+        ${discount ? `<div class="discount">-${discount}%</div>` : ''}
+        <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
+        <h3>${product.name}</h3>
+        <ul class="features">${features.slice(0,4).map(item => `<li>• ${item}</li>`).join('')}</ul>
+        <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
+        <a class="product-contact" href="index.html#kontakt">Zapytaj o produkt →</a>
+      `;
+      categoryPageProducts.appendChild(card);
+    });
+  }
+
+  renderCategoryPage();
 
   const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
