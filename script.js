@@ -203,4 +203,75 @@ document.addEventListener('DOMContentLoaded', () => {
   renderReviews();
   setInterval(() => { reviewIndex = (reviewIndex + visibleReviewCount()) % opinions.length; renderReviews(); }, 5000);
   window.addEventListener('resize', renderReviews);
+
+  // WOW9: wyszukiwarka, hit tygodnia, bestsellery, licznik promocji
+  const searchInput = document.getElementById('productSearch');
+  const searchResults = document.getElementById('searchResults');
+
+  function productCardSmall(product){
+    return `<a class="search-result" href="#kontakt">
+      <img src="${product.img}" alt="${product.name}">
+      <div><b>${product.name}</b><span>${formatPrice(product.price)}</span></div>
+    </a>`;
+  }
+
+  function runSearch(){
+    if(!searchInput || !searchResults) return;
+    const q = searchInput.value.trim().toLowerCase();
+    if(q.length < 2){ searchResults.classList.remove('active'); searchResults.innerHTML=''; return; }
+    const results = (data.products || defaultProducts).filter(p =>
+      `${p.name} ${p.category} ${p.subcategory} ${(p.features||[]).join(' ')}`.toLowerCase().includes(q)
+    ).slice(0,8);
+    searchResults.classList.add('active');
+    searchResults.innerHTML = results.length ? results.map(productCardSmall).join('') : '<div class="search-empty">Brak wyników. Zadzwoń — sprawdzimy dostępność w sklepie.</div>';
+  }
+  if(searchInput) searchInput.addEventListener('input', runSearch);
+
+  const hitName = document.getElementById('hitName');
+  const hitPrice = document.getElementById('hitPrice');
+  const hitProducts = productList().filter(p => /hit|nowość|promocja/i.test(p.badge || '')).slice(0,6);
+  let hitIndex = 0;
+  function renderHit(){
+    if(!hitName || !hitPrice || !hitProducts.length) return;
+    const p = hitProducts[hitIndex % hitProducts.length];
+    hitName.textContent = p.name;
+    hitPrice.textContent = formatPrice(p.price);
+    hitIndex++;
+  }
+  renderHit();
+  setInterval(renderHit, 7000);
+
+  const bestGrid = document.getElementById('bestsellers-grid');
+  function renderBestSellers(){
+    if(!bestGrid) return;
+    const best = productList().slice(4,10);
+    bestGrid.innerHTML = best.map((p,i)=>`<article class="bestseller-card">
+      <div class="bestseller-tag">TOP ${i+1}</div>
+      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <div class="bestseller-stars">★★★★★ 4.${8 - (i%2)}</div>
+      <h3>${p.name}</h3>
+      <div class="bestseller-price">${formatPrice(p.price)}</div>
+    </article>`).join('');
+  }
+  renderBestSellers();
+
+  function updateCountdown(){
+    const now = new Date();
+    const end = new Date();
+    end.setDate(now.getDate() + (7 - now.getDay()));
+    end.setHours(23,59,59,999);
+    let diff = Math.max(0, end - now);
+    const d = Math.floor(diff / 86400000); diff -= d*86400000;
+    const h = Math.floor(diff / 3600000); diff -= h*3600000;
+    const m = Math.floor(diff / 60000);
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMinutes = document.getElementById('cdMinutes');
+    if(cdDays) cdDays.textContent = String(d).padStart(2,'0');
+    if(cdHours) cdHours.textContent = String(h).padStart(2,'0');
+    if(cdMinutes) cdMinutes.textContent = String(m).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
 });

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-wow-v5.png">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
   <header class="site-header">
@@ -32,6 +32,34 @@
         <a href="#kontakt">Kontakt</a>
         <a href="admin/">Panel</a>
       </nav>
+
+      <div class="mega-menu" id="megaMenu" aria-label="Kategorie sklepu">
+        <div>
+          <h4>RTV</h4>
+          <a href="#promocje">Telewizory 4K</a>
+          <a href="#promocje">Soundbary</a>
+          <a href="#promocje">Audio domowe</a>
+        </div>
+        <div>
+          <h4>AGD</h4>
+          <a href="#promocje">Lodówki</a>
+          <a href="#promocje">Pralki</a>
+          <a href="#promocje">Piekarniki</a>
+          <a href="#promocje">Zmywarki</a>
+        </div>
+        <div>
+          <h4>Komputery</h4>
+          <a href="#promocje">Laptopy</a>
+          <a href="#promocje">Monitory</a>
+          <a href="#promocje">Akcesoria</a>
+        </div>
+        <div>
+          <h4>Telefonia</h4>
+          <a href="#promocje">Smartfony</a>
+          <a href="#promocje">Tablety</a>
+          <a href="#promocje">Akcesoria GSM</a>
+        </div>
+      </div>
 
       <div class="header-actions">
         <a href="tel:343582442" class="header-phone">📞 34 358 24 42</a>
@@ -84,6 +112,51 @@
       </div>
     </section>
 
+    <section class="shop-search-section">
+      <div class="container">
+        <div class="shop-search-card">
+          <div>
+            <span class="eyebrow">Szybkie wyszukiwanie</span>
+            <h2>Czego szukasz?</h2>
+          </div>
+          <label class="search-box" for="productSearch">
+            <span>🔍</span>
+            <input id="productSearch" type="search" placeholder="Wpisz: pralka, telewizor, lodówka, laptop...">
+          </label>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+        <div class="quick-actions">
+          <a href="#promocje">🔥 Promocje</a>
+          <a href="#oferta">📦 Kategorie</a>
+          <a href="#kontakt">💳 Raty 0%</a>
+          <a href="#kontakt">🚚 Dostawa</a>
+          <a href="#kontakt">🛠 Serwis</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="deal-banner-section">
+      <div class="container">
+        <div class="deal-banner">
+          <img src="assets/banners/weekend-sale.jpg" alt="Weekend RTV promocje ELKASS" loading="lazy">
+          <div class="deal-content">
+            <span>🔥 HIT TYGODNIA</span>
+            <h2 id="hitName">Telewizor Samsung 55” 4K UHD</h2>
+            <p>Promocja, raty 0% i fachowe doradztwo w sklepie.</p>
+            <div class="deal-row">
+              <strong id="hitPrice">2299,00 zł</strong>
+              <a href="#kontakt" class="btn btn-primary small">Zapytaj o produkt</a>
+            </div>
+            <div class="countdown" aria-label="Licznik promocji">
+              <span><b id="cdDays">02</b><small>dni</small></span>
+              <span><b id="cdHours">12</b><small>godz.</small></span>
+              <span><b id="cdMinutes">45</b><small>min.</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="promocje" class="section promotions-section">
       <div class="container">
         <div class="section-toolbar">
@@ -94,6 +167,19 @@
           <a href="#kontakt" class="ghost-link">Zapytaj o dostępność →</a>
         </div>
         <div class="products-grid" id="products-grid"></div>
+      </div>
+    </section>
+
+    <section class="section bestsellers-section">
+      <div class="container">
+        <div class="section-toolbar">
+          <div>
+            <span class="eyebrow">Klienci najczęściej pytają o</span>
+            <h2>Najczęściej wybierane</h2>
+          </div>
+          <a href="#kontakt" class="ghost-link">Zapytaj doradcę →</a>
+        </div>
+        <div class="bestsellers-grid" id="bestsellers-grid"></div>
       </div>
     </section>
 
@@ -184,7 +270,7 @@
     <section class="brands-section">
       <div class="container">
         <h2 class="brands-title">Nasi partnerzy</h2>
-        <div class="brands-row">
+        <div class="brands-marquee"><div class="brands-row">
           <img src="assets/logos/samsung.png" alt="Samsung" loading="lazy">
           <img src="assets/logos/lg.png" alt="LG" loading="lazy">
           <img src="assets/logos/bosch.png" alt="Bosch" loading="lazy">
@@ -193,7 +279,11 @@
           <img src="assets/logos/Sencor.png" alt="Sencor" loading="lazy">
           <img src="assets/logos/Kernau.png" alt="Kernau" loading="lazy">
           <img src="assets/logos/neopunt.png" alt="NeoPunkt" loading="lazy">
-        </div>
+          <img src="assets/logos/samsung.png" alt="Samsung" loading="lazy">
+          <img src="assets/logos/lg.png" alt="LG" loading="lazy">
+          <img src="assets/logos/bosch.png" alt="Bosch" loading="lazy">
+          <img src="assets/logos/philips.png" alt="Philips" loading="lazy">
+        </div></div>
       </div>
     </section>
   </main>
@@ -208,8 +298,9 @@
     <div class="footer-bottom">© 2025 ELKASS OLESNO</div>
   </footer>
 
+  <a class="desktop-call" href="tel:343582442">📞 34 358 24 42</a>
   <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
   <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
