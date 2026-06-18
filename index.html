@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/hero-wow-v5.png">
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
   <header class="site-header">
@@ -71,6 +71,30 @@
   </header>
 
   <main>
+    <section class="shop-search-section">
+      <div class="container">
+        <div class="shop-search-card">
+          <div>
+            <span class="eyebrow">Szybkie wyszukiwanie</span>
+            <h2>Czego szukasz?</h2>
+          </div>
+          <label class="search-box" for="productSearch">
+            <span>🔍</span>
+            <input id="productSearch" type="search" placeholder="Wpisz: pralka, telewizor, lodówka, laptop...">
+          </label>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+        <div class="quick-actions">
+          <a href="#promocje">🔥 Promocje</a>
+          <a href="#oferta">📦 Kategorie</a>
+          <a href="#kontakt">💳 Raty 0%</a>
+          <a href="#kontakt">🚚 Dostawa</a>
+          <a href="#kontakt">🛠 Serwis</a>
+        </div>
+      </div>
+    </section>
+
+
     <section id="home" class="hero-premium">
       <img class="hero-visual-img" src="assets/hero-wow-v5.png" alt="Nowoczesna elektronika RTV AGD ELKASS" fetchpriority="high">
       <div class="hero-bg" aria-hidden="true"></div>
@@ -112,29 +136,6 @@
       </div>
     </section>
 
-    <section class="shop-search-section">
-      <div class="container">
-        <div class="shop-search-card">
-          <div>
-            <span class="eyebrow">Szybkie wyszukiwanie</span>
-            <h2>Czego szukasz?</h2>
-          </div>
-          <label class="search-box" for="productSearch">
-            <span>🔍</span>
-            <input id="productSearch" type="search" placeholder="Wpisz: pralka, telewizor, lodówka, laptop...">
-          </label>
-        </div>
-        <div class="search-results" id="searchResults"></div>
-        <div class="quick-actions">
-          <a href="#promocje">🔥 Promocje</a>
-          <a href="#oferta">📦 Kategorie</a>
-          <a href="#kontakt">💳 Raty 0%</a>
-          <a href="#kontakt">🚚 Dostawa</a>
-          <a href="#kontakt">🛠 Serwis</a>
-        </div>
-      </div>
-    </section>
-
     <section class="deal-banner-section">
       <div class="container">
         <div class="deal-banner deal-clean">
@@ -150,6 +151,7 @@
               <span><b id="cdDays">02</b><small>dni</small></span>
               <span><b id="cdHours">12</b><small>godz.</small></span>
               <span><b id="cdMinutes">45</b><small>min.</small></span>
+              <span><b id="cdSeconds">00</b><small>sek.</small></span>
             </div>
           </div>
           <div class="deal-visual" aria-hidden="true">
@@ -306,6 +308,6 @@
   <a class="desktop-call" href="tel:343582442">📞 34 358 24 42</a>
   <a class="mobile-call" href="tel:343582442">📞 Zadzwoń teraz</a>
   <button class="top-btn" id="topBtn" aria-label="Wróć do góry">↑</button>
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=12"></script>
 </body>
 </html>

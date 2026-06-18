@@ -274,11 +274,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const cdDays = document.getElementById('cdDays');
     const cdHours = document.getElementById('cdHours');
     const cdMinutes = document.getElementById('cdMinutes');
+    diff -= m*60000;
+    const s = Math.floor(diff / 1000);
+    const cdSeconds = document.getElementById('cdSeconds');
     if(cdDays) cdDays.textContent = String(d).padStart(2,'0');
     if(cdHours) cdHours.textContent = String(h).padStart(2,'0');
     if(cdMinutes) cdMinutes.textContent = String(m).padStart(2,'0');
+    if(cdSeconds) cdSeconds.textContent = String(s).padStart(2,'0');
   }
   updateCountdown();
-  setInterval(updateCountdown, 60000);
+  setInterval(updateCountdown, 1000);
 
 });

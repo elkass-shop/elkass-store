@@ -481,3 +481,209 @@ a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.container
     min-height:105px;
   }
 }
+
+
+/* =========================================================
+   ELKASS WOW12 — poprawki premium
+   - wyszukiwarka nad hero
+   - kategorie bez nachodzenia napisów
+   - żywy licznik sekund
+   - stabilne obrazki produktów
+========================================================= */
+
+.shop-search-section{
+  padding:18px 0 16px;
+  background:#fff;
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.shop-search-card{
+  grid-template-columns:260px 1fr;
+  padding:18px 22px;
+  border-radius:22px;
+  box-shadow:0 10px 32px rgba(15,23,42,.07);
+}
+.shop-search-card h2{
+  font-size:24px;
+}
+.search-box{
+  height:54px;
+}
+.quick-actions{
+  margin:14px 0 0;
+}
+.quick-actions a{
+  padding:10px 16px;
+  font-size:13px;
+}
+
+/* Kategorie — naprawa nakładania tekstów i kapsułek */
+.category-grid{
+  align-items:stretch;
+}
+.category-card{
+  height:278px;
+  isolation:isolate;
+}
+.category-card:after{
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.20) 42%,rgba(0,0,0,.92) 100%);
+  z-index:1;
+}
+.category-card > div{
+  position:absolute;
+  z-index:3;
+  left:24px;
+  right:24px;
+  bottom:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:8px;
+}
+.category-card h3{
+  font-size:27px;
+  line-height:1;
+  margin:0;
+  letter-spacing:-.8px;
+  text-shadow:0 4px 14px rgba(0,0,0,.55);
+}
+.category-card p{
+  font-size:14px;
+  line-height:1.35;
+  margin:0;
+  color:rgba(255,255,255,.92);
+  font-weight:700;
+  text-shadow:0 3px 12px rgba(0,0,0,.55);
+}
+.category-card .subcategory-pills{
+  position:static !important;
+  inset:auto !important;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0;
+  width:100%;
+}
+.category-card .subcategory-pills span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:25px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 18px rgba(0,0,0,.16);
+}
+
+/* Produkty — odporność na dowolne proporcje zdjęcia */
+.product-card{
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+}
+.product-image{
+  width:100%;
+  height:180px;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:14px;
+  background:linear-gradient(180deg,#fff,#f7f8fb);
+}
+.product-image img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+}
+.product-card h3{
+  min-height:46px;
+}
+.features{
+  min-height:62px;
+}
+.price{
+  margin-top:auto;
+}
+
+/* Hit tygodnia — stabilna grafika i czytelny licznik */
+.countdown{
+  gap:9px;
+}
+.countdown span{
+  width:72px;
+  height:64px;
+}
+.countdown b{
+  font-size:21px;
+}
+.deal-product-stage{
+  overflow:hidden;
+}
+.deal-product-stage img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Dodatkowy efekt premium */
+.section-toolbar h2,
+.section-head h2{
+  letter-spacing:-1.1px;
+}
+.products-grid .product-card:nth-child(1){
+  box-shadow:0 18px 50px rgba(227,6,19,.10), 0 12px 36px rgba(15,23,42,.07);
+}
+
+@media(max-width:900px){
+  .shop-search-card{
+    grid-template-columns:1fr;
+  }
+  .category-card{
+    height:250px;
+  }
+  .category-card h3{
+    font-size:24px;
+  }
+}
+
+@media(max-width:600px){
+  .shop-search-section{
+    padding:12px 0;
+  }
+  .search-box{
+    height:50px;
+    padding:0 16px;
+  }
+  .category-card{
+    height:230px;
+  }
+  .category-card > div{
+    left:18px;
+    right:18px;
+    bottom:18px;
+  }
+  .category-card h3{
+    font-size:23px;
+  }
+  .category-card p{
+    font-size:13px;
+  }
+  .category-card .subcategory-pills span{
+    font-size:10px;
+    padding:5px 9px;
+  }
+  .countdown span{
+    width:62px;
+    height:58px;
+  }
+}
