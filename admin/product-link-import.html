@@ -3,130 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELKASS Admin — Import produktu z linku</title>
-<link rel="stylesheet" href="product-link-import.css">
+<title>ELKASS Superadmin — Dodaj produkt ze strony</title>
+<link rel="stylesheet" href="smart-product-system.css">
 </head>
 <body>
-<main class="import-shell">
-  <aside class="import-sidebar">
-    <div class="brand">ELKASS<br><span>Superadmin</span></div>
-    <a href="index.html">← Panel główny</a>
-    <a class="active" href="product-link-import.html">🤖 Produkt z linku</a>
+<div class="eps-layout">
+  <aside class="eps-sidebar">
+    <div class="eps-logo">ELKASS<span>ENTERPRISE 2.1</span></div>
+    <a href="index.html">🏠 Panel główny</a>
+    <a href="product-link-import.html" class="active">🤖 Dodaj ze strony</a>
+    <a href="index.html#products">📦 Produkty</a>
+    <a href="index.html#media">🖼 Media</a>
+    <a href="../index.html" target="_blank">↗ Zobacz stronę</a>
   </aside>
 
-  <section class="import-main">
-    <header class="import-header">
+  <main class="eps-main">
+    <section class="eps-hero">
       <div>
-        <p class="eyebrow">ELKASS ENTERPRISE 1.6</p>
-        <h1>Dodaj produkt z linku</h1>
-        <p>Wklej link, sprawdź dane, popraw szczegóły i zaakceptuj produkt przed publikacją.</p>
+        <p class="eyebrow">Smart Product System</p>
+        <h1>🤖 Dodaj produkt ze strony</h1>
+        <p>Wklej link do produktu, uzupełnij cenę, zdjęcia i parametry. System dopasuje dane do kafla, karty produktu i wydruku A4.</p>
       </div>
-    </header>
-
-    <section class="card">
-      <h2>1. Link produktu</h2>
-      <div class="url-row">
-        <input id="productUrl" type="url" placeholder="https://strona-producenta.pl/produkt/..." />
-        <button id="analyzeBtn">Pobierz roboczo</button>
+      <div class="eps-mode">
+        <strong>Etap 1</strong>
+        <span>Demo bez backendu</span>
       </div>
-      <p class="hint">Etap 1 działa bez backendu — tworzy inteligentny szkic produktu na podstawie linku i ręcznej korekty.</p>
     </section>
 
-    <section class="grid">
-      <form class="card form-card" id="draftForm">
-        <h2>2. Dane do akceptacji</h2>
+    <section class="eps-card eps-url-card">
+      <h2>1. Link do produktu</h2>
+      <div class="eps-url-row">
+        <input id="productUrl" type="url" placeholder="Wklej link produktu ze strony producenta / hurtowni">
+        <button id="fetchBtn">Pobierz szkic</button>
+      </div>
+      <p class="eps-note">Pełne automatyczne pobieranie zdjęć i parametrów z internetu zostanie podpięte w Supabase/Vercel Functions. Ten etap daje gotowy formularz, podgląd i akceptację.</p>
+    </section>
+
+    <section class="eps-grid">
+      <section class="eps-card">
+        <h2>2. Dane produktu do akceptacji</h2>
 
         <label>Nazwa produktu
-          <input id="name" value="Przykładowy produkt RTV/AGD">
+          <input id="name" value="Telewizor Samsung 55” QLED 4K">
         </label>
 
-        <label>Marka
-          <input id="brand" value="Samsung">
-        </label>
+        <div class="eps-two">
+          <label>Marka
+            <input id="brand" value="Samsung">
+          </label>
+          <label>Model / indeks
+            <input id="model" value="QE55Q60D">
+          </label>
+        </div>
 
-        <div class="two">
+        <div class="eps-two">
           <label>Kategoria
             <select id="category">
               <option>RTV</option>
               <option>AGD</option>
+              <option>Małe AGD</option>
               <option>Komputery</option>
               <option>Telefony</option>
               <option>Audio</option>
-              <option>Małe AGD</option>
             </select>
           </label>
-
           <label>Podkategoria
             <input id="subcategory" value="Telewizory">
           </label>
         </div>
 
-        <div class="two">
-          <label>Cena promocyjna
-            <input id="price" type="number" value="2499">
+        <div class="eps-two">
+          <label>Cena widoczna / promocyjna
+            <input id="price" type="number" value="2699">
           </label>
-
           <label>Rabat %
             <input id="discount" type="number" value="15">
           </label>
         </div>
 
-        <label>Etykieta promocji
-          <select id="promoLabel">
+        <label>Promocja / etykieta
+          <select id="promo">
             <option>Brak</option>
-            <option>Hit dnia</option>
             <option selected>Hit tygodnia</option>
+            <option>Hit dnia</option>
             <option>Black Friday</option>
             <option>Premium Deal</option>
             <option>Okazja AGD</option>
+            <option>Nowość</option>
             <option>Własna promocja</option>
           </select>
         </label>
 
-        <label>Zdjęcie główne / URL lub ścieżka
+        <label>Zdjęcie główne
           <input id="image" value="assets/products/product-01.jpg">
         </label>
 
-        <label>Opis premium
-          <textarea id="description">Nowoczesny sprzęt dobrany z myślą o domu, komforcie i codziennym użytkowaniu. Produkt przygotowany do prezentacji w sklepie ELKASS.</textarea>
+        <label>Galeria zdjęć — po jednej ścieżce w linii
+          <textarea id="gallery">assets/products/product-01.jpg
+assets/products/product-02.jpg
+assets/products/product-03.jpg</textarea>
         </label>
 
-        <label>Najważniejsze cechy — po jednej w linii
-          <textarea id="features">Fachowo dobrany produkt
-Atrakcyjna cena promocyjna
+        <label>Opis premium na stronę
+          <textarea id="description">Nowoczesny produkt RTV/AGD przygotowany do prezentacji w sklepie ELKASS. Opis zostanie automatycznie dopasowany do karty produktu i wydruku.</textarea>
+        </label>
+
+        <label>Najważniejsze zalety — po jednej w linii
+          <textarea id="features">Dostępny w sklepie ELKASS Olesno
 Możliwość zakupu na raty
-Wsparcie doradcy ELKASS</textarea>
+Fachowe doradztwo
+Odbiór osobisty lub dostawa</textarea>
         </label>
 
-        <label>Parametry — format: Nazwa: Wartość
-          <textarea id="params">Producent: Samsung
-Typ: RTV/AGD
-Gwarancja: producenta
-Dostępność: dostępny w sklepie</textarea>
+        <label>Dane techniczne — format: Parametr: Wartość
+          <textarea id="params">Przekątna ekranu: 55 cali
+Rozdzielczość: 4K UHD
+Smart TV: Tak
+HDMI: 3
+Gwarancja: producenta</textarea>
         </label>
 
-        <div class="actions">
-          <button type="button" id="previewBtn">Odśwież podgląd</button>
-          <button type="button" id="saveBtn">Zapisz roboczo</button>
-          <button type="button" id="printBtn">Drukuj kartę</button>
+        <h3>Gdzie pokazać produkt?</h3>
+        <div class="eps-checks">
+          <label><input type="checkbox" value="new" checked> Nowości</label>
+          <label><input type="checkbox" value="weekly" checked> Hit tygodnia</label>
+          <label><input type="checkbox" value="daily"> Hit dnia</label>
+          <label><input type="checkbox" value="black"> Black Friday</label>
+          <label><input type="checkbox" value="popular"> Najczęściej wybierane</label>
+          <label><input type="checkbox" value="category" checked> Kategoria/podkategoria</label>
         </div>
-      </form>
 
-      <section class="preview-column">
-        <div class="card">
+        <div class="eps-actions">
+          <button id="previewBtn" type="button">Odśwież podgląd</button>
+          <button id="saveBtn" type="button">Zapisz do akceptacji</button>
+          <button id="printBtn" type="button">Drukuj kartę</button>
+          <button id="exportBtn" type="button">Eksport JSON</button>
+        </div>
+      </section>
+
+      <section class="eps-preview">
+        <div class="eps-card">
           <h2>Podgląd kafla</h2>
-          <div id="productTile"></div>
+          <div id="tilePreview"></div>
         </div>
-
-        <div class="card">
+        <div class="eps-card">
           <h2>Podgląd karty produktu</h2>
-          <div id="productPage"></div>
+          <div id="pagePreview"></div>
+        </div>
+        <div class="eps-card">
+          <h2>Podgląd wydruku A4</h2>
+          <div id="printPreview"></div>
         </div>
       </section>
     </section>
-  </section>
-</main>
-
-<script src="product-link-import.js"></script>
+  </main>
+</div>
+<script src="smart-product-system.js"></script>
 </body>
 </html>
