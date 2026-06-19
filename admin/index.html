@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=52">
+  <link rel="stylesheet" href="admin.css?v=55">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -34,6 +34,8 @@
       <button class="tab" data-tab="promotions">🏷️ Promocje</button>
       <button class="tab" data-tab="homepage">🧩 Strona główna</button>
       <button class="tab" data-tab="builder">🎛 Kreator strony</button>
+      <button class="tab" data-tab="live-builder">🧱 Live Page Builder</button>
+      <button class="tab" data-tab="cloud-ready">☁️ Cloud Ready</button>
       <button class="tab" data-tab="banners">🖼 Banery</button>
       <button class="tab" data-tab="appearance">🎨 Wygląd</button>
       <button class="tab" data-tab="seo">🔎 SEO</button>
@@ -132,6 +134,16 @@
             <div class="module-icon">🎛</div><h3>Kreator sekcji</h3>
             <p>Włączanie i wyłączanie sekcji oraz przygotowanie pod zmianę kolejności.</p>
             <button type="button" data-tab-target="builder">Przejdź do kreatora</button>
+          </article>
+          <article class="control-module-card" data-jump="live-builder">
+            <div class="module-icon">🧱</div><h3>Live Page Builder</h3>
+            <p>Układ strony, kolejność sekcji, szybkie dodawanie bloków i widoczność na mobile/desktop.</p>
+            <button type="button" data-tab-target="live-builder">Buduj stronę</button>
+          </article>
+          <article class="control-module-card" data-jump="cloud-ready">
+            <div class="module-icon">☁️</div><h3>ELKASS Cloud Ready</h3>
+            <p>Plan przejścia na Firebase/Supabase: logowanie, baza, storage, kopie i domena elkass.pl.</p>
+            <button type="button" data-tab-target="cloud-ready">Zobacz plan</button>
           </article>
           <article class="control-module-card" data-jump="banners">
             <div class="module-icon">📰</div><h3>Banery</h3>
@@ -593,14 +605,87 @@
         </section>
       </section>
 
+
+
+      <section id="live-builder" class="tab-panel">
+        <div class="control-hero editor-card wide live-builder-hero">
+          <div>
+            <span class="eyebrow">WOW53</span>
+            <h2>Live Page Builder</h2>
+            <p>Tu układasz stronę główną bez szukania w kodzie. To demo przygotowuje strukturę pod prawdziwe przeciąganie sekcji po podpięciu bazy.</p>
+          </div>
+          <div class="control-health"><strong>Tryb</strong><span>Demo CMS</span><small>docelowo zapis w Supabase/Firebase</small></div>
+        </div>
+        <div class="panel-grid">
+          <section class="editor-card">
+            <h2>Dodaj sekcję</h2>
+            <div class="builder-add-grid">
+              <button type="button" data-builder-add="Hero">🚀 Hero</button>
+              <button type="button" data-builder-add="Promocje">🔥 Promocje</button>
+              <button type="button" data-builder-add="Kategorie">🧭 Kategorie</button>
+              <button type="button" data-builder-add="Produkty">📦 Produkty</button>
+              <button type="button" data-builder-add="Galeria">🖼 Galeria</button>
+              <button type="button" data-builder-add="Opinie">⭐ Opinie</button>
+              <button type="button" data-builder-add="Partnerzy">🤝 Partnerzy</button>
+              <button type="button" data-builder-add="Kontakt">☎️ Kontakt</button>
+              <button type="button" data-builder-add="Własna sekcja">➕ Własna sekcja</button>
+            </div>
+            <p class="hint">Sekcje można włączyć, wyłączyć i przesuwać góra/dół. W pełnej wersji cloud będzie zapis globalny dla wszystkich odwiedzających.</p>
+          </section>
+          <section class="editor-card">
+            <h2>Podgląd ustawień sekcji</h2>
+            <label>Nazwa sekcji<input id="builder-section-title" placeholder="np. Weekendowe promocje"></label>
+            <label>Krótki opis<textarea id="builder-section-desc" rows="4" placeholder="Opis widoczny pod nagłówkiem sekcji"></textarea></label>
+            <label>Zdjęcie / banner<input id="builder-section-img" placeholder="assets/banners/weekend-sale.jpg"></label>
+            <div class="form-actions"><button id="builder-save-draft" type="button" class="primary">Zapisz szkic sekcji</button><button id="builder-clear-draft" type="button" class="secondary">Wyczyść</button></div>
+          </section>
+        </div>
+        <section class="editor-card wide">
+          <div class="media-library-head"><div><h2>Struktura strony głównej</h2><p class="hint">Ustaw docelową kolejność. Strzałki działają od razu w panelu demo.</p></div><button id="builder-reset-layout" type="button" class="secondary">Przywróć domyślny układ</button></div>
+          <div id="builder-layout-list" class="builder-layout-list"></div>
+        </section>
+      </section>
+
+      <section id="cloud-ready" class="tab-panel">
+        <div class="control-hero editor-card wide cloud-hero">
+          <div>
+            <span class="eyebrow">WOW55</span>
+            <h2>ELKASS Cloud Ready</h2>
+            <p>To plan bezpiecznego przejścia z GitHub/Vercel na panel z prawdziwym zapisem online. Strona zostaje statyczna i szybka, a dane będą w bazie.</p>
+          </div>
+          <div class="control-health"><strong>Status</strong><span>Gotowe do etapu technicznego</span><small>Supabase albo Firebase</small></div>
+        </div>
+        <div class="cloud-grid">
+          <article><h3>1. Logowanie admina</h3><p>Email: <strong>elkass@wp.pl</strong>, reset hasła przez e-mail, role administratora.</p></article>
+          <article><h3>2. Baza danych</h3><p>Produkty, kategorie, podkategorie, promocje, partnerzy, opinie, galerie i ustawienia strony.</p></article>
+          <article><h3>3. Storage zdjęć</h3><p>JPG, PNG, WEBP, AVIF i SVG trafiają do chmury, nie do folderu assets przez GitHub.</p></article>
+          <article><h3>4. Kopie zapasowe</h3><p>Eksport/import JSON zostaje jako awaryjna kopia danych.</p></article>
+          <article><h3>5. elkass.pl</h3><p>Po stabilizacji podpinamy domenę, HTTPS, SEO lokalne i przekierowania.</p></article>
+          <article><h3>6. Wydajność mobile</h3><p>Obrazy w stałych ramkach, lazy loading, lekkie skrypty i czytelny panel na telefonie/tablecie.</p></article>
+        </div>
+        <section class="editor-card wide">
+          <h2>Checklist przed wdrożeniem chmury</h2>
+          <div class="checklist-grid">
+            <label><input type="checkbox" checked> Spójna paczka MASTER</label>
+            <label><input type="checkbox" checked> Panel Superadmin</label>
+            <label><input type="checkbox" checked> Media Manager</label>
+            <label><input type="checkbox" checked> Wyszukiwarka w panelu</label>
+            <label><input type="checkbox"> Konto Supabase/Firebase</label>
+            <label><input type="checkbox"> Przeniesienie danych z localStorage do bazy</label>
+            <label><input type="checkbox"> Storage zdjęć</label>
+            <label><input type="checkbox"> Testy mobile i desktop</label>
+          </div>
+        </section>
+      </section>
+
       <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW51 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
     </section>
   </main>
-  <script src="admin.js?v=52"></script>
-  <script src="admin-full-cms.js?v=52"></script>
-  <script src="admin-superadmin.js?v=52"></script>
-  <script src="admin-media-manager.js?v=52"></script>
-  <script src="admin-global-search.js?v=52"></script>
-  <script src="admin-control-center.js?v=52"></script>
+  <script src="admin.js?v=55"></script>
+  <script src="admin-full-cms.js?v=55"></script>
+  <script src="admin-superadmin.js?v=55"></script>
+  <script src="admin-media-manager.js?v=55"></script>
+  <script src="admin-global-search.js?v=55"></script>
+  <script src="admin-control-center.js?v=55"></script>
 </body>
 </html>
