@@ -1443,3 +1443,13 @@ body[data-header-mode="dark"] .header{background:#10131a;color:white}body[data-h
   .enterprise-spec-box{margin-top:4mm!important;padding:3mm!important;border:1px solid #ddd!important;border-radius:6px!important;background:#fff!important;break-inside:avoid!important;}.enterprise-spec-box h2{font-size:14px!important;margin:0 0 2mm!important}.enterprise-spec-box dl{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:2mm!important}.enterprise-spec-box dl div{border:1px solid #ddd!important;border-radius:4px!important;padding:2mm!important;background:#fff!important}.enterprise-spec-box dt,.enterprise-spec-box dd{font-size:8.8px!important;}
   .product-detail-info:after{content:'ELKASS OLESNO • ul. Kochanowskiego 4, 46-300 Olesno • tel. 34 358 24 42 • elkass@wp.pl';display:block;margin-top:5mm;padding-top:3mm;border-top:1px solid #ddd;font-weight:700;font-size:10px!important;}
 }
+
+
+/* ===== ELKASS ENTERPRISE 1.4 — Premium Print Card FIX ===== */
+.product-detail-hero{padding-top:18px!important;}
+.product-detail{margin-top:0!important;}
+@media print{
+  /* Domyślny druk strony ukryty — przycisk "Drukuj kartę produktu" otwiera osobną, czystą kartę A4. */
+  .site-header,.footer,.desktop-call,.mobile-call,.top-btn,.related-section,.back-link,.product-thumbs,.product-detail-actions{display:none!important;}
+  .product-detail{box-shadow:none!important;border:0!important;}
+}
