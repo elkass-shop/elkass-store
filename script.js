@@ -696,4 +696,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('active')) closeGallery()});
 })();
 
-// ELKASS MASTER STABLE 1.0 - JS marker
+// ELKASS WOW51 CMS TOTAL CONTROL - JS marker
