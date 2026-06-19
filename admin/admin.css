@@ -130,3 +130,10 @@
 .admin-image-preview img{object-fit:contain;}
 /* WOW29 CMS */
 .admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}.admin-stats div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}.admin-stats b{font-size:34px;display:block}.admin-stats span{color:#aeb8c5}.quick-admin-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.admin-shortcut{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:20px;font-weight:800;cursor:pointer}.cms-box{border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);border-radius:18px;padding:18px;margin:18px 0}.promo-editor-box h3{margin-top:0}.section-switches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.item-row img{object-fit:contain;background:#fff}.tab{font-size:14px}.file-label input{display:none}@media(max-width:900px){.admin-stats,.quick-admin-grid,.section-switches{grid-template-columns:1fr 1fr}.panel{display:block}.sidebar{position:static;width:auto}.content{margin-left:0}}
+
+/* WOW42 FULL CMS */
+.cms-master-card{border:1px solid rgba(139,195,74,.35);box-shadow:0 24px 60px rgba(0,0,0,.08)}
+.big-save{width:100%;margin-top:20px;font-size:18px;padding:18px;border-radius:18px}
+.section-manager-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.section-manager-grid label{background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:14px;font-weight:700}
+.cms-toast{position:fixed;right:24px;bottom:24px;background:#111827;color:white;padding:14px 18px;border-radius:999px;box-shadow:0 20px 50px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.25s;z-index:99999}.cms-toast.show{opacity:1;transform:translateY(0)}

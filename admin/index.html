@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=40">
+  <link rel="stylesheet" href="admin.css?v=42">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -30,6 +30,10 @@
       <button class="tab" data-tab="categories">🧭 Kategorie</button>
       <button class="tab" data-tab="promotions">🏷️ Promocje</button>
       <button class="tab" data-tab="homepage">🧩 Strona główna</button>
+      <button class="tab" data-tab="builder">🎛 Kreator strony</button>
+      <button class="tab" data-tab="banners">🖼 Banery</button>
+      <button class="tab" data-tab="appearance">🎨 Wygląd</button>
+      <button class="tab" data-tab="seo">🔎 SEO</button>
       <button class="tab" data-tab="gallery">🖼️ Galeria</button>
       <button class="tab" data-tab="partners">🤝 Partnerzy</button>
       <button class="tab" data-tab="reviews">⭐ Opinie</button>
@@ -205,6 +209,133 @@
         </div>
       </section>
 
+      <section id="builder" class="tab-panel">
+        <div class="editor-card wide cms-master-card">
+          <h2>🎛 Kreator strony — edycja A do Z</h2>
+          <p class="hint">Tu zmienisz teksty, zdjęcia, paski, bannery, widoczność i kolejność głównych sekcji. W tej wersji dane zapisują się w przeglądarce i są przygotowane pod późniejsze Firebase/Supabase.</p>
+          <div class="form-grid">
+            <label>Nazwa sklepu / logo tekstowe<input id="cms-logo" placeholder="ELKASS OLESNO"></label>
+            <label>Opis pod logo<input id="cms-logo-sub" placeholder="RTV / AGD / MULTIMEDIA / SERWIS"></label>
+            <label>Telefon główny<input id="cms-phone" placeholder="34 358 24 42"></label>
+            <label>E-mail<input id="cms-email" placeholder="elkass@wp.pl"></label>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="editor-card">
+            <h2>Hero / pierwszy ekran</h2>
+            <label>Tytuł hero<input id="cms-hero-title" placeholder="Nowoczesna elektronika dla Twojego domu"></label>
+            <label>Podtytuł hero<textarea id="cms-hero-subtitle" rows="3" placeholder="RTV • AGD • KOMPUTERY • TELEFONY • AUDIO • SERWIS"></textarea></label>
+            <label>Zdjęcie hero<input id="cms-hero-image" placeholder="assets/hero-wow-v5.png"></label>
+            <label>Badge w hero — po jednym w linii<textarea id="cms-hero-badges" rows="4" placeholder="⭐ 25+ lat doświadczenia&#10;🏆 Partner NeoPunkt&#10;👥 15 000+ klientów"></textarea></label>
+            <div class="form-grid">
+              <label>Przycisk 1 tekst<input id="cms-hero-btn1-text" placeholder="Zobacz promocje 🛒"></label>
+              <label>Przycisk 1 link<input id="cms-hero-btn1-link" placeholder="#promocje"></label>
+              <label>Przycisk 2 tekst<input id="cms-hero-btn2-text" placeholder="Skontaktuj się 📞"></label>
+              <label>Przycisk 2 link<input id="cms-hero-btn2-link" placeholder="tel:343582442"></label>
+            </div>
+          </div>
+
+          <div class="editor-card">
+            <h2>Szybkie akcje / pasek pod wyszukiwarką</h2>
+            <p class="hint">Format: tekst|link, każda akcja od nowej linii.</p>
+            <textarea id="cms-quick-actions" rows="8" placeholder="🔥 Promocje|#promocje&#10;📦 Kategorie|#oferta&#10;💳 Raty 0%|#kontakt&#10;🚚 Dostawa|#kontakt&#10;🛠 Serwis|#kontakt"></textarea>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="editor-card">
+            <h2>Sekcja lokalna / o sklepie</h2>
+            <label>Nagłówek lokalny<input id="cms-local-title" placeholder="Dlaczego warto kupić w ELKASS?"></label>
+            <label>Tekst lokalny<textarea id="cms-local-text" rows="4"></textarea></label>
+            <label>Zdjęcie sklepu<input id="cms-local-image" placeholder="assets/sklep.jpg"></label>
+            <p class="hint">Karty lokalne, format: ikona|tytuł|opis</p>
+            <textarea id="cms-local-cards" rows="8" placeholder="🎯|Fachowe doradztwo|Dobór sprzętu do potrzeb i budżetu.&#10;📦|Odbiór w sklepie|Możliwość obejrzenia sprzętu przed zakupem.&#10;🛠|Pomoc po zakupie|Wsparcie, konfiguracja i serwis.&#10;📞|Kontakt z człowiekiem|Telefonicznie lub na miejscu w Oleśnie."></textarea>
+          </div>
+
+          <div class="editor-card">
+            <h2>Galeria na stronie głównej</h2>
+            <label>Etykieta<input id="cms-gallery-eyebrow" placeholder="Galeria ELKASS"></label>
+            <label>Tytuł<input id="cms-gallery-title" placeholder="Zobacz sklep od środka"></label>
+            <label>Opis<textarea id="cms-gallery-text" rows="4"></textarea></label>
+            <label>Zdjęcie miniatury<input id="cms-gallery-image" placeholder="assets/sklep.jpg"></label>
+            <label>Tekst przycisku<input id="cms-gallery-button" placeholder="Otwórz galerię →"></label>
+          </div>
+        </div>
+
+        <div class="editor-card wide">
+          <h2>Widoczność i kolejność sekcji</h2>
+          <p class="hint">Włącz/wyłącz sekcje na stronie głównej. Kolejność użyjemy w wersji z bazą danych; na teraz zapisujemy ustawienie jako konfigurację gotową pod Firebase/Supabase.</p>
+          <div class="section-manager-grid">
+            <label><input type="checkbox" data-cms-section="search" checked> Szybkie wyszukiwanie</label>
+            <label><input type="checkbox" data-cms-section="hero" checked> Hero</label>
+            <label><input type="checkbox" data-cms-section="trust" checked> Pasek zaufania</label>
+            <label><input type="checkbox" data-cms-section="deals" checked> Hit tygodnia</label>
+            <label><input type="checkbox" data-cms-section="products" checked> Nowości i promocje</label>
+            <label><input type="checkbox" data-cms-section="categories" checked> Kategorie</label>
+            <label><input type="checkbox" data-cms-section="bestsellers" checked> Najczęściej wybierane</label>
+            <label><input type="checkbox" data-cms-section="reviews" checked> Opinie</label>
+            <label><input type="checkbox" data-cms-section="local" checked> Kupujesz lokalnie</label>
+            <label><input type="checkbox" data-cms-section="gallery" checked> Galeria</label>
+            <label><input type="checkbox" data-cms-section="about" checked> O firmie</label>
+            <label><input type="checkbox" data-cms-section="contact" checked> Kontakt</label>
+            <label><input type="checkbox" data-cms-section="partners" checked> Partnerzy</label>
+          </div>
+        </div>
+
+        <div class="editor-card wide">
+          <h2>Własna dodatkowa sekcja</h2>
+          <p class="hint">Prosty moduł do dodania własnego bloku na stronie, bez grzebania w HTML.</p>
+          <div class="form-grid">
+            <label><input id="cms-custom-visible" type="checkbox"> Włącz własną sekcję</label>
+            <label>Etykieta<input id="cms-custom-eyebrow" placeholder="Nowość"></label>
+            <label>Tytuł<input id="cms-custom-title" placeholder="Nowa sekcja na stronie"></label>
+            <label>Zdjęcie<input id="cms-custom-image" placeholder="assets/banners/weekend-sale.jpg"></label>
+            <label>Tekst przycisku<input id="cms-custom-button" placeholder="Sprawdź →"></label>
+            <label>Link przycisku<input id="cms-custom-link" placeholder="#kontakt"></label>
+          </div>
+          <label>Opis<textarea id="cms-custom-text" rows="4"></textarea></label>
+        </div>
+
+        <button id="cms-save-builder" class="primary big-save" type="button">Zapisz ustawienia strony</button>
+      </section>
+
+      <section id="banners" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🖼 Banery strony</h2>
+          <p class="hint">Banery można używać jako sezonowe belki: Black Friday, raty, weekend RTV, święta. Format listy: tytuł|opis|grafika|link|tekst przycisku</p>
+          <textarea id="cms-banners-list" rows="10" placeholder="Weekend RTV|Do -25% na wybrane produkty|assets/banners/weekend-sale.jpg|promotions.html|Zobacz promocje&#10;Raty 0%|Zapytaj doradcę o finansowanie|assets/banners/raty-0.jpg|#kontakt|Zapytaj"></textarea>
+          <button id="cms-save-banners" class="primary" type="button">Zapisz banery</button>
+        </div>
+      </section>
+
+      <section id="appearance" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🎨 Wygląd strony</h2>
+          <div class="form-grid">
+            <label>Kolor główny<input id="cms-accent" type="color" value="#e30613"></label>
+            <label>Kolor dodatkowy<input id="cms-green" type="color" value="#8bc34a"></label>
+            <label>Zaokrąglenie kafli px<input id="cms-radius" type="number" min="0" max="40" value="24"></label>
+            <label>Cień kafli<select id="cms-shadow"><option value="soft">Miękki</option><option value="medium">Średni</option><option value="strong">Mocny</option></select></label>
+            <label>Tryb nagłówka<select id="cms-header-mode"><option value="light">Jasny</option><option value="dark">Ciemny premium</option></select></label>
+          </div>
+          <button id="cms-save-appearance" class="primary" type="button">Zapisz wygląd</button>
+        </div>
+      </section>
+
+      <section id="seo" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🔎 SEO i udostępnianie</h2>
+          <div class="form-grid">
+            <label>Tytuł SEO<input id="cms-seo-title" placeholder="ELKASS Olesno | RTV AGD Komputery"></label>
+            <label>Opis SEO<textarea id="cms-seo-description" rows="4"></textarea></label>
+            <label>Obrazek OG / Facebook<input id="cms-seo-image" placeholder="assets/hero-wow-v5.png"></label>
+            <label>Słowa kluczowe<input id="cms-seo-keywords" placeholder="RTV Olesno, AGD Olesno, telewizory Olesno"></label>
+          </div>
+          <button id="cms-save-seo" class="primary" type="button">Zapisz SEO</button>
+        </div>
+      </section>
+
       <section id="gallery" class="tab-panel"><div class="panel-grid"><form id="gallery-form" class="editor-card"><h2>Dodaj zdjęcie do galerii</h2><input type="hidden" id="gallery-id"><label>Tytuł zdjęcia<input id="gallery-title"></label><label>Kategoria zdjęcia<input id="gallery-category" placeholder="AGD / RTV / Małe AGD"></label><label>Ścieżka zdjęcia<input id="gallery-img"></label><label class="upload-box">Wgraj zdjęcie<input id="gallery-upload" type="file" accept="image/*"></label><div class="image-preview-box"><div class="admin-image-preview"><img id="gallery-preview" src="../assets/gallery/gallery-01-gabloty-z-elektronika.jpg"></div></div><div class="form-actions"><button class="primary" type="submit">Zapisz zdjęcie</button><button id="clear-gallery" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Galeria</h2><div id="gallery-list" class="items-list"></div></div></div></section>
       <section id="partners" class="tab-panel"><div class="panel-grid"><form id="partner-form" class="editor-card"><h2>Dodaj partnera</h2><input type="hidden" id="partner-id"><label>Nazwa marki<input id="partner-name"></label><label>Logo / ścieżka<input id="partner-logo"></label><div class="form-actions"><button class="primary" type="submit">Zapisz partnera</button><button id="clear-partner" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Partnerzy</h2><div id="partners-list" class="items-list"></div></div></div></section>
       <section id="reviews" class="tab-panel"><div class="panel-grid"><form id="review-form" class="editor-card"><h2>Dodaj opinię</h2><input type="hidden" id="review-id"><label>Imię i inicjał<input id="review-name" placeholder="Anna K."></label><label>Miejscowość<input id="review-city" placeholder="Olesno"></label><label>Treść opinii<textarea id="review-text" rows="4"></textarea></label><div class="form-actions"><button class="primary" type="submit">Zapisz opinię</button><button id="clear-review" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Opinie</h2><div id="reviews-list" class="items-list"></div></div></div></section>
@@ -212,6 +343,7 @@
       <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW29 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
     </section>
   </main>
-  <script src="admin.js?v=29"></script>
+  <script src="admin.js?v=42"></script>
+  <script src="admin-full-cms.js?v=42"></script>
 </body>
 </html>
