@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELKASS Admin — Import produktu z linku</title>
+<link rel="stylesheet" href="product-link-import.css">
+</head>
+<body>
+<main class="import-shell">
+  <aside class="import-sidebar">
+    <div class="brand">ELKASS<br><span>Superadmin</span></div>
+    <a href="index.html">← Panel główny</a>
+    <a class="active" href="product-link-import.html">🤖 Produkt z linku</a>
+  </aside>
+
+  <section class="import-main">
+    <header class="import-header">
+      <div>
+        <p class="eyebrow">ELKASS ENTERPRISE 1.6</p>
+        <h1>Dodaj produkt z linku</h1>
+        <p>Wklej link, sprawdź dane, popraw szczegóły i zaakceptuj produkt przed publikacją.</p>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>1. Link produktu</h2>
+      <div class="url-row">
+        <input id="productUrl" type="url" placeholder="https://strona-producenta.pl/produkt/..." />
+        <button id="analyzeBtn">Pobierz roboczo</button>
+      </div>
+      <p class="hint">Etap 1 działa bez backendu — tworzy inteligentny szkic produktu na podstawie linku i ręcznej korekty.</p>
+    </section>
+
+    <section class="grid">
+      <form class="card form-card" id="draftForm">
+        <h2>2. Dane do akceptacji</h2>
+
+        <label>Nazwa produktu
+          <input id="name" value="Przykładowy produkt RTV/AGD">
+        </label>
+
+        <label>Marka
+          <input id="brand" value="Samsung">
+        </label>
+
+        <div class="two">
+          <label>Kategoria
+            <select id="category">
+              <option>RTV</option>
+              <option>AGD</option>
+              <option>Komputery</option>
+              <option>Telefony</option>
+              <option>Audio</option>
+              <option>Małe AGD</option>
+            </select>
+          </label>
+
+          <label>Podkategoria
+            <input id="subcategory" value="Telewizory">
+          </label>
+        </div>
+
+        <div class="two">
+          <label>Cena promocyjna
+            <input id="price" type="number" value="2499">
+          </label>
+
+          <label>Rabat %
+            <input id="discount" type="number" value="15">
+          </label>
+        </div>
+
+        <label>Etykieta promocji
+          <select id="promoLabel">
+            <option>Brak</option>
+            <option>Hit dnia</option>
+            <option selected>Hit tygodnia</option>
+            <option>Black Friday</option>
+            <option>Premium Deal</option>
+            <option>Okazja AGD</option>
+            <option>Własna promocja</option>
+          </select>
+        </label>
+
+        <label>Zdjęcie główne / URL lub ścieżka
+          <input id="image" value="assets/products/product-01.jpg">
+        </label>
+
+        <label>Opis premium
+          <textarea id="description">Nowoczesny sprzęt dobrany z myślą o domu, komforcie i codziennym użytkowaniu. Produkt przygotowany do prezentacji w sklepie ELKASS.</textarea>
+        </label>
+
+        <label>Najważniejsze cechy — po jednej w linii
+          <textarea id="features">Fachowo dobrany produkt
+Atrakcyjna cena promocyjna
+Możliwość zakupu na raty
+Wsparcie doradcy ELKASS</textarea>
+        </label>
+
+        <label>Parametry — format: Nazwa: Wartość
+          <textarea id="params">Producent: Samsung
+Typ: RTV/AGD
+Gwarancja: producenta
+Dostępność: dostępny w sklepie</textarea>
+        </label>
+
+        <div class="actions">
+          <button type="button" id="previewBtn">Odśwież podgląd</button>
+          <button type="button" id="saveBtn">Zapisz roboczo</button>
+          <button type="button" id="printBtn">Drukuj kartę</button>
+        </div>
+      </form>
+
+      <section class="preview-column">
+        <div class="card">
+          <h2>Podgląd kafla</h2>
+          <div id="productTile"></div>
+        </div>
+
+        <div class="card">
+          <h2>Podgląd karty produktu</h2>
+          <div id="productPage"></div>
+        </div>
+      </section>
+    </section>
+  </section>
+</main>
+
+<script src="product-link-import.js"></script>
+</body>
+</html>
