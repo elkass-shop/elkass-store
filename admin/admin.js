@@ -183,3 +183,66 @@ renderAll();
   }
   setTimeout(setupWizard,0);
 })();
+
+
+/* ===== ENTERPRISE 1.3 — edycja produktu w kreatorze krok po kroku ===== */
+(function(){
+  const $ = (id)=>document.getElementById(id);
+  let wizardEditId = '';
+  function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function productList(){return (window.data || data || {}).products || []}
+  function ensureSwitcher(){
+    const panel=$('product-wizard'); if(!panel || $('wizard-edit-switcher')) return;
+    const hero=panel.querySelector('.wizard-hero');
+    const box=document.createElement('div'); box.id='wizard-edit-switcher'; box.className='wizard-edit-switcher';
+    box.innerHTML=`<h3>Edytuj albo dodaj produkt w kreatorze</h3><p>Pracownik może utworzyć nowy produkt albo wybrać istniejący i przejść przez te same kroki bez szukania w zaawansowanym formularzu.</p><div class="wizard-edit-row"><label>Wybierz produkt do edycji<select id="wiz-edit-select"><option value="">— Nowy produkt —</option></select></label><button type="button" class="secondary" id="wiz-load-edit">Załaduj do kreatora</button><button type="button" class="primary" id="wiz-new-product">Nowy produkt</button></div><div id="wiz-edit-status" class="wizard-edit-status">Tryb: dodawanie nowego produktu</div>`;
+    hero?.after(box);
+    $('wiz-load-edit')?.addEventListener('click',loadSelectedProductToWizard);
+    $('wiz-new-product')?.addEventListener('click',()=>{wizardEditId=''; $('wiz-edit-select').value=''; $('wiz-edit-status').textContent='Tryb: dodawanie nowego produktu'; $('wiz-edit-status').classList.remove('editing'); $('wiz-reset')?.click();});
+    refreshEditSelect();
+  }
+  function refreshEditSelect(){
+    const sel=$('wiz-edit-select'); if(!sel) return; const current=sel.value;
+    sel.innerHTML='<option value="">— Nowy produkt —</option>'+productList().map(p=>`<option value="${esc(p.id)}">${esc(p.name)} • ${esc(p.category||'')} / ${esc(p.subcategory||'')}</option>`).join('');
+    if(current) sel.value=current;
+  }
+  function setVal(id,v){const el=$(id); if(el) el.value=v??''}
+  function setChecked(id,v){const el=$(id); if(el) el.checked=!!v}
+  function loadSelectedProductToWizard(){
+    const id=$('wiz-edit-select')?.value; if(!id){$('wiz-new-product')?.click(); return;}
+    const p=productList().find(x=>String(x.id)===String(id)); if(!p) return alert('Nie znaleziono produktu.');
+    wizardEditId=p.id;
+    setVal('wiz-name',p.name); setVal('wiz-brand',p.brand||''); setVal('wiz-category',p.category||'');
+    document.getElementById('wiz-category')?.dispatchEvent(new Event('change',{bubbles:true}));
+    setTimeout(()=>{setVal('wiz-subcategory',p.subcategory||'');},30);
+    setVal('wiz-availability',p.availability||'Dostępny w sklepie');
+    setVal('wiz-short',p.short||''); setVal('wiz-features',Array.isArray(p.features)?p.features.join('\n'):(p.features||''));
+    setVal('wiz-images',[p.img,...(Array.isArray(p.gallery)?p.gallery:[])].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).join('\n'));
+    setVal('wiz-price',p.price||''); setVal('wiz-promo-type',p.promoType||'none'); setVal('wiz-promo-label',p.promoLabel||p.badge||''); setVal('wiz-discount-mode',p.discountMode||'none'); setVal('wiz-custom-discount',p.customDiscount||''); setVal('wiz-promo-end',p.promoEnd||'');
+    setVal('wiz-specs',Array.isArray(p.specs)?p.specs.map(s=>typeof s==='string'?s:`${s.name||s.key||''}: ${s.value||''}`).join('\n'):(p.specs||''));
+    const placements=Array.isArray(p.placements)?p.placements:[];
+    setChecked('wiz-visible',p.visible!==false); setChecked('wiz-place-promotions',placements.includes('promotions')||p.promo); setChecked('wiz-place-hit-week',placements.includes('hit-week')||p.promoType==='hit-week'); setChecked('wiz-place-hit-day',placements.includes('hit-day')||p.promoType==='hit-day'); setChecked('wiz-place-black-friday',placements.includes('black-friday')||p.promoType==='black-friday'); setChecked('wiz-place-featured',placements.includes('featured')||p.featured); setChecked('wiz-place-category-only',placements.includes('category-only'));
+    const status=$('wiz-edit-status'); if(status){status.textContent='Tryb: edycja produktu — '+p.name; status.classList.add('editing');}
+    document.querySelector('.wizard-step[data-step="1"]')?.click();
+    ['wiz-name','wiz-images','wiz-price','wiz-specs'].forEach(id=>$(id)?.dispatchEvent(new Event('input',{bubbles:true})));
+  }
+  function getImages(){return ($('wiz-images')?.value||'').split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getLines(id){return ($(id)?.value||'').split('\n').map(x=>x.trim()).filter(Boolean)}
+  function placements(){const out=[]; if($('wiz-place-promotions')?.checked)out.push('promotions'); if($('wiz-place-hit-week')?.checked)out.push('hit-week'); if($('wiz-place-hit-day')?.checked)out.push('hit-day'); if($('wiz-place-black-friday')?.checked)out.push('black-friday'); if($('wiz-place-featured')?.checked)out.push('featured'); if($('wiz-place-category-only')?.checked)out.push('category-only'); return out;}
+  function saveEditCapture(e){
+    if(!wizardEditId) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    const products=productList(); const idx=products.findIndex(p=>String(p.id)===String(wizardEditId)); if(idx<0) return alert('Nie znaleziono produktu do edycji.');
+    const price=Number($('wiz-price')?.value||0); const imgs=getImages();
+    if(!$('wiz-name')?.value.trim()) return alert('Podaj nazwę produktu.'); if(!price) return alert('Podaj cenę produktu.'); if(!imgs.length) return alert('Dodaj przynajmniej jedno zdjęcie produktu.');
+    const pls=placements(); const promoType=$('wiz-promo-type')?.value||'none'; const customLabel=($('wiz-promo-label')?.value||'').trim();
+    const promoLabels={none:'',new:'NOWOŚĆ','hit-day':'HIT DNIA','hit-week':'HIT TYGODNIA','black-friday':'BLACK FRIDAY','agd-deal':'OKAZJA AGD','premium-deal':'PREMIUM DEAL',custom:customLabel||'PROMOCJA'};
+    const label=customLabel || promoLabels[promoType] || '';
+    products[idx]={...products[idx],name:$('wiz-name').value.trim(),brand:$('wiz-brand')?.value.trim(),price,category:$('wiz-category')?.value,subcategory:$('wiz-subcategory')?.value,availability:$('wiz-availability')?.value,img:imgs[0],gallery:imgs,features:getLines('wiz-features'),specs:getLines('wiz-specs'),visible:$('wiz-visible')?.checked!==false,promo:pls.includes('promotions'),featured:pls.includes('featured'),placements:pls,promoType,promoLabel:label,badge:label,discountMode:$('wiz-discount-mode')?.value,customDiscount:$('wiz-custom-discount')?.value,promoEnd:$('wiz-promo-end')?.value,showInHit:pls.includes('hit-week')||pls.includes('hit-day')||pls.includes('black-friday')};
+    if(typeof saveData==='function') saveData(true); else localStorage.setItem('elkassAdminData',JSON.stringify(data));
+    alert('Produkt zaktualizowany w kreatorze.');
+    refreshEditSelect();
+  }
+  function init(){ensureSwitcher(); $('wizard-product-form')?.addEventListener('submit',saveEditCapture,true); document.querySelector('[data-tab="product-wizard"]')?.addEventListener('click',()=>setTimeout(refreshEditSelect,50));}
+  setTimeout(init,300);
+})();

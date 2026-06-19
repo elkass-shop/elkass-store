@@ -1403,3 +1403,43 @@ body[data-header-mode="dark"] .header{background:#10131a;color:white}body[data-h
 .enterprise-product-info>p{font-size:15px;line-height:1.65;color:#475569}.placement-editor-box{border:1px solid rgba(15,23,42,.08);background:linear-gradient(180deg,#fff,#f8fafc)}.placement-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.placement-checks label{background:#fff;border:1px solid #e5e7eb;border-radius:14px;padding:11px 12px;font-weight:800}
 @media(max-width:760px){.category-pro-card{min-height:auto}.category-pro-card .product-image{height:190px}.product-offer-strip{grid-template-columns:1fr}.product-detail-info h1{font-size:26px}.enterprise-spec-box{padding:14px}.product-detail-actions{gap:8px}.product-detail-actions .btn{min-height:48px}.deal-mini-list{overflow-x:auto;display:flex;scroll-snap-type:x mandatory}.deal-mini-card{min-width:220px;scroll-snap-align:start}.deal-banner[role="link"]:hover{transform:none}}
 @media print{.product-offer-strip{grid-template-columns:repeat(2,1fr)!important}.product-offer-strip span{border:1px solid #ddd!important;background:#fff!important;color:#111!important}.product-detail-category span,.product-badge.static{border:1px solid #ddd!important;background:#fff!important;color:#111!important}}
+
+
+/* ===== ELKASS ENTERPRISE 1.3 — Product Card + Print + Wizard Edit FIX ===== */
+.product-detail-hero{padding-top:26px!important;}
+.product-detail{align-items:start!important;grid-template-columns:minmax(360px,.95fr) minmax(420px,1.05fr)!important;gap:32px!important;}
+.product-detail-media.enterprise-gallery{align-items:stretch!important;justify-content:flex-start!important;min-height:0!important;background:linear-gradient(180deg,#f8fafc,#fff)!important;padding:18px!important;}
+.main-product-photo{height:390px!important;min-height:390px!important;padding:14px!important;background:#fff!important;}
+.main-product-photo img{width:100%!important;height:100%!important;max-height:none!important;object-fit:contain!important;object-position:center center!important;padding:4px!important;}
+.product-detail-info.enterprise-product-info{padding-top:4px!important;}
+.product-detail-info h1{font-size:clamp(28px,3.2vw,46px)!important;line-height:1.08!important;margin:10px 0 12px!important;}
+.product-offer-strip{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+.enterprise-spec-box dl{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important;}
+.enterprise-spec-box dl div{display:block!important;border:1px solid #e5e7eb!important;border-radius:14px!important;background:#fff!important;padding:12px!important;}
+.enterprise-spec-box dt{font-size:13px!important;margin-bottom:5px!important;}
+.enterprise-spec-box dd{font-size:13px!important;line-height:1.4!important;}
+.wizard-edit-switcher{margin:18px 0 22px;padding:18px;border-radius:22px;background:#fff;border:1px solid #e6edf7;box-shadow:0 14px 38px rgba(15,23,42,.07)}
+.wizard-edit-switcher h3{margin:0 0 8px;font-size:20px}.wizard-edit-switcher p{margin:0 0 14px;color:#667085;font-weight:600}.wizard-edit-row{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:end}.wizard-edit-row select{width:100%;height:48px;border:1px solid #d0d5dd;border-radius:14px;padding:0 14px;font-weight:700;background:#fff}.wizard-edit-status{margin-top:10px;font-size:13px;font-weight:800;color:#027a48}.wizard-edit-status.editing{color:#b42318}
+@media(max-width:900px){.product-detail{grid-template-columns:1fr!important}.main-product-photo{height:330px!important;min-height:330px!important}.enterprise-spec-box dl{grid-template-columns:1fr!important}.wizard-edit-row{grid-template-columns:1fr}.product-detail-info h1{font-size:30px!important}.product-detail-hero{padding-top:18px!important}}
+@media(max-width:560px){.main-product-photo{height:265px!important;min-height:265px!important}.product-detail-media.enterprise-gallery{padding:12px!important}.product-thumbs{grid-template-columns:repeat(4,1fr)!important;gap:8px}.product-thumb{min-height:70px!important}.product-thumb img{height:56px!important}.product-offer-strip{grid-template-columns:1fr!important}.product-detail-info h1{font-size:25px!important;letter-spacing:-.5px!important}.product-detail-price strong{font-size:30px!important}.enterprise-spec-box h2{font-size:19px!important}}
+
+@page{size:A4;margin:9mm;}
+@media print{
+  html,body{width:210mm!important;background:#fff!important;color:#111!important;font-size:10.5px!important;line-height:1.25!important;}
+  .site-header,.footer,.desktop-call,.mobile-call,.top-btn,.related-section,.back-link,.product-thumbs,.product-detail-actions,.product-detail-actions *{display:none!important;}
+  .product-detail-hero{padding:0!important;background:#fff!important;}
+  .container{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;}
+  .product-detail{display:grid!important;grid-template-columns:74mm 1fr!important;gap:8mm!important;box-shadow:none!important;border:0!important;border-radius:0!important;padding:0!important;align-items:start!important;page-break-inside:avoid!important;}
+  .product-detail-media.enterprise-gallery{background:#fff!important;border:0!important;padding:0!important;display:block!important;min-height:0!important;}
+  .main-product-photo{height:88mm!important;min-height:88mm!important;border:1px solid #ddd!important;border-radius:6px!important;padding:4mm!important;box-shadow:none!important;}
+  .main-product-photo img{width:100%!important;height:100%!important;object-fit:contain!important;padding:0!important;}
+  .product-detail-info h1{font-size:20px!important;line-height:1.08!important;letter-spacing:0!important;margin:0 0 5mm!important;}
+  .product-badge.static,.product-detail-discount,.product-detail-category span,.product-status{border:1px solid #ddd!important;background:#fff!important;color:#111!important;padding:3px 6px!important;font-size:9px!important;border-radius:4px!important;}
+  .product-offer-strip{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:3mm!important;margin:3mm 0!important;}
+  .product-offer-strip span{background:#fff!important;border:1px solid #ddd!important;color:#111!important;font-size:9px!important;padding:3mm!important;border-left:1px solid #ddd!important;}
+  .product-detail-price{margin:4mm 0!important;}.product-detail-price strong{font-size:24px!important;color:#111!important}.product-detail-price del{font-size:11px!important;color:#555!important}
+  .enterprise-product-info>p{font-size:10px!important;margin:0 0 4mm!important;}
+  .product-specs{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:2mm!important;margin:3mm 0!important;}.product-specs li{font-size:9px!important;padding:2mm!important;border:1px solid #ddd!important;background:#fff!important;border-radius:4px!important;}
+  .enterprise-spec-box{margin-top:4mm!important;padding:3mm!important;border:1px solid #ddd!important;border-radius:6px!important;background:#fff!important;break-inside:avoid!important;}.enterprise-spec-box h2{font-size:14px!important;margin:0 0 2mm!important}.enterprise-spec-box dl{display:grid!important;grid-template-columns:repeat(2,1fr)!important;gap:2mm!important}.enterprise-spec-box dl div{border:1px solid #ddd!important;border-radius:4px!important;padding:2mm!important;background:#fff!important}.enterprise-spec-box dt,.enterprise-spec-box dd{font-size:8.8px!important;}
+  .product-detail-info:after{content:'ELKASS OLESNO • ul. Kochanowskiego 4, 46-300 Olesno • tel. 34 358 24 42 • elkass@wp.pl';display:block;margin-top:5mm;padding-top:3mm;border-top:1px solid #ddd;font-weight:700;font-size:10px!important;}
+}
