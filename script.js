@@ -89,6 +89,32 @@ document.addEventListener('DOMContentLoaded', () => {
     return `product.html?id=${encodeURIComponent(product.id || product.name)}`;
   }
 
+
+  function productPlacements(product) {
+    if (!product) return [];
+    if (Array.isArray(product.placements)) return product.placements;
+    const type = product.promoType || '';
+    const legacyHit = product.showInHit || ['hit-day','hit-week','black-friday'].includes(type);
+    const out = [];
+    if (product.featured) out.push('featured');
+    if (legacyHit || type === 'hit-week') out.push('hit-week');
+    if (type === 'hit-day') out.push('hit-day');
+    if (type === 'black-friday') out.push('black-friday');
+    if (product.promo !== false && !legacyHit) out.push('promotions');
+    return [...new Set(out)];
+  }
+
+  function hasPlacement(product, key) {
+    return productPlacements(product).includes(key);
+  }
+
+  function productSpecsPreview(product, limit=4) {
+    const specs = productSpecs(product);
+    if (specs.length) return specs.slice(0, limit).map(s => `${s.name}: ${s.value}`);
+    const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+    return features.slice(0, limit);
+  }
+
   const data = getData();
   window.ELKASS_DATA = data;
   window.ELKASS_PRODUCTS = data.products || defaultProducts;
@@ -145,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     const label = activeSubcategory ? `${activeCategory} / ${activeSubcategory}` : activeCategory;
     box.hidden = false;
-    box.innerHTML = `<span>Pokazuję produkty: <strong>${label}</strong></span><button type="button" id="clearFilter">Pokaż wszystkie</button>`;
+    box.innerHTML = `<span>Pokazuję produkty: <strong>${label}</strong></span><button type="button" id="clearFilter">Pokaż wszystkie<em>Zobacz kartę →</em></button>`;
     const btn = document.getElementById('clearFilter');
     if (btn) btn.addEventListener('click', clearCategoryFilter);
   }
@@ -201,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function productList() {
-    const all = (data.products || []).filter(p => p.visible !== false && p.promo !== false);
+    const all = (data.products || []).filter(p => p.visible !== false && hasPlacement(p, 'promotions'));
     let list = all;
     if (activeCategory && activeSubcategory) {
       list = all.filter(p =>
@@ -335,17 +361,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const discount = stableDiscount(product);
       const price = Number(product.price || 0);
       const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
-      const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+      const features = productSpecsPreview(product, 5);
       const card = document.createElement('article');
-      card.className = 'product-card category-page-product';
+      card.className = 'product-card category-page-product category-pro-card';
       card.innerHTML = `
         <a class="product-link-card" href="${productUrl(product)}" aria-label="Zobacz produkt ${product.name}">
-          <div class="product-badge">${product.badge || 'OFERTA'}</div>
+          <div class="product-badge">${promotionLabel(product, product.badge || 'OFERTA')}</div>
           ${discount ? `<div class="discount">-${discount}%</div>` : ''}
           <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
           <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
           <h3>${product.name}</h3>
-          <ul class="features">${features.slice(0,4).map(item => `<li>• ${item}</li>`).join('')}</ul>
+          <div class="product-pro-meta"><span>${product.category || 'Oferta'}</span><span>${product.subcategory || 'Produkt'}</span></div>
+          <ul class="features product-pro-specs">${features.slice(0,5).map(item => `<li>• ${item}</li>`).join('')}</ul>
           <div class="price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
         </a>
       `;
@@ -360,10 +387,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const bestsellersGrid = document.getElementById('bestsellers-grid');
   function renderBestsellers(){
     if(!bestsellersGrid) return;
-    const source = (data.products || defaultProducts).filter(p => p.visible !== false);
+    const source = (data.products || defaultProducts).filter(p => p.visible !== false && (hasPlacement(p, 'featured') || p.featured));
+    const allVisible = (data.products || defaultProducts).filter(p => p.visible !== false);
     const preferredIds = ['p5','p1','p2','p12','p8','p9'];
     const picked = preferredIds.map(id => source.find(p => p.id === id)).filter(Boolean);
-    const fallback = source.filter(p => !picked.some(x => x.id === p.id)).slice(0, 6 - picked.length);
+    const fallback = (source.length ? source : allVisible).filter(p => !picked.some(x => x.id === p.id)).slice(0, 6 - picked.length);
     const list = [...picked, ...fallback].slice(0,6);
     bestsellersGrid.innerHTML = list.map((p, i) => `
       <a class="bestseller-card" href="${productUrl(p)}" aria-label="Zobacz ${p.name}">
@@ -385,7 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
     return `<article class="product-card">
       <a class="product-link-card" href="${productUrl(product)}">
-        <div class="product-badge">${product.badge || 'OFERTA'}</div>
+        <div class="product-badge">${promotionLabel(product, product.badge || 'OFERTA')}</div>
         ${discount ? `<div class="discount">-${discount}%</div>` : ''}
         <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
         <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
@@ -443,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ${discount ? `<span class="discount product-detail-discount">-${discount}%</span>` : ''}
         <h1>${product.name}</h1>
         <div class="product-detail-category"><span>${product.category || 'Oferta'}</span><span>${product.subcategory || 'Produkt'}</span></div>
+        <div class="product-offer-strip"><span>🎯 ${promotionLabel(product, 'Oferta sklepu')}</span><span>💳 Raty 0%</span><span>🚚 Odbiór w Olesnie</span><span>🛠 Fachowe doradztwo</span></div>
         <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
         <div class="product-detail-price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
         <p>Zapytaj o aktualną dostępność, odbiór w sklepie lub możliwość dostawy. Nasi doradcy pomogą dobrać najlepszy sprzęt do Twoich potrzeb.</p>
@@ -579,8 +608,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const hitDiscount = document.getElementById('hitDiscount');
   const dealMiniList = document.getElementById('dealMiniList');
 
-  const weeklyDealSource = productList();
-  const adminDeals = weeklyDealSource.filter(p => p.showInHit || ['hit-day','hit-week','black-friday','agd-deal','premium-deal'].includes(p.promoType));
+  const weeklyDealSource = (data.products || defaultProducts).filter(p => p.visible !== false);
+  const adminDeals = weeklyDealSource.filter(p => hasPlacement(p, 'hit-week') || hasPlacement(p, 'hit-day') || hasPlacement(p, 'black-friday') || p.showInHit);
   const fallbackDeals = [
     { product: weeklyDealSource.find(p => p.id === 'p5') || weeklyDealSource[0], label:'HIT TYGODNIA', durationMs:(2*24*60*60 + 7*60*60 + 15*60 + 12) * 1000 },
     { product: weeklyDealSource.find(p => p.id === 'p1') || weeklyDealSource[1], label:'OKAZJA AGD', durationMs:(4*24*60*60 + 3*60*60 + 42*60 + 8) * 1000 },
@@ -638,6 +667,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const p = deal.product;
     const discount = stableDiscount(p);
     hitName.textContent = p.name;
+    const dealBanner = document.querySelector('.deal-banner');
+    if (dealBanner) { dealBanner.dataset.href = productUrl(p); dealBanner.setAttribute('role','link'); dealBanner.setAttribute('tabindex','0'); }
+    const dealCta = document.getElementById('hitCta');
+    if (dealCta) dealCta.href = productUrl(p);
     hitPrice.textContent = formatPrice(p.price);
     if(hitDesc) hitDesc.textContent = `${promotionLabel(p, deal.label)} • ${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
     if(hitImage){
@@ -708,6 +741,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderMainDeal();
   renderMiniDeals();
+  const dealBannerClick = document.querySelector('.deal-banner');
+  if (dealBannerClick) {
+    dealBannerClick.addEventListener('click', (e) => { if(e.target.closest('a,button')) return; if(dealBannerClick.dataset.href) window.location.href = dealBannerClick.dataset.href; });
+    dealBannerClick.addEventListener('keydown', (e) => { if((e.key==='Enter'||e.key===' ') && dealBannerClick.dataset.href) window.location.href = dealBannerClick.dataset.href; });
+  }
 
   window.setInterval(() => {
     activeDealIndex = (activeDealIndex + 1) % weeklyDeals.length;

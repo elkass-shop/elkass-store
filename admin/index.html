@@ -314,10 +314,18 @@ Gwarancja: 24 miesiące"></textarea></label>
               <div class="admin-image-preview"><img id="product-preview" src="../assets/products/product-01-lodowka-tcl.jpg" alt="Podgląd produktu"></div>
               <div class="size-tip">Zdjęcie może mieć dowolną rozdzielczość. Na stronie produkt ma stałą ramkę i używa object-fit: contain, więc układ się nie rozjedzie.</div>
             </div>
-            <div class="checks">
-              <label><input id="product-visible" type="checkbox" checked> Widoczny na stronie</label>
-              <label><input id="product-promo" type="checkbox" checked> Pokazuj w Nowościach i promocjach</label>
-              <label><input id="product-featured" type="checkbox"> Najczęściej wybierane</label>
+            <div class="cms-box placement-editor-box">
+              <h3>Gdzie pokazać produkt?</h3>
+              <p class="size-tip">Tu decydujesz, czy produkt ma być w Nowościach, Hicie tygodnia, Black Friday, Najczęściej wybieranych albo tylko w swojej kategorii/podkategorii.</p>
+              <div class="checks placement-checks">
+                <label><input id="product-visible" type="checkbox" checked> Widoczny na stronie</label>
+                <label><input id="product-place-promotions" type="checkbox" checked> Nowości i promocje</label>
+                <label><input id="product-place-hit-week" type="checkbox"> Hit tygodnia / duży banner</label>
+                <label><input id="product-place-hit-day" type="checkbox"> Hit dnia</label>
+                <label><input id="product-place-black-friday" type="checkbox"> Black Friday</label>
+                <label><input id="product-place-featured" type="checkbox"> Najczęściej wybierane</label>
+                <label><input id="product-place-category-only" type="checkbox"> Tylko kategoria/podkategoria</label>
+              </div>
             </div>
             <label class="upload-box">Wgraj zdjęcie produktu<input id="product-upload" type="file" accept="image/*"></label>
             <div class="form-actions">
