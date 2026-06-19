@@ -44,7 +44,7 @@ function discountText(p){if(p.discountMode==='custom'&&p.customDiscount)return `
 function showPanel(){ $('login-screen').classList.add('hidden'); $('panel').classList.remove('hidden'); renderAll() }
 function showLogin(){ $('login-screen').classList.remove('hidden'); $('panel').classList.add('hidden') }
 if(localStorage.getItem(AUTH_KEY)==='1')showPanel();else showLogin();
-$('login-form').addEventListener('submit',e=>{e.preventDefault(); if($('login').value==='admin'&&$('password').value==='admin'){localStorage.setItem(AUTH_KEY,'1');showPanel()}else alert('Nieprawidłowy login lub hasło')});
+$('login-form').addEventListener('submit',e=>{e.preventDefault(); const cfg=JSON.parse(localStorage.getItem('elkassSuperAdminAccount')||'{}'); const adminLogin=cfg.login||'admin'; const adminPass=cfg.password||'admin'; if($('login').value===adminLogin&&$('password').value===adminPass){localStorage.setItem(AUTH_KEY,'1');showPanel()}else alert('Nieprawidłowy login lub hasło')});
 $('logout').onclick=()=>{localStorage.removeItem(AUTH_KEY);showLogin()};
 document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>activateTab(btn.dataset.tab));
 document.querySelectorAll('[data-tab-target]').forEach(btn=>btn.onclick=()=>activateTab(btn.dataset.tabTarget));
