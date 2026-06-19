@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=45">
+  <link rel="stylesheet" href="admin.css?v=52">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -27,6 +27,7 @@
     <aside class="sidebar">
       <div class="logo"><span>ELKASS</span> CMS</div>
       <button class="tab active" data-tab="dashboard">🏠 Pulpit</button>
+      <button class="tab" data-tab="control-center">🧠 Control Center</button>
       <button class="tab" data-tab="superadmin">👑 Superadmin</button>
       <button class="tab" data-tab="products">📦 Produkty</button>
       <button class="tab" data-tab="categories">🧭 Kategorie</button>
@@ -80,6 +81,107 @@
         </div>
       </section>
 
+
+
+      <section id="control-center" class="tab-panel">
+        <div class="control-hero editor-card wide">
+          <div>
+            <span class="eyebrow">WOW52</span>
+            <h2>Superadmin Control Center</h2>
+            <p>Jedno centrum dowodzenia do szybkiego wejścia w każdą część strony: produkty, kategorie, promocje, banery, treści, media, SEO i ustawienia administratora.</p>
+          </div>
+          <div class="control-health">
+            <strong>Status projektu</strong>
+            <span>ELKASS Master Rebuild 2026</span>
+            <small>Gotowe pod dalsze podpięcie Firebase/Supabase</small>
+          </div>
+        </div>
+
+        <section class="editor-card wide control-search-card">
+          <h2>🔎 Szybkie szukanie w panelu</h2>
+          <p class="hint">Wpisz np. „lodówka”, „promocja”, „telefon”, „kontakt”, „hero”, „galeria” — panel pokaże gdzie wejść i co edytować.</p>
+          <div class="control-search-row">
+            <input id="control-search" placeholder="Szukaj ustawień, produktów, sekcji, promocji, zdjęć...">
+            <button id="control-search-clear" type="button" class="secondary">Wyczyść</button>
+          </div>
+          <div id="control-search-results" class="control-search-results"></div>
+        </section>
+
+        <div class="control-modules-grid">
+          <article class="control-module-card" data-jump="products">
+            <div class="module-icon">📦</div><h3>Produkty</h3>
+            <p>Nazwy, ceny, zdjęcia, opisy, cechy, dostępność i przypisanie do kategorii.</p>
+            <button type="button" data-tab-target="products">Edytuj produkty</button>
+          </article>
+          <article class="control-module-card" data-jump="categories">
+            <div class="module-icon">🧭</div><h3>Kategorie i podkategorie</h3>
+            <p>Dodawanie, usuwanie, opisy, grafiki i struktura menu sklepu.</p>
+            <button type="button" data-tab-target="categories">Edytuj strukturę</button>
+          </article>
+          <article class="control-module-card" data-jump="promotions">
+            <div class="module-icon">🔥</div><h3>Promocje</h3>
+            <p>Hit dnia, hit tygodnia, Black Friday, własne etykiety i rabaty.</p>
+            <button type="button" data-tab-target="promotions">Edytuj promocje</button>
+          </article>
+          <article class="control-module-card" data-jump="homepage">
+            <div class="module-icon">🏠</div><h3>Strona główna</h3>
+            <p>Hero, lokalny opis sklepu, sekcje, zdjęcia i główne komunikaty.</p>
+            <button type="button" data-tab-target="homepage">Edytuj stronę</button>
+          </article>
+          <article class="control-module-card" data-jump="builder">
+            <div class="module-icon">🎛</div><h3>Kreator sekcji</h3>
+            <p>Włączanie i wyłączanie sekcji oraz przygotowanie pod zmianę kolejności.</p>
+            <button type="button" data-tab-target="builder">Przejdź do kreatora</button>
+          </article>
+          <article class="control-module-card" data-jump="banners">
+            <div class="module-icon">📰</div><h3>Banery</h3>
+            <p>Grafiki sezonowe, treści promocyjne i przyciski CTA.</p>
+            <button type="button" data-tab-target="banners">Edytuj banery</button>
+          </article>
+          <article class="control-module-card" data-jump="media">
+            <div class="module-icon">📁</div><h3>Media Manager</h3>
+            <p>JPG, PNG, WEBP, AVIF, SVG, podgląd i ścieżki do użycia na stronie.</p>
+            <button type="button" data-tab-target="media">Zarządzaj mediami</button>
+          </article>
+          <article class="control-module-card" data-jump="gallery">
+            <div class="module-icon">🖼</div><h3>Galeria ELKASS</h3>
+            <p>Zdjęcia salonu, podpisy, kategorie galerii i podstrona galerii.</p>
+            <button type="button" data-tab-target="gallery">Edytuj galerię</button>
+          </article>
+          <article class="control-module-card" data-jump="partners">
+            <div class="module-icon">🤝</div><h3>Partnerzy</h3>
+            <p>Logotypy marek, podpisy i slider partnerów.</p>
+            <button type="button" data-tab-target="partners">Edytuj partnerów</button>
+          </article>
+          <article class="control-module-card" data-jump="reviews">
+            <div class="module-icon">⭐</div><h3>Opinie</h3>
+            <p>Opinie klientów, miejscowości i treści rekomendacji.</p>
+            <button type="button" data-tab-target="reviews">Edytuj opinie</button>
+          </article>
+          <article class="control-module-card" data-jump="contact">
+            <div class="module-icon">☎️</div><h3>Kontakt i dane sklepu</h3>
+            <p>Telefon, e-mail, adres, godziny otwarcia i mapa.</p>
+            <button type="button" data-tab-target="contact">Edytuj kontakt</button>
+          </article>
+          <article class="control-module-card" data-jump="seo">
+            <div class="module-icon">🔎</div><h3>SEO</h3>
+            <p>Tytuły, opisy, frazy lokalne i przygotowanie pod elkass.pl.</p>
+            <button type="button" data-tab-target="seo">Edytuj SEO</button>
+          </article>
+        </div>
+
+        <section class="editor-card wide control-checklist">
+          <h2>✅ Checklist wdrożeniowy</h2>
+          <div class="checklist-grid">
+            <label><input type="checkbox" checked> Strona główna spójna</label>
+            <label><input type="checkbox" checked> Kategorie i podkategorie działają</label>
+            <label><input type="checkbox" checked> Product / category / gallery / promotions / compare są w paczce</label>
+            <label><input type="checkbox" checked> Mobile zabezpieczone CSS-em</label>
+            <label><input type="checkbox"> Podpiąć Firebase/Supabase</label>
+            <label><input type="checkbox"> Podpiąć domenę elkass.pl</label>
+          </div>
+        </section>
+      </section>
 
       <section id="superadmin" class="tab-panel">
         <div class="superadmin-hero editor-card wide">
@@ -491,13 +593,14 @@
         </section>
       </section>
 
-      <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW29 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
+      <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW51 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
     </section>
   </main>
-  <script src="admin.js?v=45"></script>
-  <script src="admin-full-cms.js?v=45"></script>
-  <script src="admin-superadmin.js?v=45"></script>
-  <script src="admin-media-manager.js?v=45"></script>
-  <script src="admin-global-search.js?v=46"></script>
+  <script src="admin.js?v=52"></script>
+  <script src="admin-full-cms.js?v=52"></script>
+  <script src="admin-superadmin.js?v=52"></script>
+  <script src="admin-media-manager.js?v=52"></script>
+  <script src="admin-global-search.js?v=52"></script>
+  <script src="admin-control-center.js?v=52"></script>
 </body>
 </html>
