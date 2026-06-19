@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const data = getData();
+  window.ELKASS_DATA = data;
+  window.ELKASS_PRODUCTS = data.products || defaultProducts;
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
   const topBtn = document.getElementById('topBtn');
@@ -394,6 +396,26 @@ document.addEventListener('DOMContentLoaded', () => {
     </article>`;
   }
 
+  function productGallery(product){
+    const raw = Array.isArray(product.gallery) ? product.gallery : String(product.gallery || '').split('\n');
+    const images = [product.img, ...raw].map(x => typeof x === 'string' ? x.trim() : (x?.src || '')).filter(Boolean);
+    return [...new Set(images)];
+  }
+  function productSpecs(product){
+    const raw = product.specs || product.parameters || [];
+    if(Array.isArray(raw)) return raw.map(item => {
+      if(typeof item === 'string'){
+        const parts = item.split(':');
+        return { name:(parts.shift()||'Parametr').trim(), value:parts.join(':').trim() };
+      }
+      return { name:item.name || item.key || 'Parametr', value:item.value || '' };
+    }).filter(x => x.name && x.value);
+    return String(raw || '').split('\n').map(line => {
+      const parts = line.split(':');
+      return { name:(parts.shift()||'').trim(), value:parts.join(':').trim() };
+    }).filter(x => x.name && x.value);
+  }
+
   function renderProductDetailPage(){
     const detail = document.getElementById('productDetail');
     if(!detail) return;
@@ -406,22 +428,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const price = Number(product.price || 0);
     const oldPrice = discount ? Math.round(price / (1 - discount / 100)) : price;
     const features = Array.isArray(product.features) ? product.features : String(product.features || '').split('\n').filter(Boolean);
+    const gallery = productGallery(product);
+    const specs = productSpecs(product);
+    const mainImage = gallery[0] || product.img;
     detail.innerHTML = `
-      <div class="product-detail-media"><img src="${product.img}" alt="${product.name}"></div>
-      <div class="product-detail-info">
-        <span class="product-badge static">${product.badge || 'OFERTA'}</span>
+      <div class="product-detail-media enterprise-gallery">
+        <div class="main-product-photo"><img id="enterpriseMainProductImage" src="${mainImage}" alt="${product.name}"></div>
+        <div class="product-thumbs">
+          ${gallery.map((img,i)=>`<button type="button" class="product-thumb ${i===0?'active':''}" data-img="${img}" aria-label="Zdjęcie ${i+1} produktu"><img src="${img}" alt="${product.name} ${i+1}">${i===0?'<span>Główne</span>':''}</button>`).join('')}
+        </div>
+      </div>
+      <div class="product-detail-info enterprise-product-info">
+        <span class="product-badge static">${promotionLabel(product, product.badge || 'OFERTA')}</span>
+        ${discount ? `<span class="discount product-detail-discount">-${discount}%</span>` : ''}
         <h1>${product.name}</h1>
         <div class="product-detail-category"><span>${product.category || 'Oferta'}</span><span>${product.subcategory || 'Produkt'}</span></div>
         <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
         <div class="product-detail-price"><strong>${formatPrice(price)}</strong>${discount ? `<del>${formatPrice(oldPrice)}</del>` : ''}</div>
         <p>Zapytaj o aktualną dostępność, odbiór w sklepie lub możliwość dostawy. Nasi doradcy pomogą dobrać najlepszy sprzęt do Twoich potrzeb.</p>
-        <ul class="product-specs">${features.map(f => `<li>${f}</li>`).join('') || '<li>Fachowe doradztwo</li><li>Możliwość zakupu na raty</li>'}</ul>
+        <ul class="product-specs enterprise-features">${features.map(f => `<li>${f}</li>`).join('') || '<li>Fachowe doradztwo</li><li>Możliwość zakupu na raty</li>'}</ul>
+        <div class="enterprise-spec-box">
+          <h2>Parametry produktu</h2>
+          ${specs.length ? `<dl>${specs.map(s=>`<div><dt>${s.name}</dt><dd>${s.value}</dd></div>`).join('')}</dl>` : '<p class="hint">Parametry dodasz w panelu admina w polu „Parametry produktu”.</p>'}
+        </div>
         <div class="product-detail-actions">
           <a class="btn btn-primary" href="tel:343582442">📞 Zapytaj telefonicznie</a>
           <a class="btn btn-outline" href="mailto:elkass@wp.pl?subject=Zapytanie o produkt ${encodeURIComponent(product.name)}">✉️ Napisz e-mail</a>
-          <a class="btn btn-outline" href="index.html#kontakt">📍 Odwiedź sklep</a>
+          <button class="btn btn-outline" id="printProductCard" type="button">🖨 Drukuj kartę produktu</button>
         </div>
       </div>`;
+    detail.querySelectorAll('.product-thumb').forEach(btn => btn.addEventListener('click', () => {
+      detail.querySelectorAll('.product-thumb').forEach(x=>x.classList.remove('active'));
+      btn.classList.add('active');
+      const img = document.getElementById('enterpriseMainProductImage');
+      if(img) img.src = btn.dataset.img;
+    }));
+    const printBtn = document.getElementById('printProductCard');
+    if(printBtn) printBtn.addEventListener('click', () => window.print());
     const relatedBox = document.getElementById('relatedProducts');
     if(relatedBox){
       const related = all.filter(p => p.id !== product.id && (p.category === product.category || p.subcategory === product.subcategory)).slice(0,4);
