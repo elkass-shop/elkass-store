@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=55">
+  <link rel="stylesheet" href="admin.css?v=56">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -610,11 +610,11 @@
       <section id="live-builder" class="tab-panel">
         <div class="control-hero editor-card wide live-builder-hero">
           <div>
-            <span class="eyebrow">WOW53</span>
+            <span class="eyebrow">WOW56</span>
             <h2>Live Page Builder</h2>
-            <p>Tu układasz stronę główną bez szukania w kodzie. To demo przygotowuje strukturę pod prawdziwe przeciąganie sekcji po podpięciu bazy.</p>
+            <p>Tu realnie ustawiasz układ strony: dodajesz sekcje, edytujesz nazwę/opis/zdjęcie, włączasz lub wyłączasz oraz przesuwasz kolejność. Zapis działa lokalnie w przeglądarce i jest gotowy pod przeniesienie do Supabase/Firebase.</p>
           </div>
-          <div class="control-health"><strong>Tryb</strong><span>Demo CMS</span><small>docelowo zapis w Supabase/Firebase</small></div>
+          <div class="control-health"><strong>Tryb</strong><span>Edycja lokalna aktywna</span><small>następny etap: zapis globalny w Supabase/Firebase</small></div>
         </div>
         <div class="panel-grid">
           <section class="editor-card">
@@ -633,11 +633,11 @@
             <p class="hint">Sekcje można włączyć, wyłączyć i przesuwać góra/dół. W pełnej wersji cloud będzie zapis globalny dla wszystkich odwiedzających.</p>
           </section>
           <section class="editor-card">
-            <h2>Podgląd ustawień sekcji</h2>
+            <h2>Edytuj wybraną sekcję</h2>
             <label>Nazwa sekcji<input id="builder-section-title" placeholder="np. Weekendowe promocje"></label>
             <label>Krótki opis<textarea id="builder-section-desc" rows="4" placeholder="Opis widoczny pod nagłówkiem sekcji"></textarea></label>
             <label>Zdjęcie / banner<input id="builder-section-img" placeholder="assets/banners/weekend-sale.jpg"></label>
-            <div class="form-actions"><button id="builder-save-draft" type="button" class="primary">Zapisz szkic sekcji</button><button id="builder-clear-draft" type="button" class="secondary">Wyczyść</button></div>
+            <div class="form-actions"><button id="builder-save-draft" type="button" class="primary">Zapisz sekcję</button><button id="builder-clear-draft" type="button" class="secondary">Wyczyść</button></div><p class="hint" id="builder-edit-hint">Kliknij „Edytuj” przy sekcji poniżej albo dodaj nową sekcję z lewej.</p>
           </section>
         </div>
         <section class="editor-card wide">
@@ -681,11 +681,12 @@
       <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW51 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
     </section>
   </main>
-  <script src="admin.js?v=55"></script>
-  <script src="admin-full-cms.js?v=55"></script>
-  <script src="admin-superadmin.js?v=55"></script>
-  <script src="admin-media-manager.js?v=55"></script>
-  <script src="admin-global-search.js?v=55"></script>
-  <script src="admin-control-center.js?v=55"></script>
+  <script src="admin.js?v=56"></script>
+  <script src="admin-full-cms.js?v=56"></script>
+  <script src="admin-superadmin.js?v=56"></script>
+  <script src="admin-media-manager.js?v=56"></script>
+  <script src="admin-global-search.js?v=56"></script>
+  <script src="admin-control-center.js?v=56"></script>
+  <script src="admin-live-cloud.js?v=56"></script>
 </body>
 </html>

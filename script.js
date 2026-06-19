@@ -697,3 +697,25 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 
 // ELKASS WOW51 CMS TOTAL CONTROL - JS marker
+
+// WOW56: zastosowanie układu z Live Page Builder na stronie publicznej (lokalnie w tej samej przeglądarce)
+(function(){
+  const KEY='elkassBuilderLayout';
+  const MAP={
+    hero:'#home', search:'.shop-search-section', promotions:'#promocje', categories:'#oferta', featured:'.bestsellers-section', local:'.local-advantages', reviews:'#opinie', gallery:'#galeria', partners:'.brands-section', contact:'#kontakt'
+  };
+  function applyBuilderLayout(){
+    let layout=[];
+    try{layout=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){layout=[]}
+    if(!Array.isArray(layout)||!layout.length)return;
+    const main=document.querySelector('main')||document.body;
+    layout.forEach(item=>{
+      const selector=MAP[item.id]; if(!selector)return;
+      const el=document.querySelector(selector); if(!el)return;
+      el.style.display=item.enabled===false?'none':'';
+      if(item.enabled!==false && main.contains(el)) main.appendChild(el);
+      const h=el.querySelector('.section-title, h2'); if(h && item.name && !['hero','search'].includes(item.id)) h.textContent=item.name;
+    });
+  }
+  document.addEventListener('DOMContentLoaded',applyBuilderLayout);
+})();

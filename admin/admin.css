@@ -251,3 +251,11 @@ body{overflow-x:hidden;}
 .cloud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}.cloud-grid article{background:#fff;border:1px solid #e6edf7;border-radius:22px;padding:20px;box-shadow:0 16px 45px rgba(15,23,42,.07);}.cloud-grid h3{margin:0 0 10px;color:#111827}.cloud-grid p{margin:0;color:#64748b;line-height:1.55}.live-builder-hero{background:linear-gradient(135deg,#111827,#263548)!important}.cloud-hero{background:linear-gradient(135deg,#08111f,#0f3b2e)!important}
 @media(max-width:1100px){.panel{display:block}.sidebar{position:relative;width:100%;height:auto;min-height:0;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:14px}.sidebar .logo{min-width:150px}.sidebar .tab,.sidebar .site-link,.sidebar .logout{min-width:max-content}.content{padding:18px}.cloud-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:720px){.cloud-grid{grid-template-columns:1fr}.builder-row{grid-template-columns:1fr}.builder-row .handle{display:none}.builder-actions{justify-content:flex-start}.control-hero{border-radius:22px}.topbar{gap:14px}.actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.actions button,.actions label{width:100%;text-align:center}}
+
+/* ===== WOW56 LIVE BUILDER FIX ===== */
+.builder-row.selected{border-color:#e30613;box-shadow:0 18px 38px rgba(227,6,19,.13)}
+.builder-img-path{color:#94a3b8!important;font-size:12px;word-break:break-all;margin-top:6px}
+.builder-actions .danger-mini{background:#fff0f1!important;color:#b9000c!important}
+.builder-live-summary{margin-top:14px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:14px 16px;color:#475569}
+.builder-live-summary strong{color:#111827}
+@media(min-width:1101px){.panel{grid-template-columns:280px minmax(0,1fr)}.sidebar{min-height:100vh;height:100vh;overflow-y:auto;background:#0d0f13}.content{min-width:0}}
