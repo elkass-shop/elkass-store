@@ -695,5 +695,3 @@ document.addEventListener('DOMContentLoaded', () => {
   box.addEventListener('click',e=>{if(e.target===box) closeGallery()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('active')) closeGallery()});
 })();
-
-// ELKASS WOW51 CMS TOTAL CONTROL - JS marker
