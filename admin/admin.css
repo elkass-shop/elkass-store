@@ -128,3 +128,5 @@
 
 /* WOW25 */
 .admin-image-preview img{object-fit:contain;}
+/* WOW29 CMS */
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}.admin-stats div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}.admin-stats b{font-size:34px;display:block}.admin-stats span{color:#aeb8c5}.quick-admin-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.admin-shortcut{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:20px;font-weight:800;cursor:pointer}.cms-box{border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);border-radius:18px;padding:18px;margin:18px 0}.promo-editor-box h3{margin-top:0}.section-switches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.item-row img{object-fit:contain;background:#fff}.tab{font-size:14px}.file-label input{display:none}@media(max-width:900px){.admin-stats,.quick-admin-grid,.section-switches{grid-template-columns:1fr 1fr}.panel{display:block}.sidebar{position:static;width:auto}.content{margin-left:0}}

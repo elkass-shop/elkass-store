@@ -43,11 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function stableDiscount(product) {
-    if (product.randomDiscount === false) return 0;
+    if (!product) return 0;
+    const mode = product.discountMode || (product.randomDiscount === false ? 'none' : 'random');
+    if (mode === 'none') return 0;
+    if (mode === 'custom') {
+      const value = Number(product.customDiscount || 0);
+      return Number.isFinite(value) ? Math.max(0, Math.min(90, Math.round(value))) : 0;
+    }
     const source = String(product.id || product.name || Math.random());
     let sum = 0;
     for (let i = 0; i < source.length; i++) sum += source.charCodeAt(i) * (i + 3);
     return 5 + (sum % 21); // 5-25
+  }
+
+  function promotionLabel(product, fallback='PROMOCJA') {
+    if (!product) return fallback;
+    if (product.promoLabel) return product.promoLabel;
+    if (product.badge) return product.badge;
+    const map = {
+      'new':'NOWOŚĆ',
+      'hit-day':'HIT DNIA',
+      'hit-week':'HIT TYGODNIA',
+      'black-friday':'BLACK FRIDAY',
+      'agd-deal':'OKAZJA AGD',
+      'premium-deal':'PREMIUM DEAL',
+      'custom':'PROMOCJA'
+    };
+    return map[product.promoType] || fallback;
   }
 
   function formatPrice(value) {
@@ -228,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = 'product-card';
         card.innerHTML = `
           <a class="product-link-card" href="${productUrl(product)}" aria-label="Zobacz produkt ${product.name}">
-            <div class="product-badge">${product.badge || 'PROMOCJA'}</div>
+            <div class="product-badge">${promotionLabel(product)}</div>
             ${discount ? `<div class="discount">-${discount}%</div>` : ''}
             <div class="product-image"><img src="${product.img}" alt="${product.name}" loading="lazy"></div>
             <span class="product-status ${availabilityClass(product)}">● ${productAvailability(product)}</span>
@@ -515,13 +537,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const dealMiniList = document.getElementById('dealMiniList');
 
   const weeklyDealSource = productList();
-  const weeklyDeals = [
-    { id:'deal-tv', product: weeklyDealSource.find(p => p.id === 'p5') || weeklyDealSource[0], label:'HIT TYGODNIA', durationMs:(2*24*60*60 + 7*60*60 + 15*60 + 12) * 1000 },
-    { id:'deal-lodowka', product: weeklyDealSource.find(p => p.id === 'p1') || weeklyDealSource[1], label:'OKAZJA AGD', durationMs:(4*24*60*60 + 3*60*60 + 42*60 + 8) * 1000 },
-    { id:'deal-pralka', product: weeklyDealSource.find(p => p.id === 'p2') || weeklyDealSource[2], label:'RATY 0%', durationMs:(1*24*60*60 + 18*60*60 + 9*60 + 55) * 1000 },
-    { id:'deal-ekspres', product: weeklyDealSource.find(p => p.id === 'p12') || weeklyDealSource[3], label:'PREMIUM DEAL', durationMs:(5*24*60*60 + 11*60*60 + 24*60 + 33) * 1000 },
-    { id:'deal-smartfon', product: weeklyDealSource.find(p => p.id === 'p8') || weeklyDealSource[4], label:'HIT CENOWY', durationMs:(0*24*60*60 + 23*60*60 + 36*60 + 17) * 1000 }
-  ].filter(item => item.product);
+  const adminDeals = weeklyDealSource.filter(p => p.showInHit || ['hit-day','hit-week','black-friday','agd-deal','premium-deal'].includes(p.promoType));
+  const fallbackDeals = [
+    { product: weeklyDealSource.find(p => p.id === 'p5') || weeklyDealSource[0], label:'HIT TYGODNIA', durationMs:(2*24*60*60 + 7*60*60 + 15*60 + 12) * 1000 },
+    { product: weeklyDealSource.find(p => p.id === 'p1') || weeklyDealSource[1], label:'OKAZJA AGD', durationMs:(4*24*60*60 + 3*60*60 + 42*60 + 8) * 1000 },
+    { product: weeklyDealSource.find(p => p.id === 'p2') || weeklyDealSource[2], label:'RATY 0%', durationMs:(1*24*60*60 + 18*60*60 + 9*60 + 55) * 1000 },
+    { product: weeklyDealSource.find(p => p.id === 'p12') || weeklyDealSource[3], label:'PREMIUM DEAL', durationMs:(5*24*60*60 + 11*60*60 + 24*60 + 33) * 1000 },
+    { product: weeklyDealSource.find(p => p.id === 'p8') || weeklyDealSource[4], label:'HIT CENOWY', durationMs:(0*24*60*60 + 23*60*60 + 36*60 + 17) * 1000 }
+  ];
+  const weeklyDeals = (adminDeals.length ? adminDeals.map((product, index) => ({
+    id: 'admin-deal-' + (product.id || index),
+    product,
+    label: promotionLabel(product, 'HIT'),
+    durationMs: product.promoEnd ? Math.max(3600000, new Date(product.promoEnd).getTime() - Date.now()) : ((index + 1) * 24 * 60 * 60 + (6 + index) * 60 * 60 + 17 * 60 + 33) * 1000
+  })) : fallbackDeals.map((deal, index) => ({...deal, id:'deal-' + index}))).filter(item => item.product);
 
   const DEAL_DEADLINES_KEY = 'elkassDealDeadlinesWOW13';
 
@@ -567,7 +596,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const discount = stableDiscount(p);
     hitName.textContent = p.name;
     hitPrice.textContent = formatPrice(p.price);
-    if(hitDesc) hitDesc.textContent = `${deal.label} • ${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
+    if(hitDesc) hitDesc.textContent = `${promotionLabel(p, deal.label)} • ${p.category || 'RTV/AGD'} • ${(p.features || []).slice(0,3).join(' • ')}`;
     if(hitImage){
       hitImage.src = p.img;
       hitImage.alt = p.name;
@@ -599,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const t = timeParts(dealTimeLeft(deal));
       return `<button class="deal-mini-card ${index === activeDealIndex ? 'active' : ''}" data-deal-index="${index}" type="button">
         <img src="${p.img}" alt="${p.name}" loading="lazy">
-        <span>${deal.label}</span>
+        <span>${promotionLabel(p, deal.label)}</span>
         <strong>${p.name}</strong>
         <small>${discount ? '-' + discount + '% • ' : ''}${String(t.d).padStart(2,'0')}d ${String(t.h).padStart(2,'0')}h ${String(t.m).padStart(2,'0')}m ${String(t.s).padStart(2,'0')}s</small>
       </button>`;

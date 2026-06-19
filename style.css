@@ -1266,3 +1266,68 @@ a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.container
 .bestseller-card{display:block;text-decoration:none;color:inherit;min-height:260px;}
 .bestseller-card img{width:100%;height:130px;object-fit:contain;}
 @media(max-width:900px){.gallery-teaser-grid{grid-template-columns:1fr;padding:24px;border-radius:26px}.gallery-teaser-photo{height:230px}.gallery-page-grid .gallery-card{min-height:220px}}
+
+
+/* ==============================
+   WOW30 MOBILE + DEPLOY HARDENING
+   Bezpieczne proporcje i stabilny układ pod elkass.pl
+============================== */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+img,video{max-width:100%;height:auto;}
+body{overflow-x:hidden;}
+.product-card,.category-card,.promo-card,.review-card,.gallery-card{overflow:hidden;}
+.product-card{display:flex;flex-direction:column;}
+.product-image,.product-card-image,.promo-product-image{
+    width:100%;
+    aspect-ratio:1/1;
+    min-height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,#fff,#f7f7f7);
+    overflow:hidden;
+}
+.product-image img,.product-card-image img,.promo-product-image img{
+    width:100%;height:100%;object-fit:contain;padding:12px;
+}
+.category-card img,.gallery-card img,.store-slide img,.hero-media img,.banner-image img{
+    width:100%;height:100%;object-fit:cover;
+}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;}
+input,select,textarea{font-size:16px;}
+
+@media(max-width:768px){
+    body{font-size:15px;}
+    .container{width:min(100% - 28px,1200px);}
+    .site-header,.header,.top-header{position:sticky;top:0;z-index:1000;}
+    .hero,.hero-premium,.hero-section{min-height:auto;padding:34px 0;}
+    .hero h1,.hero-content h1{font-size:clamp(30px,10vw,46px);line-height:1.05;}
+    .hero p,.hero-content p{font-size:15px;line-height:1.55;}
+    .hero-buttons,.cta-buttons{display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+    .hero-buttons a,.cta-buttons a,.btn{width:100%;justify-content:center;}
+    .trust-bar,.trust-grid,.features-grid{grid-template-columns:1fr 1fr;gap:10px;}
+    .section-title{font-size:clamp(24px,7vw,34px);line-height:1.1;}
+    .products-grid,.promo-grid,.bestsellers-grid{grid-template-columns:1fr 1fr!important;gap:12px;}
+    .product-card{min-height:unset;border-radius:18px;}
+    .product-image,.product-card-image,.promo-product-image{min-height:145px;}
+    .product-card h3,.promo-card h3{font-size:14px;line-height:1.25;}
+    .price,.product-price strong{font-size:20px;}
+    .category-grid{grid-template-columns:1fr!important;gap:14px;}
+    .category-card{min-height:220px;}
+    .category-tags{position:relative!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin:10px 0!important;z-index:3!important;}
+    .category-tag{font-size:11px!important;padding:6px 9px!important;}
+    .brands-row{gap:12px;}
+    .contact-grid,.footer-grid{grid-template-columns:1fr!important;}
+    .admin-layout{grid-template-columns:1fr!important;}
+    .admin-sidebar{position:relative!important;width:100%!important;}
+}
+
+@media(max-width:420px){
+    .products-grid,.promo-grid,.bestsellers-grid{grid-template-columns:1fr!important;}
+    .trust-bar,.trust-grid,.features-grid{grid-template-columns:1fr;}
+    .product-image,.product-card-image,.promo-product-image{min-height:180px;}
+}
+
+/* ===== WOW40 FINAL BOSS ADDONS ===== */
+.compare-mini-btn{position:absolute;right:14px;bottom:14px;border:0;background:#111827;color:#fff;border-radius:999px;padding:8px 12px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,.18);z-index:6}.compare-mini-btn.active{background:var(--red)}.product-card,.bestseller-card{position:relative}.compare-tray{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);z-index:9999;background:#111827;color:#fff;border-radius:999px;padding:12px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,.25);transition:.25s;max-width:92vw}.compare-tray.show{transform:translate(-50%,0)}.compare-tray a{background:var(--red);color:#fff;border-radius:999px;padding:9px 14px;font-weight:900}.compare-tray button{border:0;background:rgba(255,255,255,.14);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer}.compare-hero,.promotions-hero{padding:72px 0;background:linear-gradient(135deg,#111827,#231215 60%,#e30613);color:#fff}.compare-hero h1,.promotions-hero h1{font-size:clamp(34px,5vw,62px);line-height:1.05}.compare-table-wrap{overflow:auto;background:#fff;border-radius:26px;box-shadow:var(--shadow);margin:50px 0}.compare-table{width:100%;border-collapse:collapse;min-width:760px}.compare-table th,.compare-table td{padding:18px;border-bottom:1px solid #eef0f4;text-align:left;vertical-align:top}.compare-table th{background:#f8fafc}.compare-table th img{width:110px;height:90px;object-fit:contain;margin-bottom:10px}.promo-filter-row{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px}.promo-filter{border:1px solid #dde3ee;background:#fff;border-radius:999px;padding:11px 16px;font-weight:900;cursor:pointer}.promo-filter.active{background:#111827;color:#fff;border-color:#111827}.cms-promo-grid{margin-top:20px}.empty-products{background:#fff;border-radius:24px;padding:32px;box-shadow:var(--shadow-soft);display:grid;gap:10px;color:#667085}.empty-products strong{color:#111827;font-size:20px}@media(max-width:700px){.compare-tray{left:12px;right:12px;bottom:82px;transform:translateY(140px);border-radius:20px;justify-content:space-between}.compare-tray.show{transform:translateY(0)}.compare-tray span{display:none}.compare-mini-btn{bottom:10px;right:10px}.compare-hero,.promotions-hero{padding:48px 0}}
