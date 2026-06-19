@@ -94,3 +94,92 @@ $('save-all').onclick=()=>saveData(); $('download-data').onclick=()=>exportJson(
 $('import-json').addEventListener('change',e=>{const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{try{data=mergeData(JSON.parse(r.result));saveData()}catch(err){alert('Błąd importu JSON')}}; r.readAsText(f)});
 $('reset-data').onclick=()=>{if(confirm('Przywrócić dane demo?')){data=structuredClone(defaultData);saveData()}};
 renderAll();
+
+
+/* ===== ENTERPRISE 1.2 PRODUCT WIZARD ===== */
+(function(){
+  function el(id){return document.getElementById(id)}
+  let step=1;
+  const promoLabels={none:'',new:'NOWOŚĆ','hit-day':'HIT DNIA','hit-week':'HIT TYGODNIA','black-friday':'BLACK FRIDAY','agd-deal':'OKAZJA AGD','premium-deal':'PREMIUM DEAL',custom:''};
+  const templates={
+    'RTV':['Przekątna: ','Rozdzielczość: 4K UHD','Smart TV: Tak','HDR: Tak','Złącza HDMI: ','Gwarancja: 24 miesiące'],
+    'AGD':['Klasa energetyczna: ','Pojemność / załadunek: ','Programy: ','Wymiary: ','Kolor: ','Gwarancja: 24 miesiące'],
+    'Komputery':['Procesor: ','Pamięć RAM: ','Dysk: ','Ekran: ','System: ','Gwarancja: 24 miesiące'],
+    'Telefony':['Ekran: ','Pamięć: ','Aparat: ','Bateria: ','Łączność: 5G','Gwarancja: 24 miesiące'],
+    'Audio':['Moc: ','Łączność: Bluetooth','Wejścia: ','Kolor: ','Zastosowanie: ','Gwarancja: 24 miesiące'],
+    'Serwis':['Typ usługi: ','Zakres: ','Czas realizacji: ','Dla urządzeń: ','Uwagi: ']
+  };
+  function ready(){return el('wizard-product-form') && typeof data!=='undefined'}
+  function setupWizard(){
+    if(!ready()) return;
+    populateWizardCategories();
+    updateStep();
+    ['wiz-name','wiz-brand','wiz-category','wiz-subcategory','wiz-availability','wiz-short','wiz-features','wiz-images','wiz-price','wiz-promo-type','wiz-promo-label','wiz-discount-mode','wiz-custom-discount','wiz-promo-end','wiz-specs'].forEach(id=>el(id)?.addEventListener('input',updateWizardPreview));
+    el('wiz-category')?.addEventListener('change',()=>{populateWizardSubcategories(); updateWizardPreview()});
+    document.querySelectorAll('.wizard-step').forEach(btn=>btn.addEventListener('click',()=>{step=Number(btn.dataset.step);updateStep()}));
+    el('wiz-prev')?.addEventListener('click',()=>{step=Math.max(1,step-1);updateStep()});
+    el('wiz-next')?.addEventListener('click',()=>{step=Math.min(6,step+1);updateStep()});
+    el('wiz-reset')?.addEventListener('click',resetWizard);
+    el('wiz-fill-template')?.addEventListener('click',()=>{const cat=el('wiz-category').value; el('wiz-specs').value=(templates[cat]||templates['AGD']).join('\n'); updateWizardPreview()});
+    el('wiz-clear-specs')?.addEventListener('click',()=>{el('wiz-specs').value=''; updateWizardPreview()});
+    el('wiz-upload')?.addEventListener('change',handleWizardImages);
+    el('wizard-product-form')?.addEventListener('submit',saveWizardProduct);
+    document.querySelectorAll('[id^="wiz-place-"]').forEach(ch=>ch.addEventListener('change',updateWizardPreview));
+    updateWizardPreview();
+  }
+  function populateWizardCategories(){
+    const sel=el('wiz-category'); if(!sel) return; const cur=sel.value;
+    sel.innerHTML=(data.categories||[]).map(c=>`<option value="${String(c.name).replace(/"/g,'&quot;')}">${c.name}</option>`).join('');
+    if(cur) sel.value=cur; populateWizardSubcategories();
+  }
+  function populateWizardSubcategories(){
+    const cat=(data.categories||[]).find(c=>c.name===el('wiz-category').value); const sel=el('wiz-subcategory'); if(!sel) return; const cur=sel.value;
+    sel.innerHTML=(cat?.subcategories||[]).map(s=>`<option value="${String(s.name).replace(/"/g,'&quot;')}">${s.name}</option>`).join('');
+    if(cur) sel.value=cur;
+  }
+  function updateStep(){
+    document.querySelectorAll('.wizard-step').forEach(b=>b.classList.toggle('active',Number(b.dataset.step)===step));
+    document.querySelectorAll('.wizard-screen').forEach(s=>s.classList.toggle('active',Number(s.dataset.screen)===step));
+    el('wiz-prev').disabled=step===1; el('wiz-next').classList.toggle('hidden',step===6); el('wiz-save').classList.toggle('hidden',step!==6); updateWizardPreview();
+  }
+  function handleWizardImages(e){
+    const files=[...e.target.files]; if(!files.length)return;
+    const readers=files.map(f=>new Promise(res=>{const r=new FileReader(); r.onload=()=>res(r.result); r.readAsDataURL(f)}));
+    Promise.all(readers).then(imgs=>{const existing=el('wiz-images').value.split('\n').map(x=>x.trim()).filter(Boolean); el('wiz-images').value=[...existing,...imgs].join('\n'); updateWizardPreview();});
+  }
+  function getImages(){return el('wiz-images').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getFeatures(){return el('wiz-features').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getSpecs(){return el('wiz-specs').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getPromoLabel(){const type=el('wiz-promo-type').value; const custom=el('wiz-promo-label').value.trim(); return type==='custom' ? (custom||'PROMOCJA') : (custom||promoLabels[type]||'')}
+  function getDiscount(){const mode=el('wiz-discount-mode').value; if(mode==='none') return 0; if(mode==='custom') return Number(el('wiz-custom-discount').value||0); return 15;}
+  function oldPrice(price,discount){return discount>0 ? Math.round(price/(1-discount/100)) : ''}
+  function updateWizardPreview(){
+    if(!ready()) return;
+    const imgs=getImages(); const img=imgs[0]||'../assets/products/product-01-lodowka-tcl.jpg';
+    const prev=el('wiz-gallery-preview'); if(prev) prev.innerHTML=imgs.map((src,i)=>`<div class="wiz-thumb"><img src="${src.startsWith('data:')||src.startsWith('http')||src.startsWith('../')?src:'../'+src}">${i===0?'<span class="wiz-main">GŁÓWNE</span>':''}</div>`).join('') || '<p class="hint">Brak zdjęć. Dodaj zdjęcie lub wpisz ścieżkę.</p>';
+    const price=Number(el('wiz-price')?.value||0); const discount=getDiscount(); const old=oldPrice(price,discount); const label=getPromoLabel();
+    if(el('wiz-price-preview')) el('wiz-price-preview').innerHTML=discount?`Cena na stronie: ${price||0} zł • rabat ${discount}% • cena przekreślona: ${old} zł`:`Cena na stronie: ${price||0} zł • bez ceny przekreślonej`;
+    const card=el('wiz-card-preview'); if(card){
+      card.innerHTML=`<div class="preview-img"><img src="${img.startsWith('data:')||img.startsWith('http')||img.startsWith('../')?img:'../'+img}"></div>${label?`<span class="badge">${label}</span>`:''}<h4>${esc(el('wiz-name').value||'Nazwa produktu')}</h4><p>${esc(el('wiz-short').value||getFeatures().slice(0,2).join(' • ')||'Krótki opis produktu')}</p><div><span class="price">${price||0} zł</span>${old?`<span class="old">${old} zł</span>`:''}</div><p>${esc(el('wiz-category').value||'Kategoria')} / ${esc(el('wiz-subcategory').value||'Podkategoria')}</p>`;
+    }
+    const checks=[['Nazwa produktu',!!el('wiz-name').value.trim()],['Cena',price>0],['Kategoria',!!el('wiz-category').value],['Zdjęcie główne',imgs.length>0],['Opis lub cechy',getFeatures().length>0],['Parametry',getSpecs().length>0]];
+    if(el('wiz-validation')) el('wiz-validation').innerHTML=checks.map(([t,ok])=>`<li class="${ok?'ok':'bad'}">${ok?'✓':'!'} ${t}</li>`).join('');
+  }
+  function placements(){const out=[]; if(el('wiz-place-promotions').checked)out.push('promotions'); if(el('wiz-place-hit-week').checked)out.push('hit-week'); if(el('wiz-place-hit-day').checked)out.push('hit-day'); if(el('wiz-place-black-friday').checked)out.push('black-friday'); if(el('wiz-place-featured').checked)out.push('featured'); if(el('wiz-place-category-only').checked)out.push('category-only'); return out;}
+  function saveWizardProduct(e){
+    e.preventDefault(); const price=Number(el('wiz-price').value||0); const imgs=getImages();
+    if(!el('wiz-name').value.trim()) return alert('Podaj nazwę produktu.');
+    if(!price) return alert('Podaj cenę produktu.');
+    if(!el('wiz-category').value) return alert('Wybierz kategorię.');
+    if(!imgs.length) return alert('Dodaj przynajmniej jedno zdjęcie produktu.');
+    const pls=placements(); const type=el('wiz-promo-type').value; const label=getPromoLabel();
+    const p={id:'p'+Date.now(),name:el('wiz-name').value.trim(),brand:el('wiz-brand').value.trim(),price,category:el('wiz-category').value,subcategory:el('wiz-subcategory').value,availability:el('wiz-availability').value,img:imgs[0],gallery:imgs,features:getFeatures().length?getFeatures():[el('wiz-short').value.trim()].filter(Boolean),specs:getSpecs(),visible:el('wiz-visible').checked,promo:pls.includes('promotions'),featured:pls.includes('featured'),placements:pls,promoType:type,promoLabel:label,badge:label,discountMode:el('wiz-discount-mode').value,customDiscount:el('wiz-custom-discount').value,promoEnd:el('wiz-promo-end').value,showInHit:pls.includes('hit-week')||pls.includes('hit-day')||pls.includes('black-friday')};
+    data.products.push(p); saveData(true); alert('Produkt dodany. Możesz go teraz edytować w zakładce Produkty zaawansowane.'); resetWizard(); activateTab('products');
+  }
+  function resetWizard(){
+    ['wiz-name','wiz-brand','wiz-short','wiz-features','wiz-images','wiz-price','wiz-promo-label','wiz-custom-discount','wiz-promo-end','wiz-specs'].forEach(id=>{if(el(id))el(id).value=''});
+    if(el('wiz-promo-type')) el('wiz-promo-type').value='none'; if(el('wiz-discount-mode')) el('wiz-discount-mode').value='none'; if(el('wiz-visible')) el('wiz-visible').checked=true; ['wiz-place-promotions','wiz-place-hit-week','wiz-place-hit-day','wiz-place-black-friday','wiz-place-featured','wiz-place-category-only'].forEach((id,i)=>{if(el(id))el(id).checked=id==='wiz-place-promotions'});
+    step=1; populateWizardCategories(); updateStep();
+  }
+  setTimeout(setupWizard,0);
+})();
