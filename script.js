@@ -236,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.setTimeout(() => {
       productsGrid.innerHTML = '';
       if (!list.length) {
-        productsGrid.innerHTML = `<div class="empty-products"><strong>Nie ma jeszcze produktów w tej kategorii.</strong><span>Dodaj produkt w panelu administratora albo zapytaj nas telefonicznie o dostępność.</span></div>`;
+        productsGrid.innerHTML = `<div class="empty-products"><strong>Brak aktualnych produktów w tej sekcji.</strong><span>Sprawdź inne kategorie albo skontaktuj się z nami — pomożemy dobrać odpowiedni sprzęt.</span><div class="empty-actions"><a class="btn btn-primary small" href="category.html">Zobacz wszystkie produkty</a><a class="btn btn-outline small" href="tel:343582442">Zapytaj doradcę</a></div></div>`;
         productsGrid.classList.remove('is-changing');
         return;
       }
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categoryPageProducts.innerHTML = '';
     if(!list.length){
-      categoryPageProducts.innerHTML = `<div class="empty-products category-empty"><strong>Brak produktów w tej podkategorii.</strong><span>Dodaj produkt w panelu administratora albo wróć do kategorii głównej.</span><a class="btn btn-primary small" href="admin/">Dodaj w panelu</a></div>`;
+      categoryPageProducts.innerHTML = `<div class="empty-products category-empty"><strong>Brak aktualnych produktów w tej podkategorii.</strong><span>Sprawdź kategorię główną albo skontaktuj się z doradcą ELKASS — pomożemy znaleźć odpowiedni sprzęt.</span><div class="empty-actions"><a class="btn btn-primary small" href="${buildCategoryUrl(route.category, null)}">Wróć do kategorii</a><a class="btn btn-outline small" href="tel:343582442">Zapytaj doradcę</a></div></div>`;
       return;
     }
     list.forEach(product => {
