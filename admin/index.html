@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css?v=44">
+  <link rel="stylesheet" href="admin.css?v=45">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -37,6 +37,7 @@
       <button class="tab" data-tab="appearance">🎨 Wygląd</button>
       <button class="tab" data-tab="seo">🔎 SEO</button>
       <button class="tab" data-tab="gallery">🖼️ Galeria</button>
+      <button class="tab" data-tab="media">📁 Media Manager</button>
       <button class="tab" data-tab="partners">🤝 Partnerzy</button>
       <button class="tab" data-tab="reviews">⭐ Opinie</button>
       <button class="tab" data-tab="contact">☎️ Kontakt</button>
@@ -409,11 +410,94 @@
       <section id="partners" class="tab-panel"><div class="panel-grid"><form id="partner-form" class="editor-card"><h2>Dodaj partnera</h2><input type="hidden" id="partner-id"><label>Nazwa marki<input id="partner-name"></label><label>Logo / ścieżka<input id="partner-logo"></label><div class="form-actions"><button class="primary" type="submit">Zapisz partnera</button><button id="clear-partner" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Partnerzy</h2><div id="partners-list" class="items-list"></div></div></div></section>
       <section id="reviews" class="tab-panel"><div class="panel-grid"><form id="review-form" class="editor-card"><h2>Dodaj opinię</h2><input type="hidden" id="review-id"><label>Imię i inicjał<input id="review-name" placeholder="Anna K."></label><label>Miejscowość<input id="review-city" placeholder="Olesno"></label><label>Treść opinii<textarea id="review-text" rows="4"></textarea></label><div class="form-actions"><button class="primary" type="submit">Zapisz opinię</button><button id="clear-review" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Opinie</h2><div id="reviews-list" class="items-list"></div></div></div></section>
       <section id="contact" class="tab-panel"><div class="editor-card wide"><h2>Dane sklepu</h2><div class="form-grid"><label>Nazwa sklepu<input id="contact-name"></label><label>Adres<input id="contact-address"></label><label>Telefon<input id="contact-phone"></label><label>E-mail<input id="contact-email"></label><label>Godziny otwarcia<textarea id="contact-hours" rows="4"></textarea></label><label>Link do mapy<input id="contact-map"></label></div><button id="save-contact" class="primary" type="button">Zapisz dane kontaktowe</button></div></section>
+
+      <section id="media" class="tab-panel">
+        <div class="media-hero editor-card wide">
+          <div>
+            <span class="eyebrow">WOW45 Media Manager</span>
+            <h2>Centrum obrazów ELKASS</h2>
+            <p>Dodawaj JPG, PNG, WEBP, AVIF i SVG. Panel pokaże podgląd, zabezpieczy proporcje, przygotuje nazwę pliku oraz pozwoli użyć zdjęcia przy produkcie, galerii, banerze lub hero.</p>
+          </div>
+          <div class="media-format-box">
+            <strong>Obsługiwane formaty</strong>
+            <span>JPG • JPEG • PNG • WEBP • AVIF • SVG</span>
+          </div>
+        </div>
+
+        <div class="panel-grid media-grid-layout">
+          <section class="editor-card">
+            <h2>Dodaj obraz</h2>
+            <p class="hint">Wersja statyczna generuje podgląd i dane lokalnie. Do produkcji z Firebase/Supabase ten moduł będzie wysyłał pliki do Storage.</p>
+            <div class="form-grid">
+              <label>Typ obrazu
+                <select id="media-type">
+                  <option value="products">Produkt 1:1</option>
+                  <option value="gallery">Galeria 4:3</option>
+                  <option value="banners">Banner 16:6</option>
+                  <option value="hero">Hero 16:9</option>
+                  <option value="logos">Logo partnera</option>
+                  <option value="categories">Kategoria</option>
+                </select>
+              </label>
+              <label>Nazwa pliku / slug
+                <input id="media-slug" placeholder="np. lodowka-tcl-rp318">
+              </label>
+            </div>
+            <label class="upload-box media-upload-box">
+              Przeciągnij lub wybierz obraz
+              <input id="media-file" type="file" accept="image/jpeg,image/jpg,image/png,image/webp,image/avif,image/svg+xml">
+            </label>
+            <div class="media-info" id="media-info">Nie wybrano pliku.</div>
+            <div class="media-preview-shell">
+              <img id="media-preview" alt="Podgląd obrazu">
+            </div>
+            <div class="form-actions media-actions">
+              <button id="media-optimize" type="button" class="primary">Przygotuj obraz</button>
+              <button id="media-download" type="button" class="secondary" disabled>Pobierz zoptymalizowany plik</button>
+              <button id="media-copy-path" type="button" class="secondary" disabled>Kopiuj ścieżkę</button>
+            </div>
+            <div class="size-tip">
+              Produkty są automatycznie wyświetlane w stałej ramce 1:1 przez <strong>object-fit: contain</strong>. Bannery i hero używają <strong>object-fit: cover</strong>. Dzięki temu strona nie rozjedzie się nawet przy różnych wymiarach zdjęć.
+            </div>
+          </section>
+
+          <section class="editor-card">
+            <h2>Użyj obrazu na stronie</h2>
+            <p class="hint">Po przygotowaniu obrazu możesz od razu wstawić jego ścieżkę do odpowiedniego formularza w panelu.</p>
+            <div class="media-target-grid">
+              <button id="media-use-product" type="button" class="admin-shortcut">📦 Użyj jako zdjęcie produktu</button>
+              <button id="media-use-gallery" type="button" class="admin-shortcut">🖼 Dodaj do galerii</button>
+              <button id="media-use-hero" type="button" class="admin-shortcut">🚀 Użyj jako hero</button>
+              <button id="media-use-category" type="button" class="admin-shortcut">🧭 Użyj jako kategoria</button>
+              <button id="media-use-partner" type="button" class="admin-shortcut">🤝 Użyj jako logo partnera</button>
+              <button id="media-use-banner" type="button" class="admin-shortcut">🏷 Użyj jako banner</button>
+            </div>
+            <div class="media-output-box">
+              <label>Docelowa ścieżka<input id="media-output-path" readonly></label>
+              <label>Podgląd / data URL<textarea id="media-output-url" rows="5" readonly></textarea></label>
+            </div>
+          </section>
+        </div>
+
+        <section class="editor-card wide">
+          <div class="media-library-head">
+            <div>
+              <h2>Biblioteka mediów</h2>
+              <p class="hint">Lista ostatnio przygotowanych obrazów. W trybie statycznym zapisywana lokalnie w przeglądarce.</p>
+            </div>
+            <button id="media-clear-library" type="button" class="danger">Wyczyść bibliotekę</button>
+          </div>
+          <div id="media-library" class="media-library"></div>
+        </section>
+      </section>
+
       <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW29 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
     </section>
   </main>
-  <script src="admin.js?v=44"></script>
-  <script src="admin-full-cms.js?v=44"></script>
-  <script src="admin-superadmin.js?v=44"></script>
+  <script src="admin.js?v=45"></script>
+  <script src="admin-full-cms.js?v=45"></script>
+  <script src="admin-superadmin.js?v=45"></script>
+  <script src="admin-media-manager.js?v=45"></script>
+  <script src="admin-global-search.js?v=46"></script>
 </body>
 </html>
