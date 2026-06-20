@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ELKASS — Kreator Produktu Premium</title><link rel="stylesheet" href="premium-product-wizard.css"></head>
+<body><div class="ppw-layout"><aside class="ppw-sidebar"><div class="ppw-logo">ELKASS<span>ENTERPRISE 4.0</span></div>
+<a href="index.html">← Panel główny</a><a class="active" href="premium-product-wizard.html">⭐ Kreator Premium</a><a href="product-link-import.html">🌐 Import ze strony BETA</a><a href="../index.html" target="_blank">↗ Zobacz stronę</a></aside>
+<main class="ppw-main"><section class="ppw-hero"><div><p>KREATOR PRODUKTU PREMIUM</p><h1>⭐ Produkt krok po kroku</h1><span>Pracownik wpisuje fakty, technologie i parametry, a system tworzy kafel, kartę produktu, opis premium i wydruk A4.</span></div><div class="ppw-status"><strong>Słownik technologii</strong><span>uczy się nowych definicji</span></div></section>
+<section class="stepbar"><button data-step="1" class="active">1. Podstawy</button><button data-step="2">2. Zdjęcia</button><button data-step="3">3. Cena</button><button data-step="4">4. Technologie</button><button data-step="5">5. Parametry</button><button data-step="6">6. Podgląd</button></section>
+<section class="ppw-grid"><form class="ppw-card">
+<div class="step active" data-panel="1"><h2>Podstawowe dane</h2><label>Nazwa produktu<input id="name" value="Lodówka Amica FK3606D.2DFWi"></label><div class="two"><label>Marka<input id="brand" value="Amica"></label><label>Model<input id="model" value="FK3606D.2DFWi"></label></div><div class="two"><label>Kategoria<select id="category"><option>AGD</option><option>RTV</option><option>Małe AGD</option><option>Komputery</option><option>Telefony</option><option>Audio</option></select></label><label>Podkategoria<input id="subcategory" value="Lodówki"></label></div></div>
+<div class="step" data-panel="2"><h2>Zdjęcia produktu</h2><label>Zdjęcie główne<input id="image" value="assets/products/product-01.jpg"></label><label>Galeria zdjęć — po jednej ścieżce w linii<textarea id="gallery">assets/products/product-01.jpg
+assets/products/product-02.jpg
+assets/products/product-03.jpg</textarea></label></div>
+<div class="step" data-panel="3"><h2>Cena i promocja</h2><div class="two"><label>Cena widoczna<input id="price" type="number" value="1699"></label><label>Rabat %<input id="discount" type="number" value="12"></label></div><div class="two"><label>Cena przekreślona<input id="oldPrice" type="number" placeholder="automatycznie lub wpisz ręcznie"></label><label>Promocja<select id="promo"><option>Brak</option><option selected>Okazja AGD</option><option>Hit tygodnia</option><option>Hit dnia</option><option>Black Friday</option><option>Premium Deal</option><option>Nowość</option><option>Własna promocja</option></select></label></div><label>Własna nazwa promocji<input id="customPromo" placeholder="np. Weekendowa okazja"></label></div>
+<div class="step" data-panel="4"><h2>Technologie i funkcje</h2><p class="hint">Wpisuj format: <strong>skrót/nazwa - opis</strong>. Jeśli definicja już istnieje, system ją podpowie.</p><div class="dict-row"><input id="techInput" placeholder="np. No Frost albo AAT - Automatyczna regulacja temperatury"><button type="button" id="addTech">Dodaj technologię</button></div><div id="techHint" class="tech-hint"></div><div id="techList" class="tech-list"></div><h3>Słownik technologii</h3><div id="dictionaryList" class="dictionary-list"></div></div>
+<div class="step" data-panel="5"><h2>Parametry techniczne</h2><textarea id="params">Pojemność całkowita: 322 l
+Pojemność chłodziarki: 226 l
+Pojemność zamrażarki: 96 l
+Klasa energetyczna: E
+Poziom hałasu: 39 dB
+Wymiary: 59.5 x 185.5 x 63.5 cm
+Kolor: Biały Inox
+EAN: 5906006952723</textarea></div>
+<div class="step" data-panel="6"><h2>Podgląd i zapis</h2><label>Opis na kafel<textarea id="shortDesc"></textarea></label><label>Opis premium na kartę produktu<textarea id="premiumDesc"></textarea></label><label>Opis do wydruku<textarea id="printDesc"></textarea></label><div class="actions"><button type="button" id="generateText">✨ Wygeneruj opisy premium</button><button type="button" id="saveDraft">Zapisz do akceptacji</button><button type="button" id="printCard">🖨 Drukuj kartę premium</button><button type="button" id="exportJson">Eksport JSON</button></div></div>
+<div class="nav-actions"><button type="button" id="prevStep">← Wstecz</button><button type="button" id="nextStep">Dalej →</button></div></form>
+<aside class="ppw-preview"><div class="ppw-card"><h2>Jakość produktu</h2><div id="scoreBox"></div><ul id="qualityList"></ul></div><div class="ppw-card"><h2>Kafel</h2><div id="tilePreview"></div></div><div class="ppw-card"><h2>Karta produktu Premium</h2><div id="pagePreview"></div></div><div class="ppw-card"><h2>Wydruk A4</h2><div id="printPreview"></div></div></aside></section></main></div><script src="premium-product-wizard.js"></script></body></html>
