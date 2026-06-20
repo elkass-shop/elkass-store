@@ -7,9 +7,29 @@
 <section class="stepbar"><button data-step="1" class="active">1. Podstawy</button><button data-step="2">2. Zdjęcia</button><button data-step="3">3. Cena</button><button data-step="4">4. Technologie</button><button data-step="5">5. Parametry</button><button data-step="6">6. Podgląd</button></section>
 <section class="ppw-grid"><form class="ppw-card">
 <div class="step active" data-panel="1"><h2>Podstawowe dane</h2><label>Nazwa produktu<input id="name" value="Lodówka Amica FK3606D.2DFWi"></label><div class="two"><label>Marka<input id="brand" value="Amica"></label><label>Model<input id="model" value="FK3606D.2DFWi"></label></div><div class="two"><label>Kategoria<select id="category"><option>AGD</option><option>RTV</option><option>Małe AGD</option><option>Komputery</option><option>Telefony</option><option>Audio</option></select></label><label>Podkategoria<input id="subcategory" value="Lodówki"></label></div></div>
-<div class="step" data-panel="2"><h2>Zdjęcia produktu</h2><label>Zdjęcie główne<input id="image" value="assets/products/product-01.jpg"></label><label>Galeria zdjęć — po jednej ścieżce w linii<textarea id="gallery">assets/products/product-01.jpg
+<div class="step" data-panel="2">
+  <h2>Zdjęcia produktu</h2>
+  <p class="hint">Dodaj dowolne zdjęcia: JPG, JPEG, PNG, WEBP, GIF, SVG. System zrobi podgląd, wybierze zdjęcie główne i dopasuje je tak, żeby karta produktu, kafel, mobile i wydruk się nie rozjeżdżały.</p>
+
+  <label class="upload-box">
+    <input id="imageFiles" type="file" accept="image/*" multiple>
+    <strong>📷 Kliknij i dodaj zdjęcia produktu</strong>
+    <span>Możesz zaznaczyć kilka plików naraz</span>
+  </label>
+
+  <div id="mediaGallery" class="media-gallery"></div>
+
+  <label>Zdjęcie główne — automatycznie lub ręcznie
+    <input id="image" value="assets/products/product-01.jpg">
+  </label>
+
+  <label>Galeria zdjęć — automatycznie po dodaniu zdjęć
+    <textarea id="gallery">assets/products/product-01.jpg
 assets/products/product-02.jpg
-assets/products/product-03.jpg</textarea></label></div>
+assets/products/product-03.jpg</textarea>
+  </label>
+</div>
+
 <div class="step" data-panel="3"><h2>Cena i promocja</h2><div class="two"><label>Cena widoczna<input id="price" type="number" value="1699"></label><label>Rabat %<input id="discount" type="number" value="12"></label></div><div class="two"><label>Cena przekreślona<input id="oldPrice" type="number" placeholder="automatycznie lub wpisz ręcznie"></label><label>Promocja<select id="promo"><option>Brak</option><option selected>Okazja AGD</option><option>Hit tygodnia</option><option>Hit dnia</option><option>Black Friday</option><option>Premium Deal</option><option>Nowość</option><option>Własna promocja</option></select></label></div><label>Własna nazwa promocji<input id="customPromo" placeholder="np. Weekendowa okazja"></label></div>
 <div class="step" data-panel="4"><h2>Technologie i funkcje</h2><p class="hint">Wpisuj format: <strong>skrót/nazwa - opis</strong>. Jeśli definicja już istnieje, system ją podpowie.</p><div class="dict-row"><input id="techInput" placeholder="np. No Frost albo AAT - Automatyczna regulacja temperatury"><button type="button" id="addTech">Dodaj technologię</button></div><div id="techHint" class="tech-hint"></div><div id="techList" class="tech-list"></div><h3>Słownik technologii</h3><div id="dictionaryList" class="dictionary-list"></div></div>
 <div class="step" data-panel="5"><h2>Parametry techniczne</h2><textarea id="params">Pojemność całkowita: 322 l

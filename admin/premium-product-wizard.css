@@ -1,1 +1,79 @@
 *{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#edf2f7;color:#07111f}.ppw-layout{display:flex;min-height:100vh}.ppw-sidebar{width:285px;background:#07111f;color:#fff;padding:24px;position:sticky;top:0;height:100vh;overflow:auto}.ppw-logo{font-size:28px;font-weight:900;margin-bottom:28px}.ppw-logo span{display:block;font-size:12px;color:#8bc34a;letter-spacing:.1em}.ppw-sidebar a{display:block;color:white;text-decoration:none;padding:14px 16px;border-radius:14px;background:#132842;margin:8px 0;font-weight:900}.ppw-sidebar a.active{background:linear-gradient(135deg,#e30613,#ff7a18)}.ppw-main{flex:1;max-width:1760px;margin:0 auto;padding:28px}.ppw-hero{display:flex;justify-content:space-between;gap:24px;align-items:center;background:linear-gradient(135deg,#07111f,#153b64);color:#fff;border-radius:30px;padding:34px;margin-bottom:22px}.ppw-hero p{margin:0 0 8px;color:#8bc34a;font-weight:900;letter-spacing:.12em}.ppw-hero h1{font-size:42px;margin:0 0 10px}.ppw-hero span{color:#dbeafe}.ppw-status{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);padding:20px;border-radius:22px;min-width:220px}.ppw-status span{display:block;margin-top:6px}.stepbar{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:20px}.stepbar button{border:0;border-radius:14px;padding:13px 10px;font-weight:900;background:white;box-shadow:0 8px 25px rgba(15,23,42,.06);cursor:pointer}.stepbar button.active{background:#e30613;color:#fff}.ppw-grid{display:grid;grid-template-columns:minmax(470px,650px) minmax(0,1fr);gap:24px}.ppw-card{background:#fff;border-radius:24px;padding:24px;margin-bottom:22px;box-shadow:0 18px 55px rgba(15,23,42,.08)}.step{display:none}.step.active{display:block}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}label{display:block;font-weight:900;margin-bottom:15px}input,select,textarea{width:100%;border:1px solid #d7deea;border-radius:14px;padding:13px 14px;margin-top:7px;font:inherit;background:#fff}textarea{min-height:105px;resize:vertical}.hint{background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:12px;color:#475569}.dict-row{display:flex;gap:10px}.dict-row input{flex:1}.dict-row button,.actions button,.nav-actions button{border:0;border-radius:14px;padding:13px 17px;font-weight:900;cursor:pointer;background:#e30613;color:#fff}.tech-hint{margin:10px 0;font-weight:900;color:#16a34a}.tech-list,.dictionary-list{display:grid;gap:8px;margin:12px 0}.tech-item,.dict-item{border:1px solid #e5e7eb;border-radius:14px;background:#f8fafc;padding:12px}.tech-item strong,.dict-item strong{color:#e30613}.nav-actions,.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.nav-actions button:first-child{background:#111827}.actions button:nth-child(1){background:#7c3aed}.actions button:nth-child(2){background:#16a34a}.actions button:nth-child(3){background:#111827}.actions button:nth-child(4){background:#2563eb}.score{font-size:42px;font-weight:900}.good{color:#16a34a}.mid{color:#ea580c}.bad{color:#dc2626}.product-tile{border:1px solid #e5e7eb;border-radius:22px;overflow:hidden;background:#fff}.product-img{height:250px;background:#f8fafc;display:flex;align-items:center;justify-content:center}.product-img img{max-width:100%;max-height:100%;object-fit:contain}.product-body{padding:18px}.badge{display:inline-flex;background:#e30613;color:white;border-radius:999px;padding:6px 12px;font-size:12px;font-weight:900}.title{font-size:21px;font-weight:900;margin:12px 0}.price{font-size:34px;color:#e30613;font-weight:900}.old{text-decoration:line-through;color:#94a3b8;font-weight:800}.product-page{display:grid;grid-template-columns:330px 1fr;gap:24px;align-items:start}.gallery-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.gallery-row img{width:54px;height:54px;border:1px solid #e5e7eb;border-radius:10px;object-fit:contain;background:#fff}.features{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.tech-box{border:1px solid #e5e7eb;border-radius:12px;padding:10px;background:#fff}.params{width:100%;border-collapse:collapse}.params td{border-bottom:1px solid #e5e7eb;padding:10px}.params td:first-child{font-weight:900}.print-mini{border:1px solid #e5e7eb;border-radius:18px;padding:16px;background:white}.print-mini-head{display:flex;justify-content:space-between;border-bottom:3px solid #111827;padding-bottom:8px;margin-bottom:10px}.print-mini-head strong{color:#e30613;font-size:22px}@media(max-width:980px){.ppw-layout{display:block}.ppw-sidebar{position:relative;width:auto;height:auto}.ppw-main{padding:16px}.ppw-hero,.ppw-grid,.two,.product-page{display:block}.stepbar{grid-template-columns:1fr 1fr}.dict-row{display:block}.features{grid-template-columns:1fr}.ppw-hero h1{font-size:29px}}
+/* ELKASS 4.3 — Media Wizard Fix */
+.upload-box{
+  display:flex!important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:150px;
+  border:2px dashed #cbd5e1;
+  border-radius:22px;
+  background:linear-gradient(180deg,#f8fafc,#fff);
+  cursor:pointer;
+  text-align:center;
+  gap:8px;
+  transition:.2s;
+}
+.upload-box:hover{border-color:#e30613;box-shadow:0 18px 45px rgba(227,6,19,.10)}
+.upload-box input{display:none}
+.upload-box strong{font-size:20px}
+.upload-box span{color:#64748b}
+.media-gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:12px;
+  margin:16px 0;
+}
+.media-item{
+  border:1px solid #e5e7eb;
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 8px 22px rgba(15,23,42,.06);
+}
+.media-thumb{
+  height:110px;
+  background:#f8fafc;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.media-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+.media-actions{
+  display:grid;
+  gap:6px;
+  padding:8px;
+}
+.media-actions button{
+  border:0;
+  border-radius:10px;
+  padding:8px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+.media-actions button:first-child{background:#16a34a;color:white}
+.media-actions button:last-child{background:#111827;color:white}
+.media-main-badge{
+  display:block;
+  background:#e30613;
+  color:#fff;
+  text-align:center;
+  font-size:11px;
+  font-weight:900;
+  padding:5px;
+}
+.product-img,
+.photo,
+.ep-img{
+  overflow:hidden;
+}
+.product-img img,
+.photo img,
+.ep-img img{
+  object-fit:contain!important;
+}

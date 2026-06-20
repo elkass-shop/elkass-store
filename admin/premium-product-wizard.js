@@ -28,3 +28,63 @@ q('saveDraft').onclick=()=>{const p=data();const arr=JSON.parse(localStorage.get
 q('exportJson').onclick=()=>{const blob=new Blob([JSON.stringify(data(),null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='elkass-premium-product.json';a.click()};
 ['name','brand','model','category','subcategory','image','gallery','price','discount','oldPrice','promo','customPromo','shortDesc','premiumDesc','printDesc','params'].forEach(id=>q(id).addEventListener('input',render));
 renderDictionary();renderTechs();autoTexts();showStep();
+
+/* ELKASS 4.3 — Media Wizard Fix */
+let elkassWizardImages = [];
+function syncWizardImages(){
+  if(!elkassWizardImages.length) return;
+  q('image').value = elkassWizardImages[0].src;
+  q('gallery').value = elkassWizardImages.map(x=>x.src).join('\n');
+  renderMediaGallery();
+  render();
+}
+function renderMediaGallery(){
+  const box = q('mediaGallery');
+  if(!box) return;
+  if(!elkassWizardImages.length){
+    box.innerHTML = '<div class="hint">Nie dodano jeszcze zdjęć. Dodaj pliki z komputera albo zostaw ścieżki ręcznie.</div>';
+    return;
+  }
+  box.innerHTML = elkassWizardImages.map((img,i)=>`
+    <div class="media-item">
+      ${i===0?'<span class="media-main-badge">Zdjęcie główne</span>':''}
+      <div class="media-thumb"><img src="${img.src}" alt="${img.name}"></div>
+      <div class="media-actions">
+        <button type="button" onclick="setMainWizardImage(${i})">Ustaw jako główne</button>
+        <button type="button" onclick="removeWizardImage(${i})">Usuń</button>
+      </div>
+    </div>
+  `).join('');
+}
+function setMainWizardImage(i){
+  const item = elkassWizardImages.splice(i,1)[0];
+  elkassWizardImages.unshift(item);
+  syncWizardImages();
+}
+function removeWizardImage(i){
+  elkassWizardImages.splice(i,1);
+  if(elkassWizardImages.length) syncWizardImages();
+  else { renderMediaGallery(); render(); }
+}
+function setupWizardMediaUpload(){
+  const input = q('imageFiles');
+  if(!input) return;
+  input.addEventListener('change', function(){
+    const files = Array.from(input.files || []);
+    if(!files.length) return;
+    let pending = files.length;
+    files.forEach(file=>{
+      if(!file.type.startsWith('image/')){ pending--; return; }
+      const reader = new FileReader();
+      reader.onload = e=>{
+        elkassWizardImages.push({name:file.name,type:file.type,src:e.target.result});
+        pending--;
+        if(pending<=0) syncWizardImages();
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  renderMediaGallery();
+}
+document.addEventListener('DOMContentLoaded', setupWizardMediaUpload);
+try{setupWizardMediaUpload()}catch(e){}
