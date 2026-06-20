@@ -824,5 +824,25 @@ Gwarancja: 24 miesiące"></textarea></label>
   <script src="admin-control-center.js?v=56"></script>
   <script src="admin-live-cloud.js?v=56"></script>
   <script src="product-link-import-menu.js?v=enterprise22stable"></script>
-</body>
+<script id="ELKASS_IMPORT_LINK_FIX_23">
+document.addEventListener('click',function(e){
+  const el=e.target.closest('a,button,.tab,[role="button"]');
+  if(!el) return;
+  const t=(el.textContent||'').toLowerCase();
+  if(t.includes('dodaj ze strony') || t.includes('🤖')){
+    e.preventDefault();
+    window.location.href='product-link-import.html';
+  }
+});
+</script>
+<script id="ELKASS_BOT_PREMIUM_CARD_24">
+document.addEventListener('click',function(e){
+ const el=e.target.closest('a,button,.tab,[role="button"]');
+ if(!el)return;
+ const t=(el.textContent||'').toLowerCase();
+ if(t.includes('dodaj ze strony') || t.includes('bot') || t.includes('🤖')){
+   e.preventDefault(); window.location.href='product-link-import.html';
+ }
+});
+</script></body>
 </html>

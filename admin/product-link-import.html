@@ -3,128 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELKASS Superadmin — Dodaj produkt ze strony</title>
-<link rel="stylesheet" href="smart-product-system.css">
+<title>ELKASS — Bot Premium Card</title>
+<link rel="stylesheet" href="bot-premium-card.css">
 </head>
 <body>
-<div class="eps-layout">
-  <aside class="eps-sidebar">
-    <div class="eps-logo">ELKASS<span>ENTERPRISE 2.1</span></div>
-    <a href="index.html">🏠 Panel główny</a>
-    <a href="product-link-import.html" class="active">🤖 Dodaj ze strony</a>
-    <a href="index.html#products">📦 Produkty</a>
-    <a href="index.html#media">🖼 Media</a>
+<div class="bot-layout">
+  <aside class="bot-sidebar">
+    <div class="bot-logo">ELKASS<span>ENTERPRISE 2.4</span></div>
+    <a href="index.html">← Panel główny</a>
+    <a class="active" href="product-link-import.html">🤖 Dodaj ze strony</a>
     <a href="../index.html" target="_blank">↗ Zobacz stronę</a>
   </aside>
-
-  <main class="eps-main">
-    <section class="eps-hero">
+  <main class="bot-main">
+    <section class="bot-hero">
       <div>
-        <p class="eyebrow">Smart Product System</p>
-        <h1>🤖 Dodaj produkt ze strony</h1>
-        <p>Wklej link do produktu, uzupełnij cenę, zdjęcia i parametry. System dopasuje dane do kafla, karty produktu i wydruku A4.</p>
+        <p>BOT PREMIUM CARD</p>
+        <h1>🤖 Dodaj produkt ze strony lub przygotuj kartę do wydruku</h1>
+        <span>Bot układa dane w kafel, kartę produktu, widok mobilny i premium wydruk A4 — przed zapisaniem produktu.</span>
       </div>
-      <div class="eps-mode">
-        <strong>Etap 1</strong>
-        <span>Demo bez backendu</span>
-      </div>
+      <div class="bot-status"><strong>Tryb:</strong><span>Etap 1 / gotowe pod Supabase</span></div>
     </section>
 
-    <section class="eps-card eps-url-card">
-      <h2>1. Link do produktu</h2>
-      <div class="eps-url-row">
+    <section class="bot-card">
+      <h2>1. Pobierz szkic z linku</h2>
+      <div class="bot-url-row">
         <input id="productUrl" type="url" placeholder="Wklej link produktu ze strony producenta / hurtowni">
         <button id="fetchBtn">Pobierz szkic</button>
       </div>
-      <p class="eps-note">Pełne automatyczne pobieranie zdjęć i parametrów z internetu zostanie podpięte w Supabase/Vercel Functions. Ten etap daje gotowy formularz, podgląd i akceptację.</p>
+      <small>W tej wersji panel tworzy szkic i układa kartę premium. Pełne pobieranie danych z internetu podłączymy przez Supabase/Vercel Functions.</small>
     </section>
 
-    <section class="eps-grid">
-      <section class="eps-card">
-        <h2>2. Dane produktu do akceptacji</h2>
-
-        <label>Nazwa produktu
-          <input id="name" value="Telewizor Samsung 55” QLED 4K">
-        </label>
-
-        <div class="eps-two">
-          <label>Marka
-            <input id="brand" value="Samsung">
-          </label>
-          <label>Model / indeks
-            <input id="model" value="QE55Q60D">
-          </label>
+    <section class="bot-grid">
+      <form class="bot-card bot-form">
+        <h2>2. Dane produktu</h2>
+        <label>Nazwa produktu<input id="name" value="Telewizor Samsung 55” QLED 4K"></label>
+        <div class="two">
+          <label>Marka<input id="brand" value="Samsung"></label>
+          <label>Model / indeks<input id="model" value="QE55Q60D"></label>
         </div>
-
-        <div class="eps-two">
-          <label>Kategoria
-            <select id="category">
-              <option>RTV</option>
-              <option>AGD</option>
-              <option>Małe AGD</option>
-              <option>Komputery</option>
-              <option>Telefony</option>
-              <option>Audio</option>
-            </select>
-          </label>
-          <label>Podkategoria
-            <input id="subcategory" value="Telewizory">
-          </label>
+        <div class="two">
+          <label>Kategoria<select id="category"><option>RTV</option><option>AGD</option><option>Małe AGD</option><option>Komputery</option><option>Telefony</option><option>Audio</option><option>Serwis</option></select></label>
+          <label>Podkategoria<input id="subcategory" value="Telewizory"></label>
         </div>
-
-        <div class="eps-two">
-          <label>Cena widoczna / promocyjna
-            <input id="price" type="number" value="2699">
-          </label>
-          <label>Rabat %
-            <input id="discount" type="number" value="15">
-          </label>
+        <h3>Cena i promocja</h3>
+        <div class="two">
+          <label>Cena promocyjna / widoczna<input id="price" type="number" value="2699"></label>
+          <label>Rabat %<input id="discount" type="number" value="15"></label>
         </div>
-
-        <label>Promocja / etykieta
-          <select id="promo">
-            <option>Brak</option>
-            <option selected>Hit tygodnia</option>
-            <option>Hit dnia</option>
-            <option>Black Friday</option>
-            <option>Premium Deal</option>
-            <option>Okazja AGD</option>
-            <option>Nowość</option>
-            <option>Własna promocja</option>
-          </select>
-        </label>
-
-        <label>Zdjęcie główne
-          <input id="image" value="assets/products/product-01.jpg">
-        </label>
-
-        <label>Galeria zdjęć — po jednej ścieżce w linii
-          <textarea id="gallery">assets/products/product-01.jpg
+        <div class="two">
+          <label>Cena przekreślona<input id="oldPrice" type="number" placeholder="Automatycznie lub wpisz ręcznie"></label>
+          <label>Typ promocji<select id="promo"><option>Brak</option><option selected>Hit tygodnia</option><option>Hit dnia</option><option>Black Friday</option><option>Premium Deal</option><option>Okazja AGD</option><option>Nowość</option><option>Własna promocja</option></select></label>
+        </div>
+        <label>Własna nazwa promocji<input id="customPromo" placeholder="np. Weekendowa okazja, Super cena, Oferta sklepu"></label>
+        <label>Zdjęcie główne<input id="image" value="assets/products/product-01.jpg"></label>
+        <label>Galeria zdjęć — po jednej ścieżce w linii<textarea id="gallery">assets/products/product-01.jpg
 assets/products/product-02.jpg
-assets/products/product-03.jpg</textarea>
-        </label>
-
-        <label>Opis premium na stronę
-          <textarea id="description">Nowoczesny produkt RTV/AGD przygotowany do prezentacji w sklepie ELKASS. Opis zostanie automatycznie dopasowany do karty produktu i wydruku.</textarea>
-        </label>
-
-        <label>Najważniejsze zalety — po jednej w linii
-          <textarea id="features">Dostępny w sklepie ELKASS Olesno
-Możliwość zakupu na raty
-Fachowe doradztwo
-Odbiór osobisty lub dostawa</textarea>
-        </label>
-
-        <label>Dane techniczne — format: Parametr: Wartość
-          <textarea id="params">Przekątna ekranu: 55 cali
+assets/products/product-03.jpg</textarea></label>
+        <h3>Teksty premium</h3>
+        <label>Krótki opis na kafel<textarea id="shortDesc">Nowoczesny sprzęt w atrakcyjnej cenie, dostępny w ELKASS Olesno.</textarea></label>
+        <label>Opis premium na kartę produktu<textarea id="premiumDesc">Telewizor Samsung QLED 4K to propozycja dla osób, które oczekują bardzo dobrej jakości obrazu, wygodnej obsługi i nowoczesnych funkcji Smart TV. Produkt świetnie sprawdzi się w salonie, pokoju dziennym lub domowej strefie rozrywki.</textarea></label>
+        <label>Tekst do wydruku premium<textarea id="printDesc">Polecany produkt dostępny w sklepie ELKASS Olesno. Zapytaj doradcę o aktualną dostępność, raty 0%, dostawę oraz pomoc w doborze sprzętu.</textarea></label>
+        <label>Najważniejsze cechy — po jednej w linii<textarea id="features">Obraz 4K UHD
+Smart TV
+Raty 0%
+Odbiór osobisty w Olesnie
+Fachowe doradztwo ELKASS</textarea></label>
+        <label>Parametry techniczne — format: Parametr: Wartość<textarea id="params">Przekątna ekranu: 55 cali
 Rozdzielczość: 4K UHD
+Technologia: QLED
 Smart TV: Tak
 HDMI: 3
-Gwarancja: producenta</textarea>
-        </label>
-
+Gwarancja: producenta</textarea></label>
         <h3>Gdzie pokazać produkt?</h3>
-        <div class="eps-checks">
+        <div class="checks">
           <label><input type="checkbox" value="new" checked> Nowości</label>
           <label><input type="checkbox" value="weekly" checked> Hit tygodnia</label>
           <label><input type="checkbox" value="daily"> Hit dnia</label>
@@ -132,32 +83,24 @@ Gwarancja: producenta</textarea>
           <label><input type="checkbox" value="popular"> Najczęściej wybierane</label>
           <label><input type="checkbox" value="category" checked> Kategoria/podkategoria</label>
         </div>
-
-        <div class="eps-actions">
-          <button id="previewBtn" type="button">Odśwież podgląd</button>
-          <button id="saveBtn" type="button">Zapisz do akceptacji</button>
-          <button id="printBtn" type="button">Drukuj kartę</button>
-          <button id="exportBtn" type="button">Eksport JSON</button>
+        <div class="actions">
+          <button type="button" id="enhanceBtn">✨ Ułóż opis premium</button>
+          <button type="button" id="previewBtn">Odśwież podgląd</button>
+          <button type="button" id="printOnlyBtn">🖨 Tylko wydruk przed zapisem</button>
+          <button type="button" id="saveBtn">Zapisz do akceptacji</button>
+          <button type="button" id="exportBtn">Eksport JSON</button>
         </div>
-      </section>
-
-      <section class="eps-preview">
-        <div class="eps-card">
-          <h2>Podgląd kafla</h2>
-          <div id="tilePreview"></div>
-        </div>
-        <div class="eps-card">
-          <h2>Podgląd karty produktu</h2>
-          <div id="pagePreview"></div>
-        </div>
-        <div class="eps-card">
-          <h2>Podgląd wydruku A4</h2>
-          <div id="printPreview"></div>
-        </div>
+      </form>
+      <section class="preview">
+        <div class="bot-card quality"><h2>Kontrola jakości</h2><ul id="qualityList"></ul></div>
+        <div class="bot-card"><h2>Podgląd kafla produktu</h2><div id="tilePreview"></div></div>
+        <div class="bot-card"><h2>Podgląd karty produktu</h2><div id="pagePreview"></div></div>
+        <div class="bot-card"><h2>Podgląd mobilny</h2><div id="mobilePreview"></div></div>
+        <div class="bot-card"><h2>Podgląd wydruku A4</h2><div id="printPreview"></div></div>
       </section>
     </section>
   </main>
 </div>
-<script src="smart-product-system.js"></script>
+<script src="bot-premium-card.js"></script>
 </body>
 </html>
