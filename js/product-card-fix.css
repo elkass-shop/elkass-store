@@ -1,0 +1,74 @@
+/* ELKASS 4.6 — Product card price/compare fix */
+.product-card,
+.product-tile,
+.offer-card,
+.promo-card,
+[class*="product"][class*="card"]{
+  position:relative;
+}
+.product-card .price,
+.product-tile .price,
+.offer-card .price,
+.promo-card .price,
+[class*="product"][class*="card"] .price{
+  padding-right:86px!important;
+  line-height:1.05!important;
+  display:block!important;
+  max-width:calc(100% - 74px)!important;
+}
+.product-card .old,
+.product-tile .old,
+.offer-card .old,
+.promo-card .old,
+[class*="product"][class*="card"] .old,
+.product-card del,
+.product-tile del,
+.offer-card del,
+.promo-card del{
+  display:block!important;
+  margin-top:5px!important;
+  padding-right:86px!important;
+  max-width:calc(100% - 74px)!important;
+}
+.product-card .compare,
+.product-card .compare-btn,
+.product-card [class*="compare"],
+.product-tile .compare,
+.product-tile .compare-btn,
+.product-tile [class*="compare"],
+.offer-card .compare,
+.offer-card .compare-btn,
+.offer-card [class*="compare"],
+.promo-card .compare,
+.promo-card .compare-btn,
+.promo-card [class*="compare"]{
+  position:absolute!important;
+  right:14px!important;
+  bottom:14px!important;
+  z-index:5!important;
+  max-width:82px!important;
+  white-space:nowrap!important;
+  font-size:12px!important;
+}
+@media(max-width:700px){
+  .product-card .price,
+  .product-tile .price,
+  .offer-card .price,
+  .promo-card .price,
+  [class*="product"][class*="card"] .price{
+    padding-right:0!important;
+    max-width:100%!important;
+    margin-bottom:48px!important;
+  }
+  .product-card .old,
+  .product-tile .old,
+  .offer-card .old,
+  .promo-card .old,
+  .product-card del,
+  .product-tile del,
+  .offer-card del,
+  .promo-card del{
+    padding-right:0!important;
+    max-width:100%!important;
+  }
+}

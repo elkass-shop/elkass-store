@@ -1,0 +1,178 @@
+/* ELKASS ENTERPRISE 5.0 — MASTER SEASONAL WOW */
+.seasonal-wow-layer{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:70;
+  overflow:hidden;
+  display:none;
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .seasonal-wow-layer{display:block}
+
+/* Christmas snow */
+html[data-elkass-theme="christmas"] .seasonal-wow-layer::before{
+  content:"";
+  position:absolute;
+  inset:-20% 0 0 0;
+  background-image:
+    radial-gradient(circle,#fff 1.5px,transparent 2px),
+    radial-gradient(circle,#fff 1px,transparent 2px),
+    radial-gradient(circle,#fff 2px,transparent 3px);
+  background-size:90px 90px,130px 130px,180px 180px;
+  animation:elkassSnow 16s linear infinite;
+  opacity:.55;
+}
+html[data-elkass-theme="christmas"] .seasonal-wow-layer::after{
+  content:"🎄";
+  position:absolute;
+  right:22px;
+  bottom:82px;
+  font-size:54px;
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.25));
+}
+
+/* Black Week shine */
+html[data-elkass-theme="black-week"] .seasonal-wow-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(115deg,transparent 0%,rgba(255,204,0,.18) 46%,transparent 58%);
+  transform:translateX(-120%);
+  animation:elkassShine 5s ease-in-out infinite;
+}
+html[data-elkass-theme="black-week"] .seasonal-wow-layer::after{
+  content:"BLACK WEEK";
+  position:absolute;
+  right:18px;
+  bottom:86px;
+  font-size:16px;
+  font-weight:900;
+  color:#111;
+  background:#ffcc00;
+  padding:12px 16px;
+  border-radius:999px;
+  box-shadow:0 16px 36px rgba(255,204,0,.25);
+}
+
+/* Cyber grid */
+html[data-elkass-theme="cyber"] .seasonal-wow-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.12) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.12) 1px,transparent 1px);
+  background-size:42px 42px;
+  transform:perspective(500px) rotateX(60deg) translateY(35%);
+  transform-origin:bottom;
+  opacity:.45;
+}
+html[data-elkass-theme="cyber"] .seasonal-wow-layer::after{
+  content:"CYBER WEEK";
+  position:absolute;
+  right:18px;
+  bottom:86px;
+  font-size:16px;
+  font-weight:900;
+  color:#00e5ff;
+  background:#020617;
+  border:1px solid rgba(0,229,255,.45);
+  padding:12px 16px;
+  border-radius:999px;
+  box-shadow:0 0 32px rgba(0,229,255,.35);
+}
+
+/* Easter pastel accents */
+html[data-elkass-theme="easter"] .seasonal-wow-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 12% 20%,rgba(255,255,255,.7) 0 18px,transparent 19px),
+    radial-gradient(circle at 88% 32%,rgba(250,204,21,.38) 0 26px,transparent 27px),
+    radial-gradient(circle at 75% 82%,rgba(139,195,74,.35) 0 34px,transparent 35px);
+  opacity:.55;
+}
+html[data-elkass-theme="easter"] .seasonal-wow-layer::after{
+  content:"🐣";
+  position:absolute;
+  right:22px;
+  bottom:82px;
+  font-size:54px;
+}
+
+/* Summer sun */
+html[data-elkass-theme="summer"] .seasonal-wow-layer::before{
+  content:"";
+  position:absolute;
+  right:-80px;
+  top:80px;
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  background:radial-gradient(circle,#facc15 0 32%,rgba(250,204,21,.25) 33% 60%,transparent 61%);
+  filter:blur(.2px);
+  opacity:.48;
+}
+html[data-elkass-theme="summer"] .seasonal-wow-layer::after{
+  content:"☀️";
+  position:absolute;
+  right:28px;
+  bottom:86px;
+  font-size:50px;
+}
+
+@keyframes elkassSnow{
+  from{background-position:0 0,0 0,0 0}
+  to{background-position:0 700px,0 900px,0 1100px}
+}
+@keyframes elkassShine{
+  0%,60%{transform:translateX(-120%)}
+  100%{transform:translateX(120%)}
+}
+
+/* stronger seasonal product/category treatment */
+html[data-elkass-theme="black-week"] .elkass-category-wow-content a,
+html[data-elkass-theme="black-week"] .btn,
+html[data-elkass-theme="black-week"] .button{
+  background:#ffcc00!important;
+  color:#111!important;
+}
+html[data-elkass-theme="cyber"] .elkass-category-wow-card,
+html[data-elkass-theme="cyber"] .product-card,
+html[data-elkass-theme="cyber"] .product-tile{
+  outline:1px solid rgba(0,229,255,.22);
+}
+html[data-elkass-theme="christmas"] .elkass-category-wow-content a{
+  background:#facc15!important;
+  color:#064e3b!important;
+}
+html[data-elkass-theme="easter"] .elkass-category-wow-content a{
+  background:#fef3c7!important;
+  color:#3f2b00!important;
+}
+html[data-elkass-theme="summer"] .elkass-category-wow-content a{
+  background:#f97316!important;
+  color:#fff!important;
+}
+
+@media(max-width:700px){
+  .seasonal-wow-layer{opacity:.75}
+  html[data-elkass-theme="christmas"] .seasonal-wow-layer::after,
+  html[data-elkass-theme="easter"] .seasonal-wow-layer::after,
+  html[data-elkass-theme="summer"] .seasonal-wow-layer::after{
+    font-size:34px;
+    right:12px;
+    bottom:76px;
+  }
+  html[data-elkass-theme="black-week"] .seasonal-wow-layer::after,
+  html[data-elkass-theme="cyber"] .seasonal-wow-layer::after{
+    right:10px;
+    bottom:76px;
+    font-size:12px;
+    padding:9px 12px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .seasonal-wow-layer::before{animation:none!important}
+}

@@ -1,10 +1,10 @@
 const DEFAULT=[
-{name:'RTV',desc:'Telewizory, soundbary, kino domowe',img:'assets/categories/rtv.jpg',subs:['Telewizory','Soundbary','Audio']},
-{name:'AGD',desc:'Lodówki, pralki, zmywarki',img:'assets/categories/agd.jpg',subs:['Lodówki','Pralki','Zmywarki']},
-{name:'AGD do zabudowy',desc:'Piekarniki, płyty, okapy',img:'assets/categories/agd-zabudowa.jpg',subs:['Piekarniki','Płyty','Okapy']},
-{name:'Małe AGD',desc:'Ekspresy, odkurzacze, żelazka',img:'assets/categories/male-agd.jpg',subs:['Ekspresy','Odkurzacze','Żelazka']},
-{name:'Komputery i telefony',desc:'Laptopy, smartfony, akcesoria',img:'assets/categories/komputery-telefony.jpg',subs:['Laptopy','Smartfony','Akcesoria']},
-{name:'Serwis i doradztwo',desc:'Pomoc, konfiguracja, fachowe wsparcie',img:'assets/categories/serwis.jpg',subs:['Wsparcie','Konfiguracja','Doradztwo']}
+{name:'RTV',desc:'Telewizory, soundbary, kino domowe',img:'assets/categories/rtv.svg',subs:['Telewizory','Soundbary','Audio']},
+{name:'AGD',desc:'Lodówki, pralki, zmywarki',img:'assets/categories/agd.svg',subs:['Lodówki','Pralki','Zmywarki']},
+{name:'AGD do zabudowy',desc:'Piekarniki, płyty, okapy',img:'assets/categories/agd-zabudowa.svg',subs:['Piekarniki','Płyty','Okapy']},
+{name:'Małe AGD',desc:'Ekspresy, odkurzacze, żelazka',img:'assets/categories/male-agd.svg',subs:['Ekspresy','Odkurzacze','Żelazka']},
+{name:'Komputery i telefony',desc:'Laptopy, smartfony, akcesoria',img:'assets/categories/komputery-telefony.svg',subs:['Laptopy','Smartfony','Akcesoria']},
+{name:'Serwis i doradztwo',desc:'Pomoc, konfiguracja, fachowe wsparcie',img:'assets/categories/serwis.svg',subs:['Wsparcie','Konfiguracja','Doradztwo']}
 ];
 let data=(()=>{try{const cms=JSON.parse(localStorage.getItem('elkassCmsData')||'{}');return cms.categoryTiles||DEFAULT}catch(e){return DEFAULT}})();
 function render(){

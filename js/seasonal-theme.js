@@ -22,7 +22,7 @@
     }
     const msg=cfg.message || (DEFAULTS[theme]&&DEFAULTS[theme].message) || '';
     bar.textContent=msg;
-    let conf=document.querySelector('.season-confetti');
+    let corner=document.querySelector('.seasonal-corner-badge'); if(!corner){corner=document.createElement('div'); corner.className='seasonal-corner-badge'; document.body.appendChild(corner);} let conf=document.querySelector('.season-confetti');
     if(!conf){
       conf=document.createElement('div');
       conf.className='season-confetti';

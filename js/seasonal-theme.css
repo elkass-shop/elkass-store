@@ -138,3 +138,71 @@ html[data-elkass-theme="black-week"] .elkass-category-wow-card::after{
   position:absolute;right:14px;top:14px;z-index:3;
   background:#ffcc00;color:#111;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;
 }
+
+/* ELKASS 4.6 — More seasonal accents */
+.seasonal-corner-badge{
+  position:fixed;
+  right:18px;
+  top:92px;
+  z-index:80;
+  display:none;
+  padding:12px 16px;
+  border-radius:999px;
+  font-weight:900;
+  color:#111;
+  background:var(--season-primary);
+  box-shadow:0 18px 45px rgba(0,0,0,.22);
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .seasonal-corner-badge{display:block}
+html[data-elkass-theme="christmas"] .seasonal-corner-badge::before{content:"🎁 Świąteczna oferta";}
+html[data-elkass-theme="black-week"] .seasonal-corner-badge::before{content:"⚡ Black Week";}
+html[data-elkass-theme="cyber"] .seasonal-corner-badge::before{content:"💻 Cyber Week";}
+html[data-elkass-theme="easter"] .seasonal-corner-badge::before{content:"🐣 Wielkanoc";}
+html[data-elkass-theme="summer"] .seasonal-corner-badge::before{content:"☀️ Letnie okazje";}
+html[data-elkass-theme="black-week"] .product-card,
+html[data-elkass-theme="black-week"] .product-tile,
+html[data-elkass-theme="black-week"] .offer-card,
+html[data-elkass-theme="black-week"] .promo-card{
+  box-shadow:0 22px 65px rgba(255,204,0,.18)!important;
+}
+html[data-elkass-theme="cyber"] .product-card,
+html[data-elkass-theme="cyber"] .product-tile,
+html[data-elkass-theme="cyber"] .offer-card,
+html[data-elkass-theme="cyber"] .promo-card{
+  box-shadow:0 22px 65px rgba(0,229,255,.18)!important;
+}
+html[data-elkass-theme="christmas"] .product-card::before,
+html[data-elkass-theme="christmas"] .product-tile::before{
+  content:"🎄";
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:4;
+  font-size:22px;
+}
+html[data-elkass-theme="easter"] .product-card::before,
+html[data-elkass-theme="easter"] .product-tile::before{
+  content:"🐣";
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:4;
+  font-size:22px;
+}
+html[data-elkass-theme="black-week"] .product-card::before,
+html[data-elkass-theme="black-week"] .product-tile::before{
+  content:"BLACK";
+  position:absolute;
+  right:10px;
+  top:10px;
+  z-index:4;
+  font-size:10px;
+  font-weight:900;
+  background:#ffcc00;
+  color:#111;
+  padding:5px 8px;
+  border-radius:999px;
+}
+@media(max-width:700px){
+  .seasonal-corner-badge{right:10px;top:auto;bottom:86px;font-size:12px;padding:10px 12px}
+}
