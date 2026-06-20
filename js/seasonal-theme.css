@@ -100,3 +100,41 @@ html[data-elkass-theme="black-week"] .season-confetti{display:block}
 @media(max-width:700px){
   .seasonal-bar{font-size:13px;padding:9px 12px}
 }
+/* ELKASS 4.4 — stronger seasonal accents */
+html[data-elkass-theme="black-week"] .seasonal-bar{
+  background:linear-gradient(90deg,#000,#ffcc00,#000);
+  color:#111;
+  text-transform:uppercase;
+}
+html[data-elkass-theme="cyber"] .seasonal-bar{
+  background:linear-gradient(90deg,#020617,#00e5ff,#7c3aed);
+  text-shadow:0 0 12px rgba(0,229,255,.8);
+}
+html[data-elkass-theme="christmas"] .seasonal-bar{
+  background:linear-gradient(90deg,#064e3b,#d90429,#facc15);
+}
+html[data-elkass-theme="easter"] .seasonal-bar{
+  background:linear-gradient(90deg,#8bc34a,#fef3c7,#f59e0b);
+  color:#3f2b00;
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .site-header,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) header{
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+html[data-elkass-theme="black-week"] .elkass-category-wow-card,
+html[data-elkass-theme="cyber"] .elkass-category-wow-card{
+  border:1px solid rgba(255,255,255,.12);
+}
+html[data-elkass-theme="christmas"] .elkass-category-wow-card::after{
+  content:'🎄';
+  position:absolute;right:18px;top:14px;font-size:28px;z-index:3;
+}
+html[data-elkass-theme="easter"] .elkass-category-wow-card::after{
+  content:'🐣';
+  position:absolute;right:18px;top:14px;font-size:28px;z-index:3;
+}
+html[data-elkass-theme="black-week"] .elkass-category-wow-card::after{
+  content:'BLACK';
+  position:absolute;right:14px;top:14px;z-index:3;
+  background:#ffcc00;color:#111;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;
+}

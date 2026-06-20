@@ -905,5 +905,17 @@ document.addEventListener('DOMContentLoaded',function(){
    side.insertBefore(a, side.children[4] || side.firstChild);
  }
 });
+</script><script id="ELKASS_CATEGORY_MANAGER_44">
+document.addEventListener('DOMContentLoaded',function(){
+ const side=document.querySelector('.sidebar, aside, nav, .admin-sidebar');
+ if(side && !document.querySelector('.category-manager-link')){
+   const a=document.createElement('a');
+   a.href='category-manager.html';
+   a.textContent='🧩 Kategorie Premium';
+   a.className='tab category-manager-link';
+   a.style.cssText='display:block;margin:10px 0;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#0ea5e9,#7c3aed);color:#fff;font-weight:900;text-decoration:none;';
+   side.insertBefore(a, side.children[5] || side.firstChild);
+ }
+});
 </script></body>
 </html>
