@@ -862,5 +862,36 @@ document.addEventListener('click',function(e){
    e.preventDefault(); window.location.href='premium-product-wizard.html';
  }
 });
-</script></body>
+</script>
+<script id="ELKASS_PREMIUM_WIZARD_VISIBLE_41">
+document.addEventListener('DOMContentLoaded', function(){
+  const targetTexts = ['dodaj produkt krok po kroku','dodaj produkt'];
+  document.querySelectorAll('button,a,.tab,[role="button"]').forEach(function(el){
+    const t=(el.textContent||'').toLowerCase();
+    if(targetTexts.some(x=>t.includes(x))){
+      el.textContent='⭐ Kreator Premium Produktu';
+      el.classList.add('premium-wizard-main-link');
+      el.onclick=function(ev){ev.preventDefault(); window.location.href='premium-product-wizard.html';};
+    }
+  });
+  const side = document.querySelector('.sidebar, aside, nav, .admin-sidebar');
+  if(side && !document.querySelector('.premium-wizard-direct-link')){
+    const a=document.createElement('a');
+    a.href='premium-product-wizard.html';
+    a.textContent='⭐ Kreator Premium Produktu';
+    a.className='tab premium-wizard-direct-link premium-wizard-main-link';
+    a.style.cssText='display:block;margin:10px 0;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#e30613);color:#fff;font-weight:900;text-decoration:none;box-shadow:0 14px 32px rgba(124,58,237,.28);';
+    side.insertBefore(a, side.children[3] || side.firstChild);
+  }
+});
+</script>
+<style id="ELKASS_PREMIUM_WIZARD_VISIBLE_STYLE_41">
+.premium-wizard-main-link{
+  background:linear-gradient(135deg,#7c3aed,#e30613)!important;
+  color:#fff!important;
+  box-shadow:0 14px 32px rgba(124,58,237,.28)!important;
+}
+</style>
+
+</body>
 </html>
