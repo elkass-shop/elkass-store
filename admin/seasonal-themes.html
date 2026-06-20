@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ELKASS — Motywy sezonowe</title>
+<link rel="stylesheet" href="seasonal-themes.css">
+</head>
+<body>
+<div class="stm-layout">
+  <aside>
+    <div class="logo">ELKASS<span>ENTERPRISE 4.2</span></div>
+    <a href="index.html">← Panel główny</a>
+    <a class="active" href="seasonal-themes.html">🎨 Motywy sezonowe</a>
+    <a href="../index.html" target="_blank">↗ Podgląd strony</a>
+  </aside>
+  <main>
+    <section class="hero">
+      <div>
+        <p>SEASONAL THEME MANAGER</p>
+        <h1>🎨 Zmień wygląd strony jednym kliknięciem</h1>
+        <span>Black Week, Cyber Week, Święta, Wielkanoc, lato — motyw działa na desktopie i mobile.</span>
+      </div>
+      <button id="save">Zastosuj motyw</button>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Wybierz motyw</h2>
+        <div class="themes">
+          <button data-theme="default">Domyślny ELKASS</button>
+          <button data-theme="black-week">⚡ Black Week</button>
+          <button data-theme="cyber">💻 Cyber Monday / Week</button>
+          <button data-theme="christmas">🎄 Boże Narodzenie</button>
+          <button data-theme="easter">🐣 Wielkanoc</button>
+          <button data-theme="summer">☀️ Lato</button>
+        </div>
+
+        <label>Tekst paska promocyjnego
+          <input id="message" value="Black Week w ELKASS — sprawdź aktualne okazje RTV/AGD!">
+        </label>
+
+        <label>Data startu — informacyjnie
+          <input id="startDate" type="date">
+        </label>
+
+        <label>Data końca — informacyjnie
+          <input id="endDate" type="date">
+        </label>
+
+        <div class="actions">
+          <button id="preview" type="button">Podgląd</button>
+          <button id="reset" type="button">Wyłącz motyw</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Podgląd</h2>
+        <div id="previewBox" class="preview-box">
+          <div class="preview-bar">Black Week w ELKASS — sprawdź aktualne okazje!</div>
+          <div class="preview-hero">
+            <strong>ELKASS Premium</strong>
+            <h3>Promocje sezonowe RTV/AGD</h3>
+            <button>Sprawdź ofertę</button>
+          </div>
+          <div class="preview-products">
+            <div><b>Produkt premium</b><span>1699 zł</span></div>
+            <div><b>Hit tygodnia</b><span>2499 zł</span></div>
+          </div>
+        </div>
+        <p class="hint">Po zapisaniu motyw jest widoczny w tej samej przeglądarce. Po podłączeniu Supabase będzie widoczny dla wszystkich klientów.</p>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="seasonal-themes.js"></script>
+</body>
+</html>

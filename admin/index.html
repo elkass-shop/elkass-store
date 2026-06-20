@@ -893,5 +893,17 @@ document.addEventListener('DOMContentLoaded', function(){
 }
 </style>
 
-</body>
+<script id="ELKASS_SEASONAL_THEME_MANAGER_42">
+document.addEventListener('DOMContentLoaded',function(){
+ const side=document.querySelector('.sidebar, aside, nav, .admin-sidebar');
+ if(side && !document.querySelector('.seasonal-theme-link')){
+   const a=document.createElement('a');
+   a.href='seasonal-themes.html';
+   a.textContent='🎨 Motywy sezonowe';
+   a.className='tab seasonal-theme-link';
+   a.style.cssText='display:block;margin:10px 0;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#7c3aed,#e30613);color:#fff;font-weight:900;text-decoration:none;box-shadow:0 14px 32px rgba(124,58,237,.28);';
+   side.insertBefore(a, side.children[4] || side.firstChild);
+ }
+});
+</script></body>
 </html>
