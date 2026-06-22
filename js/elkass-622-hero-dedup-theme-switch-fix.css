@@ -1,0 +1,214 @@
+/* ELKASS 6.2.2 HERO DEDUP + THEME SWITCH FIX */
+
+/* Twardo wyłączamy wszystkie poprzednie warstwy Hero, które powodowały duble */
+.e61-seasonal-hero,
+.e62-seasonal-hero,
+.e621-seasonal-hero,
+.e60-theme-ribbon,
+.elkass-seasonal-badge,
+.section-title::after,
+.section-heading::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* Logo i telefon */
+.site-header .brand,
+.header .brand,
+.brand{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  min-width:clamp(205px,18vw,290px)!important;
+  max-width:330px!important;
+  white-space:nowrap!important;
+  text-decoration:none!important;
+  overflow:visible!important;
+}
+.brand-main{
+  display:block!important;
+  white-space:nowrap!important;
+  line-height:.95!important;
+  font-size:clamp(24px,2.35vw,36px)!important;
+  font-weight:1000!important;
+  letter-spacing:-.065em!important;
+  text-transform:uppercase!important;
+}
+.brand-main span{color:#e30613!important}
+.brand-main em{color:#7abf2e!important;font-style:normal!important}
+.brand-sub{
+  display:block!important;
+  white-space:nowrap!important;
+  margin-top:6px!important;
+  color:#111827!important;
+  font-size:clamp(8px,.72vw,11px)!important;
+  line-height:1.08!important;
+  font-weight:1000!important;
+  letter-spacing:.09em!important;
+  text-transform:uppercase!important;
+}
+.brand br,.brand-main br,.brand-sub br{display:none!important}
+.header-phone,.phone-btn,.call-btn,.nav-phone,a[href^="tel"]{
+  white-space:nowrap!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  min-width:max-content!important;
+  line-height:1!important;
+}
+.header-phone br,.phone-btn br,.call-btn br,.nav-phone br,a[href^="tel"] br{display:none!important}
+
+/* Jeden jedyny Hero sezonowy */
+html[data-elkass-theme60="standard"] .e622-seasonal-hero,
+html:not([data-elkass-theme60]) .e622-seasonal-hero{
+  display:none!important;
+}
+.e622-seasonal-hero{
+  position:relative;
+  display:none;
+  width:min(100% - 32px,1500px);
+  margin:0 auto 30px;
+  min-height:440px;
+  border-radius:32px;
+  overflow:hidden;
+  color:#fff;
+  isolation:isolate;
+  background:#07111f;
+  box-shadow:0 28px 90px rgba(15,23,42,.18);
+}
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .e622-seasonal-hero{
+  display:block!important;
+}
+.e622-seasonal-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background-image:var(--e622-hero-image);
+  background-size:cover;
+  background-position:center;
+}
+.e622-seasonal-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.58) 34%,rgba(0,0,0,.20) 68%,rgba(0,0,0,.05) 100%),
+    radial-gradient(circle at 18% 20%,color-mix(in srgb,var(--e622-accent,#e30613) 26%,transparent),transparent 24%);
+}
+.e622-seasonal-copy{
+  max-width:710px;
+  padding:clamp(38px,5.2vw,76px);
+}
+.e622-seasonal-title{
+  margin:0 0 18px;
+  font-family:Arial Black,Arial,sans-serif;
+  font-size:clamp(42px,5.6vw,82px);
+  line-height:.96;
+  letter-spacing:-.065em;
+  text-shadow:0 18px 50px rgba(0,0,0,.50);
+}
+.e622-seasonal-subtitle{
+  max-width:650px;
+  margin:0 0 26px;
+  font-size:clamp(18px,1.6vw,26px);
+  line-height:1.32;
+  font-weight:900;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 10px 32px rgba(0,0,0,.42);
+}
+.e622-seasonal-actions{display:flex;flex-wrap:wrap;gap:12px}
+.e622-seasonal-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:15px 21px;
+  font-weight:1000;
+  text-decoration:none;
+}
+.e622-seasonal-primary{
+  background:var(--e622-accent,#e30613);
+  color:#fff;
+  box-shadow:0 18px 42px color-mix(in srgb,var(--e622-accent,#e30613) 34%,transparent);
+}
+.e622-seasonal-secondary{
+  color:#fff;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+}
+html[data-elkass-theme60="blackweek"] .e622-seasonal-primary,
+html[data-elkass-theme60="cyberweek"] .e622-seasonal-primary{color:#07111f}
+
+/* Ukrywamy oryginalny Hero tylko dla motywów sezonowych */
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero-premium.e622-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero-section.e622-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) section.hero.e622-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero.e622-muted{
+  display:none!important;
+}
+
+/* Obrazy motywów */
+html[data-elkass-theme60="christmas"] .e622-seasonal-hero{--e622-accent:#e30613;--e622-hero-image:url("../assets/hero-seasonal-real/christmas.jpg")}
+html[data-elkass-theme60="mikolajki"] .e622-seasonal-hero{--e622-accent:#e30613;--e622-hero-image:url("../assets/hero-seasonal-real/mikolajki.jpg")}
+html[data-elkass-theme60="easter"] .e622-seasonal-hero{--e622-accent:#8bc34a;--e622-hero-image:url("../assets/hero-seasonal-real/easter.jpg")}
+html[data-elkass-theme60="spring"] .e622-seasonal-hero{--e622-accent:#22c55e;--e622-hero-image:url("../assets/hero-seasonal-real/spring.jpg")}
+html[data-elkass-theme60="summer"] .e622-seasonal-hero{--e622-accent:#facc15;--e622-hero-image:url("../assets/hero-seasonal-real/summer.jpg")}
+html[data-elkass-theme60="autumn"] .e622-seasonal-hero{--e622-accent:#f97316;--e622-hero-image:url("../assets/hero-seasonal-real/autumn.jpg")}
+html[data-elkass-theme60="winter"] .e622-seasonal-hero{--e622-accent:#38bdf8;--e622-hero-image:url("../assets/hero-seasonal-real/winter.jpg")}
+html[data-elkass-theme60="blackweek"] .e622-seasonal-hero{--e622-accent:#ffcc00;--e622-hero-image:url("../assets/hero-seasonal-real/blackweek.jpg")}
+html[data-elkass-theme60="cyberweek"] .e622-seasonal-hero{--e622-accent:#00e5ff;--e622-hero-image:url("../assets/hero-seasonal-real/cyberweek.jpg")}
+
+/* Kategorie - zachowujemy wcześniejszą naprawę */
+.elkass57-category-grid,.elkass-final-category-grid,.category-grid,#categories-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:28px!important;
+}
+.elkass57-category-card,.elkass-final-category-card,.category-card{
+  position:relative!important;
+  min-height:340px!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  isolation:isolate!important;
+  background:#101418!important;
+}
+.elkass57-category-card img,.elkass-final-category-card img,.category-card img{
+  position:absolute!important;inset:0!important;width:100%!important;height:100%!important;object-fit:cover!important;z-index:0!important;
+}
+.elkass57-category-card::before,.elkass-final-category-card::before,.category-card::before{
+  content:""!important;position:absolute!important;inset:0!important;z-index:1!important;
+  background:linear-gradient(90deg,rgba(0,0,0,.80),rgba(0,0,0,.52) 45%,rgba(0,0,0,.10)),linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.84))!important;
+}
+.elkass57-category-card::after,.elkass-final-category-card::after,.category-card::after{display:none!important}
+.elkass57-category-content,.elkass-final-category-content,.category-content{
+  position:absolute!important;left:0!important;bottom:0!important;width:min(72%,430px)!important;max-width:72%!important;z-index:3!important;padding:24px!important;color:#fff!important;text-align:left!important;
+}
+.elkass57-category-content h3,.elkass-final-category-content h3,.category-content h3{
+  margin:0 0 10px!important;color:#fff!important;font-size:clamp(24px,2.05vw,32px)!important;line-height:1.05!important;text-shadow:0 8px 24px rgba(0,0,0,.55)!important;
+}
+.elkass57-category-content p,.elkass-final-category-content p,.category-content p{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin:0 0 16px!important}
+.elkass57-category-content p span,.elkass-final-category-content p span,.category-content p span{
+  display:inline-flex!important;border-radius:999px!important;padding:6px 10px!important;background:rgba(255,255,255,.22)!important;border:1px solid rgba(255,255,255,.35)!important;font-size:11px!important;font-weight:1000!important;color:#fff!important;
+}
+.elkass57-category-content a,.elkass-final-category-content a,.category-content a{
+  display:inline-flex!important;border-radius:999px!important;padding:11px 16px!important;background:#fff!important;color:#07111f!important;font-size:14px!important;font-weight:1000!important;text-decoration:none!important;
+}
+
+@media(max-width:900px){
+  .brand{min-width:185px!important}
+  .brand-main{font-size:clamp(22px,7.4vw,31px)!important}
+  .brand-sub{font-size:8.5px!important;letter-spacing:.06em!important}
+  .e622-seasonal-hero{width:calc(100% - 20px);min-height:430px;border-radius:24px}
+  .e622-seasonal-hero::after{background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.50) 50%,rgba(0,0,0,.16))}
+  .e622-seasonal-copy{padding:30px 20px 190px}
+  .e622-seasonal-title{font-size:clamp(34px,11vw,52px)}
+  .e622-seasonal-subtitle{font-size:16px}
+  .e622-seasonal-actions a{width:100%}
+  .elkass57-category-grid,.elkass-final-category-grid,.category-grid,#categories-grid{grid-template-columns:1fr!important;gap:18px!important}
+  .elkass57-category-card,.elkass-final-category-card,.category-card{min-height:270px!important}
+  .elkass57-category-content,.elkass-final-category-content,.category-content{width:88%!important;max-width:88%!important;padding:18px!important}
+}
