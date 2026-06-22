@@ -1494,7 +1494,6 @@ body[data-header-mode="dark"] .header{background:#10131a;color:white}body[data-h
   position:relative!important;
   z-index:2!important;
 }
-<<<<<<< HEAD
 
 /* ===== ELKASS 5.5.2 — OD A DO Z: karty produktów, porównanie, motywy i social ===== */
 .product-card,
@@ -1596,5 +1595,3 @@ html[data-season-54] .product-card{
   .compare-mini-btn{right:12px!important;bottom:14px!important;max-width:96px!important;min-width:78px!important;font-size:11px!important;}
   .discount{bottom:72px!important;right:12px!important;}
 }
-=======
->>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
