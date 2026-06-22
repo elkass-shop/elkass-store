@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELKASS 5.7 Social Studio WOW</title>
+<link rel="stylesheet" href="social-studio-wow.css">
+</head>
+<body>
+<main>
+<header class="hero">
+<div>
+<span>SOCIAL STUDIO WOW 5.7</span>
+<h1>📱 Gotowe grafiki: post, relacja, rolka i aktualność</h1>
+<p>Wybierz markę, kategorię, motyw i produkt. System przygotuje komplet materiałów w spójnej stylistyce RTV/AGD.</p>
+</div>
+<a href="index.html">← Panel</a>
+</header>
+
+<section class="layout">
+<form class="card">
+<label>Marka / profil
+<select id="brand"><option value="elkass">ELKASS</option><option value="agd">AGD Olesno</option></select>
+</label>
+
+<label>Format podglądu
+<select id="format"><option value="post">Post 1080x1080</option><option value="story">Relacja 1080x1920</option><option value="reels">Rolka / storyboard</option><option value="news">Aktualność WWW</option></select>
+</label>
+
+<label>Kategoria / tło
+<select id="category">
+<option value="fridge">Lodówka / kuchnia premium</option>
+<option value="tv">Telewizor / salon RTV</option>
+<option value="washer">Pralka / pralnia premium</option>
+<option value="oven">Piekarnik / zabudowa kuchenna</option>
+<option value="phone">Smartfon / technologia</option>
+<option value="laptop">Laptop / stanowisko pracy</option>
+<option value="smallagd">Małe AGD / blat kuchenny</option>
+<option value="service">Serwis / doradztwo</option>
+</select>
+</label>
+
+<label>Motyw sezonowy
+<select id="theme">
+<option value="standard">Standard RTV/AGD</option>
+<option value="christmas">Boże Narodzenie</option>
+<option value="mikolajki">Mikołajki</option>
+<option value="easter">Wielkanoc</option>
+<option value="spring">Wiosna</option>
+<option value="summer">Lato</option>
+<option value="autumn">Jesień</option>
+<option value="winter">Zima</option>
+<option value="blackweek">Black Week</option>
+<option value="cyberweek">Cyber Week</option>
+</select>
+</label>
+
+<label>Nazwa produktu<input id="name" value="Lodówka TCL RP318BXE2"></label>
+<label>Cena<input id="price" value="1599 zł"></label>
+<label>Zdjęcie produktu<input id="img" value="../assets/products/product-01-lodowka-tcl.jpg"></label>
+<label class="upload">📷 Dodaj zdjęcie z komputera/telefonu<input type="file" id="file" accept="image/*"></label>
+<label>Cechy 1–6<textarea id="features">No Frost
+Multi Air Flow
+Pojemna chłodziarka</textarea></label>
+
+<div class="actions">
+<button type="button" id="downloadCurrent">📥 Pobierz aktualny SVG</button>
+<button type="button" id="downloadPack">📦 Pobierz komplet</button>
+<button type="button" id="copyText">📋 Kopiuj treść posta</button>
+</div>
+</form>
+
+<section class="card preview-card">
+<nav>
+<button data-format="post">Post</button>
+<button data-format="story">Relacja</button>
+<button data-format="reels">Rolka</button>
+<button data-format="news">Aktualność</button>
+</nav>
+<div id="preview"></div>
+<textarea id="postText"></textarea>
+<p class="note">WOODYBOY NOTE: Social Studio WOW = Brand Manager + Theme Engine + Smart Background Engine + Social Engine.</p>
+</section>
+</section>
+</main>
+<script src="social-studio-wow.js"></script>
+</body>
+</html>

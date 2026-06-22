@@ -878,5 +878,11 @@ document.addEventListener('DOMContentLoaded',function(){
     target.prepend(link);
   }
 });
+</script><script id="elkass-57-admin-links">
+document.addEventListener('DOMContentLoaded',function(){
+ var target=document.querySelector('.sidebar, aside, nav, .admin-sidebar')||document.body;
+ function add(href,text,bg){ if(document.querySelector('a[href="'+href+'"]')) return; var a=document.createElement('a'); a.href=href; a.textContent=text; a.style.cssText='display:block;margin:10px;padding:14px 18px;border-radius:16px;background:'+bg+';color:#fff;font-weight:900;text-decoration:none;'; target.prepend(a); }
+ add('social-studio-wow.html','📱 Social Studio WOW','linear-gradient(135deg,#e30613,#7c3aed)');
+});
 </script></body>
 </html>
