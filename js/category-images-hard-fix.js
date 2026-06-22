@@ -1,34 +1,54 @@
+/* ELKASS 5.4.2 — twarda naprawa obrazków kategorii */
 (function(){
-const fixed=[
- {name:'RTV',description:'Telewizory, soundbary, kino domowe',img:'assets/categories/rtv.jpg',subcategories:[{name:'Telewizory'},{name:'Soundbary'},{name:'Audio'}]},
- {name:'AGD',description:'Lodówki, pralki, zmywarki',img:'assets/categories/agd.jpg',subcategories:[{name:'Lodówki'},{name:'Pralki'},{name:'Zmywarki'}]},
- {name:'AGD do zabudowy',description:'Piekarniki, płyty, okapy',img:'assets/categories/agd-zabudowa.jpg',subcategories:[{name:'Piekarniki'},{name:'Płyty'},{name:'Okapy'}]},
- {name:'Małe AGD',description:'Ekspresy, odkurzacze, żelazka',img:'assets/categories/male-agd.jpg',subcategories:[{name:'Ekspresy'},{name:'Odkurzacze'},{name:'Żelazka'}]},
- {name:'Komputery i telefony',description:'Laptopy, smartfony, akcesoria',img:'assets/categories/komputery-telefony.jpg',subcategories:[{name:'Laptopy'},{name:'Smartfony'},{name:'Akcesoria'}]},
- {name:'Serwis i doradztwo',description:'Pomoc, konfiguracja, fachowe wsparcie',img:'assets/categories/serwis.jpg',subcategories:[{name:'Wsparcie'},{name:'Konfiguracja'},{name:'Doradztwo'}]}
-];
-function patchDom(){
- const grid=document.getElementById('categories-grid')||document.querySelector('.category-grid');
- if(!grid) return;
- const cards=[...grid.querySelectorAll('.category-card')];
- cards.forEach((card,i)=>{
-   const img=card.querySelector('img');
-   if(img && fixed[i]){
-     img.src=fixed[i].img;
-     img.onerror=function(){this.style.background='linear-gradient(135deg,#101418,#e30613)';};
-   }
+const fixed={
+ 'rtv':'assets/categories/rtv.jpg',
+ 'agd':'assets/categories/agd.jpg',
+ 'agd do zabudowy':'assets/categories/agd-zabudowa.jpg',
+ 'małe agd':'assets/categories/male-agd.jpg',
+ 'male agd':'assets/categories/male-agd.jpg',
+ 'komputery':'assets/categories/komputery-telefony.jpg',
+ 'telefony':'assets/categories/komputery-telefony.jpg',
+ 'komputery i telefony':'assets/categories/komputery-telefony.jpg',
+ 'audio':'assets/categories/rtv.jpg',
+ 'serwis':'assets/categories/serwis.jpg',
+ 'serwis i doradztwo':'assets/categories/serwis.jpg'
+};
+const order=['rtv','agd','komputery','telefony','audio','serwis'];
+function norm(v){return String(v||'').trim().toLowerCase();}
+function imageForName(name,i){return fixed[norm(name)] || fixed[order[i]] || 'assets/categories/default.svg';}
+function patchStorage(){
+ ['elkassAdminData','elkassCmsData'].forEach(key=>{
+  try{
+   const raw=localStorage.getItem(key); if(!raw) return;
+   const data=JSON.parse(raw);
+   const arr=Array.isArray(data.categories)?data.categories:(Array.isArray(data.categoryTiles)?data.categoryTiles:null);
+   if(!arr) return;
+   arr.forEach((c,i)=>{ c.img=imageForName(c.name,i); c.image=c.img; });
+   localStorage.setItem(key,JSON.stringify(data));
+  }catch(e){}
  });
 }
-function patchStorage(){
- try{
-  const raw=localStorage.getItem('elkassAdminData');
-  if(!raw) return;
-  const data=JSON.parse(raw);
-  if(data && Array.isArray(data.categories)){
-    data.categories=data.categories.map((c,i)=>Object.assign({},c,{img:(fixed[i]&&fixed[i].img)||c.img}));
-    localStorage.setItem('elkassAdminData',JSON.stringify(data));
-  }
- }catch(e){}
+function patchDom(){
+ const grid=document.getElementById('categories-grid')||document.querySelector('.category-grid,.elkass-category-wow-grid');
+ if(!grid) return;
+ [...grid.querySelectorAll('.category-card,.elkass-category-wow-card')].forEach((card,i)=>{
+   const title=(card.querySelector('h3')||{}).textContent || '';
+   const src=imageForName(title,i);
+   card.style.setProperty('--bg',`url('${src}')`);
+   card.dataset.img=src;
+   let img=card.querySelector('img');
+   if(!img){
+     img=document.createElement('img');
+     img.className='elkass-category-wow-img';
+     img.alt=title||'Kategoria ELKASS';
+     card.insertBefore(img,card.firstChild);
+   }
+   img.src=src;
+   img.loading='lazy';
+   img.onerror=function(){ const c=this.closest('.category-card,.elkass-category-wow-card'); if(c)c.classList.add('no-img'); };
+ });
 }
-document.addEventListener('DOMContentLoaded',()=>{patchStorage();setTimeout(patchDom,50);setTimeout(patchDom,500);});
+function run(){patchStorage(); if(window.ELKASS_RENDER_CATEGORY_IMAGES) window.ELKASS_RENDER_CATEGORY_IMAGES(); patchDom();}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+setTimeout(run,100); setTimeout(run,700); setTimeout(run,1500);
 })();
