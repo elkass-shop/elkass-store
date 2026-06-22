@@ -1,0 +1,344 @@
+:root{--red:#e30613;--dark:#0f1117;--muted:#667085;--bg:#f4f6f9;--card:#fff;--shadow:0 18px 50px rgba(15,23,42,.10)}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Poppins,Arial,sans-serif;background:var(--bg);color:#111827}button,input,textarea{font:inherit}.hidden{display:none!important}.login-screen{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#0d0f13,#251013 55%,#e30613)}.login-card{width:min(92%,440px);background:white;border-radius:28px;padding:34px;box-shadow:0 30px 90px rgba(0,0,0,.25)}.logo{font-weight:900;font-size:22px;letter-spacing:-.5px}.logo span{color:var(--red)}.login-card h1{margin:24px 0 8px;font-size:32px}.login-card p{color:var(--muted);margin-bottom:22px}.login-card label,.editor-card label{display:block;font-weight:700;margin-bottom:14px;color:#1f2937}.login-card input,.editor-card input,.editor-card textarea,.editor-card select{width:100%;border:1px solid #d8dee8;border-radius:14px;padding:13px 14px;margin-top:7px;background:#fff}.login-card button,.primary{border:0;background:linear-gradient(135deg,var(--red),#b9000c);color:white;font-weight:900;border-radius:14px;padding:13px 20px;cursor:pointer;box-shadow:0 12px 28px rgba(227,6,19,.24)}.login-card small{display:block;margin-top:14px;color:#6b7280}.panel{display:grid;grid-template-columns:280px 1fr;min-height:100vh}.sidebar{background:#0d0f13;color:white;padding:28px 18px;position:sticky;top:0;height:100vh}.sidebar .logo{margin-bottom:28px}.tab,.site-link,.logout{display:block;width:100%;border:0;text-align:left;text-decoration:none;color:white;background:transparent;border-radius:14px;padding:13px 14px;margin-bottom:8px;font-weight:800;cursor:pointer}.tab.active,.tab:hover,.site-link:hover{background:rgba(255,255,255,.1)}.logout{margin-top:24px;background:rgba(227,6,19,.18);color:#ffb4b9}.content{padding:30px}.topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;margin-bottom:24px}.topbar h1{font-size:34px}.topbar p,.hint{color:var(--muted)}.actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.secondary,.danger{border:0;border-radius:12px;padding:12px 16px;font-weight:900;cursor:pointer}.secondary{background:white;color:#111827;box-shadow:0 8px 24px rgba(15,23,42,.06)}.danger{background:#fff0f1;color:#b9000c}.file-label{position:relative;overflow:hidden}.file-label input,.upload-box input{position:absolute;opacity:0;pointer-events:none}.tab-panel{display:none}.tab-panel.active{display:block}.panel-grid{display:grid;grid-template-columns:minmax(360px,520px) 1fr;gap:22px}.editor-card,.list-card{background:white;border-radius:24px;padding:24px;box-shadow:var(--shadow);border:1px solid rgba(15,23,42,.06)}.editor-card h2,.list-card h2{font-size:22px;margin-bottom:12px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.editor-card textarea{resize:vertical}.checks{display:grid;gap:8px;background:#f7f8fb;border-radius:16px;padding:14px;margin:14px 0}.checks label{margin:0}.checks input{width:auto;margin:0 8px 0 0}.upload-box{border:1px dashed #ccd3df;background:#f9fafc;border-radius:16px;padding:16px;text-align:center;color:#475467;cursor:pointer}.form-actions{display:flex;gap:10px;margin-top:14px}.items-list{display:grid;gap:12px;margin-top:18px;max-height:72vh;overflow:auto;padding-right:6px}.item-row{display:grid;grid-template-columns:74px 1fr auto;gap:14px;align-items:center;border:1px solid #e5eaf2;border-radius:18px;padding:12px;background:#fff}.item-row img{width:74px;height:64px;object-fit:contain;background:#f6f8fb;border-radius:12px}.item-row strong{display:block}.item-row small{color:#667085}.item-actions{display:flex;gap:8px}.item-actions button{border:0;border-radius:10px;padding:9px 10px;font-weight:800;cursor:pointer}.edit{background:#eef4ff;color:#1d4ed8}.delete{background:#fff0f1;color:#b9000c}.wide{max-width:920px}.credentials{margin-top:18px;background:#f8f9fb;border-radius:16px;padding:18px}@media(max-width:980px){.panel{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.content{padding:18px}.topbar,.panel-grid{grid-template-columns:1fr;display:grid}.form-grid{grid-template-columns:1fr}.actions{justify-content:flex-start}.item-row{grid-template-columns:58px 1fr}.item-actions{grid-column:1/-1}.item-row img{width:58px;height:52px}}
+
+/* WOW11 — podgląd obrazków i jasne zasady rozmiarów */
+.image-preview-box{
+  margin:12px 0 14px;
+  border:1px solid #e5eaf2;
+  background:#f8fafc;
+  border-radius:18px;
+  padding:14px;
+}
+.image-preview-box strong{
+  display:block;
+  margin-bottom:10px;
+  font-size:13px;
+  color:#344054;
+}
+.admin-image-preview{
+  width:100%;
+  height:170px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#fff;
+  border-radius:14px;
+  border:1px solid #edf1f6;
+}
+.admin-image-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  padding:12px;
+}
+.size-tip{
+  margin-top:8px;
+  color:#667085;
+  font-size:12px;
+  line-height:1.5;
+}
+.item-row img{
+  object-fit:contain;
+  object-position:center;
+  padding:6px;
+}
+
+
+/* WOW15 — admin: stabilne podglądy i wygodne listy kategorii */
+.editor-card select{
+  width:100%;
+  border:1px solid #d8dee8;
+  border-radius:14px;
+  padding:13px 14px;
+  margin-top:7px;
+  background:#fff;
+}
+.admin-image-preview{
+  width:100%;
+  height:210px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#f8fafc;
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+  margin:10px 0;
+}
+.admin-image-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  padding:12px;
+}
+.item-row img{
+  width:72px !important;
+  height:72px !important;
+  min-width:72px !important;
+  object-fit:contain !important;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:6px;
+}
+
+/* WOW18 — osobne zarządzanie kategoriami i podkategoriami */
+.admin-note{
+  background:#fff;
+  border:1px solid #e5eaf2;
+  border-radius:18px;
+  padding:16px 18px;
+  margin-bottom:18px;
+  box-shadow:0 10px 28px rgba(15,23,42,.06);
+  color:#344054;
+  line-height:1.6;
+}
+.success-note{
+  border-left:5px solid var(--red);
+}
+.categories-admin-grid{
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+}
+.subcategory-editor-card{
+  border:1px solid rgba(227,6,19,.12);
+}
+.mini-icon{
+  width:72px;
+  height:72px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0f1117,#2a1114);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.5px;
+}
+.category-row small,
+.subcategory-row small{
+  display:block;
+  margin-top:4px;
+  line-height:1.45;
+}
+@media(max-width:1180px){
+  .categories-admin-grid{grid-template-columns:1fr;}
+}
+
+/* WOW25 */
+.admin-image-preview img{object-fit:contain;}
+/* WOW29 CMS */
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:18px}.admin-stats div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:20px}.admin-stats b{font-size:34px;display:block}.admin-stats span{color:#aeb8c5}.quick-admin-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.admin-shortcut{border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:#fff;border-radius:16px;padding:20px;font-weight:800;cursor:pointer}.cms-box{border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.04);border-radius:18px;padding:18px;margin:18px 0}.promo-editor-box h3{margin-top:0}.section-switches{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.item-row img{object-fit:contain;background:#fff}.tab{font-size:14px}.file-label input{display:none}@media(max-width:900px){.admin-stats,.quick-admin-grid,.section-switches{grid-template-columns:1fr 1fr}.panel{display:block}.sidebar{position:static;width:auto}.content{margin-left:0}}
+
+/* WOW42 FULL CMS */
+.cms-master-card{border:1px solid rgba(139,195,74,.35);box-shadow:0 24px 60px rgba(0,0,0,.08)}
+.big-save{width:100%;margin-top:20px;font-size:18px;padding:18px;border-radius:18px}
+.section-manager-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:16px}
+.section-manager-grid label{background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;padding:14px;font-weight:700}
+.cms-toast{position:fixed;right:24px;bottom:24px;background:#111827;color:white;padding:14px 18px;border-radius:999px;box-shadow:0 20px 50px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:.25s;z-index:99999}.cms-toast.show{opacity:1;transform:translateY(0)}
+
+
+/* ===== WOW44 SUPERADMIN ===== */
+.login-secondary{margin-top:10px;background:#f3f4f6;color:#111;border:none;border-radius:14px;padding:13px 16px;font-weight:700;cursor:pointer;width:100%}
+.superadmin-hero{display:flex;justify-content:space-between;gap:28px;align-items:center;background:linear-gradient(135deg,#0f172a,#111827);color:#fff;border:0!important;box-shadow:0 24px 70px rgba(15,23,42,.25)!important}
+.superadmin-hero h2{font-size:34px;margin:8px 0 10px}.superadmin-hero p{color:rgba(255,255,255,.82);max-width:780px}.superadmin-hero .eyebrow{color:#8bc34a;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.superadmin-status{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:18px;max-width:300px}.superadmin-status strong{display:block;margin-bottom:8px}.superadmin-status span{font-size:13px;color:rgba(255,255,255,.75)}
+.superadmin-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}.superadmin-tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.superadmin-section-list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.superadmin-section-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;font-weight:700;box-shadow:0 8px 24px rgba(15,23,42,.06)}.superadmin-section-item input{width:18px;height:18px}.deploy-checklist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.deploy-checklist div{background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:16px;font-weight:600}.cms-toast{position:fixed;right:22px;bottom:22px;background:#111827;color:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 18px 50px rgba(0,0,0,.22);opacity:0;transform:translateY(12px);pointer-events:none;transition:.25s;z-index:9999}.cms-toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:980px){.superadmin-hero,.superadmin-grid{grid-template-columns:1fr;display:grid}.superadmin-section-list,.deploy-checklist{grid-template-columns:1fr 1fr}.superadmin-tiles{grid-template-columns:1fr}.superadmin-hero h2{font-size:26px}}
+@media(max-width:620px){.superadmin-section-list,.deploy-checklist{grid-template-columns:1fr}.superadmin-hero{padding:22px}.superadmin-hero h2{font-size:23px}}
+
+/* ===== WOW45 MEDIA MANAGER ===== */
+.media-hero{
+  display:flex;
+  justify-content:space-between;
+  gap:28px;
+  align-items:center;
+  background:linear-gradient(135deg,#09111f,#111827 55%,#1b2a14);
+  color:#fff;
+  border:0!important;
+  box-shadow:0 26px 80px rgba(15,23,42,.26)!important;
+}
+.media-hero h2{font-size:34px;margin:8px 0 10px;}
+.media-hero p{color:rgba(255,255,255,.82);max-width:850px;line-height:1.65;}
+.media-hero .eyebrow{color:#8bc34a;font-weight:900;letter-spacing:.13em;text-transform:uppercase;}
+.media-format-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:18px;min-width:250px;}
+.media-format-box strong{display:block;margin-bottom:8px;}
+.media-format-box span{font-size:13px;color:rgba(255,255,255,.8);}
+.media-grid-layout{align-items:start;}
+.media-upload-box{min-height:110px;display:flex!important;align-items:center;justify-content:center;text-align:center;border:2px dashed #d0d5dd;background:#f8fafc;color:#344054;font-weight:800;}
+.media-upload-box:hover{border-color:#8bc34a;background:#f3f8ec;}
+.media-info{margin:12px 0;padding:12px 14px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;color:#475467;font-size:14px;line-height:1.5;}
+.media-preview-shell{height:280px;border-radius:22px;background:linear-gradient(135deg,#f8fafc,#eef2f7);border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.media-preview-shell img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:none;padding:12px;}
+.media-preview-shell.has-image img{display:block;}
+.media-actions{flex-wrap:wrap;}
+.media-target-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0;}
+.media-target-grid .admin-shortcut{min-height:78px;text-align:left;background:linear-gradient(135deg,#111827,#1f2937);}
+.media-output-box textarea{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;resize:vertical;}
+.media-library-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px;}
+.media-library{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;}
+.media-library-card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:12px;box-shadow:0 10px 26px rgba(15,23,42,.06);}
+.media-library-card .thumb{height:120px;background:#f8fafc;border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:10px;}
+.media-library-card .thumb img{max-width:100%;max-height:100%;object-fit:contain;padding:8px;}
+.media-library-card strong{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.media-library-card small{display:block;color:#667085;margin-top:4px;font-size:11px;line-height:1.4;word-break:break-all;}
+.media-library-card button{width:100%;margin-top:10px;border:0;border-radius:12px;padding:9px 10px;background:#111827;color:#fff;font-weight:700;cursor:pointer;}
+@media(max-width:980px){.media-hero{display:grid;grid-template-columns:1fr}.media-target-grid{grid-template-columns:1fr}.media-library-head{display:block}.media-library-head .danger{margin-top:12px}}
+@media(max-width:620px){.media-hero h2{font-size:25px}.media-preview-shell{height:220px}.media-library{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== WOW46 GLOBAL ADMIN SEARCH ===== */
+.admin-global-search{
+  margin:18px 0 28px;
+  padding:20px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#ffffff,#f8fafc);
+  border:1px solid #e5e7eb;
+  box-shadow:0 16px 45px rgba(15,23,42,.07);
+}
+.admin-global-search-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:14px;}
+.admin-global-search-head strong{display:block;font-size:17px;color:#111827;margin-bottom:3px;}
+.admin-global-search-head span{display:block;color:#667085;font-size:13px;line-height:1.45;}
+#admin-search-clear{border:0;background:#111827;color:#fff;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer;white-space:nowrap;}
+.admin-search-input-wrap{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e5e7eb;border-radius:18px;padding:0 14px;}
+.admin-search-input-wrap:focus-within{border-color:#8bc34a;box-shadow:0 0 0 4px rgba(139,195,74,.16);}
+.admin-search-input-wrap input{flex:1;border:0;outline:0;padding:17px 0;font-size:15px;font-weight:600;background:transparent;color:#111827;}
+.admin-search-input-wrap span{font-size:12px;font-weight:800;color:#667085;background:#f2f4f7;border:1px solid #e5e7eb;border-radius:10px;padding:6px 9px;}
+.admin-search-results{margin-top:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;max-height:430px;overflow:auto;padding-right:4px;}
+.admin-search-results.hidden{display:none;}
+.admin-search-result{display:block;text-align:left;border:1px solid #e5e7eb;background:#fff;border-radius:16px;padding:14px;cursor:pointer;box-shadow:0 8px 24px rgba(15,23,42,.05);transition:.18s;}
+.admin-search-result:hover{transform:translateY(-2px);border-color:#8bc34a;box-shadow:0 14px 34px rgba(15,23,42,.10);}
+.admin-search-result span{display:inline-flex;margin-bottom:8px;background:#eef7e7;color:#3f6212;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;}
+.admin-search-result strong{display:block;color:#111827;font-size:14px;line-height:1.35;margin-bottom:5px;}
+.admin-search-result small{display:block;color:#667085;font-size:12px;line-height:1.4;}
+.admin-search-empty{grid-column:1/-1;padding:18px;border-radius:16px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;font-weight:700;}
+@media(max-width:760px){.admin-global-search-head{display:block}.admin-global-search-head button{margin-top:12px}.admin-search-input-wrap{display:block;padding:10px 14px}.admin-search-input-wrap input{width:100%;padding:10px 0}.admin-search-input-wrap span{display:inline-block;margin-bottom:4px}.admin-search-results{grid-template-columns:1fr;max-height:none}}
+
+
+/* ===== WOW52 SUPERADMIN CONTROL CENTER ===== */
+.control-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(135deg,#07121f,#111827);color:#fff;border:0!important;box-shadow:0 28px 80px rgba(2,8,23,.22)}
+.control-hero h2{font-size:34px;margin:8px 0 8px}.control-hero p{color:rgba(255,255,255,.78);max-width:820px}.control-health{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;min-width:260px}.control-health strong,.control-health span,.control-health small{display:block}.control-health span{color:#9be15d;font-weight:800;margin-top:8px}.control-health small{color:rgba(255,255,255,.62);margin-top:4px}.control-search-card{position:relative}.control-search-row{display:grid;grid-template-columns:1fr auto;gap:12px}.control-search-row input{font-size:16px;padding:17px 18px;border-radius:16px;border:1px solid #dbe3ef;background:#fff}.control-search-results{display:grid;gap:10px;margin-top:18px}.control-result{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid #e6edf7;border-radius:16px;background:#fff;box-shadow:0 12px 35px rgba(15,23,42,.06)}.control-result strong{display:block}.control-result small{color:#64748b}.control-result button{border:0;background:#e30613;color:#fff;border-radius:12px;padding:10px 14px;font-weight:800;cursor:pointer}.control-modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.control-module-card{background:#fff;border:1px solid #e6edf7;border-radius:22px;padding:20px;box-shadow:0 16px 45px rgba(15,23,42,.07);transition:.25s}.control-module-card:hover{transform:translateY(-4px);box-shadow:0 26px 70px rgba(15,23,42,.12)}.module-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:#f1f5f9;font-size:23px;margin-bottom:14px}.control-module-card h3{margin:0 0 8px;font-size:18px}.control-module-card p{color:#64748b;line-height:1.55;min-height:72px}.control-module-card button{width:100%;border:0;background:#111827;color:#fff;border-radius:14px;padding:12px 14px;font-weight:800;cursor:pointer}.control-module-card button:hover{background:#e30613}.checklist-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.checklist-grid label{background:#f8fafc;border:1px solid #e6edf7;border-radius:14px;padding:14px;font-weight:700}.checklist-grid input{margin-right:8px}
+@media(max-width:1200px){.control-modules-grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:900px){.control-hero{display:block}.control-health{margin-top:18px}.control-modules-grid{grid-template-columns:repeat(2,1fr)}.checklist-grid{grid-template-columns:1fr}}@media(max-width:560px){.control-modules-grid{grid-template-columns:1fr}.control-search-row{grid-template-columns:1fr}.control-hero h2{font-size:26px}}
+
+/* ===== WOW55 FINAL READY: sidebar fix + live builder + cloud ready ===== */
+html,body{min-height:100%;}
+body{overflow-x:hidden;}
+.panel{min-height:100vh;align-items:stretch;background:#f3f6fb;}
+.sidebar{
+  position:sticky;
+  top:0;
+  align-self:flex-start;
+  height:100vh;
+  min-height:100vh;
+  overflow-y:auto;
+  overflow-x:hidden;
+  background:#0b0f16!important;
+  padding-bottom:22px;
+  box-shadow:18px 0 40px rgba(2,8,23,.18);
+}
+.sidebar::-webkit-scrollbar{width:8px}.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:999px}
+.sidebar .tab,.sidebar .site-link,.sidebar .logout{flex-shrink:0;}
+.content{min-width:0;}
+.quick-admin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:stretch;}
+.admin-shortcut{min-height:70px;white-space:normal;line-height:1.25;}
+
+.builder-add-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0;}
+.builder-add-grid button{border:1px solid #e5e7eb;background:#fff;border-radius:16px;padding:16px 12px;font-weight:900;cursor:pointer;box-shadow:0 10px 24px rgba(15,23,42,.06);transition:.2s;text-align:left;}
+.builder-add-grid button:hover{transform:translateY(-2px);border-color:#8bc34a;box-shadow:0 18px 38px rgba(15,23,42,.12);}
+.builder-layout-list{display:grid;gap:12px;margin-top:16px;}
+.builder-row{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:14px 16px;box-shadow:0 10px 28px rgba(15,23,42,.06);}
+.builder-row .handle{width:38px;height:38px;border-radius:12px;background:#f1f5f9;display:grid;place-items:center;font-weight:900;color:#64748b;}
+.builder-row strong{display:block;color:#0f172a;font-size:15px}.builder-row small{display:block;color:#667085;margin-top:3px}.builder-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.builder-actions button{border:0;border-radius:11px;padding:8px 10px;font-weight:900;cursor:pointer;background:#f1f5f9;color:#111827}.builder-actions button.active{background:#dcfce7;color:#166534}.builder-actions button.off{background:#fee2e2;color:#991b1b}.builder-actions button:hover{filter:brightness(.97)}
+.cloud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0;}.cloud-grid article{background:#fff;border:1px solid #e6edf7;border-radius:22px;padding:20px;box-shadow:0 16px 45px rgba(15,23,42,.07);}.cloud-grid h3{margin:0 0 10px;color:#111827}.cloud-grid p{margin:0;color:#64748b;line-height:1.55}.live-builder-hero{background:linear-gradient(135deg,#111827,#263548)!important}.cloud-hero{background:linear-gradient(135deg,#08111f,#0f3b2e)!important}
+@media(max-width:1100px){.panel{display:block}.sidebar{position:relative;width:100%;height:auto;min-height:0;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:14px}.sidebar .logo{min-width:150px}.sidebar .tab,.sidebar .site-link,.sidebar .logout{min-width:max-content}.content{padding:18px}.cloud-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.cloud-grid{grid-template-columns:1fr}.builder-row{grid-template-columns:1fr}.builder-row .handle{display:none}.builder-actions{justify-content:flex-start}.control-hero{border-radius:22px}.topbar{gap:14px}.actions{display:grid;grid-template-columns:1fr 1fr;width:100%}.actions button,.actions label{width:100%;text-align:center}}
+
+/* ===== WOW56 LIVE BUILDER FIX ===== */
+.builder-row.selected{border-color:#e30613;box-shadow:0 18px 38px rgba(227,6,19,.13)}
+.builder-img-path{color:#94a3b8!important;font-size:12px;word-break:break-all;margin-top:6px}
+.builder-actions .danger-mini{background:#fff0f1!important;color:#b9000c!important}
+.builder-live-summary{margin-top:14px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;padding:14px 16px;color:#475569}
+.builder-live-summary strong{color:#111827}
+@media(min-width:1101px){.panel{grid-template-columns:280px minmax(0,1fr)}.sidebar{min-height:100vh;height:100vh;overflow-y:auto;background:#0d0f13}.content{min-width:0}}
+
+
+/* ELKASS ENTERPRISE 1.0 — panel produktu PRO */
+.enterprise-product-editor textarea{font-family:inherit;min-height:110px}.enterprise-product-editor{border:1px solid rgba(227,6,19,.12);background:linear-gradient(180deg,#fff,#fff7f7)}
+
+
+/* ===== ENTERPRISE 1.2 PRODUCT WIZARD ===== */
+.wizard-tab-main{background:linear-gradient(135deg,#8bc34a,#4d7c0f)!important;color:#08120b!important;font-weight:900!important;box-shadow:0 12px 30px rgba(139,195,74,.25)}
+.wizard-shortcut{background:linear-gradient(135deg,#e30613,#ff7a18)!important;color:#fff!important}
+.wizard-hero{display:flex;justify-content:space-between;gap:28px;align-items:center;background:linear-gradient(135deg,#07111f,#111827 60%,#2d1b07);color:#fff;border:0!important;box-shadow:0 28px 80px rgba(2,8,23,.26)!important}.wizard-hero h2{font-size:34px;margin:8px 0}.wizard-hero p{color:rgba(255,255,255,.78);line-height:1.65;max-width:850px}.wizard-hero .eyebrow{color:#9be15d;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.wizard-safe-box{min-width:280px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:22px;padding:18px}.wizard-safe-box strong,.wizard-safe-box span{display:block}.wizard-safe-box span{color:rgba(255,255,255,.72);font-size:13px;line-height:1.5;margin-top:6px}.product-wizard-layout{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:start}.wizard-steps{position:sticky;top:22px;display:grid;gap:10px}.wizard-step{display:flex;align-items:center;gap:12px;border:1px solid #e6edf7;background:#fff;border-radius:16px;padding:13px 14px;text-align:left;cursor:pointer;font-weight:800;color:#111827;transition:.2s}.wizard-step b{width:32px;height:32px;border-radius:12px;background:#f1f5f9;display:grid;place-items:center}.wizard-step.active,.wizard-step:hover{border-color:#8bc34a;box-shadow:0 12px 30px rgba(139,195,74,.18);transform:translateY(-1px)}.wizard-step.active b{background:#8bc34a;color:#111}.wizard-form{min-height:620px}.wizard-screen{display:none}.wizard-screen.active{display:block;animation:wizardFade .18s ease-out}.wizard-screen h2{margin-top:0;font-size:28px}.wizard-actions-row{display:flex;gap:12px;align-items:center;justify-content:flex-end;border-top:1px solid #e6edf7;margin-top:26px;padding-top:20px}.wizard-actions-row .hidden{display:none}.wizard-gallery-preview{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;margin-top:18px}.wizard-gallery-preview .wiz-thumb{height:130px;border:1px solid #e6edf7;border-radius:16px;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}.wizard-gallery-preview .wiz-thumb img{max-width:100%;max-height:100%;object-fit:contain;padding:8px}.wizard-gallery-preview .wiz-main{position:absolute;left:8px;top:8px;background:#e30613;color:#fff;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900}.wizard-price-preview{margin-top:18px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:18px;padding:16px;font-weight:800}.wizard-template-row{display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap}.wizard-placement{grid-template-columns:repeat(2,1fr)}.wizard-preview-grid{display:grid;grid-template-columns:360px 1fr;gap:24px}.wizard-product-card-preview{background:#fff;border:1px solid #e6edf7;border-radius:24px;padding:18px;box-shadow:0 18px 45px rgba(15,23,42,.08)}.wizard-product-card-preview .preview-img{height:230px;border-radius:18px;background:#f8fafc;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:16px}.wizard-product-card-preview img{max-width:100%;max-height:100%;object-fit:contain;padding:12px}.wizard-product-card-preview .badge{display:inline-flex;background:#e30613;color:#fff;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:900;margin-bottom:10px}.wizard-product-card-preview h4{font-size:18px;margin:0 0 8px}.wizard-product-card-preview p{font-size:13px;color:#667085;line-height:1.5}.wizard-product-card-preview .price{font-size:24px;font-weight:900;color:#111827}.wizard-product-card-preview .old{font-size:14px;text-decoration:line-through;color:#98a2b3;margin-left:8px}.wizard-validation{display:grid;gap:10px;margin:0;padding:0;list-style:none}.wizard-validation li{border-radius:14px;padding:13px 14px;font-weight:800}.wizard-validation .ok{background:#ecfdf3;color:#027a48;border:1px solid #abefc6}.wizard-validation .bad{background:#fef3f2;color:#b42318;border:1px solid #fecdca}@keyframes wizardFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}@media(max-width:1050px){.wizard-hero,.product-wizard-layout,.wizard-preview-grid{grid-template-columns:1fr;display:grid}.wizard-steps{position:static;grid-template-columns:repeat(2,1fr)}.wizard-safe-box{min-width:0}.wizard-placement{grid-template-columns:1fr}}@media(max-width:620px){.wizard-hero h2{font-size:25px}.wizard-steps{grid-template-columns:1fr}.wizard-actions-row{display:grid;grid-template-columns:1fr}.wizard-gallery-preview{grid-template-columns:repeat(2,1fr)}.wizard-form{min-height:auto}.wizard-screen h2{font-size:23px}}
+
+
+/* ===== ELKASS ENTERPRISE 2.2 STABLE PANEL FIX ===== */
+body{
+  overflow-x:hidden;
+}
+.panel{
+  display:grid !important;
+  grid-template-columns:275px minmax(0,1fr) !important;
+  min-height:100vh !important;
+  align-items:stretch !important;
+}
+.sidebar{
+  position:sticky !important;
+  top:0 !important;
+  height:100vh !important;
+  min-height:100vh !important;
+  overflow-y:auto !important;
+  overflow-x:hidden !important;
+  background:#07111f !important;
+  padding-bottom:24px !important;
+}
+.sidebar .tab,
+.sidebar .site-link,
+.sidebar .logout{
+  width:100% !important;
+  min-height:46px !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:10px !important;
+  text-align:left !important;
+  white-space:normal !important;
+  line-height:1.25 !important;
+}
+.sidebar .import-link-main{
+  background:linear-gradient(135deg,#e30613,#ff7a18) !important;
+  color:#fff !important;
+  box-shadow:0 12px 30px rgba(227,6,19,.24) !important;
+}
+.content{
+  min-width:0 !important;
+  overflow-x:hidden !important;
+}
+.quick-admin-grid{
+  align-items:stretch !important;
+}
+.admin-shortcut{
+  min-height:82px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-align:center !important;
+}
+@media(max-width:900px){
+  .panel{
+    display:block !important;
+  }
+  .sidebar{
+    position:relative !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:auto !important;
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+  }
+  .sidebar .logo{
+    grid-column:1/-1 !important;
+  }
+  .content{
+    padding:16px !important;
+  }
+}

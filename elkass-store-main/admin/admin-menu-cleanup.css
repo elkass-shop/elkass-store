@@ -1,0 +1,34 @@
+/* ELKASS 4.5 — Admin Cleanup */
+.elkass-clean-premium-link,
+.elkass-clean-category-link,
+.elkass-clean-theme-link{
+  white-space:normal!important;
+  min-height:52px!important;
+}
+.elkass-shortcut-clean-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin:18px 0;
+}
+.elkass-shortcut-clean-card{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:92px;
+  padding:18px;
+  border-radius:20px;
+  text-decoration:none;
+  color:#fff;
+  background:linear-gradient(135deg,#7c3aed,#e30613);
+  box-shadow:0 16px 35px rgba(124,58,237,.22);
+  font-weight:900;
+}
+.elkass-shortcut-clean-card:nth-child(2){background:linear-gradient(135deg,#0ea5e9,#7c3aed)}
+.elkass-shortcut-clean-card:nth-child(3){background:linear-gradient(135deg,#f97316,#e30613)}
+.elkass-shortcut-clean-card:nth-child(4){background:linear-gradient(135deg,#111827,#0ea5e9)}
+.elkass-shortcut-clean-card strong{font-size:17px;line-height:1.15}
+.elkass-shortcut-clean-card span{font-size:13px;color:rgba(255,255,255,.82)}
+@media(max-width:700px){
+  .elkass-shortcut-clean-grid{grid-template-columns:1fr}
+}

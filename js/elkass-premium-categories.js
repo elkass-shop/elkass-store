@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* ELKASS 5.5.1 — blokuje stare skrypty kategorii i pilnuje premium układu */
+=======
+/* ELKASS 5.5.0 — blokuje stare skrypty kategorii i pilnuje premium układu */
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
 (function(){
   var html = document.getElementById('categories-grid');
   if(!html) return;
@@ -17,6 +21,7 @@
       var img = card.querySelector('img');
       if(img) img.remove();
     });
+<<<<<<< HEAD
     var imgs=['rtv','agd','agd-zabudowa','male-agd','komputery-telefony','serwis'];
     cards.forEach(function(card,i){
       if(imgs[i]){
@@ -26,6 +31,8 @@
       }
     });
 
+=======
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
   }
   cleanup();
   window.addEventListener('load', cleanup);

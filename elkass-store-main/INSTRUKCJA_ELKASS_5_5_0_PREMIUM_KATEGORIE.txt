@@ -1,0 +1,13 @@
+ELKASS ENTERPRISE 5.5.0 — PREMIUM KATEGORIE OD A DO Z
+
+Co naprawiono:
+1. Usunięto wadliwy moduł kategorii oparty o #categories-grid na stronie głównej.
+2. Zbudowano nowy, statyczny i odporny moduł .elkass-premium-categories.
+3. Grafiki są ustawione jako tło kafelków, więc nie przykrywa ich stary CSS/JS.
+4. Naprawiono nakładanie napisów i czarne kafelki.
+5. Podbito cache do v=550.
+
+Jak wdrożyć:
+- Wgraj całą zawartość paczki na hosting i nadpisz stare pliki.
+- Po wgraniu otwórz stronę i zrób Ctrl + F5.
+- Jeżeli hosting ma cache, wyczyść cache hostingu/CDN.

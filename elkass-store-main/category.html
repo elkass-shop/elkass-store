@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kategoria | ELKASS Olesno</title>
+  <meta name="description" content="Produkty ELKASS Olesno w wybranej kategorii. RTV, AGD, komputery, telefony, audio i serwis.">
+  <meta property="og:title" content="Kategoria | ELKASS Olesno">
+  <meta property="og:description" content="Sprawdź produkty w wybranej kategorii ELKASS Olesno.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-wow-v5.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=enterprise">
+<link rel="stylesheet" href="js/seasonal-theme.css?v=42">
+<link rel="stylesheet" href="js/category-wow.css?v=44">
+<link rel="stylesheet" href="js/product-card-fix.css?v=46">
+<link rel="stylesheet" href="js/seasonal-wow.css?v=50">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html#home" class="brand" aria-label="ELKASS Olesno">
+        <span class="brand-main"><span>ELKASS</span> <em>OLESNO</em></span>
+        <span class="brand-sub">RTV / AGD / MULTIMEDIA / SERWIS</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html#home">Strona główna</a>
+        <a href="index.html#promocje">Promocje</a>
+        <a href="index.html#oferta">Oferta</a>
+        <a href="index.html#opinie">Opinie</a>
+        <a href="index.html#onas">O nas</a>
+        <a href="index.html#kontakt">Kontakt</a>
+        <a href="promotions.html">Centrum promocji</a>
+        <a href="compare.html">Porównaj</a>
+        <a href="admin/">Panel</a>
+      </nav>
+      <div class="header-actions">
+        <a href="tel:343582442" class="header-phone">📞 34 358 24 42</a>
+        <button class="burger" id="burger" aria-label="Otwórz menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="category-page-hero">
+      <div class="container category-page-hero-inner">
+        <div>
+          <div class="breadcrumb"><a href="index.html">Strona główna</a><span>/</span><a href="index.html#oferta">Kategorie</a></div>
+          <span class="eyebrow">Oferta ELKASS</span>
+          <h1 id="categoryPageTitle">Kategoria</h1>
+          <p id="categoryPageSubtitle">Wybierz produkt i zapytaj o dostępność w sklepie.</p>
+        </div>
+        <div class="category-page-meta">
+          <strong id="categoryPageCount">0 produktów</strong>
+          <span>Produkty możesz dodawać i usuwać w panelu administratora.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-page-section">
+      <div class="container">
+        <div class="category-page-toolbar">
+          <div id="categoryPageSubcategories" class="category-page-chips"></div>
+          <a href="index.html#oferta" class="ghost-link">← Wróć do strony głównej</a>
+        </div>
+        <div class="products-grid category-page-grid" id="categoryPageProducts"></div>
+      </div>
+    </section>
+
+    <section class="quick-info">
+      <div class="container quick-grid">
+        <div class="quick-item">💳 <span>Zakupy na raty</span></div>
+        <div class="quick-item">⚡ <span>Płatność BLIK</span></div>
+        <div class="quick-item">🚚 <span>Dostawa sprzętu</span></div>
+        <div class="quick-item">🛠 <span>Pomoc serwisowa</span></div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container cta-box">
+        <h2>Nie widzisz produktu?</h2>
+        <p>Zadzwoń do ELKASS Olesno. Sprawdzimy dostępność, cenę oraz możliwość zamówienia produktu.</p>
+        <div class="hero-buttons center">
+          <a href="tel:343582442" class="btn btn-primary">📞 34 358 24 42</a>
+          <a href="index.html#kontakt" class="btn btn-outline light">Kontakt</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><strong><span>ELKASS</span> OLESNO</strong><p>RTV, AGD, komputery, telefony i serwis.</p></div>
+      <div><h4>Oferta</h4><a href="category.html?category=RTV">RTV</a><a href="category.html?category=AGD">AGD</a><a href="category.html?category=Komputery">Komputery</a><a href="category.html?category=Telefony">Telefony</a></div>
+      <div><h4>Kontakt</h4><a href="tel:343582442">34 358 24 42</a><a href="mailto:elkass@wp.pl">elkass@wp.pl</a><p>Armii Krajowej 5, Olesno</p></div>
+      <div><h4>Godziny</h4><p>Pon-Pt 9:00-17:00</p><p>Sobota 9:00-13:00</p></div>
+    </div>
+    <div class="footer-bottom">© 2026 ELKASS OLESNO</div>
+  </footer>
+
+  <a href="tel:343582442" class="mobile-call">📞 Zadzwoń teraz</a>
+  <button class="top-btn" id="topBtn" aria-label="Do góry">↑</button>
+  <script src="js/supabase-config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="script.js?v=enterprise"></script>
+  <script src="wow40.js?v=enterprise"></script>
+  <script src="cms-apply.js?v=enterprise"></script>
+<script src="js/seasonal-theme.js?v=42"></script>
+<script src="js/category-wow.js?v=44"></script>
+<script src="js/seasonal-wow.js?v=50"></script>
+</body>
+</html>

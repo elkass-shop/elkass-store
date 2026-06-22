@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* ELKASS 5.5.1 — kategorie zrobione od A do Z: bez czarnych pól, bez nakładania tekstu, bez zależności od panelu */
+=======
+/* ELKASS 5.5.0 — kategorie zrobione od A do Z: bez czarnych pól, bez nakładania tekstu, bez zależności od panelu */
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
 #categories-grid.elkass-premium-categories-grid{
   display:grid!important;
   grid-template-columns:repeat(3,minmax(0,1fr))!important;
@@ -26,13 +30,22 @@
 #categories-grid .elkass-premium-category-card:hover{transform:translateY(-7px)!important;box-shadow:0 34px 90px rgba(15,23,42,.24)!important;}
 #categories-grid .elkass-premium-category-photo{
   position:absolute!important;inset:0!important;z-index:0!important;
+<<<<<<< HEAD
   background-image:var(--cat-img)!important;background-size:cover!important;background-position:center center!important;
   opacity:1!important;filter:saturate(1.14) contrast(1.05) brightness(1.03)!important;transform:scale(1.01)!important;
+=======
+  background-image:var(--cat-img)!important;background-size:cover!important;background-position:center!important;
+  opacity:1!important;filter:saturate(1.08) contrast(1.03)!important;transform:scale(1.01)!important;
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
 }
 #categories-grid .elkass-premium-category-card:hover .elkass-premium-category-photo{transform:scale(1.07)!important;transition:transform .55s ease!important;}
 #categories-grid .elkass-premium-category-card::before{
   content:""!important;position:absolute!important;inset:0!important;z-index:1!important;pointer-events:none!important;
+<<<<<<< HEAD
   background:linear-gradient(90deg,rgba(2,6,23,.62) 0%,rgba(2,6,23,.25) 42%,rgba(2,6,23,.05) 100%),linear-gradient(180deg,rgba(2,6,23,.02) 0%,rgba(2,6,23,.10) 42%,rgba(2,6,23,.62) 100%)!important;
+=======
+  background:linear-gradient(180deg,rgba(2,6,23,.05) 0%,rgba(2,6,23,.18) 35%,rgba(2,6,23,.86) 100%)!important;
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753
 }
 #categories-grid .elkass-premium-category-card::after{
   content:""!important;position:absolute!important;left:0!important;right:0!important;bottom:0!important;height:5px!important;z-index:3!important;
@@ -61,6 +74,7 @@
 #categories-grid .elkass-premium-button:hover{background:#e30613!important;color:#fff!important;}
 @media(max-width:1020px){#categories-grid.elkass-premium-categories-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:20px!important}#categories-grid .elkass-premium-category-card{min-height:320px!important}}
 @media(max-width:640px){#categories-grid.elkass-premium-categories-grid{grid-template-columns:1fr!important;gap:16px!important;margin-top:24px!important}#categories-grid .elkass-premium-category-card{min-height:290px!important;border-radius:24px!important}#categories-grid .elkass-premium-category-content{left:20px!important;right:20px!important;bottom:20px!important}#categories-grid .elkass-premium-category-content h3{font-size:27px!important}#categories-grid .elkass-premium-pills a{font-size:11px!important;padding:7px 10px!important}}
+<<<<<<< HEAD
 
 
 /* 5.5.1: grafiki są prawdziwym tłem kafla; żadna stara czarna warstwa nie może ich przykryć */
@@ -68,3 +82,5 @@
 #categories-grid .elkass-premium-category-card{background-color:#111827!important;}
 #categories-grid .elkass-premium-category-content{max-width:92%!important;}
 #categories-grid .elkass-premium-category-card[style*="rtv"] .elkass-premium-category-photo{background-position:center center!important;}
+=======
+>>>>>>> 43a82d7383f27c598355a2e0f020d57b601bb753

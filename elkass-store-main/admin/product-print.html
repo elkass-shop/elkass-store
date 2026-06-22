@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELKASS — Karta produktu A4</title>
+<link rel="stylesheet" href="product-print.css">
+</head>
+<body>
+<main class="a4">
+  <header class="top">
+    <div>
+      <div class="logo"><span>EL</span>KASS</div>
+      <p>RTV / AGD / MULTIMEDIA / SERWIS</p>
+    </div>
+    <div class="shop">
+      <strong>ELKASS Olesno</strong><br>
+      Armii Krajowej 5<br>
+      tel. 34 358 24 42<br>
+      elkass@wp.pl
+    </div>
+  </header>
+  <section class="hero">
+    <div class="photo"><img id="pImage" alt="Produkt"></div>
+    <div class="info">
+      <div id="pPromo" class="promo"></div>
+      <h1 id="pName">Produkt ELKASS</h1>
+      <p id="pMeta" class="meta"></p>
+      <div class="price-row">
+        <div id="pPrice" class="price"></div>
+        <div id="pOld" class="old"></div>
+      </div>
+      <p id="pPrintDesc" class="desc"></p>
+    </div>
+  </section>
+  <section class="features">
+    <h2>Najważniejsze cechy</h2>
+    <div id="pFeatures" class="feature-grid"></div>
+  </section>
+  <section class="params">
+    <h2>Parametry techniczne</h2>
+    <table id="pParams"></table>
+  </section>
+  <footer><strong>Zapytaj doradcę ELKASS</strong> o dostępność, raty, odbiór osobisty lub dostawę.</footer>
+</main>
+<div class="screen-actions"><button onclick="window.print()">Drukuj A4</button><button onclick="window.close()">Zamknij</button></div>
+<script src="product-print.js"></script>
+</body>
+</html>

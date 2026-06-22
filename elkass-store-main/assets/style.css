@@ -1,0 +1,1339 @@
+:root{
+  --red:#e30613;
+  --red-dark:#b8000b;
+  --green:#8bc34a;
+  --ink:#111318;
+  --muted:#667085;
+  --soft:#f6f7f9;
+  --white:#fff;
+  --shadow:0 18px 50px rgba(15,23,42,.10);
+  --shadow-soft:0 10px 32px rgba(15,23,42,.08);
+  --radius:26px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,Arial,sans-serif;background:#fff;color:var(--ink);line-height:1.55;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}.container{width:min(1180px,90%);margin:0 auto}.section{padding:78px 0}.eyebrow{display:inline-flex;color:var(--red);font-weight:900;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:8px}.section-head{text-align:center;max-width:760px;margin:0 auto 40px}.section-head h2,.section-toolbar h2{font-size:clamp(28px,3vw,42px);line-height:1.12;font-weight:900;letter-spacing:-1px}.section-head p{color:var(--muted);margin-top:12px}.section-head.compact{margin-bottom:34px}.btn{height:58px;min-width:220px;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:0 28px;font-weight:900;font-size:15px;transition:.25s;border:1px solid transparent}.btn-primary{background:linear-gradient(135deg,var(--red),var(--red-dark));color:white;box-shadow:0 18px 36px rgba(227,6,19,.28)}.btn-outline{background:rgba(255,255,255,.08);color:white;border-color:rgba(255,255,255,.55);backdrop-filter:blur(10px)}.btn-outline.light{background:white;color:#111;border-color:rgba(255,255,255,.45)}.btn:hover{transform:translateY(-3px)}
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(15,23,42,.06)}.header-inner{height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;flex-direction:column;line-height:1}.brand-main{font-size:32px;font-weight:900;letter-spacing:-1px}.brand-main span{color:var(--red)}.brand-main em{font-style:normal;color:var(--green)}.brand-sub{font-size:10px;font-weight:900;letter-spacing:1.7px;margin-top:7px;color:#222}.nav{display:flex;align-items:center;gap:28px}.nav a{font-size:14px;font-weight:800;color:#222;position:relative}.nav a:after{content:"";position:absolute;left:0;bottom:-8px;width:0;height:3px;background:var(--red);border-radius:8px;transition:.25s}.nav a:hover:after{width:100%}.header-actions{display:flex;align-items:center;gap:12px}.header-phone{background:var(--red);color:white;border-radius:16px;padding:13px 20px;font-weight:900;box-shadow:0 14px 30px rgba(227,6,19,.22)}.burger{display:none;width:46px;height:46px;border:0;border-radius:14px;background:#111;cursor:pointer;padding:12px}.burger span{display:block;height:2px;background:#fff;border-radius:5px;margin:5px 0}
+.hero-premium{position:relative;min-height:640px;display:flex;align-items:center;color:white;overflow:hidden;background:#090a0d}.hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,6,8,.95) 0%,rgba(5,6,8,.84) 33%,rgba(5,6,8,.40) 62%,rgba(5,6,8,.15) 100%),url("assets/hero-premium.png");background-size:cover;background-position:center}.hero-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 38%,rgba(227,6,19,.25),transparent 25%),linear-gradient(180deg,transparent 64%,rgba(0,0,0,.30))}.hero-layout{position:relative;z-index:2}.hero-copy{max-width:760px}.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}.hero-badges span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(12px);padding:10px 16px;border-radius:999px;font-size:13px;font-weight:900}.hero-copy h1{font-size:clamp(42px,5.2vw,76px);line-height:1.04;font-weight:900;letter-spacing:-2.3px;max-width:760px}.hero-copy p{font-size:18px;color:rgba(255,255,255,.88);font-weight:700;margin-top:20px}.hero-buttons{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}.hero-buttons.center{justify-content:center}.trust-strip{position:relative;z-index:10;margin-top:-36px}.trust-card{background:white;border-radius:22px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}.trust-item{display:flex;align-items:center;gap:20px;padding:24px 28px;border-right:1px solid #edf0f4}.trust-item:last-child{border-right:0}.trust-icon{font-size:38px;color:var(--red);line-height:1}.trust-item strong{display:block;font-size:20px;font-weight:900;line-height:1.15}.trust-item span{display:block;font-size:15px;font-weight:800}.trust-item small{display:block;color:var(--muted);font-size:12px;margin-top:5px}.promotions-section{padding-top:86px;background:linear-gradient(180deg,#fff 0%,#f8f9fb 100%)}.section-toolbar{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.ghost-link{border:1px solid #d8dde5;border-radius:999px;padding:12px 22px;font-size:14px;font-weight:800;background:white}.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product-card{position:relative;background:white;border:1px solid rgba(15,23,42,.08);border-radius:18px;padding:20px;box-shadow:0 12px 36px rgba(15,23,42,.07);transition:.25s;overflow:hidden}.product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow)}.product-badge{position:absolute;top:18px;left:18px;background:var(--red);color:white;border-radius:7px;padding:7px 10px;font-size:11px;font-weight:900;z-index:2}.discount{position:absolute;right:18px;bottom:72px;background:var(--red);color:white;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px}.product-image{height:170px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}.product-image img{max-height:160px;object-fit:contain}.product-card h3{font-size:17px;line-height:1.22;min-height:44px;margin-bottom:10px}.features{list-style:none;color:#5d6675;font-size:13px;margin-bottom:12px}.features li{margin:3px 0}.price{display:flex;align-items:baseline;gap:8px}.price strong{font-size:24px;font-weight:900}.price del{color:#8b95a5;font-size:12px}.categories-section{background:white}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.category-card{height:260px;position:relative;overflow:hidden;border-radius:24px;box-shadow:var(--shadow-soft);color:white;transition:.3s}.category-card:hover{transform:translateY(-8px)}.category-card img{width:100%;height:100%;object-fit:cover;transition:.5s}.category-card:hover img{transform:scale(1.08)}.category-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 28%,rgba(0,0,0,.82))}.category-card div{position:absolute;z-index:2;left:24px;right:24px;bottom:22px}.category-card h3{font-size:28px;font-weight:900}.category-card p{font-size:14px;color:rgba(255,255,255,.85)}.quick-info{background:#111;color:white;padding:34px 0}.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.quick-item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:18px;border-radius:18px;text-align:center;font-weight:900}.reviews-section{background:#f7f8fa}.rating-box{max-width:720px;margin:0 auto 40px;background:white;border-radius:28px;padding:30px;text-align:center;box-shadow:var(--shadow)}.rating-stars{color:#ffb400;font-size:30px;letter-spacing:3px}.rating-box h2{font-size:42px;line-height:1;margin:12px 0 10px}.rating-box p{color:var(--muted)}.reviews-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}.review-card{background:white;border-radius:22px;padding:22px;min-height:220px;box-shadow:0 14px 38px rgba(15,23,42,.08);border:1px solid rgba(15,23,42,.06);transition:.25s}.review-card:hover{transform:translateY(-6px)}.review-stars{color:#ffb400;letter-spacing:2px;font-size:16px;margin-bottom:12px}.review-text{font-size:13px;line-height:1.65;color:#444;margin-bottom:15px}.review-author{font-weight:900}.review-location{color:var(--red);font-size:12px;font-weight:900;margin-top:4px}.about-section{background:white}.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:center}.about-image img{height:420px;width:100%;object-fit:cover;border-radius:28px;box-shadow:var(--shadow)}.about-content h2{font-size:clamp(28px,3vw,42px);line-height:1.14;font-weight:900;margin-bottom:18px}.about-content p{font-size:16px;color:#4b5563;margin-bottom:14px}.about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.about-tags span{background:#f1f3f6;border-radius:999px;padding:10px 14px;font-weight:800;font-size:13px}.contact-section{background:linear-gradient(180deg,#fff,#f8f9fb)}.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.contact-card{background:white;border-radius:22px;padding:24px;text-align:center;box-shadow:var(--shadow-soft);border:1px solid rgba(15,23,42,.06)}.contact-card h3{font-size:19px;margin-bottom:10px}.contact-card p,.contact-card a{color:#4b5563;font-weight:700}.map-card{height:360px;border-radius:26px;overflow:hidden;margin-top:24px;box-shadow:var(--shadow)}.map-card iframe{width:100%;height:100%;border:0}.cta-section{padding:72px 0;background:linear-gradient(135deg,#101216 0%,#222 55%,#4d0005 100%);color:white;text-align:center}.cta-box h2{font-size:clamp(30px,4vw,50px);line-height:1.1;font-weight:900}.cta-box p{color:rgba(255,255,255,.78);max-width:680px;margin:16px auto 0}.brands-section{padding:60px 0;background:white}.brands-title{text-align:center;font-size:28px;font-weight:900;margin-bottom:30px}.brands-row{display:flex;align-items:center;justify-content:center;gap:38px;flex-wrap:wrap}.brands-row img{height:48px;max-width:145px;object-fit:contain;filter:grayscale(100%);opacity:.76;transition:.25s}.brands-row img:hover{filter:none;opacity:1;transform:translateY(-4px)}.footer{background:#0d0f13;color:white}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;padding:48px 0}.footer strong{font-size:24px}.footer strong span{color:var(--red)}.footer p,.footer a{display:block;color:rgba(255,255,255,.68);margin-top:8px}.footer-bottom{text-align:center;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.08);padding:18px}.mobile-call{display:none}.top-btn{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border:0;border-radius:50%;background:var(--red);color:white;font-size:22px;font-weight:900;opacity:0;pointer-events:none;z-index:1000;transition:.25s}.top-btn.show{opacity:1;pointer-events:auto}.reveal{opacity:0;transform:translateY(32px);transition:.7s ease}.reveal.active{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){.nav{display:none;position:absolute;top:86px;left:0;right:0;background:white;padding:22px;box-shadow:0 20px 35px rgba(15,23,42,.14);flex-direction:column}.nav.open{display:flex}.burger{display:block}.products-grid{grid-template-columns:repeat(2,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}.trust-card,.quick-grid,.contact-grid{grid-template-columns:repeat(2,1fr)}.trust-item:nth-child(2){border-right:0}.reviews-grid{grid-template-columns:repeat(3,1fr)}.about-grid{grid-template-columns:1fr}.hero-bg{background-position:58% center}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:720px){.container{width:min(92%,560px)}.header-inner{height:76px}.brand-main{font-size:24px}.brand-sub{font-size:8px}.header-phone{display:none}.nav{top:76px}.hero-premium{min-height:560px;align-items:flex-end;padding-bottom:44px}.hero-bg{background:linear-gradient(180deg,rgba(5,6,8,.22) 0%,rgba(5,6,8,.72) 42%,rgba(5,6,8,.96) 100%),url("assets/hero-premium.png");background-size:cover;background-position:68% center}.hero-copy h1{font-size:38px;letter-spacing:-1.2px}.hero-copy p{font-size:14px}.hero-badges span{font-size:12px;padding:8px 12px}.btn{width:100%;min-width:0}.trust-strip{margin-top:0}.trust-card{border-radius:0;grid-template-columns:1fr}.trust-item{border-right:0;border-bottom:1px solid #edf0f4;padding:18px 22px}.products-grid,.category-grid,.quick-grid,.contact-grid,.footer-grid{grid-template-columns:1fr}.section{padding:58px 0}.promotions-section{padding-top:58px}.section-toolbar{align-items:flex-start;flex-direction:column}.ghost-link{width:100%;text-align:center}.product-image{height:150px}.category-card{height:220px}.reviews-grid{grid-template-columns:1fr}.rating-box h2{font-size:36px}.about-image img{height:300px}.map-card{height:280px}.brands-row{gap:22px}.brands-row img{height:38px}.mobile-call{display:flex;position:fixed;left:14px;right:14px;bottom:14px;height:52px;background:linear-gradient(135deg,var(--red),var(--red-dark));color:white;border-radius:999px;align-items:center;justify-content:center;font-weight:900;z-index:1001;box-shadow:0 18px 40px rgba(227,6,19,.35)}.top-btn{bottom:78px}.footer{padding-bottom:64px}}
+
+/* ===== WOW5 FIX: DESKTOP HERO + PREMIUM PROMOTIONS ===== */
+.hero-premium{
+  min-height:640px !important;
+  background:#07080b !important;
+  isolation:isolate;
+}
+.hero-visual-img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:0;
+  display:block;
+}
+.hero-bg{
+  position:absolute !important;
+  inset:0 !important;
+  z-index:1 !important;
+  background:
+    linear-gradient(90deg,rgba(5,6,8,.96) 0%,rgba(5,6,8,.86) 31%,rgba(5,6,8,.42) 62%,rgba(5,6,8,.14) 100%),
+    radial-gradient(circle at 18% 45%,rgba(227,6,19,.26),transparent 28%) !important;
+  background-size:cover !important;
+  background-position:center !important;
+  pointer-events:none;
+}
+.hero-layout{z-index:2 !important;}
+.hero-copy{max-width:720px;}
+.hero-copy h1{font-size:clamp(44px,5.1vw,74px);line-height:1.03;}
+.hero-buttons .btn{box-shadow:0 18px 42px rgba(227,6,19,.24)}
+.promotions-section{padding-top:88px;background:linear-gradient(180deg,#fff 0%,#f7f8fb 100%)}
+.products-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
+.product-card{border-radius:22px;padding:22px 22px 20px;background:#fff;box-shadow:0 12px 38px rgba(15,23,42,.075);border:1px solid rgba(15,23,42,.08)}
+.product-image{height:185px;background:linear-gradient(180deg,#fff,#fafbfc);border-radius:16px;margin:-2px 0 14px;}
+.product-image img{max-width:100%;max-height:170px;}
+.product-card h3{font-size:18px;min-height:48px;}
+.product-badge{border-radius:8px;letter-spacing:.2px;}
+.section-toolbar h2{font-size:clamp(28px,3vw,36px);letter-spacing:-.9px;}
+.trust-card{transform:translateY(-2px)}
+@media(max-width:1100px){
+  .hero-premium{min-height:600px !important;}
+  .hero-visual-img{object-position:58% center;}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:720px){
+  .hero-premium{min-height:560px !important;align-items:flex-end;padding-bottom:44px;}
+  .hero-visual-img{object-position:68% center;}
+  .hero-bg{background:linear-gradient(180deg,rgba(5,6,8,.18) 0%,rgba(5,6,8,.72) 42%,rgba(5,6,8,.96) 100%) !important;}
+  .hero-copy h1{font-size:38px;letter-spacing:-1.2px;}
+  .products-grid{grid-template-columns:1fr;}
+}
+
+
+/* ===== WOW6: ROTUJĄCE PROMOCJE 20 PRODUKTÓW ===== */
+.products-grid{
+  transition:opacity .22s ease, transform .22s ease;
+}
+.products-grid.is-changing{
+  opacity:.25;
+  transform:translateY(8px);
+}
+.product-card{
+  animation:productFadeIn .42s ease both;
+}
+@keyframes productFadeIn{
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.discount{
+  box-shadow:0 12px 24px rgba(227,6,19,.24);
+}
+
+/* ===== WOW7: PANEL ADMIN + DYNAMICZNE KATEGORIE ===== */
+.subcategory-pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.subcategory-pills span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:5px 9px;font-size:11px;font-weight:800;color:#fff}.nav a[href="admin/"]{font-size:12px;color:#98a2b3}.nav a[href="admin/"]:hover{color:var(--red)}
+@media(max-width:720px){.subcategory-pills span{font-size:10px}.category-card div{left:18px;right:18px}}
+
+/* ===== WOW8 FIX: premium category cards, no overlapping text ===== */
+.categories-section .section-head.compact{
+  max-width: 920px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.category-card{
+  height: 278px;
+  border-radius: 26px;
+  isolation: isolate;
+}
+
+.category-card:after{
+  background: linear-gradient(180deg,
+    rgba(0,0,0,.04) 0%,
+    rgba(0,0,0,.18) 36%,
+    rgba(0,0,0,.82) 100%);
+}
+
+.category-card div{
+  left: 24px;
+  right: 24px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.category-card h3{
+  font-size: clamp(27px, 2.1vw, 34px);
+  line-height: .98;
+  letter-spacing: -1px;
+  margin: 0;
+  text-shadow: 0 4px 18px rgba(0,0,0,.55);
+}
+
+.category-card p{
+  font-size: 14px;
+  line-height: 1.35;
+  margin: 0;
+  color: rgba(255,255,255,.92);
+  font-weight: 800;
+  text-shadow: 0 3px 12px rgba(0,0,0,.45);
+}
+
+.subcategory-pills{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 4px;
+  max-width: 100%;
+}
+
+.subcategory-pills span{
+  display: inline-flex;
+  align-items: center;
+  min-height: 27px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.32);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: none;
+}
+
+@media(max-width:1100px){
+  .category-card{height:260px;}
+}
+
+@media(max-width:720px){
+  .categories-section .section-head.compact{margin-bottom:24px;}
+  .category-card{height:230px;border-radius:22px;}
+  .category-card div{left:18px;right:18px;bottom:17px;gap:7px;}
+  .category-card h3{font-size:28px;}
+  .category-card p{font-size:13px;}
+  .subcategory-pills span{font-size:10px;min-height:24px;padding:5px 8px;}
+}
+
+
+/* ==========================
+   WOW9 SHOP EXPERIENCE
+========================== */
+.site-header{position:sticky;top:0;z-index:1000;}
+.header-inner{position:relative;}
+.mega-menu{
+  position:absolute;left:50%;transform:translateX(-50%) translateY(10px);
+  top:84%;width:min(920px,92vw);background:#fff;border:1px solid rgba(15,23,42,.08);
+  box-shadow:0 30px 80px rgba(15,23,42,.16);border-radius:24px;padding:26px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;opacity:0;visibility:hidden;pointer-events:none;transition:.25s;z-index:999;
+}
+.site-header:has(.nav a[href="#oferta"]:hover) .mega-menu,.mega-menu:hover{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.mega-menu h4{font-size:16px;margin-bottom:10px;color:var(--ink)}
+.mega-menu a{display:block;text-decoration:none;color:var(--muted);padding:7px 0;font-weight:600;font-size:14px}
+.mega-menu a:hover{color:var(--red)}
+.shop-search-section{padding:34px 0 18px;background:linear-gradient(180deg,#fff,#f8f9fb)}
+.shop-search-card{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:center;background:#fff;border-radius:26px;padding:24px 28px;box-shadow:0 18px 55px rgba(15,23,42,.08);border:1px solid rgba(15,23,42,.06)}
+.shop-search-card h2{font-size:30px;margin:3px 0 0}.search-box{height:62px;background:#f4f6f9;border-radius:999px;display:flex;align-items:center;gap:14px;padding:0 24px;border:1px solid rgba(15,23,42,.08)}
+.search-box input{border:0;background:transparent;outline:0;width:100%;font:600 16px Poppins,sans-serif;color:var(--ink)}
+.quick-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:20px 0 0}.quick-actions a{background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 8px 24px rgba(15,23,42,.06);border-radius:999px;padding:12px 18px;text-decoration:none;color:var(--ink);font-weight:700;font-size:14px}.quick-actions a:hover{transform:translateY(-2px);color:var(--red)}
+.search-results{display:none;margin-top:18px;background:#fff;border-radius:22px;box-shadow:var(--shadow);overflow:hidden;border:1px solid rgba(15,23,42,.08)}.search-results.active{display:grid;grid-template-columns:repeat(4,1fr);gap:0}.search-result{display:flex;gap:12px;align-items:center;padding:14px;border-right:1px solid #eef0f3;text-decoration:none;color:var(--ink)}.search-result img{width:58px;height:58px;object-fit:contain}.search-result b{display:block;font-size:13px}.search-result span{color:var(--red);font-weight:800;font-size:13px}.search-empty{padding:18px;text-align:center;color:var(--muted);grid-column:1/-1}
+.deal-banner-section{padding:18px 0 40px;background:#f8f9fb}.deal-banner{position:relative;min-height:320px;border-radius:34px;overflow:hidden;box-shadow:0 26px 80px rgba(15,23,42,.16);background:#111}.deal-banner>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.deal-banner:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.25),rgba(0,0,0,.05))}.deal-content{position:relative;z-index:2;color:#fff;max-width:600px;padding:48px}.deal-content span{display:inline-flex;background:var(--red);border-radius:999px;padding:8px 14px;font-weight:900;font-size:12px;letter-spacing:.8px}.deal-content h2{font-size:42px;line-height:1.05;margin:18px 0 10px}.deal-content p{color:rgba(255,255,255,.82);font-size:17px}.deal-row{display:flex;align-items:center;gap:18px;margin-top:22px}.deal-row strong{font-size:34px}.btn.small{padding:12px 18px;font-size:14px}.countdown{display:flex;gap:10px;margin-top:22px}.countdown span{display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:16px;width:78px;height:70px}.countdown b{font-size:24px}.countdown small{font-size:11px;color:rgba(255,255,255,.7)}
+.bestsellers-section{background:#fff}.bestsellers-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}.bestseller-card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:24px;padding:18px;box-shadow:0 12px 36px rgba(15,23,42,.07);transition:.3s;position:relative}.bestseller-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px rgba(15,23,42,.12)}.bestseller-card img{width:100%;height:120px;object-fit:contain}.bestseller-card h3{font-size:15px;line-height:1.25;margin:12px 0 6px}.bestseller-stars{color:#ffb400;font-size:13px;margin-bottom:8px}.bestseller-price{font-weight:900;color:var(--red);font-size:18px}.bestseller-tag{position:absolute;top:12px;left:12px;background:#111;color:#fff;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:900}
+.brands-marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}.brands-marquee .brands-row{width:max-content;animation:brandScroll 24s linear infinite}.brands-marquee:hover .brands-row{animation-play-state:paused}@keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-38%)}}
+.desktop-call{position:fixed;right:22px;bottom:22px;z-index:998;background:#111;color:#fff;text-decoration:none;border-radius:999px;padding:15px 22px;font-weight:900;box-shadow:0 20px 50px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.14)}.desktop-call:hover{background:var(--red)}
+.hero-premium .hero-visual-img{animation:heroZoom 16s ease-in-out infinite alternate}@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.035)}}
+@media(max-width:1100px){.shop-search-card{grid-template-columns:1fr}.search-results.active{grid-template-columns:repeat(2,1fr)}.bestsellers-grid{grid-template-columns:repeat(3,1fr)}.mega-menu{display:none}.deal-content h2{font-size:34px}}
+@media(max-width:720px){.shop-search-section{padding-top:18px}.shop-search-card{padding:18px;border-radius:20px}.shop-search-card h2{font-size:22px}.search-box{height:54px;padding:0 16px}.search-results.active{grid-template-columns:1fr}.quick-actions{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.quick-actions a{white-space:nowrap}.deal-banner{min-height:420px;border-radius:24px}.deal-banner:after{background:linear-gradient(180deg,rgba(0,0,0,.82),rgba(0,0,0,.35))}.deal-content{padding:28px}.deal-content h2{font-size:30px}.deal-row{align-items:flex-start;flex-direction:column}.bestsellers-grid{grid-template-columns:repeat(2,1fr);gap:12px}.bestseller-card{padding:14px}.bestseller-card img{height:96px}.desktop-call{display:none}.brands-marquee .brands-row{animation-duration:18s}}
+
+
+/* ==========================
+   WOW10 FIX: CZYSTY HIT TYGODNIA + ADMIN-FRIENDLY PRODUKTY
+   Usuwa problem tekstu w tekście: banner nie używa już grafiki z napisami.
+========================== */
+.deal-banner-section{padding:18px 0 42px;background:#f8f9fb;}
+.deal-banner.deal-clean{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);
+  align-items:center;
+  min-height:330px;
+  border-radius:34px;
+  overflow:hidden;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 78% 30%, rgba(227,6,19,.34), transparent 34%),
+    radial-gradient(circle at 62% 74%, rgba(55,80,255,.24), transparent 36%),
+    linear-gradient(115deg,#07070d 0%, #161026 48%, #5b150d 100%);
+  box-shadow:0 30px 90px rgba(15,23,42,.18);
+}
+.deal-banner.deal-clean:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("assets/banners/hit-clean-bg.jpg") center/cover no-repeat;
+  opacity:.32;
+  z-index:-2;
+}
+.deal-banner.deal-clean:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.20) 62%,rgba(0,0,0,.02));
+  z-index:-1;
+}
+.deal-banner.deal-clean > img{display:none!important;}
+.deal-clean .deal-content{padding:52px 56px;color:#fff;max-width:650px;}
+.deal-clean .deal-badge{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  background:#e30613;
+  color:#fff;
+  border-radius:999px;
+  padding:9px 16px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.8px;
+  box-shadow:0 14px 34px rgba(227,6,19,.3);
+}
+.deal-clean .deal-content h2{
+  margin:18px 0 12px;
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.02;
+  letter-spacing:-1.4px;
+  max-width:620px;
+}
+.deal-clean .deal-content p{font-size:17px;color:rgba(255,255,255,.82);font-weight:600;}
+.deal-clean .deal-row{display:flex;align-items:center;gap:20px;margin-top:24px;flex-wrap:wrap;}
+.deal-clean .deal-row strong{font-size:clamp(30px,3vw,42px);font-weight:900;letter-spacing:-1px;}
+.deal-visual{position:relative;min-height:330px;height:100%;display:flex;align-items:center;justify-content:center;padding:30px 42px 30px 10px;}
+.deal-product-stage{
+  position:relative;
+  width:min(400px,100%);
+  aspect-ratio:1/0.86;
+  border-radius:32px;
+  background:rgba(255,255,255,.92);
+  box-shadow:0 30px 80px rgba(0,0,0,.34), inset 0 0 0 1px rgba(255,255,255,.7);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  transform:rotate(-1deg);
+}
+.deal-product-stage:before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border-radius:24px;
+  background:linear-gradient(145deg,rgba(227,6,19,.08),rgba(15,23,42,.05));
+  z-index:0;
+}
+.deal-product-stage img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 20px 22px rgba(0,0,0,.18));}
+.deal-discount{
+  position:absolute;
+  right:18px;
+  bottom:18px;
+  z-index:3;
+  width:74px;
+  height:74px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e30613;
+  color:#fff;
+  font-size:19px;
+  font-weight:900;
+  box-shadow:0 18px 35px rgba(227,6,19,.33);
+}
+.product-image img,.bestseller-card img{filter:drop-shadow(0 14px 18px rgba(15,23,42,.10));}
+.product-card{overflow:hidden;}
+.product-image{background:linear-gradient(180deg,#f8fafc,#fff);border-radius:18px;}
+
+.admin-hint{
+  margin-top:10px;
+  color:#667085;
+  font-size:13px;
+}
+
+@media(max-width:980px){
+  .deal-banner.deal-clean{grid-template-columns:1fr;min-height:auto;}
+  .deal-clean .deal-content{padding:34px 28px 8px;}
+  .deal-visual{min-height:260px;padding:10px 28px 34px;}
+  .deal-product-stage{max-width:360px;}
+}
+@media(max-width:620px){
+  .deal-banner.deal-clean{border-radius:24px;}
+  .deal-clean .deal-content h2{font-size:30px;}
+  .deal-clean .deal-row{gap:12px;}
+  .deal-clean .deal-row strong{font-size:30px;}
+  .deal-product-stage{width:100%;max-width:300px;border-radius:24px;}
+  .deal-discount{width:62px;height:62px;font-size:16px;}
+}
+
+/* =========================================================
+   WOW11 — BEZPIECZNE OBRAZKI PRODUKTÓW I BANERÓW
+   Cel: każdy plik graficzny, niezależnie od rozdzielczości,
+   ma wejść w stałą ramkę i nie rozjechać układu strony.
+========================================================= */
+
+/* Karty produktów mają stałą konstrukcję */
+.products-grid{
+  align-items:stretch;
+}
+
+.product-card{
+  min-height:430px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Stała ramka na zdjęcie produktu */
+.product-image{
+  width:100%;
+  height:188px;
+  min-height:188px;
+  max-height:188px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:14px;
+  background:linear-gradient(180deg,#f8fafc 0%,#ffffff 100%);
+  border-radius:18px;
+  margin:0 0 14px;
+}
+
+/* Produkt nigdy nie rozciąga karty */
+.product-image img{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+}
+
+/* Tytuły i opisy nie zmieniają wysokości kart w sposób losowy */
+.product-card h3{
+  min-height:48px;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.product-card .features{
+  min-height:64px;
+  max-height:64px;
+  overflow:hidden;
+}
+
+.product-card .price{
+  margin-top:auto;
+}
+
+/* Bestseller / najczęściej wybierane */
+.bestseller-card{
+  min-height:245px;
+  display:flex;
+  flex-direction:column;
+}
+
+.bestseller-card img{
+  width:100%;
+  height:120px;
+  min-height:120px;
+  object-fit:contain;
+  object-position:center;
+  background:linear-gradient(180deg,#f8fafc,#fff);
+  border-radius:16px;
+  padding:10px;
+}
+
+/* Wyniki wyszukiwania */
+.search-result img{
+  width:62px;
+  height:62px;
+  min-width:62px;
+  object-fit:contain;
+  object-position:center;
+  border-radius:12px;
+  background:#f7f8fb;
+  padding:6px;
+}
+
+/* Hit tygodnia / duże grafiki produktu */
+.deal-product-stage{
+  aspect-ratio:1/0.86;
+  overflow:hidden;
+}
+
+.deal-product-stage img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Kategorie i bannery mają cover, bo to zdjęcia tła */
+.category-card img,
+.about-image img,
+.hero-bg,
+.deal-banner.deal-clean:before{
+  object-fit:cover;
+  object-position:center;
+}
+
+/* Ochrona przed za długimi tekstami w panelu produktu */
+.product-badge{
+  max-width:calc(100% - 90px);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* Mobile: niższe ramki, nadal stabilne */
+@media(max-width:720px){
+  .product-card{
+    min-height:390px;
+  }
+
+  .product-image{
+    height:160px;
+    min-height:160px;
+    max-height:160px;
+  }
+
+  .product-card .features{
+    min-height:58px;
+    max-height:58px;
+  }
+
+  .bestseller-card img{
+    height:105px;
+    min-height:105px;
+  }
+}
+
+
+/* =========================================================
+   ELKASS WOW12 — poprawki premium
+   - wyszukiwarka nad hero
+   - kategorie bez nachodzenia napisów
+   - żywy licznik sekund
+   - stabilne obrazki produktów
+========================================================= */
+
+.shop-search-section{
+  padding:18px 0 16px;
+  background:#fff;
+  border-bottom:1px solid rgba(15,23,42,.06);
+}
+.shop-search-card{
+  grid-template-columns:260px 1fr;
+  padding:18px 22px;
+  border-radius:22px;
+  box-shadow:0 10px 32px rgba(15,23,42,.07);
+}
+.shop-search-card h2{
+  font-size:24px;
+}
+.search-box{
+  height:54px;
+}
+.quick-actions{
+  margin:14px 0 0;
+}
+.quick-actions a{
+  padding:10px 16px;
+  font-size:13px;
+}
+
+/* Kategorie — naprawa nakładania tekstów i kapsułek */
+.category-grid{
+  align-items:stretch;
+}
+.category-card{
+  height:278px;
+  isolation:isolate;
+}
+.category-card:after{
+  background:linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.20) 42%,rgba(0,0,0,.92) 100%);
+  z-index:1;
+}
+.category-card > div{
+  position:absolute;
+  z-index:3;
+  left:24px;
+  right:24px;
+  bottom:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:8px;
+}
+.category-card h3{
+  font-size:27px;
+  line-height:1;
+  margin:0;
+  letter-spacing:-.8px;
+  text-shadow:0 4px 14px rgba(0,0,0,.55);
+}
+.category-card p{
+  font-size:14px;
+  line-height:1.35;
+  margin:0;
+  color:rgba(255,255,255,.92);
+  font-weight:700;
+  text-shadow:0 3px 12px rgba(0,0,0,.55);
+}
+.category-card .subcategory-pills{
+  position:static !important;
+  inset:auto !important;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0;
+  width:100%;
+}
+.category-card .subcategory-pills span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:25px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.22);
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  backdrop-filter:blur(8px);
+  box-shadow:0 8px 18px rgba(0,0,0,.16);
+}
+
+/* Produkty — odporność na dowolne proporcje zdjęcia */
+.product-card{
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+}
+.product-image{
+  width:100%;
+  height:180px;
+  min-height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:14px;
+  background:linear-gradient(180deg,#fff,#f7f8fb);
+}
+.product-image img{
+  width:100%;
+  height:100%;
+  max-height:none;
+  object-fit:contain;
+  object-position:center;
+}
+.product-card h3{
+  min-height:46px;
+}
+.features{
+  min-height:62px;
+}
+.price{
+  margin-top:auto;
+}
+
+/* Hit tygodnia — stabilna grafika i czytelny licznik */
+.countdown{
+  gap:9px;
+}
+.countdown span{
+  width:72px;
+  height:64px;
+}
+.countdown b{
+  font-size:21px;
+}
+.deal-product-stage{
+  overflow:hidden;
+}
+.deal-product-stage img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+}
+
+/* Dodatkowy efekt premium */
+.section-toolbar h2,
+.section-head h2{
+  letter-spacing:-1.1px;
+}
+.products-grid .product-card:nth-child(1){
+  box-shadow:0 18px 50px rgba(227,6,19,.10), 0 12px 36px rgba(15,23,42,.07);
+}
+
+@media(max-width:900px){
+  .shop-search-card{
+    grid-template-columns:1fr;
+  }
+  .category-card{
+    height:250px;
+  }
+  .category-card h3{
+    font-size:24px;
+  }
+}
+
+@media(max-width:600px){
+  .shop-search-section{
+    padding:12px 0;
+  }
+  .search-box{
+    height:50px;
+    padding:0 16px;
+  }
+  .category-card{
+    height:230px;
+  }
+  .category-card > div{
+    left:18px;
+    right:18px;
+    bottom:18px;
+  }
+  .category-card h3{
+    font-size:23px;
+  }
+  .category-card p{
+    font-size:13px;
+  }
+  .category-card .subcategory-pills span{
+    font-size:10px;
+    padding:5px 9px;
+  }
+  .countdown span{
+    width:62px;
+    height:58px;
+  }
+}
+
+
+/* ===== WOW13: 5 hitów tygodnia z osobnym czasem ===== */
+.deal-mini-list{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:14px;
+  margin-top:18px;
+}
+.deal-mini-card{
+  border:1px solid rgba(15,23,42,.08);
+  background:#fff;
+  border-radius:20px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:58px 1fr;
+  grid-template-rows:auto auto auto;
+  column-gap:12px;
+  align-items:center;
+  text-align:left;
+  cursor:pointer;
+  box-shadow:0 12px 34px rgba(15,23,42,.07);
+  transition:.25s ease;
+  min-width:0;
+}
+.deal-mini-card:hover,
+.deal-mini-card.active{
+  transform:translateY(-4px);
+  border-color:rgba(227,6,19,.42);
+  box-shadow:0 18px 44px rgba(227,6,19,.12);
+}
+.deal-mini-card img{
+  grid-row:1 / 4;
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  background:#f7f8fb;
+  border-radius:14px;
+  padding:6px;
+}
+.deal-mini-card span{
+  color:#e30613;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.deal-mini-card strong{
+  color:#111827;
+  font-size:13px;
+  line-height:1.18;
+  font-weight:900;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+.deal-mini-card small{
+  color:#667085;
+  font-size:11px;
+  font-weight:800;
+  margin-top:3px;
+}
+.countdown span{
+  min-width:72px;
+}
+@media(max-width:1100px){
+  .deal-mini-list{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:620px){
+  .deal-mini-list{grid-template-columns:1fr;}
+  .deal-mini-card{grid-template-columns:52px 1fr;}
+  .deal-mini-card img{width:52px;height:52px;}
+}
+
+
+/* ===== WOW14: klikalne kategorie + 3 podkategorie + filtr produktów ===== */
+.category-card.category-clickable{
+  cursor:pointer;
+}
+.category-card.category-clickable:focus-within,
+.category-card.category-clickable:hover{
+  transform:translateY(-8px);
+}
+.category-card .subcategory-pills{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:7px !important;
+  margin-top:4px !important;
+  margin-bottom:4px !important;
+}
+.category-card .subcategory-pills .subcategory-pill{
+  appearance:none;
+  border:1px solid rgba(255,255,255,.32);
+  background:rgba(255,255,255,.18);
+  color:#fff;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:11px;
+  line-height:1;
+  font-weight:900;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  transition:.2s ease;
+}
+.category-card .subcategory-pills .subcategory-pill:hover{
+  background:#fff;
+  color:#111827;
+  transform:translateY(-2px);
+}
+.category-open{
+  margin-top:6px;
+  appearance:none;
+  border:0;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  color:#fff;
+  border-radius:999px;
+  padding:9px 14px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 12px 24px rgba(227,6,19,.22);
+}
+.active-filter{
+  margin:-8px 0 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  box-shadow:0 10px 28px rgba(15,23,42,.06);
+}
+.active-filter span{
+  color:#4b5563;
+  font-weight:800;
+}
+.active-filter strong{
+  color:#111827;
+}
+.active-filter button{
+  border:0;
+  background:#111827;
+  color:#fff;
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:900;
+  cursor:pointer;
+}
+.empty-products{
+  grid-column:1/-1;
+  min-height:180px;
+  background:#fff;
+  border:1px dashed rgba(15,23,42,.18);
+  border-radius:22px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-align:center;
+  color:#4b5563;
+  padding:28px;
+}
+.empty-products strong{font-size:20px;color:#111827;}
+@media(max-width:720px){
+  .active-filter{flex-direction:column;align-items:stretch;text-align:center;}
+  .active-filter button{width:100%;}
+  .category-open{width:100%;}
+}
+
+
+/* =========================================================
+   ELKASS WOW15 — kategorie, podkategorie i stabilne obrazki
+   Finalna warstwa nadpisująca wcześniejsze style.
+========================================================= */
+.category-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:24px !important;
+}
+.category-card{
+  min-height:330px !important;
+  height:auto !important;
+  display:block !important;
+  position:relative !important;
+  cursor:pointer !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+}
+.category-card img{
+  position:absolute !important;
+  inset:0 !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center !important;
+}
+.category-card:after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.45) 38%,rgba(0,0,0,.88) 100%) !important;
+  z-index:1 !important;
+}
+.category-card > div,
+.category-card .category-content{
+  position:absolute !important;
+  z-index:2 !important;
+  left:22px !important;
+  right:22px !important;
+  bottom:22px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:10px !important;
+  max-height:calc(100% - 40px) !important;
+}
+.category-card h3{
+  font-size:28px !important;
+  line-height:1.05 !important;
+  margin:0 !important;
+  color:#fff !important;
+  text-shadow:0 2px 14px rgba(0,0,0,.38) !important;
+}
+.category-card p{
+  font-size:13px !important;
+  line-height:1.45 !important;
+  color:rgba(255,255,255,.86) !important;
+  margin:0 !important;
+  max-width:100% !important;
+}
+.category-card .subcategory-pills{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:7px !important;
+  margin:2px 0 0 !important;
+  max-width:100% !important;
+}
+.category-card .subcategory-pills .subcategory-pill{
+  appearance:none !important;
+  border:1px solid rgba(255,255,255,.34) !important;
+  background:rgba(255,255,255,.16) !important;
+  color:#fff !important;
+  border-radius:999px !important;
+  padding:7px 10px !important;
+  font-size:11px !important;
+  line-height:1 !important;
+  font-weight:900 !important;
+  cursor:pointer !important;
+  backdrop-filter:blur(10px) !important;
+  transition:.2s !important;
+  white-space:nowrap !important;
+}
+.category-card .subcategory-pills .subcategory-pill:hover,
+.category-card .subcategory-pills .subcategory-pill.active,
+.category-card.active .category-open{
+  background:#e30613 !important;
+  border-color:#e30613 !important;
+  color:#fff !important;
+  transform:translateY(-1px) !important;
+}
+.category-open{
+  margin-top:4px !important;
+  min-height:38px !important;
+  border:0 !important;
+  border-radius:999px !important;
+  padding:10px 16px !important;
+  background:#fff !important;
+  color:#111827 !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  cursor:pointer !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.18) !important;
+}
+.active-filter{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin:-8px 0 22px;
+  padding:14px 16px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:16px;
+  box-shadow:0 8px 22px rgba(15,23,42,.06);
+  font-size:14px;
+}
+.active-filter button{
+  border:0;
+  background:#e30613;
+  color:#fff;
+  border-radius:999px;
+  padding:9px 14px;
+  font-weight:900;
+  cursor:pointer;
+}
+.empty-products{
+  grid-column:1/-1;
+  background:#fff;
+  border:1px dashed rgba(15,23,42,.18);
+  border-radius:22px;
+  padding:34px;
+  text-align:center;
+  display:grid;
+  gap:8px;
+  box-shadow:0 10px 28px rgba(15,23,42,.06);
+}
+.empty-products strong{font-size:22px;}
+.empty-products span{color:#667085;}
+
+/* Produkty i grafiki: każda rozdzielczość ma stałą ramkę i nie rozjedzie układu */
+.product-card{
+  min-height:430px !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+.product-image{
+  height:188px !important;
+  min-height:188px !important;
+  max-height:188px !important;
+  width:100% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  padding:14px !important;
+  border-radius:18px !important;
+  background:linear-gradient(180deg,#f8fafc,#fff) !important;
+}
+.product-image img{
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+.product-card h3{
+  min-height:46px !important;
+  display:-webkit-box !important;
+  -webkit-line-clamp:2 !important;
+  -webkit-box-orient:vertical !important;
+  overflow:hidden !important;
+}
+.product-card .features{
+  min-height:62px !important;
+  max-height:62px !important;
+  overflow:hidden !important;
+}
+.product-card .price{margin-top:auto !important;}
+
+@media(max-width:1100px){
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+}
+@media(max-width:720px){
+  .category-grid{grid-template-columns:1fr !important;}
+  .category-card{min-height:285px !important;}
+  .category-card > div,
+  .category-card .category-content{left:18px !important;right:18px !important;bottom:18px !important;}
+  .category-card h3{font-size:25px !important;}
+  .category-card .subcategory-pills .subcategory-pill{font-size:10px !important;padding:6px 9px !important;}
+  .active-filter{align-items:flex-start;flex-direction:column;}
+  .active-filter button{width:100%;}
+}
+
+/* ===== WOW16 — category subpages with browser history ===== */
+.category-card .subcategory-pills a,
+.category-card .subcategory-pills .subcategory-pill{
+  text-decoration:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  white-space:nowrap !important;
+}
+.category-card .category-open{
+  text-decoration:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.category-page-hero{
+  padding:86px 0 42px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 84% 16%, rgba(227,6,19,.34), transparent 24%),
+    linear-gradient(135deg,#08090d 0%,#151922 54%,#2a0508 100%);
+}
+.category-page-hero-inner{
+  display:grid;
+  grid-template-columns:1.4fr .6fr;
+  gap:34px;
+  align-items:end;
+}
+.breadcrumb{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+  font-size:13px;
+  color:rgba(255,255,255,.65);
+}
+.breadcrumb a{color:rgba(255,255,255,.85);font-weight:800;text-decoration:none}
+.category-page-hero h1{
+  font-size:clamp(36px,5vw,64px);
+  line-height:1.04;
+  letter-spacing:-1.8px;
+  font-weight:900;
+  margin:8px 0 14px;
+}
+.category-page-hero p{max-width:760px;color:rgba(255,255,255,.78);font-weight:600;font-size:17px}
+.category-page-meta{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:24px;
+  padding:22px;
+  backdrop-filter:blur(14px);
+}
+.category-page-meta strong{display:block;font-size:28px;font-weight:900}
+.category-page-meta span{display:block;color:rgba(255,255,255,.68);font-size:13px;margin-top:6px;line-height:1.5}
+.category-page-section{padding:54px 0 82px;background:linear-gradient(180deg,#fff 0%,#f8f9fb 100%)}
+.category-page-toolbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  margin-bottom:28px;
+}
+.category-page-chips{display:flex;flex-wrap:wrap;gap:10px}
+.category-page-chip{
+  text-decoration:none;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  color:#111827;
+  border-radius:999px;
+  padding:10px 16px;
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 8px 22px rgba(15,23,42,.06);
+  transition:.22s;
+}
+.category-page-chip:hover,
+.category-page-chip.active{
+  background:var(--red);
+  color:#fff;
+  border-color:var(--red);
+  transform:translateY(-2px);
+}
+.category-page-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.category-page-product .product-contact{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  margin-top:16px;
+  border-radius:999px;
+  background:#111827;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:900;
+}
+.empty-products.category-empty{
+  grid-column:1/-1;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:var(--shadow-soft);
+  padding:34px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-start;
+}
+.empty-products.category-empty strong{font-size:22px}
+.empty-products.category-empty span{color:var(--muted)}
+@media(max-width:1100px){
+  .category-page-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .category-page-hero-inner{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .category-page-hero{padding:58px 0 34px}
+  .category-page-toolbar{align-items:flex-start;flex-direction:column}
+  .category-page-chips{width:100%;overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}
+  .category-page-chip{flex:0 0 auto}
+  .category-page-grid{grid-template-columns:1fr}
+}
+
+
+/* WOW17 - expanded premium brand carousel */
+.brands-section{padding:72px 0;background:linear-gradient(180deg,#fff,#f8f9fb)}
+.brands-title{text-align:center;font-size:32px;font-weight:900;margin-bottom:10px;letter-spacing:-.8px}
+.brands-lead{text-align:center;color:#64748b;font-weight:700;margin:0 auto 32px;max-width:680px}
+.eyebrow.center{display:block;text-align:center;margin:0 auto 10px;color:#e30613;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:1.4px}
+.brands-marquee{overflow:hidden;padding:8px 0;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.brands-marquee .brands-row{display:flex;align-items:center;gap:18px;width:max-content;animation:brandScroll 52s linear infinite;flex-wrap:nowrap;justify-content:flex-start}
+.brands-marquee:hover .brands-row{animation-play-state:paused}
+.brands-row img{height:64px;width:156px;object-fit:contain;background:#fff;border:1px solid rgba(15,23,42,.07);border-radius:18px;padding:12px 18px;filter:grayscale(100%);opacity:.78;box-shadow:0 10px 28px rgba(15,23,42,.05);transition:.25s}
+.brands-row img:hover{filter:none;opacity:1;transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,23,42,.10)}
+@keyframes brandScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:720px){.brands-title{font-size:25px}.brands-lead{font-size:14px}.brands-row img{height:54px;width:132px;padding:10px 14px}.brands-marquee .brands-row{gap:12px;animation-duration:38s}}
+
+
+/* ===== WOW19: GALERIA ELKASS ===== */
+.gallery-section{background:radial-gradient(circle at 15% 0%,rgba(139,195,74,.22),transparent 28%),linear-gradient(180deg,#101418 0%,#182028 100%);color:#fff;overflow:hidden}.gallery-hero{max-width:880px;margin:0 auto 36px;text-align:center}.gallery-hero h2{font-size:clamp(30px,4vw,58px);line-height:1.05;letter-spacing:-1.8px;font-weight:900}.gallery-hero p{margin:14px auto 0;color:rgba(255,255,255,.78);max-width:760px}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.gallery-card{position:relative;border-radius:18px;overflow:hidden;min-height:230px;aspect-ratio:4/3;cursor:pointer;background:#0b0f13;box-shadow:0 20px 50px rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.10)}.gallery-card-wide{grid-column:span 2}.gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease,filter .55s ease;filter:saturate(1.03) contrast(1.03)}.gallery-card:hover img{transform:scale(1.06);filter:saturate(1.10) contrast(1.06)}.gallery-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.78) 100%);pointer-events:none}.gallery-overlay{position:absolute;left:14px;right:14px;bottom:14px;z-index:2;display:flex;flex-direction:column;gap:4px}.gallery-overlay strong{display:inline-flex;width:max-content;max-width:100%;background:rgba(0,0,0,.62);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);color:#fff;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:900}.gallery-overlay span{color:rgba(255,255,255,.86);font-size:13px;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.55)}.gallery-lightbox{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;background:rgba(5,8,12,.88);backdrop-filter:blur(12px);padding:24px}.gallery-lightbox.active{display:flex}.gallery-lightbox figure{width:min(1100px,94vw);max-height:88vh;margin:0}.gallery-lightbox img{width:100%;max-height:78vh;object-fit:contain;border-radius:20px;box-shadow:0 30px 90px rgba(0,0,0,.45)}.gallery-lightbox figcaption{color:#fff;text-align:center;font-weight:800;margin-top:14px}.gallery-lightbox-close{position:absolute;top:22px;right:26px;width:48px;height:48px;border:0;border-radius:999px;background:#fff;color:#111;font-size:34px;line-height:1;cursor:pointer;box-shadow:0 16px 40px rgba(0,0,0,.24)}@media(max-width:1100px){.gallery-grid{grid-template-columns:repeat(3,1fr)}.gallery-card-wide{grid-column:span 1}}@media(max-width:760px){.gallery-grid{grid-template-columns:1fr 1fr;gap:10px}.gallery-card{min-height:190px;border-radius:16px}.gallery-overlay span{display:none}.gallery-hero p{font-size:14px}}@media(max-width:520px){.gallery-grid{grid-template-columns:1fr}.gallery-card{aspect-ratio:16/11;min-height:220px}}
+
+
+/* ===============================
+   WOW25 — sklep premium / produkt / galeria
+================================ */
+.product-card{display:flex;flex-direction:column;min-height:430px;}
+.product-link-card{display:flex;flex-direction:column;height:100%;color:inherit;text-decoration:none;}
+.product-image{height:190px;min-height:190px;background:linear-gradient(180deg,#fff,#f8fafc);border-radius:16px;overflow:hidden;}
+.product-image img{width:100%;height:100%;max-height:none;object-fit:contain;padding:8px;}
+.product-card h3{min-height:48px;}
+.product-status{display:inline-flex;align-items:center;gap:6px;width:max-content;max-width:100%;font-size:12px;font-weight:900;border-radius:999px;padding:7px 10px;margin:8px 0 10px;background:#ecfdf5;color:#087345;}
+.product-status.order{background:#fff7ed;color:#9a3412;}
+.product-status.unavailable{background:#fef2f2;color:#b91c1c;}
+.product-contact{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#111;color:#fff;padding:10px 14px;font-size:13px;font-weight:900;text-decoration:none;}
+.product-card .price{margin-top:auto;}
+
+.store-showcase{background:linear-gradient(180deg,#fff,#f8f9fb);}
+.store-slider{position:relative;height:440px;border-radius:32px;overflow:hidden;box-shadow:var(--shadow);background:#111;}
+.store-slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease;}
+.store-slide.active{opacity:1;}
+.store-slide img{width:100%;height:100%;object-fit:cover;filter:saturate(1.06) contrast(1.04);}
+.store-slide:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.72),rgba(0,0,0,.16) 62%,rgba(0,0,0,.05));}
+.store-slide div{position:absolute;left:34px;bottom:34px;z-index:2;color:#fff;max-width:520px;}
+.store-slide strong{display:block;font-size:clamp(28px,4vw,48px);line-height:1.05;font-weight:900;letter-spacing:-1.2px;}
+.store-slide span{display:block;margin-top:10px;color:rgba(255,255,255,.84);font-size:17px;font-weight:700;}
+
+.local-advantages{background:#101418;color:white;}
+.local-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center;}
+.local-grid h2{font-size:clamp(30px,4vw,52px);line-height:1.05;font-weight:900;letter-spacing:-1.4px;margin:10px 0 16px;}
+.local-grid p{color:rgba(255,255,255,.72);font-size:17px;}
+.local-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.local-cards article{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:22px;font-size:28px;}
+.local-cards strong{display:block;color:#fff;font-size:18px;margin:12px 0 6px;}
+.local-cards span{display:block;color:rgba(255,255,255,.66);font-size:14px;font-weight:600;}
+
+.product-detail-hero{background:linear-gradient(180deg,#fff,#f7f8fa);padding:42px 0 70px;}
+.back-link{display:inline-flex;margin-bottom:22px;font-weight:900;color:#111;}
+.product-detail{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:stretch;background:white;border:1px solid rgba(15,23,42,.08);border-radius:32px;padding:30px;box-shadow:var(--shadow);}
+.product-detail-media{background:#f8fafc;border-radius:26px;display:flex;align-items:center;justify-content:center;min-height:460px;overflow:hidden;}
+.product-detail-media img{width:100%;height:100%;max-height:450px;object-fit:contain;padding:24px;}
+.product-detail-info h1{font-size:clamp(30px,4vw,54px);line-height:1.05;font-weight:900;letter-spacing:-1.3px;margin:12px 0;}
+.product-detail-category{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px;}
+.product-detail-category span{background:#f1f3f6;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:900;}
+.product-detail-price{display:flex;align-items:baseline;gap:12px;margin:18px 0;}
+.product-detail-price strong{font-size:42px;font-weight:900;color:var(--red);}
+.product-detail-price del{color:#8b95a5;font-weight:800;}
+.product-detail-actions{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0;}
+.product-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px;}
+.product-specs li{list-style:none;background:#f8fafc;border-radius:14px;padding:12px;font-weight:800;color:#374151;}
+.product-detail-empty{padding:40px;text-align:center;font-weight:900;}
+.related-section{background:#fff;}
+
+.admin-pro-note{background:linear-gradient(135deg,#101418,#26313d);color:#fff;border-radius:22px;padding:20px;margin:18px 0;font-weight:700;}
+
+@media(max-width:900px){.product-detail,.local-grid{grid-template-columns:1fr}.store-slider{height:360px}.product-detail-media{min-height:320px}.local-cards{grid-template-columns:1fr}.product-specs{grid-template-columns:1fr}}
+@media(max-width:640px){.product-card{min-height:auto}.product-image{height:170px;min-height:170px}.store-slider{height:300px;border-radius:22px}.store-slide div{left:20px;right:20px;bottom:20px}.product-detail{padding:18px;border-radius:22px}.product-detail-price strong{font-size:32px}.product-detail-actions .btn{width:100%}}
+
+
+/* ===== WOW27 CLEAN: galeria osobno + stabilne bestsellery ===== */
+.gallery-teaser{background:#fff;}
+.gallery-teaser-grid{display:grid;grid-template-columns:1fr 420px;gap:34px;align-items:center;background:linear-gradient(135deg,#111827,#18212c);color:#fff;border-radius:34px;padding:34px;box-shadow:0 24px 70px rgba(15,23,42,.18);overflow:hidden;}
+.gallery-teaser-copy h2{font-size:clamp(28px,3.5vw,48px);line-height:1.05;margin:8px 0 12px;}
+.gallery-teaser-copy p{color:rgba(255,255,255,.78);max-width:720px;margin-bottom:22px;}
+.gallery-teaser-photo{position:relative;display:block;height:280px;border-radius:26px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.32);}
+.gallery-teaser-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05);transition:.5s;}
+.gallery-teaser-photo:hover img{transform:scale(1.05);}
+.gallery-teaser-photo span{position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,.62);color:#fff;font-weight:900;border-radius:999px;padding:10px 16px;backdrop-filter:blur(10px);}
+.gallery-page-section{padding-top:80px;min-height:70vh;}
+.gallery-page-grid .gallery-card{min-height:260px;}
+.bestsellers-grid:empty::before{content:'Ładowanie najczęściej wybieranych produktów...';grid-column:1/-1;color:#64748b;font-weight:700;text-align:center;padding:32px;background:#fff;border-radius:20px;border:1px solid rgba(15,23,42,.08);}
+.bestseller-card{display:block;text-decoration:none;color:inherit;min-height:260px;}
+.bestseller-card img{width:100%;height:130px;object-fit:contain;}
+@media(max-width:900px){.gallery-teaser-grid{grid-template-columns:1fr;padding:24px;border-radius:26px}.gallery-teaser-photo{height:230px}.gallery-page-grid .gallery-card{min-height:220px}}
+
+
+/* ==============================
+   WOW30 MOBILE + DEPLOY HARDENING
+   Bezpieczne proporcje i stabilny układ pod elkass.pl
+============================== */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+img,video{max-width:100%;height:auto;}
+body{overflow-x:hidden;}
+.product-card,.category-card,.promo-card,.review-card,.gallery-card{overflow:hidden;}
+.product-card{display:flex;flex-direction:column;}
+.product-image,.product-card-image,.promo-product-image{
+    width:100%;
+    aspect-ratio:1/1;
+    min-height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(180deg,#fff,#f7f7f7);
+    overflow:hidden;
+}
+.product-image img,.product-card-image img,.promo-product-image img{
+    width:100%;height:100%;object-fit:contain;padding:12px;
+}
+.category-card img,.gallery-card img,.store-slide img,.hero-media img,.banner-image img{
+    width:100%;height:100%;object-fit:cover;
+}
+button,a,input,select,textarea{-webkit-tap-highlight-color:transparent;}
+input,select,textarea{font-size:16px;}
+
+@media(max-width:768px){
+    body{font-size:15px;}
+    .container{width:min(100% - 28px,1200px);}
+    .site-header,.header,.top-header{position:sticky;top:0;z-index:1000;}
+    .hero,.hero-premium,.hero-section{min-height:auto;padding:34px 0;}
+    .hero h1,.hero-content h1{font-size:clamp(30px,10vw,46px);line-height:1.05;}
+    .hero p,.hero-content p{font-size:15px;line-height:1.55;}
+    .hero-buttons,.cta-buttons{display:flex;flex-direction:column;gap:12px;align-items:stretch;}
+    .hero-buttons a,.cta-buttons a,.btn{width:100%;justify-content:center;}
+    .trust-bar,.trust-grid,.features-grid{grid-template-columns:1fr 1fr;gap:10px;}
+    .section-title{font-size:clamp(24px,7vw,34px);line-height:1.1;}
+    .products-grid,.promo-grid,.bestsellers-grid{grid-template-columns:1fr 1fr!important;gap:12px;}
+    .product-card{min-height:unset;border-radius:18px;}
+    .product-image,.product-card-image,.promo-product-image{min-height:145px;}
+    .product-card h3,.promo-card h3{font-size:14px;line-height:1.25;}
+    .price,.product-price strong{font-size:20px;}
+    .category-grid{grid-template-columns:1fr!important;gap:14px;}
+    .category-card{min-height:220px;}
+    .category-tags{position:relative!important;display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin:10px 0!important;z-index:3!important;}
+    .category-tag{font-size:11px!important;padding:6px 9px!important;}
+    .brands-row{gap:12px;}
+    .contact-grid,.footer-grid{grid-template-columns:1fr!important;}
+    .admin-layout{grid-template-columns:1fr!important;}
+    .admin-sidebar{position:relative!important;width:100%!important;}
+}
+
+@media(max-width:420px){
+    .products-grid,.promo-grid,.bestsellers-grid{grid-template-columns:1fr!important;}
+    .trust-bar,.trust-grid,.features-grid{grid-template-columns:1fr;}
+    .product-image,.product-card-image,.promo-product-image{min-height:180px;}
+}
+
+/* ===== WOW40 FINAL BOSS ADDONS ===== */
+.compare-mini-btn{position:absolute;right:14px;bottom:14px;border:0;background:#111827;color:#fff;border-radius:999px;padding:8px 12px;font-weight:900;font-size:12px;cursor:pointer;box-shadow:0 10px 22px rgba(0,0,0,.18);z-index:6}.compare-mini-btn.active{background:var(--red)}.product-card,.bestseller-card{position:relative}.compare-tray{position:fixed;left:50%;bottom:22px;transform:translate(-50%,120px);z-index:9999;background:#111827;color:#fff;border-radius:999px;padding:12px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,.25);transition:.25s;max-width:92vw}.compare-tray.show{transform:translate(-50%,0)}.compare-tray a{background:var(--red);color:#fff;border-radius:999px;padding:9px 14px;font-weight:900}.compare-tray button{border:0;background:rgba(255,255,255,.14);color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer}.compare-hero,.promotions-hero{padding:72px 0;background:linear-gradient(135deg,#111827,#231215 60%,#e30613);color:#fff}.compare-hero h1,.promotions-hero h1{font-size:clamp(34px,5vw,62px);line-height:1.05}.compare-table-wrap{overflow:auto;background:#fff;border-radius:26px;box-shadow:var(--shadow);margin:50px 0}.compare-table{width:100%;border-collapse:collapse;min-width:760px}.compare-table th,.compare-table td{padding:18px;border-bottom:1px solid #eef0f4;text-align:left;vertical-align:top}.compare-table th{background:#f8fafc}.compare-table th img{width:110px;height:90px;object-fit:contain;margin-bottom:10px}.promo-filter-row{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 28px}.promo-filter{border:1px solid #dde3ee;background:#fff;border-radius:999px;padding:11px 16px;font-weight:900;cursor:pointer}.promo-filter.active{background:#111827;color:#fff;border-color:#111827}.cms-promo-grid{margin-top:20px}.empty-products{background:#fff;border-radius:24px;padding:32px;box-shadow:var(--shadow-soft);display:grid;gap:10px;color:#667085}.empty-products strong{color:#111827;font-size:20px}@media(max-width:700px){.compare-tray{left:12px;right:12px;bottom:82px;transform:translateY(140px);border-radius:20px;justify-content:space-between}.compare-tray.show{transform:translateY(0)}.compare-tray span{display:none}.compare-mini-btn{bottom:10px;right:10px}.compare-hero,.promotions-hero{padding:48px 0}}
+
+
+/* WOW42 CMS frontend safeguards */
+.cms-custom-section{background:#f8fafc}.cms-custom-grid{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}.cms-custom-grid img{width:100%;height:280px;object-fit:cover;border-radius:var(--radius,24px);box-shadow:0 18px 45px rgba(0,0,0,.14)}
+body[data-header-mode="dark"] .header{background:#10131a;color:white}body[data-header-mode="dark"] .header a{color:white}
+@media(max-width:900px){.cms-custom-grid{grid-template-columns:1fr}.cms-custom-grid img{height:220px}}

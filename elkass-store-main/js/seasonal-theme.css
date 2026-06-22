@@ -1,0 +1,256 @@
+/* ELKASS Enterprise 4.2 — Seasonal Theme Manager */
+:root{
+  --season-primary:#e30613;
+  --season-secondary:#111827;
+  --season-accent:#8bc34a;
+  --season-bg:#ffffff;
+  --season-soft:#f6f8fb;
+}
+html[data-elkass-theme="black-week"]{
+  --season-primary:#ffcc00;
+  --season-secondary:#050505;
+  --season-accent:#ff2d2d;
+  --season-bg:#090909;
+  --season-soft:#141414;
+}
+html[data-elkass-theme="cyber"]{
+  --season-primary:#00e5ff;
+  --season-secondary:#111827;
+  --season-accent:#8b5cf6;
+  --season-bg:#07111f;
+  --season-soft:#0f172a;
+}
+html[data-elkass-theme="christmas"]{
+  --season-primary:#d90429;
+  --season-secondary:#064e3b;
+  --season-accent:#facc15;
+  --season-bg:#f8fafc;
+  --season-soft:#ecfdf5;
+}
+html[data-elkass-theme="easter"]{
+  --season-primary:#8bc34a;
+  --season-secondary:#7c3aed;
+  --season-accent:#f59e0b;
+  --season-bg:#fff7ed;
+  --season-soft:#fef3c7;
+}
+html[data-elkass-theme="summer"]{
+  --season-primary:#0284c7;
+  --season-secondary:#0f766e;
+  --season-accent:#f97316;
+  --season-bg:#f0f9ff;
+  --season-soft:#e0f2fe;
+}
+.seasonal-bar{
+  display:none;
+  background:linear-gradient(135deg,var(--season-secondary),var(--season-primary));
+  color:#fff;
+  padding:10px 18px;
+  text-align:center;
+  font-weight:900;
+  letter-spacing:.02em;
+  position:relative;
+  z-index:50;
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .seasonal-bar{display:block}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) body{
+  background:linear-gradient(180deg,var(--season-soft),#fff 520px);
+}
+html[data-elkass-theme="black-week"] body,
+html[data-elkass-theme="cyber"] body{
+  background:linear-gradient(180deg,var(--season-bg),#111827 520px);
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .hero,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .premium-hero,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .site-hero{
+  background:radial-gradient(circle at top left,var(--season-primary),transparent 34%),linear-gradient(135deg,var(--season-secondary),#111827)!important;
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .badge,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .promo-badge,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .product-badge{
+  background:var(--season-primary)!important;
+  color:#111!important;
+}
+html[data-elkass-theme="christmas"] .seasonal-bar::before{content:"🎄 ";} 
+html[data-elkass-theme="black-week"] .seasonal-bar::before{content:"⚡ ";} 
+html[data-elkass-theme="cyber"] .seasonal-bar::before{content:"💻 ";} 
+html[data-elkass-theme="easter"] .seasonal-bar::before{content:"🐣 ";} 
+html[data-elkass-theme="summer"] .seasonal-bar::before{content:"☀️ ";} 
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .btn-primary,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) button:not(.plain):not(.tab){
+  border-color:transparent;
+}
+html[data-elkass-theme="black-week"] .price,
+html[data-elkass-theme="cyber"] .price{
+  color:var(--season-primary)!important;
+}
+.season-confetti{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:999;
+  opacity:.13;
+  background-image:radial-gradient(circle,var(--season-primary) 2px,transparent 3px);
+  background-size:34px 34px;
+  display:none;
+}
+html[data-elkass-theme="christmas"] .season-confetti,
+html[data-elkass-theme="easter"] .season-confetti,
+html[data-elkass-theme="black-week"] .season-confetti{display:block}
+@media(max-width:700px){
+  .seasonal-bar{font-size:13px;padding:9px 12px}
+}
+/* ELKASS 4.4 — stronger seasonal accents */
+html[data-elkass-theme="black-week"] .seasonal-bar{
+  background:linear-gradient(90deg,#000,#ffcc00,#000);
+  color:#111;
+  text-transform:uppercase;
+}
+html[data-elkass-theme="cyber"] .seasonal-bar{
+  background:linear-gradient(90deg,#020617,#00e5ff,#7c3aed);
+  text-shadow:0 0 12px rgba(0,229,255,.8);
+}
+html[data-elkass-theme="christmas"] .seasonal-bar{
+  background:linear-gradient(90deg,#064e3b,#d90429,#facc15);
+}
+html[data-elkass-theme="easter"] .seasonal-bar{
+  background:linear-gradient(90deg,#8bc34a,#fef3c7,#f59e0b);
+  color:#3f2b00;
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .site-header,
+html[data-elkass-theme]:not([data-elkass-theme="default"]) header{
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+html[data-elkass-theme="black-week"] .elkass-category-wow-card,
+html[data-elkass-theme="cyber"] .elkass-category-wow-card{
+  border:1px solid rgba(255,255,255,.12);
+}
+html[data-elkass-theme="christmas"] .elkass-category-wow-card::after{
+  content:'🎄';
+  position:absolute;right:18px;top:14px;font-size:28px;z-index:3;
+}
+html[data-elkass-theme="easter"] .elkass-category-wow-card::after{
+  content:'🐣';
+  position:absolute;right:18px;top:14px;font-size:28px;z-index:3;
+}
+html[data-elkass-theme="black-week"] .elkass-category-wow-card::after{
+  content:'BLACK';
+  position:absolute;right:14px;top:14px;z-index:3;
+  background:#ffcc00;color:#111;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:900;
+}
+
+/* ELKASS 4.6 — More seasonal accents */
+.seasonal-corner-badge{
+  position:fixed;
+  right:18px;
+  top:92px;
+  z-index:80;
+  display:none;
+  padding:12px 16px;
+  border-radius:999px;
+  font-weight:900;
+  color:#111;
+  background:var(--season-primary);
+  box-shadow:0 18px 45px rgba(0,0,0,.22);
+}
+html[data-elkass-theme]:not([data-elkass-theme="default"]) .seasonal-corner-badge{display:block}
+html[data-elkass-theme="christmas"] .seasonal-corner-badge::before{content:"🎁 Świąteczna oferta";}
+html[data-elkass-theme="black-week"] .seasonal-corner-badge::before{content:"⚡ Black Week";}
+html[data-elkass-theme="cyber"] .seasonal-corner-badge::before{content:"💻 Cyber Week";}
+html[data-elkass-theme="easter"] .seasonal-corner-badge::before{content:"🐣 Wielkanoc";}
+html[data-elkass-theme="summer"] .seasonal-corner-badge::before{content:"☀️ Letnie okazje";}
+html[data-elkass-theme="black-week"] .product-card,
+html[data-elkass-theme="black-week"] .product-tile,
+html[data-elkass-theme="black-week"] .offer-card,
+html[data-elkass-theme="black-week"] .promo-card{
+  box-shadow:0 22px 65px rgba(255,204,0,.18)!important;
+}
+html[data-elkass-theme="cyber"] .product-card,
+html[data-elkass-theme="cyber"] .product-tile,
+html[data-elkass-theme="cyber"] .offer-card,
+html[data-elkass-theme="cyber"] .promo-card{
+  box-shadow:0 22px 65px rgba(0,229,255,.18)!important;
+}
+html[data-elkass-theme="christmas"] .product-card::before,
+html[data-elkass-theme="christmas"] .product-tile::before{
+  content:"🎄";
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:4;
+  font-size:22px;
+}
+html[data-elkass-theme="easter"] .product-card::before,
+html[data-elkass-theme="easter"] .product-tile::before{
+  content:"🐣";
+  position:absolute;
+  right:14px;
+  top:12px;
+  z-index:4;
+  font-size:22px;
+}
+html[data-elkass-theme="black-week"] .product-card::before,
+html[data-elkass-theme="black-week"] .product-tile::before{
+  content:"BLACK";
+  position:absolute;
+  right:10px;
+  top:10px;
+  z-index:4;
+  font-size:10px;
+  font-weight:900;
+  background:#ffcc00;
+  color:#111;
+  padding:5px 8px;
+  border-radius:999px;
+}
+@media(max-width:700px){
+  .seasonal-corner-badge{right:10px;top:auto;bottom:86px;font-size:12px;padding:10px 12px}
+}
+
+/* ELKASS 5.1 — Seasonal dots fix + richer themes */
+html[data-elkass-theme]:not([data-elkass-theme="default"]) body::before{
+  content:none!important;
+}
+.season-confetti{display:none!important}
+html[data-elkass-theme="christmas"] body{
+  background:
+    radial-gradient(circle at 10% 12%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 20%,rgba(250,204,21,.18),transparent 22%),
+    linear-gradient(180deg,#fff,#f8fafc 520px)!important;
+}
+html[data-elkass-theme="black-week"] body{
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,204,0,.12),transparent 22%),
+    linear-gradient(180deg,#090909,#111827 560px)!important;
+}
+html[data-elkass-theme="cyber"] body{
+  background:
+    linear-gradient(rgba(0,229,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.05) 1px,transparent 1px),
+    linear-gradient(180deg,#07111f,#0f172a 560px)!important;
+  background-size:44px 44px,44px 44px,auto!important;
+}
+html[data-elkass-theme="easter"] body{
+  background:
+    radial-gradient(circle at 12% 16%,rgba(139,195,74,.18),transparent 18%),
+    radial-gradient(circle at 84% 24%,rgba(245,158,11,.16),transparent 18%),
+    linear-gradient(180deg,#fff7ed,#fff 520px)!important;
+}
+html[data-elkass-theme="summer"] body{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(250,204,21,.26),transparent 14%),
+    linear-gradient(180deg,#f0f9ff,#fff 520px)!important;
+}
+html[data-elkass-theme="christmas"] .seasonal-bar{
+  background:linear-gradient(90deg,#064e3b,#d90429,#064e3b)!important;
+}
+html[data-elkass-theme="black-week"] .seasonal-bar{
+  background:linear-gradient(90deg,#050505,#ffcc00,#050505)!important;
+  color:#111!important;
+}
+html[data-elkass-theme="cyber"] .seasonal-bar{
+  background:linear-gradient(90deg,#020617,#0ea5e9,#7c3aed)!important;
+}
+@media(max-width:700px){
+  html[data-elkass-theme="cyber"] body{background-size:32px 32px,32px 32px,auto!important}
+}
