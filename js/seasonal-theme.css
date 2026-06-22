@@ -206,3 +206,51 @@ html[data-elkass-theme="black-week"] .product-tile::before{
 @media(max-width:700px){
   .seasonal-corner-badge{right:10px;top:auto;bottom:86px;font-size:12px;padding:10px 12px}
 }
+
+/* ELKASS 5.1 — Seasonal dots fix + richer themes */
+html[data-elkass-theme]:not([data-elkass-theme="default"]) body::before{
+  content:none!important;
+}
+.season-confetti{display:none!important}
+html[data-elkass-theme="christmas"] body{
+  background:
+    radial-gradient(circle at 10% 12%,rgba(255,255,255,.8) 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 20%,rgba(250,204,21,.18),transparent 22%),
+    linear-gradient(180deg,#fff,#f8fafc 520px)!important;
+}
+html[data-elkass-theme="black-week"] body{
+  background:
+    radial-gradient(circle at 20% 10%,rgba(255,204,0,.12),transparent 22%),
+    linear-gradient(180deg,#090909,#111827 560px)!important;
+}
+html[data-elkass-theme="cyber"] body{
+  background:
+    linear-gradient(rgba(0,229,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.05) 1px,transparent 1px),
+    linear-gradient(180deg,#07111f,#0f172a 560px)!important;
+  background-size:44px 44px,44px 44px,auto!important;
+}
+html[data-elkass-theme="easter"] body{
+  background:
+    radial-gradient(circle at 12% 16%,rgba(139,195,74,.18),transparent 18%),
+    radial-gradient(circle at 84% 24%,rgba(245,158,11,.16),transparent 18%),
+    linear-gradient(180deg,#fff7ed,#fff 520px)!important;
+}
+html[data-elkass-theme="summer"] body{
+  background:
+    radial-gradient(circle at 88% 10%,rgba(250,204,21,.26),transparent 14%),
+    linear-gradient(180deg,#f0f9ff,#fff 520px)!important;
+}
+html[data-elkass-theme="christmas"] .seasonal-bar{
+  background:linear-gradient(90deg,#064e3b,#d90429,#064e3b)!important;
+}
+html[data-elkass-theme="black-week"] .seasonal-bar{
+  background:linear-gradient(90deg,#050505,#ffcc00,#050505)!important;
+  color:#111!important;
+}
+html[data-elkass-theme="cyber"] .seasonal-bar{
+  background:linear-gradient(90deg,#020617,#0ea5e9,#7c3aed)!important;
+}
+@media(max-width:700px){
+  html[data-elkass-theme="cyber"] body{background-size:32px 32px,32px 32px,auto!important}
+}

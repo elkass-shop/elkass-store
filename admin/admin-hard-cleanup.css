@@ -1,0 +1,26 @@
+/* ELKASS 5.1 — HARD ADMIN CLEANUP STYLE */
+.elkass-final-menu{white-space:normal!important;min-height:52px!important}
+.elkass-final-shortcuts{
+  display:grid!important;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr))!important;
+  gap:14px!important;
+  margin:18px 0!important;
+}
+.elkass-final-shortcuts a{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:7px!important;
+  min-height:96px!important;
+  padding:18px!important;
+  border-radius:20px!important;
+  text-decoration:none!important;
+  color:#fff!important;
+  background:linear-gradient(135deg,#7c3aed,#e30613)!important;
+  box-shadow:0 16px 35px rgba(124,58,237,.22)!important;
+}
+.elkass-final-shortcuts a:nth-child(2){background:linear-gradient(135deg,#0ea5e9,#7c3aed)!important}
+.elkass-final-shortcuts a:nth-child(3){background:linear-gradient(135deg,#f97316,#e30613)!important}
+.elkass-final-shortcuts a:nth-child(4){background:linear-gradient(135deg,#111827,#0ea5e9)!important}
+.elkass-final-shortcuts b{font-size:17px!important;line-height:1.15!important}
+.elkass-final-shortcuts span{font-size:13px!important;color:rgba(255,255,255,.84)!important}
+@media(max-width:700px){.elkass-final-shortcuts{grid-template-columns:1fr!important}}
