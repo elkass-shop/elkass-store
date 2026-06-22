@@ -1,0 +1,31 @@
+ELKASS ENTERPRISE 5.4 FULL SOCIAL AUTOMATION
+
+Wgraj całą zawartość paczki do repozytorium elkass-store i wybierz zamianę plików.
+
+Co poprawiono:
+- scalono sekcję Galeria ELKASS i Lokalny sklep RTV/AGD,
+- zostawiono stylistykę ciemnej sekcji Galeria ELKASS,
+- dodano Social Studio 5.4,
+- Social Studio pobiera grafiki SVG dla: post, relacja, rolka/storyboard, aktualność,
+- dodano wybór marki ELKASS / AGD Olesno,
+- dodano cechy 1–6,
+- dodano motywy i kampanie,
+- usunięto efekt kropek i dodano realistyczne motywy sezonowe,
+- dodano pełny fundament WOODYBOY w /woodyboy i /docs.
+
+Po wdrożeniu:
+1. Commit: ELKASS ENTERPRISE 5.4 FULL SOCIAL AUTOMATION
+2. Push origin.
+3. Po deployu zrób Ctrl+F5.
+
+Panel:
+admin/index.html
+
+Social:
+admin/social-studio.html
+
+Motywy:
+admin/seasonal-themes.html
+
+WOODYBOY:
+woodyboy/index.html
