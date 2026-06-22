@@ -1,0 +1,367 @@
+/* ELKASS ENTERPRISE 5.6 — SEASONAL WOW FULL INTEGRATION
+   Motywy wpięte w stronę i panel. Bez statycznych kropek.
+*/
+
+:root{
+  --elkass-season-accent:#e30613;
+  --elkass-season-accent-2:#8bc34a;
+  --elkass-season-dark:#07111f;
+}
+
+/* stała warstwa efektów */
+.elkass-seasonal-layer{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:45;
+  overflow:hidden;
+  display:none;
+}
+
+.elkass-seasonal-badge{
+  position:fixed;
+  right:18px;
+  bottom:78px;
+  z-index:92;
+  display:none;
+  padding:12px 16px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:13px;
+  box-shadow:0 18px 45px rgba(15,23,42,.22);
+  backdrop-filter:blur(10px);
+}
+
+html[data-elkass-season]:not([data-elkass-season="standard"]) .elkass-seasonal-layer,
+html[data-elkass-season]:not([data-elkass-season="standard"]) .elkass-seasonal-badge{
+  display:block;
+}
+
+html[data-elkass-season]:not([data-elkass-season="standard"]) .site-header{
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+
+html[data-elkass-season]:not([data-elkass-season="standard"]) .btn-primary,
+html[data-elkass-season]:not([data-elkass-season="standard"]) .phone-btn{
+  box-shadow:0 14px 38px color-mix(in srgb, var(--elkass-season-accent) 38%, transparent)!important;
+}
+
+/* Christmas */
+html[data-elkass-season="christmas"]{
+  --elkass-season-accent:#e30613;
+  --elkass-season-accent-2:#fbbf24;
+}
+html[data-elkass-season="christmas"] body{
+  background:
+    radial-gradient(circle at 82% 12%,rgba(251,191,36,.20),transparent 20%),
+    linear-gradient(180deg,#06111f 0,#eef6ff 560px,#fff 100%)!important;
+}
+html[data-elkass-season="christmas"] .hero-section,
+html[data-elkass-season="christmas"] .hero-premium,
+html[data-elkass-season="christmas"] .hero{
+  background:linear-gradient(135deg,#06111f,#123c58)!important;
+}
+html[data-elkass-season="christmas"] .elkass-seasonal-layer::before{
+  content:"";
+  position:absolute;
+  inset:-35% 0 0 0;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.95) 0 2px,transparent 3px),
+    radial-gradient(circle,rgba(255,255,255,.75) 0 1px,transparent 2px),
+    radial-gradient(circle,rgba(255,255,255,.65) 0 3px,transparent 4px);
+  background-size:120px 120px,190px 190px,280px 280px;
+  animation:elkassSnow56 18s linear infinite;
+  opacity:.72;
+}
+html[data-elkass-season="christmas"] .elkass-seasonal-layer::after{
+  content:"🎄";
+  position:fixed;
+  right:22px;
+  bottom:92px;
+  font-size:60px;
+  filter:drop-shadow(0 18px 25px rgba(0,0,0,.35));
+}
+html[data-elkass-season="christmas"] .elkass-seasonal-badge{
+  background:rgba(227,6,19,.92);
+  color:#fff;
+}
+html[data-elkass-season="christmas"] .hero-section::before,
+html[data-elkass-season="christmas"] .hero-premium::before{
+  content:"✨  ✨  ✨  ✨  ✨";
+  position:absolute;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  color:#fbbf24;
+  font-size:22px;
+  letter-spacing:16px;
+  opacity:.82;
+  animation:elkassLights56 2s ease-in-out infinite;
+}
+
+/* Mikołajki */
+html[data-elkass-season="mikolajki"]{
+  --elkass-season-accent:#c1121f;
+  --elkass-season-accent-2:#ffffff;
+}
+html[data-elkass-season="mikolajki"] body{
+  background:linear-gradient(180deg,#fff1f2,#fff 55%)!important;
+}
+html[data-elkass-season="mikolajki"] .elkass-seasonal-layer::after{
+  content:"🎅 🎁";
+  position:fixed;
+  right:20px;
+  bottom:92px;
+  font-size:52px;
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.25));
+}
+html[data-elkass-season="mikolajki"] .elkass-seasonal-badge{
+  background:#c1121f;
+  color:#fff;
+}
+
+/* Wielkanoc */
+html[data-elkass-season="easter"]{
+  --elkass-season-accent:#8bc34a;
+  --elkass-season-accent-2:#f59e0b;
+}
+html[data-elkass-season="easter"] body{
+  background:
+    radial-gradient(circle at 12% 14%,rgba(139,195,74,.20),transparent 18%),
+    radial-gradient(circle at 88% 18%,rgba(245,158,11,.18),transparent 20%),
+    linear-gradient(180deg,#fff7ed,#fff 60%)!important;
+}
+html[data-elkass-season="easter"] .elkass-seasonal-layer::after{
+  content:"🐣 🥚";
+  position:fixed;
+  right:22px;
+  bottom:92px;
+  font-size:56px;
+}
+html[data-elkass-season="easter"] .elkass-seasonal-layer::before{
+  content:"";
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  height:42px;
+  background:
+    linear-gradient(135deg,transparent 0 45%,rgba(139,195,74,.55) 46% 54%,transparent 55%),
+    linear-gradient(45deg,transparent 0 45%,rgba(139,195,74,.45) 46% 54%,transparent 55%);
+  background-size:28px 42px;
+  opacity:.55;
+}
+html[data-elkass-season="easter"] .elkass-seasonal-badge{
+  background:#8bc34a;
+  color:#10210d;
+}
+
+/* Wiosna */
+html[data-elkass-season="spring"]{
+  --elkass-season-accent:#22c55e;
+  --elkass-season-accent-2:#f9a8d4;
+}
+html[data-elkass-season="spring"] body{
+  background:
+    radial-gradient(circle at 14% 15%,rgba(34,197,94,.18),transparent 21%),
+    radial-gradient(circle at 84% 15%,rgba(249,168,212,.18),transparent 19%),
+    linear-gradient(180deg,#f0fdf4,#fff 60%)!important;
+}
+html[data-elkass-season="spring"] .elkass-seasonal-layer::before{
+  content:"🌸   🌿   🌸";
+  position:fixed;
+  top:96px;
+  left:7%;
+  font-size:30px;
+  opacity:.45;
+  animation:elkassLeaf56 10s ease-in-out infinite;
+}
+html[data-elkass-season="spring"] .elkass-seasonal-badge{
+  background:#22c55e;
+  color:#052e16;
+}
+
+/* Lato */
+html[data-elkass-season="summer"]{
+  --elkass-season-accent:#facc15;
+  --elkass-season-accent-2:#38bdf8;
+}
+html[data-elkass-season="summer"] body{
+  background:
+    radial-gradient(circle at 88% 12%,rgba(250,204,21,.32),transparent 16%),
+    linear-gradient(180deg,#f0f9ff,#fff 60%)!important;
+}
+html[data-elkass-season="summer"] .elkass-seasonal-layer::before{
+  content:"";
+  position:fixed;
+  right:-90px;
+  top:-90px;
+  width:240px;
+  height:240px;
+  border-radius:999px;
+  background:radial-gradient(circle,#facc15,rgba(250,204,21,.20) 45%,transparent 70%);
+  animation:elkassSun56 5s ease-in-out infinite;
+}
+html[data-elkass-season="summer"] .elkass-seasonal-layer::after{
+  content:"☀️";
+  position:fixed;
+  right:24px;
+  bottom:92px;
+  font-size:54px;
+}
+html[data-elkass-season="summer"] .elkass-seasonal-badge{
+  background:#facc15;
+  color:#422006;
+}
+
+/* Jesień */
+html[data-elkass-season="autumn"]{
+  --elkass-season-accent:#f97316;
+  --elkass-season-accent-2:#a16207;
+}
+html[data-elkass-season="autumn"] body{
+  background:linear-gradient(180deg,#fff7ed,#fff 60%)!important;
+}
+html[data-elkass-season="autumn"] .elkass-seasonal-layer::before{
+  content:"🍂    🍁    🍂    🍁";
+  position:fixed;
+  top:90px;
+  left:7%;
+  font-size:34px;
+  opacity:.42;
+  animation:elkassLeaf56 9s ease-in-out infinite;
+}
+html[data-elkass-season="autumn"] .elkass-seasonal-badge{
+  background:#f97316;
+  color:#fff;
+}
+
+/* Zima */
+html[data-elkass-season="winter"]{
+  --elkass-season-accent:#38bdf8;
+  --elkass-season-accent-2:#e0f2fe;
+}
+html[data-elkass-season="winter"] body{
+  background:linear-gradient(180deg,#e0f2fe,#fff 60%)!important;
+}
+html[data-elkass-season="winter"] .elkass-seasonal-layer::before{
+  content:"";
+  position:absolute;
+  inset:-35% 0 0 0;
+  background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 2px,transparent 3px);
+  background-size:150px 150px;
+  animation:elkassSnow56 22s linear infinite;
+  opacity:.65;
+}
+html[data-elkass-season="winter"] .elkass-seasonal-layer::after{
+  content:"❄️";
+  position:fixed;
+  right:24px;
+  bottom:92px;
+  font-size:54px;
+}
+html[data-elkass-season="winter"] .elkass-seasonal-badge{
+  background:#38bdf8;
+  color:#082f49;
+}
+
+/* Black Week */
+html[data-elkass-season="blackweek"]{
+  --elkass-season-accent:#ffcc00;
+  --elkass-season-accent-2:#111111;
+}
+html[data-elkass-season="blackweek"] body{
+  background:linear-gradient(180deg,#050505 0,#111827 560px,#f7f8fa 100%)!important;
+}
+html[data-elkass-season="blackweek"] .hero-section,
+html[data-elkass-season="blackweek"] .hero-premium,
+html[data-elkass-season="blackweek"] .hero{
+  background:linear-gradient(135deg,#050505,#1f2937)!important;
+}
+html[data-elkass-season="blackweek"] .btn-primary,
+html[data-elkass-season="blackweek"] .phone-btn{
+  background:#ffcc00!important;
+  color:#111!important;
+}
+html[data-elkass-season="blackweek"] .elkass-seasonal-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(115deg,transparent 0,rgba(255,204,0,.24) 46%,transparent 58%);
+  animation:elkassShine56 5s ease-in-out infinite;
+}
+html[data-elkass-season="blackweek"] .elkass-seasonal-layer::after{
+  content:"⚫";
+  position:fixed;
+  right:24px;
+  bottom:92px;
+  font-size:52px;
+}
+html[data-elkass-season="blackweek"] .elkass-seasonal-badge{
+  background:#ffcc00;
+  color:#111;
+}
+
+/* Cyber Week */
+html[data-elkass-season="cyberweek"]{
+  --elkass-season-accent:#00e5ff;
+  --elkass-season-accent-2:#7c3aed;
+}
+html[data-elkass-season="cyberweek"] body{
+  background:
+    linear-gradient(rgba(0,229,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.06) 1px,transparent 1px),
+    linear-gradient(180deg,#07111f,#0f172a 560px,#f7f8fa 100%)!important;
+  background-size:44px 44px,44px 44px,auto!important;
+}
+html[data-elkass-season="cyberweek"] .hero-section,
+html[data-elkass-season="cyberweek"] .hero-premium,
+html[data-elkass-season="cyberweek"] .hero{
+  background:linear-gradient(135deg,#07111f,#123c8a)!important;
+}
+html[data-elkass-season="cyberweek"] .elkass-seasonal-layer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 78% 20%,rgba(0,229,255,.25),transparent 18%),
+    linear-gradient(115deg,transparent 0,rgba(0,229,255,.18) 46%,transparent 58%);
+  animation:elkassShine56 6s ease-in-out infinite;
+}
+html[data-elkass-season="cyberweek"] .elkass-seasonal-badge{
+  background:#00e5ff;
+  color:#07111f;
+}
+
+@keyframes elkassSnow56{
+  from{background-position:0 0,0 0,0 0}
+  to{background-position:0 900px,0 1100px,0 1300px}
+}
+@keyframes elkassShine56{
+  0%,60%{transform:translateX(-120%)}
+  100%{transform:translateX(120%)}
+}
+@keyframes elkassLeaf56{
+  0%{transform:translateY(-18px) rotate(-4deg)}
+  50%{transform:translateY(38px) rotate(4deg)}
+  100%{transform:translateY(-18px) rotate(-4deg)}
+}
+@keyframes elkassSun56{
+  0%,100%{transform:scale(1);opacity:.85}
+  50%{transform:scale(1.08);opacity:1}
+}
+@keyframes elkassLights56{
+  0%,100%{opacity:.50}
+  50%{opacity:1}
+}
+
+@media(max-width:700px){
+  .elkass-seasonal-layer::after{font-size:34px!important;right:12px!important;bottom:70px!important}
+  .elkass-seasonal-badge{font-size:11px;right:10px;bottom:68px;padding:9px 12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .elkass-seasonal-layer::before,
+  .elkass-seasonal-layer::after,
+  .hero-section::before,
+  .hero-premium::before{animation:none!important}
+}

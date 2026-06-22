@@ -1,1 +1,47 @@
-<!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Motywy sezonowe ELKASS 5.4</title><style>body{font-family:Arial;background:#eef2f7;margin:0}main{max-width:1000px;margin:auto;padding:24px}.box{background:white;border-radius:24px;padding:24px;box-shadow:0 16px 40px rgba(15,23,42,.08)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}button{border:0;border-radius:14px;padding:14px;background:#e30613;color:white;font-weight:900;cursor:pointer}.black{background:#111;color:#ffcc00}.cyber{background:#0ea5e9}.soft{background:#8bc34a;color:#111}</style></head><body><main><div class=box><h1>🎨 Motywy sezonowe 5.4</h1><p>Bez kropek. Realistyczne tła, śnieg, liście, neon, Black Week i pory roku.</p><div class=grid id=g></div><p><a href="../index.html">↗ Podgląd strony</a></p></div></main><script>const list=[['standard','Standard'],['christmas','🎄 Boże Narodzenie'],['black','⚫ Black Week'],['cyber','💻 Cyber Week'],['easter','🐣 Wielkanoc'],['spring','🌸 Wiosna'],['summer','☀️ Lato'],['autumn','🍂 Jesień'],['winter','❄️ Zima']];g.innerHTML=list.map(x=>`<button class="${x[0]}" onclick="localStorage.setItem('elkassSeasonalTheme',JSON.stringify({theme:'${x[0]}'}));alert('Zapisano: ${x[1]}')">${x[1]}</button>`).join('')</script></body></html>
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELKASS 5.6 — Motywy sezonowe WOW</title>
+<link rel="stylesheet" href="../js/seasonal-wow-56.css">
+<style>
+body{margin:0;background:#eef2f7;color:#07111f;font-family:Arial,sans-serif}
+main{max-width:1180px;margin:auto;padding:24px}
+.hero{background:linear-gradient(135deg,#07111f,#153b64);color:#fff;border-radius:30px;padding:32px;margin-bottom:22px}
+.hero h1{font-size:38px;margin:0 0 10px}
+.hero p{color:#dbeafe;max-width:760px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.season-btn{border:0;border-radius:22px;background:white;color:#07111f;padding:22px;min-height:128px;cursor:pointer;text-align:left;box-shadow:0 16px 45px rgba(15,23,42,.08);transition:.2s}
+.season-btn:hover{transform:translateY(-4px)}
+.season-btn.active{outline:4px solid #e30613;background:linear-gradient(135deg,#fff,#fff5f5)}
+.season-btn span{display:block;font-size:34px;margin-bottom:12px}
+.season-btn strong{font-size:20px}
+.actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.actions a,.actions button{border:0;border-radius:16px;background:#e30613;color:white;padding:14px 18px;font-weight:900;text-decoration:none;cursor:pointer}
+.note{background:#fff;border-radius:22px;padding:20px;margin-top:20px;box-shadow:0 16px 45px rgba(15,23,42,.08)}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<h1>🎨 Motywy sezonowe WOW 5.6</h1>
+<p>Wybierz motyw jednym kliknięciem. Efekt zapisuje się w przeglądarce i od razu działa na stronie głównej: śnieg, girlandy, liście, słońce, Black Week i Cyber Week.</p>
+</section>
+
+<section class="grid" data-seasonal-wow-panel></section>
+
+<div class="actions">
+<a href="../index.html">↗ Otwórz stronę</a>
+<a href="index.html">← Panel admin</a>
+<button type="button" onclick="localStorage.removeItem('elkassSeasonalTheme56');localStorage.removeItem('elkassSeasonalTheme');location.reload()">Resetuj motyw</button>
+</div>
+
+<section class="note">
+<strong>WOODYBOY NOTE:</strong>
+Ten moduł jest bazą pod WOODYBOY Theme Engine: motywy, kampanie, social media i przyszłe projekty.
+</section>
+</main>
+<script src="../js/seasonal-wow-56.js"></script>
+</body>
+</html>

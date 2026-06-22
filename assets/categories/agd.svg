@@ -1,14 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-<defs>
-<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#14532d"/><stop offset="1" stop-color="#e30613"/></linearGradient>
-<filter id="shadow"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-opacity=".32"/></filter>
-</defs>
-<rect width="1600" height="1000" fill="url(#g)"/>
-<circle cx="1280" cy="160" r="240" fill="white" opacity=".12"/>
-<path d="M950 0h650v1000h-390z" fill="white" opacity=".10"/>
-<g filter="url(#shadow)"><rect x="930" y="190" width="330" height="600" rx="42" fill="white" opacity=".94"/><rect x="975" y="235" width="240" height="130" rx="22" fill="#111827"/><circle cx="1095" cy="535" r="110" fill="none" stroke="#e30613" stroke-width="20"/></g>
-<rect y="450" width="1600" height="550" fill="black" opacity=".22"/>
-<text x="88" y="610" font-family="Arial Black,Arial" font-size="90" font-weight="900" fill="white">AGD</text>
-<text x="94" y="700" font-family="Arial, sans-serif" font-size="38" font-weight="800" fill="white" opacity=".92">Lodówki • Pralki • Zmywarki</text>
-<rect x="94" y="800" width="360" height="18" rx="9" fill="white" opacity=".95"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#14532d"/><stop offset="1" stop-color="#e30613"/></linearGradient></defs>
+<rect width="1400" height="900" fill="url(#g)"/>
+<circle cx="1060" cy="180" r="210" fill="white" opacity=".12"/>
+<path d="M850 250h360v230H850z" fill="none" stroke="white" stroke-width="22" rx="30"/>
+<text x="80" y="570" font-size="96" font-family="Arial Black,Arial" fill="white">AGD</text>
+<text x="86" y="650" font-size="40" font-family="Arial" font-weight="700" fill="white" opacity=".9">Lodówki • Pralki • Zmywarki</text>
+<rect x="86" y="730" width="330" height="18" rx="9" fill="white" opacity=".9"/>
 </svg>
