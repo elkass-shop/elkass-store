@@ -1,0 +1,270 @@
+/* ELKASS 6.0.1 — Theme UX + Category Overlap Fix */
+
+/* Usunięcie denerwującego pływającego paska kampanii */
+.e60-theme-ribbon,
+.elkass-seasonal-badge{
+  display:none!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+}
+
+/* Kampania jako elegancka etykieta przy sekcji/hero, bez zasłaniania produktów */
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .section-title::after,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .section-heading::after{
+  content:attr(data-season-label);
+  display:inline-flex;
+  margin-left:12px;
+  vertical-align:middle;
+  border-radius:999px;
+  padding:7px 12px;
+  background:color-mix(in srgb, var(--e60-accent) 14%, white);
+  color:#07111f;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:0;
+}
+
+/* Kategorie — twarde zabezpieczenie przed nachodzeniem tekstów */
+.elkass57-category-grid,
+.elkass-final-category-grid,
+.category-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:28px!important;
+  align-items:stretch!important;
+  overflow:visible!important;
+}
+
+.elkass57-category-card,
+.elkass-final-category-card,
+.category-card{
+  position:relative!important;
+  min-width:0!important;
+  min-height:340px!important;
+  border-radius:30px!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+}
+
+.elkass57-category-card img,
+.elkass-final-category-card img,
+.category-card img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  display:block!important;
+  z-index:0!important;
+}
+
+/* Mocniejszy gradient pod tekstem */
+.elkass57-category-card::after,
+.elkass-final-category-card::after,
+.category-card::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.74) 0%,rgba(0,0,0,.44) 46%,rgba(0,0,0,.10) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.04) 0%,rgba(0,0,0,.28) 48%,rgba(0,0,0,.82) 100%)!important;
+  pointer-events:none!important;
+}
+
+/* Treść zawsze na wierzchu, ograniczona do lewej części karty */
+.elkass57-category-content,
+.elkass-final-category-content,
+.category-content{
+  position:absolute!important;
+  left:0!important;
+  right:auto!important;
+  bottom:0!important;
+  width:min(72%, 430px)!important;
+  max-width:72%!important;
+  min-width:0!important;
+  z-index:3!important;
+  padding:24px!important;
+  color:#fff!important;
+  transform:none!important;
+  text-align:left!important;
+}
+
+.elkass57-category-content h3,
+.elkass-final-category-content h3,
+.category-content h3,
+.category-card h3{
+  display:block!important;
+  max-width:100%!important;
+  margin:0 0 10px!important;
+  padding:0!important;
+  color:#fff!important;
+  font-size:clamp(24px, 2.05vw, 32px)!important;
+  line-height:1.05!important;
+  letter-spacing:-.03em!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  text-wrap:balance!important;
+  text-shadow:0 8px 24px rgba(0,0,0,.50)!important;
+  white-space:normal!important;
+}
+
+.elkass57-category-content p,
+.elkass-final-category-content p,
+.category-content p{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  max-width:100%!important;
+  margin:0 0 16px!important;
+  padding:0!important;
+  line-height:1.2!important;
+  overflow:hidden!important;
+}
+
+.elkass57-category-content p span,
+.elkass-final-category-content p span,
+.category-content p span{
+  max-width:100%!important;
+  display:inline-flex!important;
+  border-radius:999px!important;
+  padding:6px 10px!important;
+  background:rgba(255,255,255,.20)!important;
+  border:1px solid rgba(255,255,255,.35)!important;
+  color:#fff!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  white-space:nowrap!important;
+  text-shadow:none!important;
+  backdrop-filter:blur(8px)!important;
+}
+
+.elkass57-category-content a,
+.elkass-final-category-content a,
+.category-content a{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  border-radius:999px!important;
+  padding:11px 16px!important;
+  background:#fff!important;
+  color:#07111f!important;
+  font-size:14px!important;
+  font-weight:900!important;
+  text-decoration:none!important;
+}
+
+/* Ikony/grafiki po prawej mogą być duże, ale nie zabierają warstwy tekstu */
+.elkass57-category-card svg,
+.elkass-final-category-card svg{
+  pointer-events:none!important;
+}
+
+/* Najczęściej wybierane: badge HIT/POPULARNE zawsze nad grafiką */
+.bestseller-card,
+.product-mini,
+.popular-card{
+  position:relative!important;
+  overflow:hidden!important;
+}
+
+.bestseller-card .badge,
+.bestseller-card .tag,
+.bestseller-card [class*="badge"],
+.bestseller-card [class*="tag"],
+.product-mini .badge,
+.product-mini .tag,
+.product-mini [class*="badge"],
+.product-mini [class*="tag"],
+.popular-card .badge,
+.popular-card .tag,
+.popular-card [class*="badge"],
+.popular-card [class*="tag"]{
+  position:absolute!important;
+  top:14px!important;
+  left:14px!important;
+  right:auto!important;
+  z-index:8!important;
+  max-width:calc(100% - 28px)!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+}
+
+.bestseller-card img,
+.product-mini img,
+.popular-card img{
+  position:relative!important;
+  z-index:1!important;
+}
+
+/* Mobile */
+@media(max-width:950px){
+  .elkass57-category-grid,
+  .elkass-final-category-grid,
+  .category-grid{
+    grid-template-columns:1fr 1fr!important;
+    gap:18px!important;
+  }
+  .elkass57-category-card,
+  .elkass-final-category-card,
+  .category-card{
+    min-height:300px!important;
+  }
+  .elkass57-category-content,
+  .elkass-final-category-content,
+  .category-content{
+    width:82%!important;
+    max-width:82%!important;
+    padding:20px!important;
+  }
+}
+
+@media(max-width:620px){
+  .elkass57-category-grid,
+  .elkass-final-category-grid,
+  .category-grid{
+    grid-template-columns:1fr!important;
+  }
+  .elkass57-category-card,
+  .elkass-final-category-card,
+  .category-card{
+    min-height:270px!important;
+  }
+  .elkass57-category-content,
+  .elkass-final-category-content,
+  .category-content{
+    width:88%!important;
+    max-width:88%!important;
+    padding:18px!important;
+  }
+  .elkass57-category-content h3,
+  .elkass-final-category-content h3,
+  .category-content h3,
+  .category-card h3{
+    font-size:25px!important;
+  }
+  .elkass57-category-content p span,
+  .elkass-final-category-content p span,
+  .category-content p span{
+    font-size:10px!important;
+    padding:6px 9px!important;
+  }
+}
+
+@media(max-width:380px){
+  .elkass57-category-content,
+  .elkass-final-category-content,
+  .category-content{
+    width:92%!important;
+    max-width:92%!important;
+  }
+  .elkass57-category-content p span:nth-child(n+3),
+  .elkass-final-category-content p span:nth-child(n+3),
+  .category-content p span:nth-child(n+3){
+    display:none!important;
+  }
+}
