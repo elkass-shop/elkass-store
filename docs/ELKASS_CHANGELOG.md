@@ -1,10 +1,8 @@
 # ELKASS CHANGELOG
 
-## 5.2 SOCIAL POST STUDIO
-- Social Studio w panelu.
-- Wybór marki ELKASS / AGD Olesno.
-- Post, relacja, rolka/storyboard, aktualność WWW.
-- Motywy sezonowe i branżowe RTV/AGD.
-- Cechy produktu 1–6.
-- Upload zdjęcia z komputera/telefonu.
-- Dokumentacja ELKASS + WOODYBOY.
+## 5.4 FULL SOCIAL AUTOMATION
+- Scalono Galeria ELKASS + Lokalny sklep RTV/AGD w jedną sekcję.
+- Dodano Social Studio 5.4.
+- Dodano pobieranie grafiki social SVG i pakietu formatów.
+- Dodano realistyczne motywy sezonowe bez kropek.
+- Dodano dokumentację i WOODYBOY Foundation.

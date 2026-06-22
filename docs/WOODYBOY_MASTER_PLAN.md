@@ -1,6 +1,10 @@
 # WOODYBOY MASTER PLAN
 
-WOODYBOY to prywatny silnik do budowy stron, sklepów, katalogów, forów, landing page, social media i przyszłych projektów.
+WOODYBOY = silnik do stron, sklepów, katalogów, forów i social media.
 
-## Zasada
-Jeśli laik nie wie, co kliknąć w 30 sekund, ekran trzeba uprościć.
+## Zasady
+- Dla laika.
+- Jeden ekran = jeden cel.
+- Dodaj raz, używaj wszędzie.
+- Wszystko z panelu.
+- ELKASS jest pierwszym wdrożeniem.

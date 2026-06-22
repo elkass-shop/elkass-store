@@ -1,2 +1,1 @@
-# elkass-store
-ELKASS 1.0 Online Store
+ELKASS ENTERPRISE 5.4.3 — finalna naprawa grafik kategorii. Wgraj zawartość folderu elkass-store-main na hosting i odśwież Ctrl+F5.

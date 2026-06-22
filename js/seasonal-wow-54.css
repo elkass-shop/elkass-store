@@ -1,0 +1,40 @@
+/* ELKASS 5.4 REALISTIC SEASONAL ENGINE — no static dots */
+html::before, body::before{background-image:none!important}
+.seasonal-wow-layer-54{pointer-events:none;position:fixed;inset:0;z-index:40;overflow:hidden;display:none}
+.seasonal-wow-badge-54{display:none;position:fixed;right:18px;bottom:74px;z-index:90;border-radius:999px;padding:12px 16px;font-weight:900;box-shadow:0 18px 40px rgba(15,23,42,.22)}
+html[data-season-54]:not([data-season-54="standard"]) .seasonal-wow-layer-54,
+html[data-season-54]:not([data-season-54="standard"]) .seasonal-wow-badge-54{display:block}
+html[data-season-54="christmas"] body{background:linear-gradient(180deg,#06111f 0,#eef6ff 540px,#fff 100%)!important}
+html[data-season-54="christmas"] .hero-section,html[data-season-54="christmas"] .hero-premium{background:linear-gradient(135deg,#07111f,#123c58)!important}
+html[data-season-54="christmas"] .seasonal-wow-layer-54::before{content:"";position:absolute;inset:-30% 0 0 0;background-image:radial-gradient(circle,rgba(255,255,255,.95) 0 2px,transparent 3px),radial-gradient(circle,rgba(255,255,255,.75) 0 1px,transparent 2px),radial-gradient(circle,rgba(255,255,255,.85) 0 3px,transparent 4px);background-size:120px 120px,190px 190px,280px 280px;animation:elkassSnow54 18s linear infinite;opacity:.72}
+html[data-season-54="christmas"] .seasonal-wow-layer-54::after{content:"🎄";position:fixed;right:24px;bottom:84px;font-size:58px;filter:drop-shadow(0 18px 28px rgba(0,0,0,.35))}
+html[data-season-54="black"] body{background:linear-gradient(180deg,#050505 0,#111827 530px,#f7f8fa 100%)!important}
+html[data-season-54="black"] .seasonal-wow-layer-54::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0,rgba(255,204,0,.24) 45%,transparent 58%);animation:elkassShine54 5s ease-in-out infinite}
+html[data-season-54="black"] .seasonal-wow-badge-54{background:#ffcc00;color:#111}
+html[data-season-54="cyber"] body{background:linear-gradient(rgba(0,229,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.06) 1px,transparent 1px),linear-gradient(180deg,#07111f,#0f172a 540px,#f7f8fa)!important;background-size:44px 44px,44px 44px,auto!important}
+html[data-season-54="cyber"] .seasonal-wow-badge-54{background:#00e5ff;color:#07111f}
+html[data-season-54="easter"] body{background:radial-gradient(circle at 12% 15%,rgba(139,195,74,.18),transparent 18%),radial-gradient(circle at 86% 20%,rgba(245,158,11,.16),transparent 18%),linear-gradient(180deg,#fff7ed,#fff)!important}
+html[data-season-54="easter"] .seasonal-wow-layer-54::after{content:"🐣";position:fixed;right:24px;bottom:84px;font-size:56px}
+html[data-season-54="spring"] body{background:radial-gradient(circle at 13% 15%,rgba(34,197,94,.18),transparent 20%),linear-gradient(180deg,#f0fdf4,#fff)!important}
+html[data-season-54="spring"] .seasonal-wow-layer-54::after{content:"🌸";position:fixed;right:24px;bottom:84px;font-size:56px}
+html[data-season-54="summer"] body{background:radial-gradient(circle at 88% 12%,rgba(250,204,21,.3),transparent 16%),linear-gradient(180deg,#f0f9ff,#fff)!important}
+html[data-season-54="summer"] .seasonal-wow-layer-54::after{content:"☀️";position:fixed;right:24px;bottom:84px;font-size:56px}
+html[data-season-54="autumn"] body{background:linear-gradient(180deg,#fff7ed,#fff)!important}
+html[data-season-54="autumn"] .seasonal-wow-layer-54::before{content:"🍂   🍁   🍂";position:fixed;top:90px;left:8%;font-size:34px;opacity:.42;animation:elkassLeaf54 10s ease-in-out infinite}
+html[data-season-54="winter"] body{background:linear-gradient(180deg,#e0f2fe,#fff)!important}
+html[data-season-54="winter"] .seasonal-wow-layer-54::before{content:"";position:absolute;inset:-30% 0 0 0;background-image:radial-gradient(circle,rgba(255,255,255,.9) 0 2px,transparent 3px);background-size:150px 150px;animation:elkassSnow54 22s linear infinite;opacity:.65}
+.elkass-unified-story{background:transparent}
+.elkass-unified-story .gallery-teaser-copy p{margin-bottom:12px}
+.elkass-unified-note{color:rgba(255,255,255,.72)!important}
+.unified-tags{margin:18px 0;display:flex;gap:8px;flex-wrap:wrap}
+.unified-tags span{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 12px;font-weight:800;font-size:13px}
+@keyframes elkassSnow54{from{background-position:0 0,0 0,0 0}to{background-position:0 900px,0 1100px,0 1300px}}
+@keyframes elkassShine54{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes elkassLeaf54{0%{transform:translateY(-20px) rotate(-4deg)}50%{transform:translateY(38px) rotate(4deg)}100%{transform:translateY(-20px) rotate(-4deg)}}
+@media(max-width:700px){.seasonal-wow-layer-54::after{font-size:34px!important;right:12px!important;bottom:65px!important}.seasonal-wow-badge-54{font-size:12px;right:10px;bottom:66px}}
+@media(prefers-reduced-motion:reduce){.seasonal-wow-layer-54::before{animation:none!important}}
+/* ELKASS 5.5.2 — bez ikon i kropek za zdjęciem produktu */
+html[data-season-54] .product-card::before,
+html[data-season-54] .product-tile::before{display:none!important;content:none!important}
+.seasonal-wow-layer-54{z-index:1!important;opacity:.38!important}
+.product-card,.product-tile,.promo-card,.bestseller-card{isolation:isolate!important}

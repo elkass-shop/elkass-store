@@ -1,12 +1,6 @@
 # ELKASS MASTER PLAN
 
-ELKASS to prosty dla pracownika system witryny/sklepu RTV/AGD. Wszystko z panelu, na telefonie i komputerze. Każda funkcja ma być zrozumiała dla laika.
+ELKASS = sklep/witryna RTV/AGD dla laika. Wszystko z panelu, telefon i komputer, bez kodowania.
 
-## Moduły
-- Product Engine
-- Print Engine
-- Media Manager
-- Theme Engine
-- Social Studio
-- Brand Manager
-- Campaign Engine
+## Zasada
+Pracownik ma umieć zmienić produkt, cenę, grafikę, promocję, motyw i social media bez dotykania plików.
