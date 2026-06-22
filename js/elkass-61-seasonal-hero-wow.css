@@ -1,0 +1,320 @@
+/* ELKASS 6.1 — SEASONAL HERO WOW + HEADER FIX */
+
+/* Header: ELKASS OLESNO in one line, subtitle below, phone in one line */
+.logo,
+.header-logo,
+.site-logo,
+.brand-logo,
+.nav-logo{
+  min-width:max-content!important;
+  flex-shrink:0!important;
+}
+
+.logo h1,
+.header-logo h1,
+.site-logo h1,
+.brand-logo h1,
+.nav-logo h1,
+.logo .brand-title,
+.header-logo .brand-title,
+.site-logo .brand-title,
+.brand-name{
+  white-space:nowrap!important;
+  display:block!important;
+  line-height:1!important;
+  letter-spacing:-.03em!important;
+}
+
+.logo h1 br,
+.header-logo h1 br,
+.site-logo h1 br,
+.brand-logo h1 br,
+.nav-logo h1 br{
+  display:none!important;
+}
+
+.logo h1::first-line,
+.header-logo h1::first-line{
+  white-space:nowrap!important;
+}
+
+.logo small,
+.header-logo small,
+.site-logo small,
+.brand-subtitle,
+.logo .tagline,
+.header-logo .tagline{
+  display:block!important;
+  white-space:nowrap!important;
+  font-size:clamp(10px, .85vw, 13px)!important;
+  line-height:1.15!important;
+  margin-top:4px!important;
+  letter-spacing:.04em!important;
+}
+
+.phone-btn,
+.header-phone,
+.call-btn,
+.nav-phone,
+a[href^="tel"]{
+  white-space:nowrap!important;
+  min-width:max-content!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  flex-shrink:0!important;
+}
+
+.phone-btn br,
+.header-phone br,
+.call-btn br,
+.nav-phone br,
+a[href^="tel"] br{
+  display:none!important;
+}
+
+/* Nav consistency */
+.navbar,
+.site-header .container,
+.header .container,
+.nav-wrap,
+.header-inner{
+  align-items:center!important;
+  gap:clamp(14px,2vw,30px)!important;
+}
+
+@media(max-width:920px){
+  .logo h1,
+  .header-logo h1,
+  .site-logo h1,
+  .brand-logo h1,
+  .nav-logo h1,
+  .brand-name{
+    font-size:clamp(22px,5vw,34px)!important;
+  }
+  .logo small,
+  .header-logo small,
+  .site-logo small,
+  .brand-subtitle,
+  .logo .tagline{
+    white-space:normal!important;
+    max-width:260px!important;
+  }
+  .phone-btn,
+  .header-phone,
+  .call-btn,
+  .nav-phone{
+    font-size:13px!important;
+    padding-inline:12px!important;
+  }
+}
+
+/* Standard hero stays original */
+html[data-elkass-theme60="standard"] .e61-seasonal-hero,
+html:not([data-elkass-theme60]) .e61-seasonal-hero{
+  display:none!important;
+}
+
+/* Seasonal hero block injected into main hero */
+.e61-seasonal-hero{
+  position:relative;
+  display:none;
+  width:100%;
+  margin:0 0 26px;
+  border-radius:32px;
+  overflow:hidden;
+  color:white;
+  box-shadow:0 28px 80px rgba(15,23,42,.18);
+  min-height:410px;
+  isolation:isolate;
+}
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .e61-seasonal-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+  align-items:center;
+}
+.e61-seasonal-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--e61-hero-bg,linear-gradient(135deg,#07111f,#153b64));
+  z-index:-3;
+}
+.e61-seasonal-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 82% 12%,color-mix(in srgb,var(--e61-accent,#e30613) 28%,transparent),transparent 18%),
+    linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.16));
+  z-index:-2;
+}
+.e61-seasonal-copy{
+  padding:clamp(28px,4vw,58px);
+  z-index:2;
+}
+.e61-seasonal-kicker{
+  display:inline-flex;
+  border-radius:999px;
+  padding:8px 13px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:16px;
+  backdrop-filter:blur(8px);
+}
+.e61-seasonal-title{
+  font-size:clamp(36px,5.1vw,74px);
+  line-height:.95;
+  letter-spacing:-.06em;
+  margin:0 0 14px;
+  font-family:Arial Black,Arial,sans-serif;
+}
+.e61-seasonal-subtitle{
+  font-size:clamp(17px,1.65vw,25px);
+  line-height:1.32;
+  color:rgba(255,255,255,.86);
+  margin:0 0 24px;
+  max-width:620px;
+  font-weight:700;
+}
+.e61-seasonal-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.e61-seasonal-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:14px 18px;
+  font-weight:900;
+  text-decoration:none;
+}
+.e61-seasonal-primary{
+  background:var(--e61-accent,#e30613);
+  color:#fff;
+  box-shadow:0 18px 42px color-mix(in srgb,var(--e61-accent,#e30613) 34%,transparent);
+}
+.e61-seasonal-secondary{
+  background:rgba(255,255,255,.13);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.22);
+}
+.e61-seasonal-visual{
+  position:relative;
+  min-height:410px;
+  align-self:stretch;
+  background-image:var(--e61-visual);
+  background-size:cover;
+  background-position:center;
+}
+.e61-seasonal-visual::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.18),rgba(0,0,0,0));
+}
+.e61-seasonal-decor{
+  position:absolute;
+  right:24px;
+  bottom:24px;
+  font-size:clamp(38px,5vw,76px);
+  filter:drop-shadow(0 20px 30px rgba(0,0,0,.35));
+}
+
+/* Hide original floating ribbon if exists */
+.e60-theme-ribbon,
+.elkass-seasonal-badge{
+  display:none!important;
+}
+
+/* Theme variables */
+html[data-elkass-theme60="christmas"] .e61-seasonal-hero{
+  --e61-accent:#e30613;
+  --e61-hero-bg:linear-gradient(135deg,#06111f,#153b64);
+  --e61-visual:url("../assets/hero-seasonal/christmas.svg");
+}
+html[data-elkass-theme60="mikolajki"] .e61-seasonal-hero{
+  --e61-accent:#c1121f;
+  --e61-hero-bg:linear-gradient(135deg,#7f1d1d,#ef4444);
+  --e61-visual:url("../assets/hero-seasonal/mikolajki.svg");
+}
+html[data-elkass-theme60="easter"] .e61-seasonal-hero{
+  --e61-accent:#8bc34a;
+  --e61-hero-bg:linear-gradient(135deg,#fff7ed,#65a30d);
+  --e61-visual:url("../assets/hero-seasonal/easter.svg");
+}
+html[data-elkass-theme60="spring"] .e61-seasonal-hero{
+  --e61-accent:#22c55e;
+  --e61-hero-bg:linear-gradient(135deg,#052e16,#22c55e);
+  --e61-visual:url("../assets/hero-seasonal/spring.svg");
+}
+html[data-elkass-theme60="summer"] .e61-seasonal-hero{
+  --e61-accent:#facc15;
+  --e61-hero-bg:linear-gradient(135deg,#075985,#facc15);
+  --e61-visual:url("../assets/hero-seasonal/summer.svg");
+}
+html[data-elkass-theme60="autumn"] .e61-seasonal-hero{
+  --e61-accent:#f97316;
+  --e61-hero-bg:linear-gradient(135deg,#431407,#f97316);
+  --e61-visual:url("../assets/hero-seasonal/autumn.svg");
+}
+html[data-elkass-theme60="winter"] .e61-seasonal-hero{
+  --e61-accent:#38bdf8;
+  --e61-hero-bg:linear-gradient(135deg,#082f49,#38bdf8);
+  --e61-visual:url("../assets/hero-seasonal/winter.svg");
+}
+html[data-elkass-theme60="blackweek"] .e61-seasonal-hero{
+  --e61-accent:#ffcc00;
+  --e61-hero-bg:linear-gradient(135deg,#050505,#1f2937);
+  --e61-visual:url("../assets/hero-seasonal/blackweek.svg");
+}
+html[data-elkass-theme60="blackweek"] .e61-seasonal-primary{
+  color:#111;
+}
+html[data-elkass-theme60="cyberweek"] .e61-seasonal-hero{
+  --e61-accent:#00e5ff;
+  --e61-hero-bg:linear-gradient(135deg,#07111f,#123c8a);
+  --e61-visual:url("../assets/hero-seasonal/cyberweek.svg");
+}
+html[data-elkass-theme60="cyberweek"] .e61-seasonal-primary{
+  color:#07111f;
+}
+
+/* Hide old original hero content only when seasonal is active and hero inserted near it */
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .e61-original-hero-muted{
+  display:none!important;
+}
+
+@media(max-width:820px){
+  html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .e61-seasonal-hero{
+    grid-template-columns:1fr;
+    min-height:0;
+    border-radius:24px;
+  }
+  .e61-seasonal-copy{
+    padding:28px 20px 20px;
+  }
+  .e61-seasonal-visual{
+    min-height:230px;
+    order:-1;
+  }
+  .e61-seasonal-title{
+    font-size:clamp(34px,11vw,52px);
+  }
+  .e61-seasonal-subtitle{
+    font-size:16px;
+  }
+}
+@media(max-width:420px){
+  .e61-seasonal-actions a{
+    width:100%;
+  }
+  .e61-seasonal-kicker{
+    font-size:11px;
+  }
+}
