@@ -1,0 +1,384 @@
+/* ELKASS 6.2.1 TRUE VISUAL FIX
+   Naprawa po 6.2: lepsze Hero JPG, brak etykiety JESIEŃ na górze Hero, twardy header, stabilne przełączanie motywów.
+*/
+
+/* WYŁĄCZAMY stare elementy, które robiły bałagan */
+.e61-seasonal-hero,
+.e60-theme-ribbon,
+.elkass-seasonal-badge,
+.section-title::after,
+.section-heading::after{
+  display:none!important;
+  content:none!important;
+}
+
+/* ===== HEADER: ELKASS OLESNO W JEDNEJ LINII ===== */
+.site-header .brand,
+.header .brand,
+.brand{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  min-width:clamp(205px,18vw,280px)!important;
+  max-width:320px!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-decoration:none!important;
+}
+
+.brand-main,
+.elkass-logo-line{
+  display:block!important;
+  white-space:nowrap!important;
+  line-height:.95!important;
+  font-size:clamp(24px,2.35vw,36px)!important;
+  font-weight:1000!important;
+  letter-spacing:-.065em!important;
+  text-transform:uppercase!important;
+}
+
+.brand-main span,
+.elkass-logo-red{
+  color:#e30613!important;
+}
+
+.brand-main em,
+.elkass-logo-green{
+  color:#7abf2e!important;
+  font-style:normal!important;
+}
+
+.brand-sub,
+.elkass-logo-subline{
+  display:block!important;
+  white-space:nowrap!important;
+  margin-top:6px!important;
+  color:#111827!important;
+  font-size:clamp(8px,.72vw,11px)!important;
+  line-height:1.08!important;
+  font-weight:1000!important;
+  letter-spacing:.09em!important;
+  text-transform:uppercase!important;
+}
+
+.brand br,
+.brand-main br,
+.brand-sub br{
+  display:none!important;
+}
+
+.header-phone,
+.phone-btn,
+.call-btn,
+.nav-phone,
+a[href^="tel"]{
+  white-space:nowrap!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  min-width:max-content!important;
+  flex-shrink:0!important;
+  line-height:1!important;
+}
+
+.header-phone br,
+.phone-btn br,
+.call-btn br,
+.nav-phone br,
+a[href^="tel"] br{
+  display:none!important;
+}
+
+.site-header .header-inner,
+.header-inner{
+  align-items:center!important;
+  gap:clamp(14px,1.7vw,28px)!important;
+}
+
+/* ===== HERO: tylko prawdziwa grafika jako tło, bez słabej prawej kolumny ===== */
+html[data-elkass-theme60="standard"] .e621-seasonal-hero,
+html:not([data-elkass-theme60]) .e621-seasonal-hero{
+  display:none!important;
+}
+
+.e621-seasonal-hero{
+  position:relative;
+  display:none;
+  width:min(100% - 32px,1500px);
+  margin:0 auto 30px;
+  min-height:440px;
+  border-radius:32px;
+  overflow:hidden;
+  color:#fff;
+  isolation:isolate;
+  background:#07111f;
+  box-shadow:0 28px 90px rgba(15,23,42,.18);
+}
+
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .e621-seasonal-hero{
+  display:block!important;
+}
+
+.e621-seasonal-hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-3;
+  background-image:var(--e621-hero-image);
+  background-size:cover;
+  background-position:center;
+}
+
+.e621-seasonal-hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.58) 34%,rgba(0,0,0,.20) 68%,rgba(0,0,0,.05) 100%),
+    radial-gradient(circle at 18% 20%,color-mix(in srgb,var(--e621-accent,#e30613) 26%,transparent),transparent 24%);
+}
+
+.e621-seasonal-copy{
+  max-width:710px;
+  padding:clamp(38px,5.2vw,76px);
+}
+
+.e621-seasonal-title{
+  margin:0 0 18px;
+  font-family:Arial Black,Arial,sans-serif;
+  font-size:clamp(42px,5.6vw,82px);
+  line-height:.96;
+  letter-spacing:-.065em;
+  text-shadow:0 18px 50px rgba(0,0,0,.50);
+}
+
+.e621-seasonal-subtitle{
+  max-width:650px;
+  margin:0 0 26px;
+  font-size:clamp(18px,1.6vw,26px);
+  line-height:1.32;
+  font-weight:900;
+  color:rgba(255,255,255,.92);
+  text-shadow:0 10px 32px rgba(0,0,0,.42);
+}
+
+.e621-seasonal-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.e621-seasonal-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:15px 21px;
+  font-weight:1000;
+  text-decoration:none;
+}
+
+.e621-seasonal-primary{
+  background:var(--e621-accent,#e30613);
+  color:#fff;
+  box-shadow:0 18px 42px color-mix(in srgb,var(--e621-accent,#e30613) 34%,transparent);
+}
+
+.e621-seasonal-secondary{
+  color:#fff;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.25);
+}
+
+html[data-elkass-theme60="blackweek"] .e621-seasonal-primary,
+html[data-elkass-theme60="cyberweek"] .e621-seasonal-primary{
+  color:#07111f;
+}
+
+/* stare Hero ukryte tylko dla motywów sezonowych */
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero-premium.e621-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero-section.e621-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) section.hero.e621-muted,
+html[data-elkass-theme60]:not([data-elkass-theme60="standard"]) .hero.e621-muted{
+  display:none!important;
+}
+
+/* Grafiki sezonowe */
+html[data-elkass-theme60="christmas"] .e621-seasonal-hero{--e621-accent:#e30613;--e621-hero-image:url("../assets/hero-seasonal-real/christmas.jpg")}
+html[data-elkass-theme60="mikolajki"] .e621-seasonal-hero{--e621-accent:#e30613;--e621-hero-image:url("../assets/hero-seasonal-real/mikolajki.jpg")}
+html[data-elkass-theme60="easter"] .e621-seasonal-hero{--e621-accent:#8bc34a;--e621-hero-image:url("../assets/hero-seasonal-real/easter.jpg")}
+html[data-elkass-theme60="spring"] .e621-seasonal-hero{--e621-accent:#22c55e;--e621-hero-image:url("../assets/hero-seasonal-real/spring.jpg")}
+html[data-elkass-theme60="summer"] .e621-seasonal-hero{--e621-accent:#facc15;--e621-hero-image:url("../assets/hero-seasonal-real/summer.jpg")}
+html[data-elkass-theme60="autumn"] .e621-seasonal-hero{--e621-accent:#f97316;--e621-hero-image:url("../assets/hero-seasonal-real/autumn.jpg")}
+html[data-elkass-theme60="winter"] .e621-seasonal-hero{--e621-accent:#38bdf8;--e621-hero-image:url("../assets/hero-seasonal-real/winter.jpg")}
+html[data-elkass-theme60="blackweek"] .e621-seasonal-hero{--e621-accent:#ffcc00;--e621-hero-image:url("../assets/hero-seasonal-real/blackweek.jpg")}
+html[data-elkass-theme60="cyberweek"] .e621-seasonal-hero{--e621-accent:#00e5ff;--e621-hero-image:url("../assets/hero-seasonal-real/cyberweek.jpg")}
+
+/* ===== Kategorie — usunięcie tekstu w tle i stabilny layout ===== */
+.elkass57-category-grid,
+.elkass-final-category-grid,
+.category-grid,
+#categories-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:28px!important;
+}
+
+.elkass57-category-card,
+.elkass-final-category-card,
+.category-card{
+  position:relative!important;
+  min-height:340px!important;
+  overflow:hidden!important;
+  border-radius:30px!important;
+  isolation:isolate!important;
+  background:#101418!important;
+}
+
+.elkass57-category-card img,
+.elkass-final-category-card img,
+.category-card img{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  display:block!important;
+  z-index:0!important;
+}
+
+.elkass57-category-card::before,
+.elkass-final-category-card::before,
+.category-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.80) 0%,rgba(0,0,0,.52) 45%,rgba(0,0,0,.10) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.84))!important;
+}
+
+.elkass57-category-card::after,
+.elkass-final-category-card::after,
+.category-card::after{
+  display:none!important;
+}
+
+.elkass57-category-content,
+.elkass-final-category-content,
+.category-content{
+  position:absolute!important;
+  left:0!important;
+  right:auto!important;
+  bottom:0!important;
+  width:min(72%,430px)!important;
+  max-width:72%!important;
+  z-index:3!important;
+  padding:24px!important;
+  color:#fff!important;
+  text-align:left!important;
+}
+
+.elkass57-category-content h3,
+.elkass-final-category-content h3,
+.category-content h3{
+  margin:0 0 10px!important;
+  color:#fff!important;
+  font-size:clamp(24px,2.05vw,32px)!important;
+  line-height:1.05!important;
+  text-shadow:0 8px 24px rgba(0,0,0,.55)!important;
+}
+
+.elkass57-category-content p,
+.elkass-final-category-content p,
+.category-content p{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:7px!important;
+  margin:0 0 16px!important;
+}
+
+.elkass57-category-content p span,
+.elkass-final-category-content p span,
+.category-content p span{
+  display:inline-flex!important;
+  border-radius:999px!important;
+  padding:6px 10px!important;
+  background:rgba(255,255,255,.22)!important;
+  border:1px solid rgba(255,255,255,.35)!important;
+  font-size:11px!important;
+  font-weight:1000!important;
+  color:#fff!important;
+}
+
+.elkass57-category-content a,
+.elkass-final-category-content a,
+.category-content a{
+  display:inline-flex!important;
+  border-radius:999px!important;
+  padding:11px 16px!important;
+  background:#fff!important;
+  color:#07111f!important;
+  font-size:14px!important;
+  font-weight:1000!important;
+  text-decoration:none!important;
+}
+
+@media(max-width:900px){
+  .site-header .brand,
+  .brand{
+    min-width:185px!important;
+  }
+  .brand-main,
+  .elkass-logo-line{
+    font-size:clamp(22px,7.4vw,31px)!important;
+  }
+  .brand-sub,
+  .elkass-logo-subline{
+    font-size:8.5px!important;
+    letter-spacing:.06em!important;
+  }
+  .e621-seasonal-hero{
+    width:calc(100% - 20px);
+    min-height:430px;
+    border-radius:24px;
+  }
+  .e621-seasonal-hero::after{
+    background:linear-gradient(180deg,rgba(0,0,0,.72),rgba(0,0,0,.50) 50%,rgba(0,0,0,.16));
+  }
+  .e621-seasonal-copy{
+    padding:30px 20px 190px;
+  }
+  .e621-seasonal-title{
+    font-size:clamp(34px,11vw,52px);
+  }
+  .e621-seasonal-subtitle{
+    font-size:16px;
+  }
+  .e621-seasonal-actions a{
+    width:100%;
+  }
+  .elkass57-category-grid,
+  .elkass-final-category-grid,
+  .category-grid,
+  #categories-grid{
+    grid-template-columns:1fr!important;
+    gap:18px!important;
+  }
+  .elkass57-category-card,
+  .elkass-final-category-card,
+  .category-card{
+    min-height:270px!important;
+  }
+  .elkass57-category-content,
+  .elkass-final-category-content,
+  .category-content{
+    width:88%!important;
+    max-width:88%!important;
+    padding:18px!important;
+  }
+}
