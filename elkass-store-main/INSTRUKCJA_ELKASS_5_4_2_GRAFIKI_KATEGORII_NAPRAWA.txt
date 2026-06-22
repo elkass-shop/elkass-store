@@ -1,0 +1,20 @@
+ELKASS ENTERPRISE 5.4.2 — NAPRAWA GRAFIK W KATEGORIACH
+
+Co naprawiono:
+1. Kategorie używają teraz prawdziwych plików JPG z folderu assets/categories/.
+2. Skrypt category-wow.js nie opiera się już na starych SVG.
+3. Dodano widoczny tag <img> do kafelków kategorii, więc grafiki pokazują się normalnie także wtedy, gdy CSS/background zawiedzie.
+4. Dodano twardą poprawkę localStorage — stare dane z przeglądarki nie powinny już nadpisywać zdjęć pustymi/starymi ścieżkami.
+5. Podbito wersje plików do v=542, żeby przeglądarka nie trzymała starego cache.
+
+Jak wdrożyć dla laika:
+1. Rozpakuj ZIP.
+2. Wrzuć CAŁY folder elkass-store-main na hosting, zastępując stare pliki.
+3. Po wejściu na stronę zrób twarde odświeżenie: Ctrl + F5.
+4. Jeśli nadal widzisz starą wersję, wyczyść cache przeglądarki albo otwórz stronę w trybie incognito.
+
+Folder z grafikami musi istnieć na hostingu:
+assets/categories/
+
+W środku są m.in.:
+rtv.jpg, agd.jpg, agd-zabudowa.jpg, male-agd.jpg, komputery-telefony.jpg, serwis.jpg

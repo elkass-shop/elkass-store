@@ -1,0 +1,31 @@
+Dla bezpieczeństwa projektu
+
+Polecam już dziś zrobić w repo folder:
+
+/docs
+
+i plik:
+
+ROADMAP_ELKASS.md
+
+z takim stanem:
+
+WOW27 - ukończone
+✓ Galeria
+✓ Partnerzy
+✓ Kategorie
+✓ Podkategorie
+✓ Produkty
+
+WOW28 - w trakcie
+□ Panel Admin 2.0
+
+WOW29
+□ Edycja strony z panelu
+
+WOW30
+□ Firebase / Supabase
+
+Wtedy nawet za miesiąc od razu wiemy, na czym stoimy.
+
+A na ten moment pamiętam kontekst tej rozmowy i jutro bez problemu będziemy mogli ruszyć dalej od Panel Admin 2.0. 💪

@@ -1,0 +1,248 @@
+const DATA_KEY='elkassAdminData';
+const AUTH_KEY='elkassAdminAuth';
+const PROMO_TYPE_LABELS={none:'',new:'NOWOŚĆ','hit-day':'HIT DNIA','hit-week':'HIT TYGODNIA','black-friday':'BLACK FRIDAY','agd-deal':'OKAZJA AGD','premium-deal':'PREMIUM DEAL',custom:''};
+const defaultData={
+products:[
+{id:'p1',visible:true,promo:true,featured:true,promoType:'hit-week',promoLabel:'HIT TYGODNIA',discountMode:'custom',customDiscount:15,showInHit:true,promoEnd:'',badge:'HIT TYGODNIA',img:'assets/products/product-01-lodowka-tcl.jpg',name:'Lodówka TCL RP318BXE2',category:'AGD',subcategory:'Lodówki',features:['No Frost','Multi Air Flow','Pojemna chłodziarka'],price:1699,availability:'Dostępny w sklepie'},
+{id:'p2',visible:true,promo:true,featured:true,promoType:'agd-deal',promoLabel:'OKAZJA AGD',discountMode:'random',customDiscount:'',showInHit:false,badge:'OKAZJA AGD',img:'assets/products/product-02-pralka-beko.jpg',name:'Pralka BEKO WUE7636XOA',category:'AGD',subcategory:'Pralki',features:['7 kg załadunku','1200 obr./min','Program szybki'],price:1349,availability:'Dostępny w sklepie'},
+{id:'p3',visible:true,promo:true,featured:false,promoType:'premium-deal',promoLabel:'PREMIUM DEAL',discountMode:'custom',customDiscount:18,showInHit:false,badge:'PREMIUM DEAL',img:'assets/products/product-03-chlodziarka-amica.jpg',name:'Chłodziarka Amica FM170.4',category:'AGD',subcategory:'Chłodziarki',features:['122 l pojemności','3 półki','Komora FreshZone'],price:899,availability:'Na zamówienie'},
+{id:'p4',visible:true,promo:true,featured:true,promoType:'hit-day',promoLabel:'HIT DNIA',discountMode:'random',showInHit:true,badge:'HIT DNIA',img:'assets/products/product-04-piekarnik-samsung.jpg',name:'Piekarnik Samsung NV7B44305AK',category:'AGD',subcategory:'Piekarniki',features:['Dual Cook','Air Fry','Prowadnice teleskopowe'],price:1799,availability:'Dostępny w sklepie'},
+{id:'p5',visible:true,promo:true,featured:true,promoType:'black-friday',promoLabel:'BLACK FRIDAY',discountMode:'custom',customDiscount:25,showInHit:true,badge:'BLACK FRIDAY',img:'assets/products/product-05-telewizor-samsung.jpg',name:'Telewizor Samsung 55” 4K UHD',category:'RTV',subcategory:'Telewizory',features:['Smart TV','HDR','Krystaliczny obraz'],price:2299,availability:'Dostępny w sklepie'},
+{id:'p6',visible:true,promo:true,featured:false,promoType:'custom',promoLabel:'SUPER CENA',discountMode:'random',showInHit:false,badge:'SUPER CENA',img:'assets/products/product-06-soundbar-lg.jpg',name:'Soundbar LG S60Q',category:'Audio',subcategory:'Soundbary',features:['Bluetooth','Mocny bas','HDMI ARC'],price:899,availability:'Dostępny w sklepie'},
+{id:'p7',visible:true,promo:true,featured:true,promoType:'new',promoLabel:'NOWOŚĆ',discountMode:'none',showInHit:false,badge:'NOWOŚĆ',img:'assets/products/product-07-laptop-lenovo.jpg',name:'Laptop Lenovo IdeaPad 15',category:'Komputery',subcategory:'Laptopy',features:['Intel Core i5','SSD 512 GB','15,6 cala'],price:2499,availability:'Dostępny w sklepie'},
+{id:'p8',visible:true,promo:true,featured:true,promoType:'hit-day',promoLabel:'HIT DNIA',discountMode:'custom',customDiscount:10,showInHit:true,badge:'HIT DNIA',img:'assets/products/product-08-smartfon-samsung.jpg',name:'Smartfon Samsung Galaxy A35',category:'Telefony',subcategory:'Smartfony',features:['Ekran AMOLED','Aparat 50 MP','Duża bateria'],price:1399,availability:'Dostępny w sklepie'}
+],
+categories:[
+{id:'c1',name:'RTV',description:'Telewizory, soundbary, kino domowe',img:'assets/rtv.jpg',subcategories:[{id:'s1',name:'Telewizory',description:'Smart TV, OLED, QLED i 4K'},{id:'s2',name:'Soundbary',description:'Lepszy dźwięk do TV'},{id:'s3',name:'Audio',description:'Głośniki i kino domowe'}]},
+{id:'c2',name:'AGD',description:'Lodówki, pralki, zmywarki',img:'assets/agd.jpg',subcategories:[{id:'s4',name:'Lodówki',description:'No Frost i duża pojemność'},{id:'s5',name:'Pralki',description:'Slim i standard'},{id:'s6',name:'Piekarniki',description:'Do zabudowy i wolnostojące'}]},
+{id:'c3',name:'Komputery',description:'Laptopy, monitory, akcesoria',img:'assets/komputery.jpg',subcategories:[{id:'s7',name:'Laptopy',description:'Do pracy i nauki'},{id:'s8',name:'Monitory',description:'Biuro i gaming'},{id:'s9',name:'Akcesoria',description:'Klawiatury, myszy, drukarki'}]},
+{id:'c4',name:'Telefony',description:'Smartfony, tablety, akcesoria',img:'assets/telefony.jpg',subcategories:[{id:'s10',name:'Smartfony',description:'Android, 5G i bateria'},{id:'s11',name:'Tablety',description:'Do szkoły i domu'},{id:'s12',name:'Akcesoria GSM',description:'Etui, szkła, ładowarki'}]},
+{id:'c5',name:'Audio',description:'Słuchawki, głośniki, soundbary',img:'assets/audio.jpg',subcategories:[{id:'s13',name:'Słuchawki',description:'Bluetooth i ANC'},{id:'s14',name:'Głośniki',description:'Domowe i przenośne'},{id:'s15',name:'Soundbary',description:'Do TV'}]},
+{id:'c6',name:'Serwis',description:'Pomoc, konfiguracja, doradztwo',img:'assets/gaming.jpg',subcategories:[{id:'s16',name:'Wsparcie',description:'Pomoc po zakupie'},{id:'s17',name:'Konfiguracja',description:'Ustawienie sprzętu'},{id:'s18',name:'Doradztwo',description:'Dobór sprzętu'}]}
+],
+settings:{heroTitle:'Nowoczesna elektronika dla Twojego domu',heroSubtitle:'RTV • AGD • KOMPUTERY • TELEFONY • AUDIO • SERWIS',heroImg:'assets/hero-wow-v5.png',localTitle:'Lokalny sklep RTV/AGD z fachowym doradztwem',localText:'Od ponad 25 lat pomagamy mieszkańcom Olesna i okolic wybierać sprawdzony sprzęt RTV, AGD, komputery, telefony oraz akcesoria.',localImg:'assets/sklep.jpg',contactName:'ELKASS Olesno',address:'ul. Kochanowskiego 4, 46-300 Olesno',phone:'34 358 24 42',email:'sklep@elkass.pl',hours:'Pon. – Pt.: 9:00 – 17:00\nSobota: 9:00 – 13:00',map:'https://maps.google.com/?q=Olesno+ELKASS',sections:{hero:true,deals:true,products:true,categories:true,reviews:true,gallery:true,partners:true,contact:true}},
+promoSettings:{title:'Nowości i promocje',buttonText:'Zobacz wszystkie',displayMode:'carousel',interval:5,desktopCount:4,mobileCount:1,autoplay:true,pauseHover:true,smooth:true},
+gallery:[{id:'g1',title:'Gabloty i akcesoria RTV',category:'Akcesoria',img:'assets/gallery/gallery-01-gabloty-rtv-akcesoria.jpg'},{id:'g2',title:'Piekarniki i AGD do zabudowy',category:'AGD',img:'assets/gallery/gallery-02-piekarniki-agd.jpg'},{id:'g3',title:'Ekspresy i czajniki',category:'Małe AGD',img:'assets/gallery/gallery-03-ekspresy-czajniki.jpg'}],
+partners:[{id:'b1',name:'Samsung',logo:'assets/logos/samsung.svg'},{id:'b2',name:'LG',logo:'assets/logos/lg.svg'},{id:'b3',name:'Sony',logo:'assets/logos/sony.svg'},{id:'b4',name:'Bosch',logo:'assets/logos/bosch.svg'}],
+reviews:[{id:'r1',name:'Anna K.',city:'Olesno',text:'Bardzo dobre doradztwo i szybka pomoc przy wyborze sprzętu.'},{id:'r2',name:'Marek P.',city:'Dobrodzień',text:'Miła obsługa i konkretne ceny. Polecam lokalny sklep.'}]
+};
+let data=loadData();
+function loadData(){try{const saved=JSON.parse(localStorage.getItem(DATA_KEY)||'null'); if(saved&&Array.isArray(saved.products)&&Array.isArray(saved.categories)) return mergeData(saved);}catch(e){} return structuredClone(defaultData)}
+function mergeData(saved){return {...structuredClone(defaultData),...saved,settings:{...defaultData.settings,...(saved.settings||{}),sections:{...defaultData.settings.sections,...(saved.settings?.sections||{})}},promoSettings:{...defaultData.promoSettings,...(saved.promoSettings||{})},products:(saved.products||defaultData.products).map(normalizeProduct),categories:(saved.categories||defaultData.categories).map(normalizeCategory),gallery:saved.gallery||defaultData.gallery,partners:saved.partners||defaultData.partners,reviews:saved.reviews||defaultData.reviews}}
+function normalizeProduct(p){const label=p.promoLabel||p.badge||PROMO_TYPE_LABELS[p.promoType]||'PROMOCJA'; return {...p,promoType:p.promoType||'custom',promoLabel:label,badge:label,discountMode:p.discountMode||(p.randomDiscount===false?'none':'random'),customDiscount:p.customDiscount||'',showInHit:!!p.showInHit,featured:!!p.featured,placements:productPlacements(p),features:Array.isArray(p.features)?p.features:String(p.features||'').split('\n').filter(Boolean),gallery:Array.isArray(p.gallery)?p.gallery:String(p.gallery||'').split('\n').map(x=>x.trim()).filter(Boolean),specs:Array.isArray(p.specs)?p.specs:String(p.specs||'').split('\n').map(x=>x.trim()).filter(Boolean),availability:p.availability||'Dostępny w sklepie'}}
+function normalizeCategory(c){return {...c,subcategories:(c.subcategories||[]).map(s=>typeof s==='string'?{id:'s'+Date.now()+Math.random(),name:s,description:''}:{id:s.id||('s'+Date.now()+Math.random()),...s})}}
+function defaultPlacements(p){const type=p.promoType||''; const hit=p.showInHit||['hit-week','hit-day','black-friday'].includes(type); const out=[]; if(p.promo!==false&&!hit)out.push('promotions'); if(p.featured)out.push('featured'); if(hit||type==='hit-week')out.push('hit-week'); if(type==='hit-day')out.push('hit-day'); if(type==='black-friday')out.push('black-friday'); return [...new Set(out)]}
+function productPlacements(p){return Array.isArray(p.placements)?p.placements:defaultPlacements(p)}
+function saveData(silent=false){data.products=data.products.map(normalizeProduct); data.categories=data.categories.map(normalizeCategory); localStorage.setItem(DATA_KEY,JSON.stringify(data)); renderAll(); if(!silent) alert('Zapisano. Odśwież stronę, aby zobaczyć efekt na tym urządzeniu.');}
+function $(id){return document.getElementById(id)}
+function esc(v){return String(v??'').replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[ch]))}
+function imgSrc(src){if(!src) return '../assets/products/product-01-lodowka-tcl.jpg'; if(src.startsWith('data:')||src.startsWith('http')) return src; return src.startsWith('../')?src:'../'+src}
+function fileToDataUrl(input,cb){const f=input.files&&input.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>cb(r.result); r.readAsDataURL(f)}
+function fillSelect(el,opts,selected='',placeholder='Wybierz'){el.innerHTML=`<option value="">${placeholder}</option>`+opts.map(o=>`<option value="${esc(o.value)}">${esc(o.label)}</option>`).join(''); el.value=selected||''}
+function categoryByName(name){return data.categories.find(c=>String(c.name).toLowerCase()===String(name).toLowerCase())}
+function categoryById(id){return data.categories.find(c=>c.id===id)}
+function labelForPromo(type,custom){return type==='custom'?custom:(PROMO_TYPE_LABELS[type]||custom||'')}
+function discountText(p){if(p.discountMode==='custom'&&p.customDiscount)return `-${p.customDiscount}%`; if(p.discountMode==='random')return 'losowy 5–25%'; return 'brak rabatu'}
+function showPanel(){ $('login-screen').classList.add('hidden'); $('panel').classList.remove('hidden'); renderAll() }
+function showLogin(){ $('login-screen').classList.remove('hidden'); $('panel').classList.add('hidden') }
+if(localStorage.getItem(AUTH_KEY)==='1')showPanel();else showLogin();
+$('login-form').addEventListener('submit',e=>{e.preventDefault(); const cfg=JSON.parse(localStorage.getItem('elkassSuperAdminAccount')||'{}'); const adminLogin=cfg.login||'admin'; const adminPass=cfg.password||'admin'; if($('login').value===adminLogin&&$('password').value===adminPass){localStorage.setItem(AUTH_KEY,'1');showPanel()}else alert('Nieprawidłowy login lub hasło')});
+$('logout').onclick=()=>{localStorage.removeItem(AUTH_KEY);showLogin()};
+document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>activateTab(btn.dataset.tab));
+document.querySelectorAll('[data-tab-target]').forEach(btn=>btn.onclick=()=>activateTab(btn.dataset.tabTarget));
+function activateTab(tab){document.querySelectorAll('.tab,.tab-panel').forEach(x=>x.classList.remove('active')); document.querySelector(`.tab[data-tab="${tab}"]`)?.classList.add('active'); $(tab)?.classList.add('active')}
+function populateProductCategorySelect(cat='',sub=''){fillSelect($('product-category'),data.categories.map(c=>({value:c.name,label:c.name})),cat,'Kategoria'); const c=categoryByName($('product-category').value); fillSelect($('product-subcategory'),(c?.subcategories||[]).map(s=>({value:s.name,label:s.name})),sub,'Podkategoria')}
+$('product-category').addEventListener('change',()=>populateProductCategorySelect($('product-category').value,''));
+function populateSubcategoryParentSelect(id=''){fillSelect($('subcategory-parent'),data.categories.map(c=>({value:c.id,label:c.name})),id,'Wybierz kategorię')}
+function updateProductPreview(){ $('product-preview').src=imgSrc($('product-img').value)}
+function updateCategoryPreview(){ $('category-preview').src=imgSrc($('category-img').value)}
+function updateGalleryPreview(){ if($('gallery-preview')) $('gallery-preview').src=imgSrc($('gallery-img').value)}
+['product-img','category-img','gallery-img'].forEach(id=>$(id)?.addEventListener('input',()=>id==='product-img'?updateProductPreview():id==='category-img'?updateCategoryPreview():updateGalleryPreview()));
+$('product-upload').addEventListener('change',e=>fileToDataUrl(e.target,url=>{$('product-img').value=url;updateProductPreview()}));
+$('category-upload').addEventListener('change',e=>fileToDataUrl(e.target,url=>{$('category-img').value=url;updateCategoryPreview()}));
+$('gallery-upload')?.addEventListener('change',e=>fileToDataUrl(e.target,url=>{$('gallery-img').value=url;updateGalleryPreview()}));
+function renderProducts(){const box=$('products-list'); box.innerHTML=''; data.products.forEach(p=>{const row=document.createElement('div'); row.className='item-row'; row.innerHTML=`<img src="${imgSrc(p.img)}"><div><strong>${esc(p.name)}</strong><small>${esc(p.category)} / ${esc(p.subcategory)} • ${esc(p.price)} zł • ${esc(p.promoLabel||p.badge||'')} • ${discountText(p)} • ${p.visible!==false?'widoczny':'ukryty'} • miejsca: ${productPlacements(p).join(', ')||'kategoria'}</small></div><div class="item-actions"><button class="edit">Edytuj</button><button class="delete">Usuń</button></div>`; row.querySelector('.edit').onclick=()=>editProduct(p.id); row.querySelector('.delete').onclick=()=>{if(confirm('Usunąć produkt?')){data.products=data.products.filter(x=>x.id!==p.id);saveData(true)}}; box.appendChild(row)}); const promoBox=$('promo-products-list'); if(promoBox) promoBox.innerHTML=data.products.filter(p=>p.promoType&&p.promoType!=='none').map(p=>`<div class="item-row"><img src="${imgSrc(p.img)}"><div><strong>${esc(p.name)}</strong><small>${esc(p.promoLabel||p.badge)} • ${discountText(p)} • ${p.showInHit?'Hit/banner':'Kafelek'}</small></div></div>`).join('')}
+function setPlacementChecks(placements=[]){['promotions','hit-week','hit-day','black-friday','featured','category-only'].forEach(k=>{const el=$('product-place-'+k); if(el) el.checked=placements.includes(k)}); const oldPromo=$('product-promo'); if(oldPromo) oldPromo.checked=placements.includes('promotions'); const oldFeatured=$('product-featured'); if(oldFeatured) oldFeatured.checked=placements.includes('featured'); const oldHit=$('product-show-in-hit'); if(oldHit) oldHit.value=(placements.includes('hit-week')||placements.includes('hit-day')||placements.includes('black-friday'))?'yes':'no'}
+function getPlacementChecks(){const out=[]; ['promotions','hit-week','hit-day','black-friday','featured','category-only'].forEach(k=>{const el=$('product-place-'+k); if(el&&el.checked) out.push(k)}); return out}
+function clearProduct(){['product-id','product-name','product-price','product-img','product-features','product-gallery','product-specs','product-promo-label','product-custom-discount','product-promo-end'].forEach(id=>{if($(id))$(id).value=''}); populateProductCategorySelect('',''); $('product-availability').value='Dostępny w sklepie'; $('product-promo-type').value='none'; $('product-discount-mode').value='random'; $('product-show-in-hit').value='no'; $('product-visible').checked=true; setPlacementChecks(['promotions']); updateProductPreview()}
+$('clear-product').onclick=clearProduct;
+function editProduct(id){const p=data.products.find(x=>x.id===id); if(!p)return; $('product-id').value=p.id; $('product-name').value=p.name; $('product-price').value=p.price; populateProductCategorySelect(p.category,p.subcategory); $('product-availability').value=p.availability||'Dostępny w sklepie'; $('product-img').value=p.img||''; $('product-features').value=(p.features||[]).join('\n'); if($('product-gallery')) $('product-gallery').value=(p.gallery||[]).join('\n'); if($('product-specs')) $('product-specs').value=(p.specs||[]).join('\n'); $('product-promo-type').value=p.promoType||'custom'; $('product-promo-label').value=p.promoLabel||p.badge||''; $('product-discount-mode').value=p.discountMode||'random'; $('product-custom-discount').value=p.customDiscount||''; $('product-promo-end').value=p.promoEnd||''; $('product-show-in-hit').value=p.showInHit?'yes':'no'; $('product-visible').checked=p.visible!==false; setPlacementChecks(productPlacements(p)); updateProductPreview(); activateTab('products'); window.scrollTo({top:0,behavior:'smooth'})}
+$('product-form').addEventListener('submit',e=>{e.preventDefault(); const type=$('product-promo-type').value; const custom=$('product-promo-label').value.trim(); const label=labelForPromo(type,custom)||'PROMOCJA'; const placements=getPlacementChecks(); const p={id:$('product-id').value||('p'+Date.now()),name:$('product-name').value.trim(),price:Number($('product-price').value),category:$('product-category').value,subcategory:$('product-subcategory').value,availability:$('product-availability').value,img:$('product-img').value.trim(),features:$('product-features').value.split('\n').map(x=>x.trim()).filter(Boolean),gallery:($('product-gallery')?$('product-gallery').value:'').split('\n').map(x=>x.trim()).filter(Boolean),specs:($('product-specs')?$('product-specs').value:'').split('\n').map(x=>x.trim()).filter(Boolean),visible:$('product-visible').checked,promo:placements.includes('promotions'),featured:placements.includes('featured'),placements,promoType:type,promoLabel:label,badge:label,discountMode:$('product-discount-mode').value,customDiscount:$('product-custom-discount').value,promoEnd:$('product-promo-end').value,showInHit:placements.includes('hit-week')||placements.includes('hit-day')||placements.includes('black-friday')||$('product-show-in-hit').value==='yes'}; const i=data.products.findIndex(x=>x.id===p.id); if(i>=0)data.products[i]=p;else data.products.push(p); clearProduct(); saveData()});
+function renderCategories(){const cb=$('categories-list'), sb=$('subcategories-list'); cb.innerHTML=''; sb.innerHTML=''; data.categories.forEach(c=>{const row=document.createElement('div'); row.className='item-row'; row.innerHTML=`<img src="${imgSrc(c.img)}"><div><strong>${esc(c.name)}</strong><small>${esc(c.description||'')}<br>Podkategorie: ${(c.subcategories||[]).length}</small></div><div class="item-actions"><button class="edit">Edytuj</button><button class="delete">Usuń</button></div>`; row.querySelector('.edit').onclick=()=>editCategory(c.id); row.querySelector('.delete').onclick=()=>deleteCategory(c.id); cb.appendChild(row); (c.subcategories||[]).forEach(s=>{const sub=document.createElement('div'); sub.className='item-row'; sub.innerHTML=`<div><strong>${esc(s.name)}</strong><small>${esc(c.name)} • ${esc(s.description||'')}</small></div><div class="item-actions"><button class="edit">Edytuj</button><button class="delete">Usuń</button></div>`; sub.querySelector('.edit').onclick=()=>editSubcategory(c.id,s.id); sub.querySelector('.delete').onclick=()=>deleteSubcategory(c.id,s.id); sb.appendChild(sub)})}); populateProductCategorySelect($('product-category').value,$('product-subcategory').value); populateSubcategoryParentSelect($('subcategory-parent').value)}
+function clearCategory(){['category-id','category-name','category-description','category-img'].forEach(id=>$(id).value=''); updateCategoryPreview()} $('clear-category').onclick=clearCategory;
+function editCategory(id){const c=categoryById(id); $('category-id').value=c.id; $('category-name').value=c.name; $('category-description').value=c.description||''; $('category-img').value=c.img||''; updateCategoryPreview(); activateTab('categories')}
+function deleteCategory(id){const c=categoryById(id); if(!c)return; const count=data.products.filter(p=>p.category===c.name).length; if(confirm(count?`Kategoria ma ${count} produktów. Usunąć i odpiąć produkty?`:'Usunąć kategorię?')){data.products=data.products.map(p=>p.category===c.name?{...p,category:'',subcategory:''}:p); data.categories=data.categories.filter(x=>x.id!==id); saveData(true)}}
+$('category-form').addEventListener('submit',e=>{e.preventDefault(); const id=$('category-id').value||('c'+Date.now()); const old=categoryById(id); const item={id,name:$('category-name').value.trim(),description:$('category-description').value.trim(),img:$('category-img').value.trim(),subcategories:old?.subcategories||[]}; const i=data.categories.findIndex(x=>x.id===id); if(i>=0){const oldName=data.categories[i].name; data.categories[i]=item; data.products=data.products.map(p=>p.category===oldName?{...p,category:item.name}:p)}else data.categories.push(item); clearCategory(); saveData()});
+function clearSubcategory(){['subcategory-id','subcategory-original-parent','subcategory-name','subcategory-description'].forEach(id=>$(id).value=''); populateSubcategoryParentSelect('')} $('clear-subcategory').onclick=clearSubcategory;
+function editSubcategory(catId,subId){const c=categoryById(catId); const s=c.subcategories.find(x=>x.id===subId); $('subcategory-id').value=s.id; $('subcategory-original-parent').value=catId; $('subcategory-parent').value=catId; $('subcategory-name').value=s.name; $('subcategory-description').value=s.description||''; activateTab('categories')}
+function deleteSubcategory(catId,subId){const c=categoryById(catId); const s=c.subcategories.find(x=>x.id===subId); if(!s)return; const count=data.products.filter(p=>p.category===c.name&&p.subcategory===s.name).length; if(confirm(count?`Podkategoria ma ${count} produktów. Usunąć i odpiąć produkty?`:'Usunąć podkategorię?')){data.products=data.products.map(p=>p.category===c.name&&p.subcategory===s.name?{...p,subcategory:''}:p); c.subcategories=c.subcategories.filter(x=>x.id!==subId); saveData(true)}}
+$('subcategory-form').addEventListener('submit',e=>{e.preventDefault(); const target=categoryById($('subcategory-parent').value); if(!target)return alert('Wybierz kategorię'); const id=$('subcategory-id').value||('s'+Date.now()); const oldParent=$('subcategory-original-parent').value; if(oldParent&&oldParent!==target.id){const old=categoryById(oldParent); if(old) old.subcategories=old.subcategories.filter(s=>s.id!==id)} const item={id,name:$('subcategory-name').value.trim(),description:$('subcategory-description').value.trim()}; const i=target.subcategories.findIndex(s=>s.id===id); if(i>=0)target.subcategories[i]=item;else target.subcategories.push(item); clearSubcategory(); saveData()});
+function renderSettings(){const s=data.settings; $('promo-section-title').value=data.promoSettings.title||''; $('promo-button-text').value=data.promoSettings.buttonText||''; $('promo-display-mode').value=data.promoSettings.displayMode||'carousel'; $('promo-interval').value=data.promoSettings.interval||5; $('promo-desktop-count').value=data.promoSettings.desktopCount||4; $('promo-mobile-count').value=data.promoSettings.mobileCount||1; $('promo-autoplay').checked=data.promoSettings.autoplay!==false; $('promo-pause-hover').checked=data.promoSettings.pauseHover!==false; $('promo-smooth').checked=data.promoSettings.smooth!==false; ['heroTitle','heroSubtitle','heroImg','localTitle','localText','localImg'].forEach(k=>{const id='home-'+k.replace(/[A-Z]/g,m=>'-'+m.toLowerCase()); if($(id)) $(id).value=s[k]||''}); document.querySelectorAll('[data-section]').forEach(ch=>ch.checked=s.sections?.[ch.dataset.section]!==false); $('contact-name').value=s.contactName||''; $('contact-address').value=s.address||''; $('contact-phone').value=s.phone||''; $('contact-email').value=s.email||''; $('contact-hours').value=s.hours||''; $('contact-map').value=s.map||''}
+$('save-promo-settings').onclick=()=>{data.promoSettings={title:$('promo-section-title').value,buttonText:$('promo-button-text').value,displayMode:$('promo-display-mode').value,interval:Number($('promo-interval').value||5),desktopCount:Number($('promo-desktop-count').value||4),mobileCount:Number($('promo-mobile-count').value||1),autoplay:$('promo-autoplay').checked,pauseHover:$('promo-pause-hover').checked,smooth:$('promo-smooth').checked}; saveData()};
+$('save-homepage').onclick=()=>{data.settings={...data.settings,heroTitle:$('home-hero-title').value,heroSubtitle:$('home-hero-subtitle').value,heroImg:$('home-hero-img').value,localTitle:$('home-local-title').value,localText:$('home-local-text').value,localImg:$('home-local-img').value,sections:{}}; document.querySelectorAll('[data-section]').forEach(ch=>data.settings.sections[ch.dataset.section]=ch.checked); saveData()};
+$('save-contact').onclick=()=>{data.settings={...data.settings,contactName:$('contact-name').value,address:$('contact-address').value,phone:$('contact-phone').value,email:$('contact-email').value,hours:$('contact-hours').value,map:$('contact-map').value}; saveData()};
+function simpleList(type,boxId,fields){const box=$(boxId); if(!box)return; box.innerHTML=(data[type]||[]).map(item=>`<div class="item-row"><img src="${imgSrc(item.img||item.logo)}"><div><strong>${esc(item.name||item.title)}</strong><small>${esc(item.category||item.city||item.text||'')}</small></div><div class="item-actions"><button data-edit="${item.id}" class="edit">Edytuj</button><button data-del="${item.id}" class="delete">Usuń</button></div></div>`).join('')}
+function renderExtra(){simpleList('gallery','gallery-list'); simpleList('partners','partners-list'); simpleList('reviews','reviews-list')}
+function genericSubmit(formId,type,ids,clear){const form=$(formId); if(!form)return; form.addEventListener('submit',e=>{e.preventDefault(); const id=$(ids.id).value||type[0]+Date.now(); const item={id}; ids.fields.forEach(([key,id])=>item[key]=$(id).value); const arr=data[type]; const i=arr.findIndex(x=>x.id===id); if(i>=0)arr[i]=item; else arr.push(item); clear(); saveData()})}
+function clearGallery(){['gallery-id','gallery-title','gallery-category','gallery-img'].forEach(id=>$(id).value='');updateGalleryPreview()} $('clear-gallery')?.addEventListener('click',clearGallery); genericSubmit('gallery-form','gallery',{id:'gallery-id',fields:[['title','gallery-title'],['category','gallery-category'],['img','gallery-img']]},clearGallery);
+function clearPartner(){['partner-id','partner-name','partner-logo'].forEach(id=>$(id).value='')} $('clear-partner')?.addEventListener('click',clearPartner); genericSubmit('partner-form','partners',{id:'partner-id',fields:[['name','partner-name'],['logo','partner-logo']]},clearPartner);
+function clearReview(){['review-id','review-name','review-city','review-text'].forEach(id=>$(id).value='')} $('clear-review')?.addEventListener('click',clearReview); genericSubmit('review-form','reviews',{id:'review-id',fields:[['name','review-name'],['city','review-city'],['text','review-text']]},clearReview);
+['gallery-list','partners-list','reviews-list'].forEach(boxId=>$(boxId)?.addEventListener('click',e=>{const btn=e.target.closest('button'); if(!btn)return; const type=boxId.split('-')[0]; const arr=data[type]; const id=btn.dataset.edit||btn.dataset.del; const item=arr.find(x=>x.id===id); if(btn.dataset.del){if(confirm('Usunąć?')){data[type]=arr.filter(x=>x.id!==id);saveData(true)}} else if(item){if(type==='gallery'){$('gallery-id').value=item.id;$('gallery-title').value=item.title;$('gallery-category').value=item.category;$('gallery-img').value=item.img;updateGalleryPreview();activateTab('gallery')} if(type==='partners'){$('partner-id').value=item.id;$('partner-name').value=item.name;$('partner-logo').value=item.logo;activateTab('partners')} if(type==='reviews'){$('review-id').value=item.id;$('review-name').value=item.name;$('review-city').value=item.city;$('review-text').value=item.text;activateTab('reviews')}}}));
+function renderStats(){ $('stat-products').textContent=data.products.length; $('stat-categories').textContent=data.categories.length; $('stat-promos').textContent=data.products.filter(p=>p.promoType&&p.promoType!=='none').length; $('stat-gallery').textContent=(data.gallery||[]).length}
+function renderAll(){renderStats();renderSettings();renderProducts();renderCategories();renderExtra()}
+$('save-all').onclick=()=>saveData(); $('download-data').onclick=()=>exportJson(); $('export-json').onclick=()=>exportJson(); function exportJson(){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='elkass-cms-data.json'; a.click(); URL.revokeObjectURL(a.href)}
+$('import-json').addEventListener('change',e=>{const f=e.target.files[0]; if(!f)return; const r=new FileReader(); r.onload=()=>{try{data=mergeData(JSON.parse(r.result));saveData()}catch(err){alert('Błąd importu JSON')}}; r.readAsText(f)});
+$('reset-data').onclick=()=>{if(confirm('Przywrócić dane demo?')){data=structuredClone(defaultData);saveData()}};
+renderAll();
+
+
+/* ===== ENTERPRISE 1.2 PRODUCT WIZARD ===== */
+(function(){
+  function el(id){return document.getElementById(id)}
+  let step=1;
+  const promoLabels={none:'',new:'NOWOŚĆ','hit-day':'HIT DNIA','hit-week':'HIT TYGODNIA','black-friday':'BLACK FRIDAY','agd-deal':'OKAZJA AGD','premium-deal':'PREMIUM DEAL',custom:''};
+  const templates={
+    'RTV':['Przekątna: ','Rozdzielczość: 4K UHD','Smart TV: Tak','HDR: Tak','Złącza HDMI: ','Gwarancja: 24 miesiące'],
+    'AGD':['Klasa energetyczna: ','Pojemność / załadunek: ','Programy: ','Wymiary: ','Kolor: ','Gwarancja: 24 miesiące'],
+    'Komputery':['Procesor: ','Pamięć RAM: ','Dysk: ','Ekran: ','System: ','Gwarancja: 24 miesiące'],
+    'Telefony':['Ekran: ','Pamięć: ','Aparat: ','Bateria: ','Łączność: 5G','Gwarancja: 24 miesiące'],
+    'Audio':['Moc: ','Łączność: Bluetooth','Wejścia: ','Kolor: ','Zastosowanie: ','Gwarancja: 24 miesiące'],
+    'Serwis':['Typ usługi: ','Zakres: ','Czas realizacji: ','Dla urządzeń: ','Uwagi: ']
+  };
+  function ready(){return el('wizard-product-form') && typeof data!=='undefined'}
+  function setupWizard(){
+    if(!ready()) return;
+    populateWizardCategories();
+    updateStep();
+    ['wiz-name','wiz-brand','wiz-category','wiz-subcategory','wiz-availability','wiz-short','wiz-features','wiz-images','wiz-price','wiz-promo-type','wiz-promo-label','wiz-discount-mode','wiz-custom-discount','wiz-promo-end','wiz-specs'].forEach(id=>el(id)?.addEventListener('input',updateWizardPreview));
+    el('wiz-category')?.addEventListener('change',()=>{populateWizardSubcategories(); updateWizardPreview()});
+    document.querySelectorAll('.wizard-step').forEach(btn=>btn.addEventListener('click',()=>{step=Number(btn.dataset.step);updateStep()}));
+    el('wiz-prev')?.addEventListener('click',()=>{step=Math.max(1,step-1);updateStep()});
+    el('wiz-next')?.addEventListener('click',()=>{step=Math.min(6,step+1);updateStep()});
+    el('wiz-reset')?.addEventListener('click',resetWizard);
+    el('wiz-fill-template')?.addEventListener('click',()=>{const cat=el('wiz-category').value; el('wiz-specs').value=(templates[cat]||templates['AGD']).join('\n'); updateWizardPreview()});
+    el('wiz-clear-specs')?.addEventListener('click',()=>{el('wiz-specs').value=''; updateWizardPreview()});
+    el('wiz-upload')?.addEventListener('change',handleWizardImages);
+    el('wizard-product-form')?.addEventListener('submit',saveWizardProduct);
+    document.querySelectorAll('[id^="wiz-place-"]').forEach(ch=>ch.addEventListener('change',updateWizardPreview));
+    updateWizardPreview();
+  }
+  function populateWizardCategories(){
+    const sel=el('wiz-category'); if(!sel) return; const cur=sel.value;
+    sel.innerHTML=(data.categories||[]).map(c=>`<option value="${String(c.name).replace(/"/g,'&quot;')}">${c.name}</option>`).join('');
+    if(cur) sel.value=cur; populateWizardSubcategories();
+  }
+  function populateWizardSubcategories(){
+    const cat=(data.categories||[]).find(c=>c.name===el('wiz-category').value); const sel=el('wiz-subcategory'); if(!sel) return; const cur=sel.value;
+    sel.innerHTML=(cat?.subcategories||[]).map(s=>`<option value="${String(s.name).replace(/"/g,'&quot;')}">${s.name}</option>`).join('');
+    if(cur) sel.value=cur;
+  }
+  function updateStep(){
+    document.querySelectorAll('.wizard-step').forEach(b=>b.classList.toggle('active',Number(b.dataset.step)===step));
+    document.querySelectorAll('.wizard-screen').forEach(s=>s.classList.toggle('active',Number(s.dataset.screen)===step));
+    el('wiz-prev').disabled=step===1; el('wiz-next').classList.toggle('hidden',step===6); el('wiz-save').classList.toggle('hidden',step!==6); updateWizardPreview();
+  }
+  function handleWizardImages(e){
+    const files=[...e.target.files]; if(!files.length)return;
+    const readers=files.map(f=>new Promise(res=>{const r=new FileReader(); r.onload=()=>res(r.result); r.readAsDataURL(f)}));
+    Promise.all(readers).then(imgs=>{const existing=el('wiz-images').value.split('\n').map(x=>x.trim()).filter(Boolean); el('wiz-images').value=[...existing,...imgs].join('\n'); updateWizardPreview();});
+  }
+  function getImages(){return el('wiz-images').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getFeatures(){return el('wiz-features').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getSpecs(){return el('wiz-specs').value.split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getPromoLabel(){const type=el('wiz-promo-type').value; const custom=el('wiz-promo-label').value.trim(); return type==='custom' ? (custom||'PROMOCJA') : (custom||promoLabels[type]||'')}
+  function getDiscount(){const mode=el('wiz-discount-mode').value; if(mode==='none') return 0; if(mode==='custom') return Number(el('wiz-custom-discount').value||0); return 15;}
+  function oldPrice(price,discount){return discount>0 ? Math.round(price/(1-discount/100)) : ''}
+  function updateWizardPreview(){
+    if(!ready()) return;
+    const imgs=getImages(); const img=imgs[0]||'../assets/products/product-01-lodowka-tcl.jpg';
+    const prev=el('wiz-gallery-preview'); if(prev) prev.innerHTML=imgs.map((src,i)=>`<div class="wiz-thumb"><img src="${src.startsWith('data:')||src.startsWith('http')||src.startsWith('../')?src:'../'+src}">${i===0?'<span class="wiz-main">GŁÓWNE</span>':''}</div>`).join('') || '<p class="hint">Brak zdjęć. Dodaj zdjęcie lub wpisz ścieżkę.</p>';
+    const price=Number(el('wiz-price')?.value||0); const discount=getDiscount(); const old=oldPrice(price,discount); const label=getPromoLabel();
+    if(el('wiz-price-preview')) el('wiz-price-preview').innerHTML=discount?`Cena na stronie: ${price||0} zł • rabat ${discount}% • cena przekreślona: ${old} zł`:`Cena na stronie: ${price||0} zł • bez ceny przekreślonej`;
+    const card=el('wiz-card-preview'); if(card){
+      card.innerHTML=`<div class="preview-img"><img src="${img.startsWith('data:')||img.startsWith('http')||img.startsWith('../')?img:'../'+img}"></div>${label?`<span class="badge">${label}</span>`:''}<h4>${esc(el('wiz-name').value||'Nazwa produktu')}</h4><p>${esc(el('wiz-short').value||getFeatures().slice(0,2).join(' • ')||'Krótki opis produktu')}</p><div><span class="price">${price||0} zł</span>${old?`<span class="old">${old} zł</span>`:''}</div><p>${esc(el('wiz-category').value||'Kategoria')} / ${esc(el('wiz-subcategory').value||'Podkategoria')}</p>`;
+    }
+    const checks=[['Nazwa produktu',!!el('wiz-name').value.trim()],['Cena',price>0],['Kategoria',!!el('wiz-category').value],['Zdjęcie główne',imgs.length>0],['Opis lub cechy',getFeatures().length>0],['Parametry',getSpecs().length>0]];
+    if(el('wiz-validation')) el('wiz-validation').innerHTML=checks.map(([t,ok])=>`<li class="${ok?'ok':'bad'}">${ok?'✓':'!'} ${t}</li>`).join('');
+  }
+  function placements(){const out=[]; if(el('wiz-place-promotions').checked)out.push('promotions'); if(el('wiz-place-hit-week').checked)out.push('hit-week'); if(el('wiz-place-hit-day').checked)out.push('hit-day'); if(el('wiz-place-black-friday').checked)out.push('black-friday'); if(el('wiz-place-featured').checked)out.push('featured'); if(el('wiz-place-category-only').checked)out.push('category-only'); return out;}
+  function saveWizardProduct(e){
+    e.preventDefault(); const price=Number(el('wiz-price').value||0); const imgs=getImages();
+    if(!el('wiz-name').value.trim()) return alert('Podaj nazwę produktu.');
+    if(!price) return alert('Podaj cenę produktu.');
+    if(!el('wiz-category').value) return alert('Wybierz kategorię.');
+    if(!imgs.length) return alert('Dodaj przynajmniej jedno zdjęcie produktu.');
+    const pls=placements(); const type=el('wiz-promo-type').value; const label=getPromoLabel();
+    const p={id:'p'+Date.now(),name:el('wiz-name').value.trim(),brand:el('wiz-brand').value.trim(),price,category:el('wiz-category').value,subcategory:el('wiz-subcategory').value,availability:el('wiz-availability').value,img:imgs[0],gallery:imgs,features:getFeatures().length?getFeatures():[el('wiz-short').value.trim()].filter(Boolean),specs:getSpecs(),visible:el('wiz-visible').checked,promo:pls.includes('promotions'),featured:pls.includes('featured'),placements:pls,promoType:type,promoLabel:label,badge:label,discountMode:el('wiz-discount-mode').value,customDiscount:el('wiz-custom-discount').value,promoEnd:el('wiz-promo-end').value,showInHit:pls.includes('hit-week')||pls.includes('hit-day')||pls.includes('black-friday')};
+    data.products.push(p); saveData(true); alert('Produkt dodany. Możesz go teraz edytować w zakładce Produkty zaawansowane.'); resetWizard(); activateTab('products');
+  }
+  function resetWizard(){
+    ['wiz-name','wiz-brand','wiz-short','wiz-features','wiz-images','wiz-price','wiz-promo-label','wiz-custom-discount','wiz-promo-end','wiz-specs'].forEach(id=>{if(el(id))el(id).value=''});
+    if(el('wiz-promo-type')) el('wiz-promo-type').value='none'; if(el('wiz-discount-mode')) el('wiz-discount-mode').value='none'; if(el('wiz-visible')) el('wiz-visible').checked=true; ['wiz-place-promotions','wiz-place-hit-week','wiz-place-hit-day','wiz-place-black-friday','wiz-place-featured','wiz-place-category-only'].forEach((id,i)=>{if(el(id))el(id).checked=id==='wiz-place-promotions'});
+    step=1; populateWizardCategories(); updateStep();
+  }
+  setTimeout(setupWizard,0);
+})();
+
+
+/* ===== ENTERPRISE 1.3 — edycja produktu w kreatorze krok po kroku ===== */
+(function(){
+  const $ = (id)=>document.getElementById(id);
+  let wizardEditId = '';
+  function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+  function productList(){return (window.data || data || {}).products || []}
+  function ensureSwitcher(){
+    const panel=$('product-wizard'); if(!panel || $('wizard-edit-switcher')) return;
+    const hero=panel.querySelector('.wizard-hero');
+    const box=document.createElement('div'); box.id='wizard-edit-switcher'; box.className='wizard-edit-switcher';
+    box.innerHTML=`<h3>Edytuj albo dodaj produkt w kreatorze</h3><p>Pracownik może utworzyć nowy produkt albo wybrać istniejący i przejść przez te same kroki bez szukania w zaawansowanym formularzu.</p><div class="wizard-edit-row"><label>Wybierz produkt do edycji<select id="wiz-edit-select"><option value="">— Nowy produkt —</option></select></label><button type="button" class="secondary" id="wiz-load-edit">Załaduj do kreatora</button><button type="button" class="primary" id="wiz-new-product">Nowy produkt</button></div><div id="wiz-edit-status" class="wizard-edit-status">Tryb: dodawanie nowego produktu</div>`;
+    hero?.after(box);
+    $('wiz-load-edit')?.addEventListener('click',loadSelectedProductToWizard);
+    $('wiz-new-product')?.addEventListener('click',()=>{wizardEditId=''; $('wiz-edit-select').value=''; $('wiz-edit-status').textContent='Tryb: dodawanie nowego produktu'; $('wiz-edit-status').classList.remove('editing'); $('wiz-reset')?.click();});
+    refreshEditSelect();
+  }
+  function refreshEditSelect(){
+    const sel=$('wiz-edit-select'); if(!sel) return; const current=sel.value;
+    sel.innerHTML='<option value="">— Nowy produkt —</option>'+productList().map(p=>`<option value="${esc(p.id)}">${esc(p.name)} • ${esc(p.category||'')} / ${esc(p.subcategory||'')}</option>`).join('');
+    if(current) sel.value=current;
+  }
+  function setVal(id,v){const el=$(id); if(el) el.value=v??''}
+  function setChecked(id,v){const el=$(id); if(el) el.checked=!!v}
+  function loadSelectedProductToWizard(){
+    const id=$('wiz-edit-select')?.value; if(!id){$('wiz-new-product')?.click(); return;}
+    const p=productList().find(x=>String(x.id)===String(id)); if(!p) return alert('Nie znaleziono produktu.');
+    wizardEditId=p.id;
+    setVal('wiz-name',p.name); setVal('wiz-brand',p.brand||''); setVal('wiz-category',p.category||'');
+    document.getElementById('wiz-category')?.dispatchEvent(new Event('change',{bubbles:true}));
+    setTimeout(()=>{setVal('wiz-subcategory',p.subcategory||'');},30);
+    setVal('wiz-availability',p.availability||'Dostępny w sklepie');
+    setVal('wiz-short',p.short||''); setVal('wiz-features',Array.isArray(p.features)?p.features.join('\n'):(p.features||''));
+    setVal('wiz-images',[p.img,...(Array.isArray(p.gallery)?p.gallery:[])].filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).join('\n'));
+    setVal('wiz-price',p.price||''); setVal('wiz-promo-type',p.promoType||'none'); setVal('wiz-promo-label',p.promoLabel||p.badge||''); setVal('wiz-discount-mode',p.discountMode||'none'); setVal('wiz-custom-discount',p.customDiscount||''); setVal('wiz-promo-end',p.promoEnd||'');
+    setVal('wiz-specs',Array.isArray(p.specs)?p.specs.map(s=>typeof s==='string'?s:`${s.name||s.key||''}: ${s.value||''}`).join('\n'):(p.specs||''));
+    const placements=Array.isArray(p.placements)?p.placements:[];
+    setChecked('wiz-visible',p.visible!==false); setChecked('wiz-place-promotions',placements.includes('promotions')||p.promo); setChecked('wiz-place-hit-week',placements.includes('hit-week')||p.promoType==='hit-week'); setChecked('wiz-place-hit-day',placements.includes('hit-day')||p.promoType==='hit-day'); setChecked('wiz-place-black-friday',placements.includes('black-friday')||p.promoType==='black-friday'); setChecked('wiz-place-featured',placements.includes('featured')||p.featured); setChecked('wiz-place-category-only',placements.includes('category-only'));
+    const status=$('wiz-edit-status'); if(status){status.textContent='Tryb: edycja produktu — '+p.name; status.classList.add('editing');}
+    document.querySelector('.wizard-step[data-step="1"]')?.click();
+    ['wiz-name','wiz-images','wiz-price','wiz-specs'].forEach(id=>$(id)?.dispatchEvent(new Event('input',{bubbles:true})));
+  }
+  function getImages(){return ($('wiz-images')?.value||'').split('\n').map(x=>x.trim()).filter(Boolean)}
+  function getLines(id){return ($(id)?.value||'').split('\n').map(x=>x.trim()).filter(Boolean)}
+  function placements(){const out=[]; if($('wiz-place-promotions')?.checked)out.push('promotions'); if($('wiz-place-hit-week')?.checked)out.push('hit-week'); if($('wiz-place-hit-day')?.checked)out.push('hit-day'); if($('wiz-place-black-friday')?.checked)out.push('black-friday'); if($('wiz-place-featured')?.checked)out.push('featured'); if($('wiz-place-category-only')?.checked)out.push('category-only'); return out;}
+  function saveEditCapture(e){
+    if(!wizardEditId) return;
+    e.preventDefault(); e.stopImmediatePropagation();
+    const products=productList(); const idx=products.findIndex(p=>String(p.id)===String(wizardEditId)); if(idx<0) return alert('Nie znaleziono produktu do edycji.');
+    const price=Number($('wiz-price')?.value||0); const imgs=getImages();
+    if(!$('wiz-name')?.value.trim()) return alert('Podaj nazwę produktu.'); if(!price) return alert('Podaj cenę produktu.'); if(!imgs.length) return alert('Dodaj przynajmniej jedno zdjęcie produktu.');
+    const pls=placements(); const promoType=$('wiz-promo-type')?.value||'none'; const customLabel=($('wiz-promo-label')?.value||'').trim();
+    const promoLabels={none:'',new:'NOWOŚĆ','hit-day':'HIT DNIA','hit-week':'HIT TYGODNIA','black-friday':'BLACK FRIDAY','agd-deal':'OKAZJA AGD','premium-deal':'PREMIUM DEAL',custom:customLabel||'PROMOCJA'};
+    const label=customLabel || promoLabels[promoType] || '';
+    products[idx]={...products[idx],name:$('wiz-name').value.trim(),brand:$('wiz-brand')?.value.trim(),price,category:$('wiz-category')?.value,subcategory:$('wiz-subcategory')?.value,availability:$('wiz-availability')?.value,img:imgs[0],gallery:imgs,features:getLines('wiz-features'),specs:getLines('wiz-specs'),visible:$('wiz-visible')?.checked!==false,promo:pls.includes('promotions'),featured:pls.includes('featured'),placements:pls,promoType,promoLabel:label,badge:label,discountMode:$('wiz-discount-mode')?.value,customDiscount:$('wiz-custom-discount')?.value,promoEnd:$('wiz-promo-end')?.value,showInHit:pls.includes('hit-week')||pls.includes('hit-day')||pls.includes('black-friday')};
+    if(typeof saveData==='function') saveData(true); else localStorage.setItem('elkassAdminData',JSON.stringify(data));
+    alert('Produkt zaktualizowany w kreatorze.');
+    refreshEditSelect();
+  }
+  function init(){ensureSwitcher(); $('wizard-product-form')?.addEventListener('submit',saveEditCapture,true); document.querySelector('[data-tab="product-wizard"]')?.addEventListener('click',()=>setTimeout(refreshEditSelect,50));}
+  setTimeout(init,300);
+})();

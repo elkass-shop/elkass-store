@@ -1,0 +1,11 @@
+ELKASS 5.4.4 — naprawa kategorii od A do Z
+
+1. Wgraj CAŁĄ zawartość folderu elkass-store-main na hosting.
+2. Nadpisz stare pliki.
+3. W przeglądarce użyj Ctrl+F5.
+
+Naprawiono:
+- czarne grafiki kategorii — podmienione na prawdziwe zdjęcia z galerii sklepu,
+- nachodzące napisy — kategorie są renderowane czystym układem,
+- cache — zdjęcia mają v=544,
+- panel/localStorage nie może już zepsuć kafelków na stronie głównej.

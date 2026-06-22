@@ -1,0 +1,23 @@
+ELKASS ENTERPRISE 5.4.1 — CATEGORY IMAGES HARD FIX
+
+Naprawiono brak grafik w sekcji:
+Oferta sklepu / Najpopularniejsze kategorie.
+
+Dodano realne pliki JPG:
+assets/categories/rtv.jpg
+assets/categories/agd.jpg
+assets/categories/agd-zabudowa.jpg
+assets/categories/male-agd.jpg
+assets/categories/komputery-telefony.jpg
+assets/categories/serwis.jpg
+
+Dodano wymuszenie ścieżek w:
+script.js
+style.css
+js/category-images-hard-fix.js
+
+Po wgraniu:
+1. Commit: ELKASS ENTERPRISE 5.4.1 CATEGORY IMAGES HARD FIX
+2. Push.
+3. Na stronie zrób Ctrl+F5.
+4. Jeśli dalej widzisz stare szare kafle, wejdź w panel /admin/category-manager.html i kliknij Zapisz albo wyczyść pamięć strony w przeglądarce.

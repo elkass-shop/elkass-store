@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel administracyjny ELKASS CMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css?v=enterprise22stable">
+<link rel="stylesheet" href="admin-menu-cleanup.css?v=45">
+<link rel="stylesheet" href="admin-hard-cleanup.css?v=51">
+</head>
+<body>
+  <main id="login-screen" class="login-screen">
+    <form class="login-card" id="login-form">
+      <div class="logo"><span>ELKASS</span> CMS</div>
+      <h1>Panel administracyjny</h1>
+      <p>Mini CMS do zarządzania produktami, kategoriami, promocjami, treścią strony, galerią i partnerami.</p>
+      <label>Login<input id="login" type="text" autocomplete="username" value="admin"></label>
+      <label>Hasło<input id="password" type="password" autocomplete="current-password" value="admin"></label>
+      <button type="submit">Zaloguj</button>
+      <button type="button" id="forgot-password" class="login-secondary">Przypomnij / zmień hasło przez e-mail</button>
+      <small>Demo: admin / admin. Wersja statyczna zapisuje dane w tej przeglądarce. Etap produkcyjny: Supabase/Firebase.</small>
+    </form>
+  </main>
+
+  <main id="panel" class="panel hidden">
+    <aside class="sidebar">
+      <div class="logo"><span>ELKASS</span> CMS</div>
+      <button class="tab active" data-tab="dashboard">🏠 Pulpit</button>
+      <button class="tab" data-tab="control-center">🧠 Control Center</button>
+      <button class="tab" data-tab="superadmin">👑 Superadmin</button>
+      <button class="tab wizard-tab-main" data-tab="product-wizard">➕ Dodaj produkt krok po kroku</button>
+      <button class="tab import-link-main" type="button" onclick="window.location.href='product-link-import.html'">🤖 Dodaj ze strony</button>
+      <button class="tab" data-tab="products">📦 Produkty</button>
+      <button class="tab" data-tab="categories">🧭 Kategorie</button>
+      <button class="tab" data-tab="promotions">🏷️ Promocje</button>
+      <button class="tab" data-tab="homepage">🧩 Strona główna</button>
+      <button class="tab" data-tab="builder">🎛 Kreator strony</button>
+      <button class="tab" data-tab="live-builder">🧱 Live Page Builder</button>
+      <button class="tab" data-tab="cloud-ready">☁️ Cloud Ready</button>
+      <button class="tab" data-tab="banners">🖼 Banery</button>
+      <button class="tab" data-tab="appearance">🎨 Wygląd</button>
+      <button class="tab" data-tab="seo">🔎 SEO</button>
+      <button class="tab" data-tab="gallery">🖼️ Galeria</button>
+      <button class="tab" data-tab="media">📁 Media Manager</button>
+      <button class="tab" data-tab="partners">🤝 Partnerzy</button>
+      <button class="tab" data-tab="reviews">⭐ Opinie</button>
+      <button class="tab" data-tab="contact">☎️ Kontakt</button>
+      <button class="tab" data-tab="backup">💾 Kopia / eksport</button>
+      <a href="../index.html" class="site-link">↗ Zobacz stronę</a>
+      <button id="logout" class="logout">Wyloguj</button>
+    </aside>
+
+    <section class="content">
+      <header class="topbar">
+        <div>
+          <h1>Panel ELKASS CMS</h1>
+          <p>Edytujesz dane w jednym miejscu. Strona korzysta z tych samych danych.</p>
+        </div>
+        <div class="actions">
+          <button id="export-json" class="secondary">Eksport JSON</button>
+          <label class="secondary file-label">Import JSON<input id="import-json" type="file" accept="application/json"></label>
+          <button id="reset-data" class="danger">Reset demo</button>
+          <button id="save-all" class="primary">Zapisz wszystko</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="tab-panel active">
+        <div class="stats-grid admin-stats">
+          <div><b id="stat-products">0</b><span>Produkty</span></div>
+          <div><b id="stat-categories">0</b><span>Kategorie</span></div>
+          <div><b id="stat-promos">0</b><span>Aktywne promocje</span></div>
+          <div><b id="stat-gallery">0</b><span>Zdjęcia galerii</span></div>
+        </div>
+        <div class="editor-card wide">
+          <h2>Skróty</h2>
+          <div class="quick-admin-grid">
+            <button class="admin-shortcut wizard-shortcut" data-tab-target="product-wizard">➕ Dodaj produkt krok po kroku</button>
+            <button class="admin-shortcut" data-tab-target="products">📦 Produkty zaawansowane</button>
+            <button class="admin-shortcut" data-tab-target="categories">＋ Dodaj kategorię</button>
+            <button class="admin-shortcut" data-tab-target="promotions">🏷️ Ustaw promocje</button>
+            <button class="admin-shortcut" data-tab-target="homepage">🧩 Edytuj stronę</button>
+            <button class="admin-shortcut" data-tab-target="gallery">🖼️ Galeria</button>
+          </div>
+          <p class="hint">Najważniejsze: dodając produkt możesz ustawić etykietę promocji, własny rabat, losowy rabat 5–25%, czas promocji, widoczność i dostępność.</p>
+        </div>
+      </section>
+
+
+
+      <section id="control-center" class="tab-panel">
+        <div class="control-hero editor-card wide">
+          <div>
+            <span class="eyebrow">WOW52</span>
+            <h2>Superadmin Control Center</h2>
+            <p>Jedno centrum dowodzenia do szybkiego wejścia w każdą część strony: produkty, kategorie, promocje, banery, treści, media, SEO i ustawienia administratora.</p>
+          </div>
+          <div class="control-health">
+            <strong>Status projektu</strong>
+            <span>ELKASS Master Rebuild 2026</span>
+            <small>Gotowe pod dalsze podpięcie Firebase/Supabase</small>
+          </div>
+        </div>
+
+        <section class="editor-card wide control-search-card">
+          <h2>🔎 Szybkie szukanie w panelu</h2>
+          <p class="hint">Wpisz np. „lodówka”, „promocja”, „telefon”, „kontakt”, „hero”, „galeria” — panel pokaże gdzie wejść i co edytować.</p>
+          <div class="control-search-row">
+            <input id="control-search" placeholder="Szukaj ustawień, produktów, sekcji, promocji, zdjęć...">
+            <button id="control-search-clear" type="button" class="secondary">Wyczyść</button>
+          </div>
+          <div id="control-search-results" class="control-search-results"></div>
+        </section>
+
+        <div class="control-modules-grid">
+          <article class="control-module-card" data-jump="products">
+            <div class="module-icon">📦</div><h3>Produkty</h3>
+            <p>Nazwy, ceny, zdjęcia, opisy, cechy, dostępność i przypisanie do kategorii.</p>
+            <button type="button" data-tab-target="products">Edytuj produkty</button>
+          </article>
+          <article class="control-module-card" data-jump="categories">
+            <div class="module-icon">🧭</div><h3>Kategorie i podkategorie</h3>
+            <p>Dodawanie, usuwanie, opisy, grafiki i struktura menu sklepu.</p>
+            <button type="button" data-tab-target="categories">Edytuj strukturę</button>
+          </article>
+          <article class="control-module-card" data-jump="promotions">
+            <div class="module-icon">🔥</div><h3>Promocje</h3>
+            <p>Hit dnia, hit tygodnia, Black Friday, własne etykiety i rabaty.</p>
+            <button type="button" data-tab-target="promotions">Edytuj promocje</button>
+          </article>
+          <article class="control-module-card" data-jump="homepage">
+            <div class="module-icon">🏠</div><h3>Strona główna</h3>
+            <p>Hero, lokalny opis sklepu, sekcje, zdjęcia i główne komunikaty.</p>
+            <button type="button" data-tab-target="homepage">Edytuj stronę</button>
+          </article>
+          <article class="control-module-card" data-jump="builder">
+            <div class="module-icon">🎛</div><h3>Kreator sekcji</h3>
+            <p>Włączanie i wyłączanie sekcji oraz przygotowanie pod zmianę kolejności.</p>
+            <button type="button" data-tab-target="builder">Przejdź do kreatora</button>
+          </article>
+          <article class="control-module-card" data-jump="live-builder">
+            <div class="module-icon">🧱</div><h3>Live Page Builder</h3>
+            <p>Układ strony, kolejność sekcji, szybkie dodawanie bloków i widoczność na mobile/desktop.</p>
+            <button type="button" data-tab-target="live-builder">Buduj stronę</button>
+          </article>
+          <article class="control-module-card" data-jump="cloud-ready">
+            <div class="module-icon">☁️</div><h3>ELKASS Cloud Ready</h3>
+            <p>Plan przejścia na Firebase/Supabase: logowanie, baza, storage, kopie i domena elkass.pl.</p>
+            <button type="button" data-tab-target="cloud-ready">Zobacz plan</button>
+          </article>
+          <article class="control-module-card" data-jump="banners">
+            <div class="module-icon">📰</div><h3>Banery</h3>
+            <p>Grafiki sezonowe, treści promocyjne i przyciski CTA.</p>
+            <button type="button" data-tab-target="banners">Edytuj banery</button>
+          </article>
+          <article class="control-module-card" data-jump="media">
+            <div class="module-icon">📁</div><h3>Media Manager</h3>
+            <p>JPG, PNG, WEBP, AVIF, SVG, podgląd i ścieżki do użycia na stronie.</p>
+            <button type="button" data-tab-target="media">Zarządzaj mediami</button>
+          </article>
+          <article class="control-module-card" data-jump="gallery">
+            <div class="module-icon">🖼</div><h3>Galeria ELKASS</h3>
+            <p>Zdjęcia salonu, podpisy, kategorie galerii i podstrona galerii.</p>
+            <button type="button" data-tab-target="gallery">Edytuj galerię</button>
+          </article>
+          <article class="control-module-card" data-jump="partners">
+            <div class="module-icon">🤝</div><h3>Partnerzy</h3>
+            <p>Logotypy marek, podpisy i slider partnerów.</p>
+            <button type="button" data-tab-target="partners">Edytuj partnerów</button>
+          </article>
+          <article class="control-module-card" data-jump="reviews">
+            <div class="module-icon">⭐</div><h3>Opinie</h3>
+            <p>Opinie klientów, miejscowości i treści rekomendacji.</p>
+            <button type="button" data-tab-target="reviews">Edytuj opinie</button>
+          </article>
+          <article class="control-module-card" data-jump="contact">
+            <div class="module-icon">☎️</div><h3>Kontakt i dane sklepu</h3>
+            <p>Telefon, e-mail, adres, godziny otwarcia i mapa.</p>
+            <button type="button" data-tab-target="contact">Edytuj kontakt</button>
+          </article>
+          <article class="control-module-card" data-jump="seo">
+            <div class="module-icon">🔎</div><h3>SEO</h3>
+            <p>Tytuły, opisy, frazy lokalne i przygotowanie pod elkass.pl.</p>
+            <button type="button" data-tab-target="seo">Edytuj SEO</button>
+          </article>
+        </div>
+
+        <section class="editor-card wide control-checklist">
+          <h2>✅ Checklist wdrożeniowy</h2>
+          <div class="checklist-grid">
+            <label><input type="checkbox" checked> Strona główna spójna</label>
+            <label><input type="checkbox" checked> Kategorie i podkategorie działają</label>
+            <label><input type="checkbox" checked> Product / category / gallery / promotions / compare są w paczce</label>
+            <label><input type="checkbox" checked> Mobile zabezpieczone CSS-em</label>
+            <label><input type="checkbox"> Podpiąć Firebase/Supabase</label>
+            <label><input type="checkbox"> Podpiąć domenę elkass.pl</label>
+          </div>
+        </section>
+      </section>
+
+      <section id="superadmin" class="tab-panel">
+        <div class="superadmin-hero editor-card wide">
+          <div>
+            <span class="eyebrow">ELKASS Superadmin</span>
+            <h2>Centrum zarządzania stroną od A do Z</h2>
+            <p>Produkty, promocje, kategorie, podkategorie, hero, banery, galeria, partnerzy, opinie, kontakt, SEO, wygląd i ustawienia konta administratora w jednym miejscu.</p>
+          </div>
+          <div class="superadmin-status">
+            <strong>Tryb statyczny / demo</strong>
+            <span>Zmiany zapisują się w tej przeglądarce. Struktura jest przygotowana pod Firebase/Supabase.</span>
+          </div>
+        </div>
+
+        <div class="superadmin-grid">
+          <section class="editor-card">
+            <h2>🔐 Konto administratora</h2>
+            <p class="hint">Dostęp do panelu ma tylko administrator. W wersji statycznej hasło działa lokalnie. W wersji produkcyjnej reset przez e-mail będzie podpięty pod Firebase/Supabase.</p>
+            <div class="form-grid">
+              <label>Login administratora<input id="superadmin-login" placeholder="admin"></label>
+              <label>E-mail do resetu hasła<input id="superadmin-email" value="elkass@wp.pl"></label>
+              <label>Nowe hasło<input id="superadmin-password" type="password" placeholder="Nowe hasło"></label>
+              <label>Powtórz hasło<input id="superadmin-password-repeat" type="password" placeholder="Powtórz hasło"></label>
+            </div>
+            <div class="form-actions">
+              <button id="superadmin-save-account" class="primary" type="button">Zapisz konto</button>
+              <button id="superadmin-reset-email" class="secondary" type="button">Wyślij reset na elkass@wp.pl</button>
+            </div>
+            <div class="size-tip">Uwaga: prawdziwy e-mail resetujący hasło wymaga backendu. Ten formularz jest gotowy pod późniejsze podpięcie Supabase/Firebase Auth.</div>
+          </section>
+
+          <section class="editor-card">
+            <h2>🧭 Szybka mapa panelu</h2>
+            <div class="superadmin-tiles">
+              <button class="admin-shortcut" data-tab-target="products">📦 Produkty i ceny</button>
+              <button class="admin-shortcut" data-tab-target="categories">🧭 Kategorie i podkategorie</button>
+              <button class="admin-shortcut" data-tab-target="promotions">🔥 Promocje i karuzele</button>
+              <button class="admin-shortcut" data-tab-target="builder">🎛 Sekcje strony</button>
+              <button class="admin-shortcut" data-tab-target="banners">🖼 Banery</button>
+              <button class="admin-shortcut" data-tab-target="gallery">📸 Galeria ELKASS</button>
+              <button class="admin-shortcut" data-tab-target="partners">🤝 Partnerzy</button>
+              <button class="admin-shortcut" data-tab-target="reviews">⭐ Opinie</button>
+              <button class="admin-shortcut" data-tab-target="contact">☎️ Kontakt</button>
+              <button class="admin-shortcut" data-tab-target="seo">🔎 SEO</button>
+            </div>
+          </section>
+        </div>
+
+        <section class="editor-card wide">
+          <h2>🧩 Włącz / wyłącz główne moduły strony</h2>
+          <p class="hint">To jest szybki panel porządkowy. Szczegóły tekstów, zdjęć i kolejności edytujesz w zakładce „Kreator strony”.</p>
+          <div id="superadmin-sections" class="superadmin-section-list"></div>
+          <button id="superadmin-save-sections" type="button" class="primary">Zapisz widoczność sekcji</button>
+        </section>
+
+        <section class="editor-card wide">
+          <h2>🚀 Plan produkcyjny pod elkass.pl</h2>
+          <div class="deploy-checklist">
+            <div>✅ Statyczna strona działa przez GitHub/Vercel</div>
+            <div>✅ Panel demo zarządza danymi w przeglądarce</div>
+            <div>🟡 Następny etap: Supabase/Firebase Auth + baza danych</div>
+            <div>🟡 Prawdziwy reset hasła przez e-mail elkass@wp.pl</div>
+            <div>🟡 Publiczne zapisywanie produktów, zdjęć, kategorii i sekcji bez GitHuba</div>
+          </div>
+        </section>
+      </section>
+
+      <section id="product-wizard" class="tab-panel">
+        <div class="wizard-hero editor-card wide">
+          <div>
+            <span class="eyebrow">ENTERPRISE 1.2</span>
+            <h2>Dodaj produkt krok po kroku</h2>
+            <p>Tryb prosty dla pracownika. Wpisujesz podstawowe dane, dodajesz zdjęcia, cenę, promocję i parametry, a system sam przygotowuje kafel, kartę produktu, cenę przekreśloną, podgląd mobile/desktop i zapisuje produkt w CMS.</p>
+          </div>
+          <div class="wizard-safe-box">
+            <strong>Bez rozjeżdżania strony</strong>
+            <span>JPG / PNG / WEBP / AVIF • automatyczna ramka 1:1 • zdjęcie główne • miniatury • walidacja danych</span>
+          </div>
+        </div>
+
+        <div class="product-wizard-layout">
+          <aside class="wizard-steps editor-card">
+            <button class="wizard-step active" data-step="1"><b>1</b><span>Dane produktu</span></button>
+            <button class="wizard-step" data-step="2"><b>2</b><span>Zdjęcia</span></button>
+            <button class="wizard-step" data-step="3"><b>3</b><span>Cena i promocja</span></button>
+            <button class="wizard-step" data-step="4"><b>4</b><span>Parametry</span></button>
+            <button class="wizard-step" data-step="5"><b>5</b><span>Gdzie wyświetlić</span></button>
+            <button class="wizard-step" data-step="6"><b>6</b><span>Podgląd i zapis</span></button>
+          </aside>
+
+          <form id="wizard-product-form" class="editor-card wizard-form">
+            <div class="wizard-screen active" data-screen="1">
+              <h2>1. Podstawowe dane</h2>
+              <p class="hint">Minimum wymagane: nazwa, kategoria i cena. Podkategorię wybierzesz z listy po wybraniu kategorii.</p>
+              <div class="form-grid">
+                <label>Nazwa produktu<input id="wiz-name" required placeholder="np. Telewizor Samsung 55" 4K UHD"></label>
+                <label>Marka<input id="wiz-brand" placeholder="np. Samsung, Bosch, Amica"></label>
+                <label>Kategoria<select id="wiz-category" required></select></label>
+                <label>Podkategoria<select id="wiz-subcategory"></select></label>
+                <label>Dostępność<select id="wiz-availability"><option>Dostępny w sklepie</option><option>Ostatnie sztuki</option><option>Na zamówienie</option><option>Chwilowo niedostępny</option></select></label>
+                <label>Krótki opis<input id="wiz-short" placeholder="np. Smart TV, HDR, 4K, świetna cena"></label>
+              </div>
+              <label>Opis / cechy produktu<textarea id="wiz-features" rows="5" placeholder="Każda cecha od nowej linii, np.
+Smart TV
+HDR
+Pilot w zestawie"></textarea></label>
+            </div>
+
+            <div class="wizard-screen" data-screen="2">
+              <h2>2. Zdjęcia produktu</h2>
+              <p class="hint">Możesz dodać JPG, PNG, WEBP, AVIF. Pierwsze zdjęcie będzie główne. System dopasuje je do kafla i karty produktu.</p>
+              <label class="upload-box wizard-upload">Przeciągnij lub wybierz zdjęcia produktu<input id="wiz-upload" type="file" accept="image/jpeg,image/png,image/webp,image/avif,image/svg+xml" multiple></label>
+              <label>Ścieżki zdjęć / lub wygenerowane obrazy<textarea id="wiz-images" rows="5" placeholder="Każde zdjęcie od nowej linii, np. assets/products/tv-front.webp"></textarea></label>
+              <div id="wiz-gallery-preview" class="wizard-gallery-preview"></div>
+            </div>
+
+            <div class="wizard-screen" data-screen="3">
+              <h2>3. Cena i promocja</h2>
+              <div class="form-grid">
+                <label>Cena promocyjna / widoczna<input id="wiz-price" type="number" min="1" step="1" required placeholder="np. 2499"></label>
+                <label>Typ promocji<select id="wiz-promo-type"><option value="none">Brak promocji</option><option value="new">Nowość</option><option value="hit-day">Hit dnia</option><option value="hit-week">Hit tygodnia</option><option value="black-friday">Black Friday</option><option value="agd-deal">Okazja AGD</option><option value="premium-deal">Premium Deal</option><option value="custom">Własna etykieta</option></select></label>
+                <label>Własna nazwa promocji<input id="wiz-promo-label" placeholder="np. Weekendowa okazja"></label>
+                <label>Rabat<select id="wiz-discount-mode"><option value="none">Bez ceny przekreślonej</option><option value="random">Losowy 5–25%</option><option value="custom">Własny rabat %</option></select></label>
+                <label>Własny rabat %<input id="wiz-custom-discount" type="number" min="0" max="90" step="1" placeholder="np. 20"></label>
+                <label>Koniec promocji<input id="wiz-promo-end" type="datetime-local"></label>
+              </div>
+              <div id="wiz-price-preview" class="wizard-price-preview"></div>
+            </div>
+
+            <div class="wizard-screen" data-screen="4">
+              <h2>4. Parametry techniczne</h2>
+              <p class="hint">Po wyborze kategorii system podpowiada szablon parametrów. Możesz dopisać własne linie.</p>
+              <div class="wizard-template-row">
+                <button type="button" id="wiz-fill-template" class="secondary">Wstaw szablon parametrów</button>
+                <button type="button" id="wiz-clear-specs" class="secondary">Wyczyść parametry</button>
+              </div>
+              <label>Parametry produktu<textarea id="wiz-specs" rows="9" placeholder="np.
+Przekątna: 55 cali
+Rozdzielczość: 4K UHD
+Smart TV: Tak
+Gwarancja: 24 miesiące"></textarea></label>
+            </div>
+
+            <div class="wizard-screen" data-screen="5">
+              <h2>5. Gdzie wyświetlić produkt?</h2>
+              <p class="hint">Produkt zawsze będzie w swojej kategorii. Dodatkowo możesz pokazać go w wybranych sekcjach strony.</p>
+              <div class="placement-grid wizard-placement">
+                <label><input id="wiz-visible" type="checkbox" checked> Widoczny na stronie</label>
+                <label><input id="wiz-place-promotions" type="checkbox" checked> Nowości i promocje</label>
+                <label><input id="wiz-place-hit-week" type="checkbox"> Hit tygodnia / duży banner</label>
+                <label><input id="wiz-place-hit-day" type="checkbox"> Hit dnia</label>
+                <label><input id="wiz-place-black-friday" type="checkbox"> Black Friday</label>
+                <label><input id="wiz-place-featured" type="checkbox"> Najczęściej wybierane</label>
+                <label><input id="wiz-place-category-only" type="checkbox"> Tylko kategoria/podkategoria</label>
+              </div>
+            </div>
+
+            <div class="wizard-screen" data-screen="6">
+              <h2>6. Podgląd i zapis</h2>
+              <p class="hint">Sprawdź kafel produktu i podstawowe dane. Po zapisie produkt trafi do listy produktów i będzie gotowy do użycia na stronie.</p>
+              <div class="wizard-preview-grid">
+                <div>
+                  <h3>Podgląd kafla</h3>
+                  <div id="wiz-card-preview" class="wizard-product-card-preview"></div>
+                </div>
+                <div>
+                  <h3>Kontrola przed zapisem</h3>
+                  <ul id="wiz-validation" class="wizard-validation"></ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="wizard-actions-row">
+              <button type="button" id="wiz-prev" class="secondary">← Wstecz</button>
+              <button type="button" id="wiz-next" class="primary">Dalej →</button>
+              <button type="submit" id="wiz-save" class="primary hidden">Zapisz produkt</button>
+              <button type="button" id="wiz-reset" class="secondary">Wyczyść kreator</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section id="products" class="tab-panel">
+        <div class="panel-grid">
+          <form id="product-form" class="editor-card">
+            <h2>Dodaj / edytuj produkt</h2>
+            <input type="hidden" id="product-id">
+            <div class="form-grid">
+              <label>Nazwa produktu<input id="product-name" required placeholder="np. Lodówka TCL RP318BXE2"></label>
+              <label>Cena promocyjna / główna PLN<input id="product-price" required type="number" min="1" step="1" placeholder="1699"></label>
+              <label>Kategoria<select id="product-category"></select></label>
+              <label>Podkategoria<select id="product-subcategory"></select></label>
+              <label>Dostępność<select id="product-availability"><option>Dostępny w sklepie</option><option>Na zamówienie</option><option>Chwilowo niedostępny</option></select></label>
+              <label>Ścieżka zdjęcia<input id="product-img" placeholder="assets/products/product-01.jpg"></label>
+            </div>
+            <label>Opis / cechy produktu<textarea id="product-features" rows="4" placeholder="Każda cecha od nowej linii"></textarea></label>
+            <div class="cms-box enterprise-product-editor">
+              <h3>Galeria i parametry produktu</h3>
+              <label>Galeria zdjęć produktu<textarea id="product-gallery" rows="4" placeholder="Każde dodatkowe zdjęcie od nowej linii, np. assets/products/lodowka-bok.webp"></textarea></label>
+              <label>Parametry produktu<textarea id="product-specs" rows="6" placeholder="Każdy parametr od nowej linii, np.
+Pojemność: 318 l
+No Frost: Tak
+Gwarancja: 24 miesiące"></textarea></label>
+              <p class="size-tip">Zdjęcie z pola „Ścieżka zdjęcia” jest główne. Dodatkowe zdjęcia pojawią się jako miniatury na karcie produktu. Parametry można wydrukować jako kartę produktu.</p>
+            </div>
+            <div class="cms-box promo-editor-box">
+              <h3>Promocja produktu</h3>
+              <div class="form-grid">
+                <label>Typ promocji<select id="product-promo-type">
+                  <option value="none">Brak</option>
+                  <option value="new">Nowość</option>
+                  <option value="hit-day">Hit dnia</option>
+                  <option value="hit-week">Hit tygodnia</option>
+                  <option value="black-friday">Black Friday</option>
+                  <option value="agd-deal">Okazja AGD</option>
+                  <option value="premium-deal">Premium Deal</option>
+                  <option value="custom">Własna promocja</option>
+                </select></label>
+                <label>Własna nazwa promocji<input id="product-promo-label" placeholder="np. Weekendowa okazja"></label>
+                <label>Rabat<select id="product-discount-mode">
+                  <option value="random">Losowy 5–25%</option>
+                  <option value="custom">Własny rabat %</option>
+                  <option value="none">Bez rabatu</option>
+                </select></label>
+                <label>Własny rabat %<input id="product-custom-discount" type="number" min="0" max="90" step="1" placeholder="np. 20"></label>
+                <label>Koniec promocji<input id="product-promo-end" type="datetime-local"></label>
+                <label>Pokazuj jako<select id="product-show-in-hit"><option value="no">Zwykły produkt</option><option value="yes">Hit / duży banner</option></select></label>
+              </div>
+              <p class="size-tip">Cena wpisana w produkcie jest ceną promocyjną. Jeżeli wpiszesz rabat 20%, system wyliczy cenę przekreśloną automatycznie.</p>
+            </div>
+            <div class="image-preview-box">
+              <strong>Podgląd zdjęcia produktu</strong>
+              <div class="admin-image-preview"><img id="product-preview" src="../assets/products/product-01-lodowka-tcl.jpg" alt="Podgląd produktu"></div>
+              <div class="size-tip">Zdjęcie może mieć dowolną rozdzielczość. Na stronie produkt ma stałą ramkę i używa object-fit: contain, więc układ się nie rozjedzie.</div>
+            </div>
+            <div class="cms-box placement-editor-box">
+              <h3>Gdzie pokazać produkt?</h3>
+              <p class="size-tip">Tu decydujesz, czy produkt ma być w Nowościach, Hicie tygodnia, Black Friday, Najczęściej wybieranych albo tylko w swojej kategorii/podkategorii.</p>
+              <div class="checks placement-checks">
+                <label><input id="product-visible" type="checkbox" checked> Widoczny na stronie</label>
+                <label><input id="product-place-promotions" type="checkbox" checked> Nowości i promocje</label>
+                <label><input id="product-place-hit-week" type="checkbox"> Hit tygodnia / duży banner</label>
+                <label><input id="product-place-hit-day" type="checkbox"> Hit dnia</label>
+                <label><input id="product-place-black-friday" type="checkbox"> Black Friday</label>
+                <label><input id="product-place-featured" type="checkbox"> Najczęściej wybierane</label>
+                <label><input id="product-place-category-only" type="checkbox"> Tylko kategoria/podkategoria</label>
+              </div>
+            </div>
+            <label class="upload-box">Wgraj zdjęcie produktu<input id="product-upload" type="file" accept="image/*"></label>
+            <div class="form-actions">
+              <button type="submit" class="primary">Zapisz produkt</button>
+              <button type="button" id="clear-product" class="secondary">Wyczyść formularz</button>
+            </div>
+          </form>
+          <div class="list-card">
+            <h2>Produkty</h2>
+            <p class="hint">Kliknij „Edytuj”, aby zmienić cenę, rabat, promocję, zdjęcie lub opis.</p>
+            <div id="products-list" class="items-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories" class="tab-panel">
+        <div class="panel-grid categories-admin-grid">
+          <form id="category-form" class="editor-card">
+            <h2>Dodaj / edytuj kategorię</h2>
+            <input type="hidden" id="category-id">
+            <label>Nazwa kategorii<input id="category-name" required placeholder="np. RTV"></label>
+            <label>Opis kategorii<input id="category-description" placeholder="Telewizory, soundbary, kino domowe"></label>
+            <label>Ścieżka zdjęcia<input id="category-img" placeholder="assets/rtv.jpg"></label>
+            <label class="upload-box">Wgraj zdjęcie kategorii<input id="category-upload" type="file" accept="image/*"></label>
+            <div class="image-preview-box"><strong>Podgląd</strong><div class="admin-image-preview"><img id="category-preview" src="../assets/rtv.jpg" alt="Podgląd kategorii"></div><div class="size-tip">Kategorie używają object-fit: cover, więc zdjęcia są elegancko przycinane.</div></div>
+            <div class="form-actions"><button type="submit" class="primary">Zapisz kategorię</button><button type="button" id="clear-category" class="secondary">Wyczyść</button></div>
+          </form>
+          <form id="subcategory-form" class="editor-card">
+            <h2>Dodaj / edytuj podkategorię</h2>
+            <input type="hidden" id="subcategory-id"><input type="hidden" id="subcategory-original-parent">
+            <label>Do której kategorii?<select id="subcategory-parent" required></select></label>
+            <label>Nazwa podkategorii<input id="subcategory-name" required placeholder="np. Telewizory"></label>
+            <label>Opis podkategorii<input id="subcategory-description" placeholder="Smart TV, OLED, QLED i 4K"></label>
+            <div class="form-actions"><button type="submit" class="primary">Zapisz podkategorię</button><button type="button" id="clear-subcategory" class="secondary">Wyczyść</button></div>
+          </form>
+          <div class="list-card"><h2>Kategorie</h2><div id="categories-list" class="items-list"></div></div>
+          <div class="list-card"><h2>Podkategorie</h2><div id="subcategories-list" class="items-list"></div></div>
+        </div>
+      </section>
+
+      <section id="promotions" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>Promocje i karuzele</h2>
+          <p class="hint">Produkty promocyjne ustawiasz w zakładce Produkty. Tutaj ustawiasz wygląd sekcji typu „Nowości”, „Okazje i oferty na czasie”, „Hity tygodnia”.</p>
+          <div class="form-grid">
+            <label>Nagłówek sekcji nowości<input id="promo-section-title" placeholder="Nowości i promocje"></label>
+            <label>Tekst przycisku<input id="promo-button-text" placeholder="Zobacz wszystkie"></label>
+            <label>Tryb wyświetlania<select id="promo-display-mode"><option value="carousel">Karuzela pozioma</option><option value="grid">Siatka</option></select></label>
+            <label>Interwał przewijania sekund<input id="promo-interval" type="number" min="2" step="1" placeholder="5"></label>
+            <label>Kafle desktop<input id="promo-desktop-count" type="number" min="1" max="8" step="1" placeholder="4"></label>
+            <label>Kafle mobile<input id="promo-mobile-count" type="number" min="1" max="3" step="1" placeholder="1"></label>
+          </div>
+          <div class="checks"><label><input id="promo-autoplay" type="checkbox" checked> Autoprzewijanie</label><label><input id="promo-pause-hover" type="checkbox" checked> Zatrzymaj po najechaniu</label><label><input id="promo-smooth" type="checkbox" checked> Płynne przesuwanie prawo → lewo</label></div>
+          <button id="save-promo-settings" class="primary" type="button">Zapisz ustawienia promocji</button>
+        </div>
+        <div class="list-card"><h2>Produkty z promocją</h2><div id="promo-products-list" class="items-list"></div></div>
+      </section>
+
+      <section id="homepage" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>Treści strony głównej</h2>
+          <div class="form-grid">
+            <label>Tytuł hero<input id="home-hero-title"></label>
+            <label>Podtytuł hero<input id="home-hero-subtitle"></label>
+            <label>Zdjęcie hero<input id="home-hero-img"></label>
+            <label>Tytuł lokalny<input id="home-local-title"></label>
+            <label>Tekst lokalny<textarea id="home-local-text" rows="4"></textarea></label>
+            <label>Zdjęcie lokalne<input id="home-local-img"></label>
+          </div>
+          <h3>Włącz / wyłącz sekcje</h3>
+          <div class="checks section-switches">
+            <label><input type="checkbox" data-section="hero" checked> Hero</label>
+            <label><input type="checkbox" data-section="deals" checked> Hit tygodnia</label>
+            <label><input type="checkbox" data-section="products" checked> Promocje</label>
+            <label><input type="checkbox" data-section="categories" checked> Kategorie</label>
+            <label><input type="checkbox" data-section="reviews" checked> Opinie</label>
+            <label><input type="checkbox" data-section="gallery" checked> Galeria</label>
+            <label><input type="checkbox" data-section="partners" checked> Partnerzy</label>
+            <label><input type="checkbox" data-section="contact" checked> Kontakt</label>
+          </div>
+          <button id="save-homepage" class="primary" type="button">Zapisz stronę główną</button>
+        </div>
+      </section>
+
+      <section id="builder" class="tab-panel">
+        <div class="editor-card wide cms-master-card">
+          <h2>🎛 Kreator strony — edycja A do Z</h2>
+          <p class="hint">Tu zmienisz teksty, zdjęcia, paski, bannery, widoczność i kolejność głównych sekcji. W tej wersji dane zapisują się w przeglądarce i są przygotowane pod późniejsze Firebase/Supabase.</p>
+          <div class="form-grid">
+            <label>Nazwa sklepu / logo tekstowe<input id="cms-logo" placeholder="ELKASS OLESNO"></label>
+            <label>Opis pod logo<input id="cms-logo-sub" placeholder="RTV / AGD / MULTIMEDIA / SERWIS"></label>
+            <label>Telefon główny<input id="cms-phone" placeholder="34 358 24 42"></label>
+            <label>E-mail<input id="cms-email" placeholder="elkass@wp.pl"></label>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="editor-card">
+            <h2>Hero / pierwszy ekran</h2>
+            <label>Tytuł hero<input id="cms-hero-title" placeholder="Nowoczesna elektronika dla Twojego domu"></label>
+            <label>Podtytuł hero<textarea id="cms-hero-subtitle" rows="3" placeholder="RTV • AGD • KOMPUTERY • TELEFONY • AUDIO • SERWIS"></textarea></label>
+            <label>Zdjęcie hero<input id="cms-hero-image" placeholder="assets/hero-wow-v5.png"></label>
+            <label>Badge w hero — po jednym w linii<textarea id="cms-hero-badges" rows="4" placeholder="⭐ 25+ lat doświadczenia&#10;🏆 Partner NeoPunkt&#10;👥 15 000+ klientów"></textarea></label>
+            <div class="form-grid">
+              <label>Przycisk 1 tekst<input id="cms-hero-btn1-text" placeholder="Zobacz promocje 🛒"></label>
+              <label>Przycisk 1 link<input id="cms-hero-btn1-link" placeholder="#promocje"></label>
+              <label>Przycisk 2 tekst<input id="cms-hero-btn2-text" placeholder="Skontaktuj się 📞"></label>
+              <label>Przycisk 2 link<input id="cms-hero-btn2-link" placeholder="tel:343582442"></label>
+            </div>
+          </div>
+
+          <div class="editor-card">
+            <h2>Szybkie akcje / pasek pod wyszukiwarką</h2>
+            <p class="hint">Format: tekst|link, każda akcja od nowej linii.</p>
+            <textarea id="cms-quick-actions" rows="8" placeholder="🔥 Promocje|#promocje&#10;📦 Kategorie|#oferta&#10;💳 Raty 0%|#kontakt&#10;🚚 Dostawa|#kontakt&#10;🛠 Serwis|#kontakt"></textarea>
+          </div>
+        </div>
+
+        <div class="panel-grid">
+          <div class="editor-card">
+            <h2>Sekcja lokalna / o sklepie</h2>
+            <label>Nagłówek lokalny<input id="cms-local-title" placeholder="Dlaczego warto kupić w ELKASS?"></label>
+            <label>Tekst lokalny<textarea id="cms-local-text" rows="4"></textarea></label>
+            <label>Zdjęcie sklepu<input id="cms-local-image" placeholder="assets/sklep.jpg"></label>
+            <p class="hint">Karty lokalne, format: ikona|tytuł|opis</p>
+            <textarea id="cms-local-cards" rows="8" placeholder="🎯|Fachowe doradztwo|Dobór sprzętu do potrzeb i budżetu.&#10;📦|Odbiór w sklepie|Możliwość obejrzenia sprzętu przed zakupem.&#10;🛠|Pomoc po zakupie|Wsparcie, konfiguracja i serwis.&#10;📞|Kontakt z człowiekiem|Telefonicznie lub na miejscu w Oleśnie."></textarea>
+          </div>
+
+          <div class="editor-card">
+            <h2>Galeria na stronie głównej</h2>
+            <label>Etykieta<input id="cms-gallery-eyebrow" placeholder="Galeria ELKASS"></label>
+            <label>Tytuł<input id="cms-gallery-title" placeholder="Zobacz sklep od środka"></label>
+            <label>Opis<textarea id="cms-gallery-text" rows="4"></textarea></label>
+            <label>Zdjęcie miniatury<input id="cms-gallery-image" placeholder="assets/sklep.jpg"></label>
+            <label>Tekst przycisku<input id="cms-gallery-button" placeholder="Otwórz galerię →"></label>
+          </div>
+        </div>
+
+        <div class="editor-card wide">
+          <h2>Widoczność i kolejność sekcji</h2>
+          <p class="hint">Włącz/wyłącz sekcje na stronie głównej. Kolejność użyjemy w wersji z bazą danych; na teraz zapisujemy ustawienie jako konfigurację gotową pod Firebase/Supabase.</p>
+          <div class="section-manager-grid">
+            <label><input type="checkbox" data-cms-section="search" checked> Szybkie wyszukiwanie</label>
+            <label><input type="checkbox" data-cms-section="hero" checked> Hero</label>
+            <label><input type="checkbox" data-cms-section="trust" checked> Pasek zaufania</label>
+            <label><input type="checkbox" data-cms-section="deals" checked> Hit tygodnia</label>
+            <label><input type="checkbox" data-cms-section="products" checked> Nowości i promocje</label>
+            <label><input type="checkbox" data-cms-section="categories" checked> Kategorie</label>
+            <label><input type="checkbox" data-cms-section="bestsellers" checked> Najczęściej wybierane</label>
+            <label><input type="checkbox" data-cms-section="reviews" checked> Opinie</label>
+            <label><input type="checkbox" data-cms-section="local" checked> Kupujesz lokalnie</label>
+            <label><input type="checkbox" data-cms-section="gallery" checked> Galeria</label>
+            <label><input type="checkbox" data-cms-section="about" checked> O firmie</label>
+            <label><input type="checkbox" data-cms-section="contact" checked> Kontakt</label>
+            <label><input type="checkbox" data-cms-section="partners" checked> Partnerzy</label>
+          </div>
+        </div>
+
+        <div class="editor-card wide">
+          <h2>Własna dodatkowa sekcja</h2>
+          <p class="hint">Prosty moduł do dodania własnego bloku na stronie, bez grzebania w HTML.</p>
+          <div class="form-grid">
+            <label><input id="cms-custom-visible" type="checkbox"> Włącz własną sekcję</label>
+            <label>Etykieta<input id="cms-custom-eyebrow" placeholder="Nowość"></label>
+            <label>Tytuł<input id="cms-custom-title" placeholder="Nowa sekcja na stronie"></label>
+            <label>Zdjęcie<input id="cms-custom-image" placeholder="assets/banners/weekend-sale.jpg"></label>
+            <label>Tekst przycisku<input id="cms-custom-button" placeholder="Sprawdź →"></label>
+            <label>Link przycisku<input id="cms-custom-link" placeholder="#kontakt"></label>
+          </div>
+          <label>Opis<textarea id="cms-custom-text" rows="4"></textarea></label>
+        </div>
+
+        <button id="cms-save-builder" class="primary big-save" type="button">Zapisz ustawienia strony</button>
+      </section>
+
+      <section id="banners" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🖼 Banery strony</h2>
+          <p class="hint">Banery można używać jako sezonowe belki: Black Friday, raty, weekend RTV, święta. Format listy: tytuł|opis|grafika|link|tekst przycisku</p>
+          <textarea id="cms-banners-list" rows="10" placeholder="Weekend RTV|Do -25% na wybrane produkty|assets/banners/weekend-sale.jpg|promotions.html|Zobacz promocje&#10;Raty 0%|Zapytaj doradcę o finansowanie|assets/banners/raty-0.jpg|#kontakt|Zapytaj"></textarea>
+          <button id="cms-save-banners" class="primary" type="button">Zapisz banery</button>
+        </div>
+      </section>
+
+      <section id="appearance" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🎨 Wygląd strony</h2>
+          <div class="form-grid">
+            <label>Kolor główny<input id="cms-accent" type="color" value="#e30613"></label>
+            <label>Kolor dodatkowy<input id="cms-green" type="color" value="#8bc34a"></label>
+            <label>Zaokrąglenie kafli px<input id="cms-radius" type="number" min="0" max="40" value="24"></label>
+            <label>Cień kafli<select id="cms-shadow"><option value="soft">Miękki</option><option value="medium">Średni</option><option value="strong">Mocny</option></select></label>
+            <label>Tryb nagłówka<select id="cms-header-mode"><option value="light">Jasny</option><option value="dark">Ciemny premium</option></select></label>
+          </div>
+          <button id="cms-save-appearance" class="primary" type="button">Zapisz wygląd</button>
+        </div>
+      </section>
+
+      <section id="seo" class="tab-panel">
+        <div class="editor-card wide">
+          <h2>🔎 SEO i udostępnianie</h2>
+          <div class="form-grid">
+            <label>Tytuł SEO<input id="cms-seo-title" placeholder="ELKASS Olesno | RTV AGD Komputery"></label>
+            <label>Opis SEO<textarea id="cms-seo-description" rows="4"></textarea></label>
+            <label>Obrazek OG / Facebook<input id="cms-seo-image" placeholder="assets/hero-wow-v5.png"></label>
+            <label>Słowa kluczowe<input id="cms-seo-keywords" placeholder="RTV Olesno, AGD Olesno, telewizory Olesno"></label>
+          </div>
+          <button id="cms-save-seo" class="primary" type="button">Zapisz SEO</button>
+        </div>
+      </section>
+
+      <section id="gallery" class="tab-panel"><div class="panel-grid"><form id="gallery-form" class="editor-card"><h2>Dodaj zdjęcie do galerii</h2><input type="hidden" id="gallery-id"><label>Tytuł zdjęcia<input id="gallery-title"></label><label>Kategoria zdjęcia<input id="gallery-category" placeholder="AGD / RTV / Małe AGD"></label><label>Ścieżka zdjęcia<input id="gallery-img"></label><label class="upload-box">Wgraj zdjęcie<input id="gallery-upload" type="file" accept="image/*"></label><div class="image-preview-box"><div class="admin-image-preview"><img id="gallery-preview" src="../assets/gallery/gallery-01-gabloty-z-elektronika.jpg"></div></div><div class="form-actions"><button class="primary" type="submit">Zapisz zdjęcie</button><button id="clear-gallery" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Galeria</h2><div id="gallery-list" class="items-list"></div></div></div></section>
+      <section id="partners" class="tab-panel"><div class="panel-grid"><form id="partner-form" class="editor-card"><h2>Dodaj partnera</h2><input type="hidden" id="partner-id"><label>Nazwa marki<input id="partner-name"></label><label>Logo / ścieżka<input id="partner-logo"></label><div class="form-actions"><button class="primary" type="submit">Zapisz partnera</button><button id="clear-partner" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Partnerzy</h2><div id="partners-list" class="items-list"></div></div></div></section>
+      <section id="reviews" class="tab-panel"><div class="panel-grid"><form id="review-form" class="editor-card"><h2>Dodaj opinię</h2><input type="hidden" id="review-id"><label>Imię i inicjał<input id="review-name" placeholder="Anna K."></label><label>Miejscowość<input id="review-city" placeholder="Olesno"></label><label>Treść opinii<textarea id="review-text" rows="4"></textarea></label><div class="form-actions"><button class="primary" type="submit">Zapisz opinię</button><button id="clear-review" class="secondary" type="button">Wyczyść</button></div></form><div class="list-card"><h2>Opinie</h2><div id="reviews-list" class="items-list"></div></div></div></section>
+      <section id="contact" class="tab-panel"><div class="editor-card wide"><h2>Dane sklepu</h2><div class="form-grid"><label>Nazwa sklepu<input id="contact-name"></label><label>Adres<input id="contact-address"></label><label>Telefon<input id="contact-phone"></label><label>E-mail<input id="contact-email"></label><label>Godziny otwarcia<textarea id="contact-hours" rows="4"></textarea></label><label>Link do mapy<input id="contact-map"></label></div><button id="save-contact" class="primary" type="button">Zapisz dane kontaktowe</button></div></section>
+
+      <section id="media" class="tab-panel">
+        <div class="media-hero editor-card wide">
+          <div>
+            <span class="eyebrow">WOW45 Media Manager</span>
+            <h2>Centrum obrazów ELKASS</h2>
+            <p>Dodawaj JPG, PNG, WEBP, AVIF i SVG. Panel pokaże podgląd, zabezpieczy proporcje, przygotuje nazwę pliku oraz pozwoli użyć zdjęcia przy produkcie, galerii, banerze lub hero.</p>
+          </div>
+          <div class="media-format-box">
+            <strong>Obsługiwane formaty</strong>
+            <span>JPG • JPEG • PNG • WEBP • AVIF • SVG</span>
+          </div>
+        </div>
+
+        <div class="panel-grid media-grid-layout">
+          <section class="editor-card">
+            <h2>Dodaj obraz</h2>
+            <p class="hint">Wersja statyczna generuje podgląd i dane lokalnie. Do produkcji z Firebase/Supabase ten moduł będzie wysyłał pliki do Storage.</p>
+            <div class="form-grid">
+              <label>Typ obrazu
+                <select id="media-type">
+                  <option value="products">Produkt 1:1</option>
+                  <option value="gallery">Galeria 4:3</option>
+                  <option value="banners">Banner 16:6</option>
+                  <option value="hero">Hero 16:9</option>
+                  <option value="logos">Logo partnera</option>
+                  <option value="categories">Kategoria</option>
+                </select>
+              </label>
+              <label>Nazwa pliku / slug
+                <input id="media-slug" placeholder="np. lodowka-tcl-rp318">
+              </label>
+            </div>
+            <label class="upload-box media-upload-box">
+              Przeciągnij lub wybierz obraz
+              <input id="media-file" type="file" accept="image/jpeg,image/jpg,image/png,image/webp,image/avif,image/svg+xml">
+            </label>
+            <div class="media-info" id="media-info">Nie wybrano pliku.</div>
+            <div class="media-preview-shell">
+              <img id="media-preview" alt="Podgląd obrazu">
+            </div>
+            <div class="form-actions media-actions">
+              <button id="media-optimize" type="button" class="primary">Przygotuj obraz</button>
+              <button id="media-download" type="button" class="secondary" disabled>Pobierz zoptymalizowany plik</button>
+              <button id="media-copy-path" type="button" class="secondary" disabled>Kopiuj ścieżkę</button>
+            </div>
+            <div class="size-tip">
+              Produkty są automatycznie wyświetlane w stałej ramce 1:1 przez <strong>object-fit: contain</strong>. Bannery i hero używają <strong>object-fit: cover</strong>. Dzięki temu strona nie rozjedzie się nawet przy różnych wymiarach zdjęć.
+            </div>
+          </section>
+
+          <section class="editor-card">
+            <h2>Użyj obrazu na stronie</h2>
+            <p class="hint">Po przygotowaniu obrazu możesz od razu wstawić jego ścieżkę do odpowiedniego formularza w panelu.</p>
+            <div class="media-target-grid">
+              <button id="media-use-product" type="button" class="admin-shortcut">📦 Użyj jako zdjęcie produktu</button>
+              <button id="media-use-gallery" type="button" class="admin-shortcut">🖼 Dodaj do galerii</button>
+              <button id="media-use-hero" type="button" class="admin-shortcut">🚀 Użyj jako hero</button>
+              <button id="media-use-category" type="button" class="admin-shortcut">🧭 Użyj jako kategoria</button>
+              <button id="media-use-partner" type="button" class="admin-shortcut">🤝 Użyj jako logo partnera</button>
+              <button id="media-use-banner" type="button" class="admin-shortcut">🏷 Użyj jako banner</button>
+            </div>
+            <div class="media-output-box">
+              <label>Docelowa ścieżka<input id="media-output-path" readonly></label>
+              <label>Podgląd / data URL<textarea id="media-output-url" rows="5" readonly></textarea></label>
+            </div>
+          </section>
+        </div>
+
+        <section class="editor-card wide">
+          <div class="media-library-head">
+            <div>
+              <h2>Biblioteka mediów</h2>
+              <p class="hint">Lista ostatnio przygotowanych obrazów. W trybie statycznym zapisywana lokalnie w przeglądarce.</p>
+            </div>
+            <button id="media-clear-library" type="button" class="danger">Wyczyść bibliotekę</button>
+          </div>
+          <div id="media-library" class="media-library"></div>
+        </section>
+      </section>
+
+
+
+      <section id="live-builder" class="tab-panel">
+        <div class="control-hero editor-card wide live-builder-hero">
+          <div>
+            <span class="eyebrow">WOW56</span>
+            <h2>Live Page Builder</h2>
+            <p>Tu realnie ustawiasz układ strony: dodajesz sekcje, edytujesz nazwę/opis/zdjęcie, włączasz lub wyłączasz oraz przesuwasz kolejność. Zapis działa lokalnie w przeglądarce i jest gotowy pod przeniesienie do Supabase/Firebase.</p>
+          </div>
+          <div class="control-health"><strong>Tryb</strong><span>Edycja lokalna aktywna</span><small>następny etap: zapis globalny w Supabase/Firebase</small></div>
+        </div>
+        <div class="panel-grid">
+          <section class="editor-card">
+            <h2>Dodaj sekcję</h2>
+            <div class="builder-add-grid">
+              <button type="button" data-builder-add="Hero">🚀 Hero</button>
+              <button type="button" data-builder-add="Promocje">🔥 Promocje</button>
+              <button type="button" data-builder-add="Kategorie">🧭 Kategorie</button>
+              <button type="button" data-builder-add="Produkty">📦 Produkty</button>
+              <button type="button" data-builder-add="Galeria">🖼 Galeria</button>
+              <button type="button" data-builder-add="Opinie">⭐ Opinie</button>
+              <button type="button" data-builder-add="Partnerzy">🤝 Partnerzy</button>
+              <button type="button" data-builder-add="Kontakt">☎️ Kontakt</button>
+              <button type="button" data-builder-add="Własna sekcja">➕ Własna sekcja</button>
+            </div>
+            <p class="hint">Sekcje można włączyć, wyłączyć i przesuwać góra/dół. W pełnej wersji cloud będzie zapis globalny dla wszystkich odwiedzających.</p>
+          </section>
+          <section class="editor-card">
+            <h2>Edytuj wybraną sekcję</h2>
+            <label>Nazwa sekcji<input id="builder-section-title" placeholder="np. Weekendowe promocje"></label>
+            <label>Krótki opis<textarea id="builder-section-desc" rows="4" placeholder="Opis widoczny pod nagłówkiem sekcji"></textarea></label>
+            <label>Zdjęcie / banner<input id="builder-section-img" placeholder="assets/banners/weekend-sale.jpg"></label>
+            <div class="form-actions"><button id="builder-save-draft" type="button" class="primary">Zapisz sekcję</button><button id="builder-clear-draft" type="button" class="secondary">Wyczyść</button></div><p class="hint" id="builder-edit-hint">Kliknij „Edytuj” przy sekcji poniżej albo dodaj nową sekcję z lewej.</p>
+          </section>
+        </div>
+        <section class="editor-card wide">
+          <div class="media-library-head"><div><h2>Struktura strony głównej</h2><p class="hint">Ustaw docelową kolejność. Strzałki działają od razu w panelu demo.</p></div><button id="builder-reset-layout" type="button" class="secondary">Przywróć domyślny układ</button></div>
+          <div id="builder-layout-list" class="builder-layout-list"></div>
+        </section>
+      </section>
+
+      <section id="cloud-ready" class="tab-panel">
+        <div class="control-hero editor-card wide cloud-hero">
+          <div>
+            <span class="eyebrow">WOW55</span>
+            <h2>ELKASS Cloud Ready</h2>
+            <p>To plan bezpiecznego przejścia z GitHub/Vercel na panel z prawdziwym zapisem online. Strona zostaje statyczna i szybka, a dane będą w bazie.</p>
+          </div>
+          <div class="control-health"><strong>Status</strong><span>Gotowe do etapu technicznego</span><small>Supabase albo Firebase</small></div>
+        </div>
+        <div class="cloud-grid">
+          <article><h3>1. Logowanie admina</h3><p>Email: <strong>elkass@wp.pl</strong>, reset hasła przez e-mail, role administratora.</p></article>
+          <article><h3>2. Baza danych</h3><p>Produkty, kategorie, podkategorie, promocje, partnerzy, opinie, galerie i ustawienia strony.</p></article>
+          <article><h3>3. Storage zdjęć</h3><p>JPG, PNG, WEBP, AVIF i SVG trafiają do chmury, nie do folderu assets przez GitHub.</p></article>
+          <article><h3>4. Kopie zapasowe</h3><p>Eksport/import JSON zostaje jako awaryjna kopia danych.</p></article>
+          <article><h3>5. elkass.pl</h3><p>Po stabilizacji podpinamy domenę, HTTPS, SEO lokalne i przekierowania.</p></article>
+          <article><h3>6. Wydajność mobile</h3><p>Obrazy w stałych ramkach, lazy loading, lekkie skrypty i czytelny panel na telefonie/tablecie.</p></article>
+        </div>
+        <section class="editor-card wide">
+          <h2>Checklist przed wdrożeniem chmury</h2>
+          <div class="checklist-grid">
+            <label><input type="checkbox" checked> Spójna paczka MASTER</label>
+            <label><input type="checkbox" checked> Panel Superadmin</label>
+            <label><input type="checkbox" checked> Media Manager</label>
+            <label><input type="checkbox" checked> Wyszukiwarka w panelu</label>
+            <label><input type="checkbox"> Konto Supabase/Firebase</label>
+            <label><input type="checkbox"> Przeniesienie danych z localStorage do bazy</label>
+            <label><input type="checkbox"> Storage zdjęć</label>
+            <label><input type="checkbox"> Testy mobile i desktop</label>
+          </div>
+        </section>
+      </section>
+
+      <section id="backup" class="tab-panel"><div class="editor-card wide"><h2>Kopia, eksport i wdrożenie</h2><p>Wersja WOW51 zapisuje dane w <strong>localStorage</strong>. To demo CMS gotowe do przeniesienia na Supabase/Firebase.</p><p>Użyj eksportu JSON, żeby zrobić kopię ustawień. Po podpięciu bazy te same pola trafią do tabel: produkty, kategorie, podkategorie, promocje, galeria, partnerzy, opinie i ustawienia.</p><button id="download-data" class="primary" type="button">Pobierz kopię danych JSON</button></div></section>
+    </section>
+  </main>
+  <script src="admin.js?v=enterprise22stable"></script>
+  <script src="admin-full-cms.js?v=56"></script>
+  <script src="admin-superadmin.js?v=enterprise22stable"></script>
+  <script src="admin-media-manager.js?v=56"></script>
+  <script src="admin-global-search.js?v=56"></script>
+  <script src="admin-control-center.js?v=56"></script>
+  <script src="admin-live-cloud.js?v=56"></script>
+  <script src="product-link-import-menu.js?v=enterprise22stable"></script>
+<script id="ELKASS_IMPORT_LINK_FIX_23">
+document.addEventListener('click',function(e){
+  const el=e.target.closest('a,button,.tab,[role="button"]');
+  if(!el) return;
+  const t=(el.textContent||'').toLowerCase();
+  if(t.includes('dodaj ze strony') || t.includes('🤖')){
+    e.preventDefault();
+    window.location.href='product-link-import.html';
+  }
+});
+</script>
+<script id="ELKASS_BOT_PREMIUM_CARD_24">
+document.addEventListener('click',function(e){
+ const el=e.target.closest('a,button,.tab,[role="button"]');
+ if(!el)return;
+ const t=(el.textContent||'').toLowerCase();
+ if(t.includes('dodaj ze strony') || t.includes('bot') || t.includes('🤖')){
+   e.preventDefault(); window.location.href='product-link-import.html';
+ }
+});
+</script><script id="ELKASS_SMART_PRODUCT_ENGINE_30">
+document.addEventListener('click',function(e){
+ const el=e.target.closest('a,button,.tab,[role="button"]');
+ if(!el)return;
+ const t=(el.textContent||'').toLowerCase();
+ if(t.includes('dodaj ze strony') || t.includes('smart product') || t.includes('🤖')){
+   e.preventDefault(); window.location.href='product-link-import.html';
+ }
+});
+</script>
+
+<style id="ELKASS_PREMIUM_WIZARD_VISIBLE_STYLE_41">
+.premium-wizard-main-link{
+  background:linear-gradient(135deg,#7c3aed,#e30613)!important;
+  color:#fff!important;
+  box-shadow:0 14px 32px rgba(124,58,237,.28)!important;
+}
+</style>
+
+
+<script src="admin-hard-cleanup.js?v=51"></script>
+<script id='ELKASS_SOCIAL_STUDIO_52_LINK'>document.addEventListener('DOMContentLoaded',function(){const side=document.querySelector('.sidebar, aside, nav, .admin-sidebar');if(side&&!document.querySelector('.social-studio-link')){const a=document.createElement('a');a.href='social-studio.html';a.textContent='📱 Social Studio';a.className='tab social-studio-link';a.style.cssText='display:block;margin:10px 0;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#e30613,#ff6a00);color:#fff;font-weight:900;text-decoration:none;';side.insertBefore(a,side.children[3]||side.firstChild);}});</script><script>document.addEventListener("DOMContentLoaded",()=>{let s=document.querySelector(".sidebar,aside,nav")||document.body; if(!document.querySelector(".social54")){let a=document.createElement("a");a.href="social-studio.html";a.className="social54";a.textContent="📱 Social Studio 5.4";a.style.cssText="display:block;margin:10px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#e30613,#ff6a00);color:#fff;font-weight:900;text-decoration:none";s.prepend(a)}})</script></body>
+</html>

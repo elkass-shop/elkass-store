@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderCategories() {
     if (!categoriesGrid) return;
+    if (categoriesGrid.dataset && categoriesGrid.dataset.elkassFinalCategories === 'true') return;
     categoriesGrid.innerHTML = '';
     normalizeCategoryData(data.categories).forEach(cat => {
       const card = document.createElement('article');
