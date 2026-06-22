@@ -1,28 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
 <defs>
-<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-<stop stop-color="#7f1d1d"/><stop offset="1" stop-color="#ef4444"/>
-</linearGradient>
-<radialGradient id="glow" cx=".72" cy=".24" r=".55"><stop stop-color="#ffffff" stop-opacity=".35"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7f1d1d"/><stop offset="1" stop-color="#ef4444"/></linearGradient>
+<radialGradient id="glow" cx=".75" cy=".22" r=".55"><stop stop-color="#ffffff" stop-opacity=".34"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
 <filter id="shadow"><feDropShadow dx="0" dy="24" stdDeviation="22" flood-opacity=".35"/></filter>
 </defs>
 <rect width="1400" height="900" fill="url(#bg)"/>
 <rect width="1400" height="900" fill="url(#glow)"/>
 <circle cx="1110" cy="160" r="260" fill="white" opacity=".13"/>
 <path d="M850 0h550v900h-320z" fill="white" opacity=".10"/>
-<g opacity=".20" stroke="white" stroke-width="4">
-<path d="M780 120h500M820 210h460M760 720h520"/>
-</g>
+<g opacity=".18" stroke="white" stroke-width="4"><path d="M780 120h500M820 210h460M760 720h520"/></g>
 <g filter="url(#shadow)">
-<rect x="820" y="255" width="360" height="215" rx="28" fill="none" stroke="white" stroke-width="16"/>
-<rect x="955" y="475" width="88" height="56" fill="white"/>
-<rect x="880" y="540" width="240" height="32" rx="16" fill="white"/>
-<rect x="1030" y="330" width="260" height="400" rx="38" fill="white" opacity=".88"/>
-<circle cx="1160" cy="560" r="92" fill="none" stroke="#ffffff" stroke-width="18"/>
+<rect x="805" y="245" width="370" height="225" rx="30" fill="none" stroke="white" stroke-width="17" opacity=".92"/>
+<rect x="945" y="478" width="92" height="60" fill="white" opacity=".92"/>
+<rect x="870" y="550" width="250" height="34" rx="16" fill="white" opacity=".92"/>
+<rect x="1030" y="320" width="260" height="410" rx="40" fill="white" opacity=".86"/>
+<circle cx="1160" cy="560" r="94" fill="none" stroke="#ffffff" stroke-width="20"/>
 </g>
-<text x="80" y="185" font-family="Arial Black,Arial" font-size="46" fill="#ffffff" font-weight="900">ELKASS OLESNO</text>
-<text x="80" y="460" font-family="Arial Black,Arial" font-size="74" fill="white" font-weight="900">🎅 Mikołajkowe niespodzianki</text>
-<text x="86" y="535" font-family="Arial" font-size="34" fill="white" font-weight="800" opacity=".92">Prezenty, które cieszą</text>
-<text x="86" y="660" font-family="Arial Black,Arial" font-size="64" fill="#ffffff" font-weight="900">🎁 🎁 🎁</text>
-<rect x="86" y="720" width="360" height="18" rx="9" fill="white" opacity=".88"/>
+<text x="84" y="690" font-family="Arial Black,Arial" font-size="74" fill="#ffffff" font-weight="900">🎅 🎁</text>
+<rect x="86" y="735" width="360" height="18" rx="9" fill="white" opacity=".78"/>
 </svg>

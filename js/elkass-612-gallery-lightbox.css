@@ -1,0 +1,8 @@
+/* ELKASS 6.1.2 Gallery Lightbox Navigation */
+.elkass-gallery-lightbox{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(3,7,18,.86);backdrop-filter:blur(10px);padding:clamp(12px,3vw,34px)}
+.elkass-gallery-lightbox.active{display:flex}
+.elkass-gallery-lightbox img{max-width:min(96vw,1280px);max-height:86vh;width:auto;height:auto;object-fit:contain;border-radius:22px;box-shadow:0 30px 90px rgba(0,0,0,.50);background:white}
+.elkass-gallery-btn{position:absolute;border:0;border-radius:999px;width:54px;height:54px;display:inline-flex;align-items:center;justify-content:center;background:#e30613;color:white;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 16px 45px rgba(0,0,0,.35)}
+.elkass-gallery-close{top:20px;right:20px}.elkass-gallery-prev{left:20px;top:50%;transform:translateY(-50%)}.elkass-gallery-next{right:20px;top:50%;transform:translateY(-50%)}
+.elkass-gallery-counter{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);color:white;border-radius:999px;padding:9px 14px;font-weight:900}
+@media(max-width:700px){.elkass-gallery-lightbox{padding:10px}.elkass-gallery-btn{width:46px;height:46px;font-size:24px}.elkass-gallery-prev{left:8px}.elkass-gallery-next{right:8px}.elkass-gallery-close{top:10px;right:10px}.elkass-gallery-lightbox img{max-height:82vh;border-radius:16px}}
