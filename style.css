@@ -1453,3 +1453,44 @@ body[data-header-mode="dark"] .header{background:#10131a;color:white}body[data-h
   .site-header,.footer,.desktop-call,.mobile-call,.top-btn,.related-section,.back-link,.product-thumbs,.product-detail-actions{display:none!important;}
   .product-detail{box-shadow:none!important;border:0!important;}
 }
+
+
+/* ELKASS 5.4.1 — CATEGORY IMAGE HARD FIX */
+.categories-section .category-card,
+.category-grid .category-card{
+  position:relative!important;
+  overflow:hidden!important;
+  background:#101418!important;
+}
+.categories-section .category-card img,
+.category-grid .category-card img{
+  display:block!important;
+  opacity:1!important;
+  visibility:visible!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:330px!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  filter:saturate(1.08) contrast(1.04)!important;
+}
+.categories-section .category-card::before,
+.category-grid .category-card::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.22) 42%,rgba(0,0,0,.78) 100%)!important;
+  pointer-events:none!important;
+}
+.categories-section .category-card::after,
+.category-grid .category-card::after{
+  background:none!important;
+}
+.categories-section .category-content,
+.category-grid .category-content,
+.categories-section .category-card h3,
+.category-grid .category-card h3{
+  position:relative!important;
+  z-index:2!important;
+}
