@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELKASS 6.0 WOW Theme Rebuild</title>
+<link rel="stylesheet" href="../js/elkass-60-wow-theme-rebuild.css">
+<style>
+body{margin:0;background:#eef2f7;color:#07111f;font-family:Arial,sans-serif}
+main{max-width:1220px;margin:auto;padding:24px}
+.hero{background:linear-gradient(135deg,#07111f,#153b64);color:white;border-radius:30px;padding:32px;margin-bottom:22px}
+.hero small{color:#8bc34a;font-weight:900;letter-spacing:.12em}
+.hero h1{font-size:38px;margin:8px 0}
+.hero p{color:#dbeafe;max-width:850px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:14px}
+.theme60-btn{border:0;border-radius:24px;background:white;color:#07111f;padding:22px;min-height:150px;cursor:pointer;text-align:left;box-shadow:0 16px 45px rgba(15,23,42,.08);transition:.2s;display:flex;flex-direction:column;gap:8px}
+.theme60-btn:hover{transform:translateY(-4px)}
+.theme60-btn.active{outline:4px solid #e30613;background:linear-gradient(135deg,#fff,#fff5f5)}
+.theme60-btn span{font-size:34px}
+.theme60-btn strong{font-size:20px}
+.theme60-btn em{font-style:normal;color:#64748b;font-weight:700;font-size:13px;line-height:1.3}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.actions a,.actions button{border:0;border-radius:16px;background:#e30613;color:white;padding:14px 18px;font-weight:900;text-decoration:none;cursor:pointer}
+.actions a:nth-child(2){background:#111827}
+.note{background:white;border-radius:24px;padding:20px;margin-top:20px;box-shadow:0 16px 45px rgba(15,23,42,.08)}
+@media(max-width:700px){main{padding:14px}.hero h1{font-size:28px}.theme60-btn{min-height:128px}}
+</style>
+</head>
+<body>
+<main>
+<section class="hero">
+<small>ELKASS ENTERPRISE 6.0</small>
+<h1>🎨 WOW Theme Rebuild</h1>
+<p>To są pełne kampanie sezonowe, nie tylko kolor i ikonka. Wybierz motyw i sprawdź stronę na telefonie, tablecie i komputerze.</p>
+</section>
+
+<section class="grid" data-theme60-panel></section>
+
+<div class="actions">
+<a href="../index.html">↗ Otwórz stronę</a>
+<a href="social-studio-wow.html">📱 Social Studio WOW</a>
+<a href="index.html">← Panel admin</a>
+<button type="button" onclick="localStorage.removeItem('elkassTheme60');localStorage.removeItem('elkassSeasonalTheme56');localStorage.removeItem('elkassSeasonalTheme');location.reload()">Resetuj motyw</button>
+</div>
+
+<section class="note">
+<strong>Mobile-first:</strong> motywy mają ograniczone dekoracje na małych ekranach, żeby strona nie zwalniała i nie zasłaniała treści.
+<br><strong>WOODYBOY:</strong> ten moduł jest wzorem dla Theme Engine 6.0 i Campaign Engine.
+</section>
+</main>
+<script src="../js/elkass-60-wow-theme-rebuild.js"></script>
+</body>
+</html>

@@ -884,5 +884,18 @@ document.addEventListener('DOMContentLoaded',function(){
  function add(href,text,bg){ if(document.querySelector('a[href="'+href+'"]')) return; var a=document.createElement('a'); a.href=href; a.textContent=text; a.style.cssText='display:block;margin:10px;padding:14px 18px;border-radius:16px;background:'+bg+';color:#fff;font-weight:900;text-decoration:none;'; target.prepend(a); }
  add('social-studio-wow.html','📱 Social Studio WOW','linear-gradient(135deg,#e30613,#7c3aed)');
 });
+</script><script id="elkass-admin-theme60-link">
+document.addEventListener('DOMContentLoaded',function(){
+  var target=document.querySelector('.sidebar, aside, nav, .admin-sidebar')||document.body;
+  function add(href,text,bg){
+    if(document.querySelector('a[href="'+href+'"]')) return;
+    var link=document.createElement('a');
+    link.href=href;
+    link.textContent=text;
+    link.style.cssText='display:block;margin:10px;padding:14px 18px;border-radius:16px;background:'+bg+';color:#fff;font-weight:900;text-decoration:none;';
+    target.prepend(link);
+  }
+  add('theme-rebuild-60.html','🎨 Theme Rebuild 6.0','linear-gradient(135deg,#07111f,#7c3aed)');
+});
 </script></body>
 </html>

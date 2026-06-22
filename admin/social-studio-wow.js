@@ -15,3 +15,21 @@ function postText(){const d=data();return `${themeLabels[d.theme]} w ${d.b.name}
 function render(){preview.innerHTML=svg();postTextEl.value=postText();document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.format===$('format').value))}
 function dl(name,content,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click()}
 const postTextEl=$('postText');document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('input,select,textarea').forEach(x=>x.addEventListener('input',render));document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{$('format').value=b.dataset.format;render()});file.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{uploaded=ev.target.result;render()};r.readAsDataURL(f)};downloadCurrent.onclick=()=>dl('ELKASS_'+$('format').value+'.svg',svg(),'image/svg+xml');downloadPack.onclick=()=>{['post','story','reels','news'].forEach(f=>dl('ELKASS_'+f+'.svg',svg(f),'image/svg+xml'));dl('tresc_posta.txt',postText(),'text/plain')};copyText.onclick=()=>{navigator.clipboard&&navigator.clipboard.writeText(postText());alert('Skopiowano treść posta')};render()});
+
+
+/* ELKASS 6.0 — Theme Rebuild integration */
+document.addEventListener('elkass:theme60-change', function(e){
+  try{
+    var theme = e.detail && e.detail.theme;
+    var themeSelect = document.getElementById('theme');
+    if(themeSelect && theme){
+      var map={blackweek:'blackweek',cyberweek:'cyberweek',christmas:'christmas',mikolajki:'mikolajki',easter:'easter',spring:'spring',summer:'summer',autumn:'autumn',winter:'winter',standard:'standard'};
+      var val=map[theme]||theme;
+      var opt=[].slice.call(themeSelect.options||[]).find(function(o){return o.value===val || (o.textContent||'').toLowerCase().includes(String(val).toLowerCase())});
+      if(opt){
+        themeSelect.value=opt.value;
+        themeSelect.dispatchEvent(new Event('input',{bubbles:true}));
+      }
+    }
+  }catch(err){}
+});

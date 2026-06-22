@@ -31,3 +31,21 @@ document.addEventListener('elkass:season-change', function(e){
     }
   }catch(err){}
 });
+
+
+/* ELKASS 6.0 — Theme Rebuild integration */
+document.addEventListener('elkass:theme60-change', function(e){
+  try{
+    var theme = e.detail && e.detail.theme;
+    var themeSelect = document.getElementById('theme');
+    if(themeSelect && theme){
+      var map={blackweek:'blackweek',cyberweek:'cyberweek',christmas:'christmas',mikolajki:'mikolajki',easter:'easter',spring:'spring',summer:'summer',autumn:'autumn',winter:'winter',standard:'standard'};
+      var val=map[theme]||theme;
+      var opt=[].slice.call(themeSelect.options||[]).find(function(o){return o.value===val || (o.textContent||'').toLowerCase().includes(String(val).toLowerCase())});
+      if(opt){
+        themeSelect.value=opt.value;
+        themeSelect.dispatchEvent(new Event('input',{bubbles:true}));
+      }
+    }
+  }catch(err){}
+});
