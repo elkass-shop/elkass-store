@@ -1,68 +1,49 @@
 {
-  "version": "6.4",
-  "settings": {
-    "homepageLimit": 6,
-    "cardSubcategoryLimit": 3,
-    "imagePreferred": "jpg-webp",
-    "fallback": "svg",
-    "storage": "localStorage-ready, cloud-ready"
-  },
+  "version": "6.7",
   "items": [
     {
       "id": "rtv",
       "name": "RTV",
+      "slug": "rtv",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/rtv.jpg",
       "fallback": "assets/categories/rtv.svg",
-      "premiumDescription": "Telewizory, soundbary i sprzęt audio dobrane do domowej rozrywki. W ELKASS Olesno pomożemy wybrać ekran, dźwięk i akcesoria pasujące do pokoju, budżetu oraz sposobu oglądania.",
+      "premiumDescription": "Telewizory, soundbary i sprzęt audio dobrane do domowej rozrywki.",
       "children": [
         {
           "id": "telewizory",
           "name": "Telewizory",
+          "slug": "telewizory",
           "active": true,
           "image": "assets/categories/rtv.jpg",
-          "fallback": "assets/categories/rtv.svg",
-          "premiumDescription": "Telewizory Smart TV, LED, QLED i OLED do salonu, sypialni oraz pokoju gracza. Dobierzemy przekątną, technologię obrazu i funkcje pod Twoje potrzeby.",
+          "premiumDescription": "Smart TV, LED, OLED i QLED do salonu, sypialni i pokoju gracza.",
           "children": [
             {
-              "id": "telewizory-32-43",
-              "name": "Telewizory 32–43″",
+              "id": "tv-32-43",
+              "name": "32–43″",
+              "slug": "tv-32-43",
               "active": true,
               "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Kompaktowe telewizory do kuchni, sypialni i mniejszych wnętrz.",
+              "premiumDescription": "Kompaktowe telewizory do mniejszych pomieszczeń.",
               "children": []
             },
             {
-              "id": "telewizory-50-55",
-              "name": "Telewizory 50–55″",
+              "id": "tv-50-55",
+              "name": "50–55″",
+              "slug": "tv-50-55",
               "active": true,
               "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Najpopularniejszy wybór do salonu — świetny balans ceny, jakości obrazu i wielkości.",
+              "premiumDescription": "Najpopularniejszy rozmiar do salonu.",
               "children": []
             },
             {
-              "id": "telewizory-65-plus",
-              "name": "Telewizory 65″+",
+              "id": "tv-65-plus",
+              "name": "65″+",
+              "slug": "tv-65-plus",
               "active": true,
               "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Duże ekrany do kina domowego, sportu i efektownej rozrywki premium.",
-              "children": []
-            },
-            {
-              "id": "smart-tv",
-              "name": "Smart TV",
-              "active": true,
-              "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Telewizory z aplikacjami, Wi‑Fi, streamingiem i wygodnym sterowaniem.",
-              "children": []
-            },
-            {
-              "id": "oled-qled-led",
-              "name": "OLED / QLED / LED",
-              "active": true,
-              "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Porównamy technologie obrazu i pomożemy wybrać najlepszą do Twojego wnętrza.",
+              "premiumDescription": "Duże ekrany do kina domowego.",
               "children": []
             }
           ]
@@ -70,58 +51,19 @@
         {
           "id": "soundbary",
           "name": "Soundbary",
+          "slug": "soundbary",
           "active": true,
           "image": "assets/categories/rtv.jpg",
-          "premiumDescription": "Lepszy dźwięk z telewizora bez skomplikowanego montażu. Soundbary do filmów, muzyki, sportu i konsoli.",
+          "premiumDescription": "Lepszy dźwięk z telewizora bez skomplikowanego montażu.",
           "children": []
         },
         {
           "id": "audio",
           "name": "Audio",
+          "slug": "audio",
           "active": true,
           "image": "assets/categories/rtv.jpg",
-          "premiumDescription": "Głośniki, wieże, zestawy audio i akcesoria dla lepszego brzmienia w domu.",
-          "children": [
-            {
-              "id": "glosniki",
-              "name": "Głośniki",
-              "active": true,
-              "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Głośniki domowe, przenośne i multimedialne do codziennego słuchania.",
-              "children": []
-            },
-            {
-              "id": "wieze-audio",
-              "name": "Wieże audio",
-              "active": true,
-              "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Klasyczne zestawy muzyczne do domu z radiem, Bluetooth i CD.",
-              "children": []
-            },
-            {
-              "id": "kino-domowe",
-              "name": "Kino domowe",
-              "active": true,
-              "image": "assets/categories/rtv.jpg",
-              "premiumDescription": "Zestawy dźwięku przestrzennego do filmów i seriali.",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "projektory",
-          "name": "Projektory",
-          "active": true,
-          "image": "assets/categories/rtv.jpg",
-          "premiumDescription": "Projektory do kina domowego, prezentacji i większego obrazu w domu.",
-          "children": []
-        },
-        {
-          "id": "anteny-dekodery",
-          "name": "Anteny i dekodery",
-          "active": true,
-          "image": "assets/categories/rtv.jpg",
-          "premiumDescription": "Akcesoria do odbioru telewizji, konfiguracji sygnału i wygodnego korzystania z TV.",
+          "premiumDescription": "Głośniki, wieże i zestawy audio do domu.",
           "children": []
         }
       ]
@@ -129,41 +71,46 @@
     {
       "id": "agd",
       "name": "AGD",
+      "slug": "agd",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/agd.jpg",
       "fallback": "assets/categories/agd.svg",
-      "premiumDescription": "Duże AGD do codziennego komfortu: pralki, lodówki, zmywarki, zamrażarki i suszarki. Pomagamy dobrać sprzęt pod metraż, rodzinę, zużycie energii i realne potrzeby domu.",
+      "premiumDescription": "Duże AGD do codziennego komfortu: pralki, lodówki, zmywarki i suszarki.",
       "children": [
         {
           "id": "lodowki",
           "name": "Lodówki",
+          "slug": "lodowki",
           "active": true,
           "image": "assets/categories/agd.jpg",
-          "premiumDescription": "Lodówki wolnostojące, No Frost, energooszczędne i pojemne modele dla całej rodziny.",
+          "premiumDescription": "Lodówki wolnostojące, No Frost i pojemne modele dla całej rodziny.",
           "children": [
             {
               "id": "lodowki-wolnostojace",
               "name": "Wolnostojące",
+              "slug": "lodowki-wolnostojace",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Uniwersalne lodówki do każdej kuchni, w wielu rozmiarach i kolorach.",
+              "premiumDescription": "Uniwersalne lodówki do każdej kuchni.",
               "children": []
             },
             {
               "id": "lodowki-side-by-side",
               "name": "Side by Side",
+              "slug": "lodowki-side-by-side",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Duża pojemność i wygoda przechowywania dla większych rodzin.",
+              "premiumDescription": "Duża pojemność i wygoda przechowywania.",
               "children": []
             },
             {
               "id": "lodowki-no-frost",
               "name": "No Frost",
+              "slug": "lodowki-no-frost",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Mniej szronu, wygodniejsze użytkowanie i stabilne chłodzenie.",
+              "premiumDescription": "Mniej szronu i wygodniejsze użytkowanie.",
               "children": []
             }
           ]
@@ -171,32 +118,36 @@
         {
           "id": "pralki",
           "name": "Pralki",
+          "slug": "pralki",
           "active": true,
           "image": "assets/categories/agd.jpg",
-          "premiumDescription": "Pralki slim, ładowane od góry i klasyczne modele z programami do codziennego prania.",
+          "premiumDescription": "Pralki slim, ładowane od frontu i od góry.",
           "children": [
             {
               "id": "pralki-slim",
               "name": "Slim",
+              "slug": "pralki-slim",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Wąskie pralki do małych łazienek i mieszkań.",
+              "premiumDescription": "Wąskie pralki do małych łazienek.",
               "children": []
             },
             {
               "id": "pralki-front",
               "name": "Ładowane od frontu",
+              "slug": "pralki-front",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Najszerszy wybór modeli, pojemności i funkcji prania.",
+              "premiumDescription": "Najszerszy wybór modeli i programów.",
               "children": []
             },
             {
               "id": "pralki-gora",
               "name": "Ładowane od góry",
+              "slug": "pralki-gora",
               "active": true,
               "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Wygodne rozwiązanie tam, gdzie liczy się miejsce i dostęp od góry.",
+              "premiumDescription": "Wygodne rozwiązanie tam, gdzie liczy się miejsce.",
               "children": []
             }
           ]
@@ -204,50 +155,10 @@
         {
           "id": "zmywarki",
           "name": "Zmywarki",
+          "slug": "zmywarki",
           "active": true,
           "image": "assets/categories/agd.jpg",
-          "premiumDescription": "Zmywarki 45 cm, 60 cm i do zabudowy — oszczędność czasu, wody i wygoda po każdym posiłku.",
-          "children": [
-            {
-              "id": "zmywarki-45",
-              "name": "45 cm",
-              "active": true,
-              "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Kompaktowe zmywarki do mniejszych kuchni.",
-              "children": []
-            },
-            {
-              "id": "zmywarki-60",
-              "name": "60 cm",
-              "active": true,
-              "image": "assets/categories/agd.jpg",
-              "premiumDescription": "Pełnowymiarowe zmywarki dla rodzin i większych gospodarstw.",
-              "children": []
-            },
-            {
-              "id": "zmywarki-zabudowa",
-              "name": "Do zabudowy",
-              "active": true,
-              "image": "assets/categories/agd-zabudowa.jpg",
-              "premiumDescription": "Dyskretne zmywarki dopasowane do frontów kuchennych.",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "suszarki",
-          "name": "Suszarki",
-          "active": true,
-          "image": "assets/categories/agd.jpg",
-          "premiumDescription": "Suszarki do ubrań, które skracają czas prania i poprawiają komfort w domu.",
-          "children": []
-        },
-        {
-          "id": "zamrazarki",
-          "name": "Zamrażarki",
-          "active": true,
-          "image": "assets/categories/agd.jpg",
-          "premiumDescription": "Zamrażarki szufladowe i skrzyniowe do zapasów, mrożonek i większej organizacji kuchni.",
+          "premiumDescription": "Zmywarki 45 cm, 60 cm i do zabudowy.",
           "children": []
         }
       ]
@@ -255,58 +166,38 @@
     {
       "id": "agd-zabudowa",
       "name": "AGD do zabudowy",
+      "slug": "agd-zabudowa",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/agd-zabudowa.jpg",
       "fallback": "assets/categories/agd-zabudowa.svg",
-      "premiumDescription": "Sprzęt do nowoczesnej kuchni: piekarniki, płyty, okapy, zmywarki i mikrofale do zabudowy. Dobieramy urządzenia tak, żeby pasowały do projektu, wymiarów i stylu kuchni.",
+      "premiumDescription": "Sprzęt do nowoczesnej kuchni: piekarniki, płyty, okapy i mikrofale.",
       "children": [
         {
           "id": "piekarniki",
           "name": "Piekarniki",
+          "slug": "piekarniki",
           "active": true,
           "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Piekarniki z termoobiegiem, funkcjami parowymi, prowadnicami i programami automatycznymi.",
+          "premiumDescription": "Piekarniki z termoobiegiem, parą i programami automatycznymi.",
           "children": []
         },
         {
-          "id": "plyty-indukcyjne",
-          "name": "Płyty indukcyjne",
+          "id": "plyty",
+          "name": "Płyty",
+          "slug": "plyty",
           "active": true,
           "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Szybkie, bezpieczne i eleganckie gotowanie w nowoczesnej kuchni.",
-          "children": []
-        },
-        {
-          "id": "plyty-gazowe",
-          "name": "Płyty gazowe",
-          "active": true,
-          "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Klasyczne rozwiązanie do kuchni z instalacją gazową.",
+          "premiumDescription": "Płyty indukcyjne i gazowe do każdej kuchni.",
           "children": []
         },
         {
           "id": "okapy",
           "name": "Okapy",
+          "slug": "okapy",
           "active": true,
           "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Okapy kominowe, teleskopowe i podszafkowe do skutecznej wentylacji kuchni.",
-          "children": []
-        },
-        {
-          "id": "mikrofale-zabudowa",
-          "name": "Mikrofale do zabudowy",
-          "active": true,
-          "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Wygodne podgrzewanie i spójny wygląd zabudowy kuchennej.",
-          "children": []
-        },
-        {
-          "id": "ekspresy-zabudowa",
-          "name": "Ekspresy do zabudowy",
-          "active": true,
-          "image": "assets/categories/agd-zabudowa.jpg",
-          "premiumDescription": "Kawa premium w kuchni zaprojektowanej na wysoki standard.",
+          "premiumDescription": "Okapy kominowe, teleskopowe i podszafkowe.",
           "children": []
         }
       ]
@@ -314,66 +205,38 @@
     {
       "id": "male-agd",
       "name": "Małe AGD",
+      "slug": "male-agd",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/male-agd.jpg",
       "fallback": "assets/categories/male-agd.svg",
-      "premiumDescription": "Małe urządzenia, które robią dużą różnicę: ekspresy, odkurzacze, blendery, roboty kuchenne, czajniki i frytkownice beztłuszczowe do wygodnego domu.",
+      "premiumDescription": "Małe urządzenia, które robią dużą różnicę w domu.",
       "children": [
         {
           "id": "ekspresy",
           "name": "Ekspresy",
+          "slug": "ekspresy",
           "active": true,
           "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Ekspresy ciśnieniowe, automatyczne i kapsułkowe do kawy w domu.",
+          "premiumDescription": "Ekspresy ciśnieniowe, automatyczne i kapsułkowe.",
           "children": []
         },
         {
           "id": "odkurzacze",
           "name": "Odkurzacze",
+          "slug": "odkurzacze",
           "active": true,
           "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Odkurzacze tradycyjne, pionowe, bezprzewodowe i workowe.",
+          "premiumDescription": "Odkurzacze tradycyjne, pionowe i bezprzewodowe.",
           "children": []
         },
         {
           "id": "zelazka",
           "name": "Żelazka",
+          "slug": "zelazka",
           "active": true,
           "image": "assets/categories/male-agd.jpg",
           "premiumDescription": "Żelazka i stacje pary do szybkiego prasowania.",
-          "children": []
-        },
-        {
-          "id": "roboty-kuchenne",
-          "name": "Roboty kuchenne",
-          "active": true,
-          "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Pomoc w przygotowywaniu ciast, zup, sosów i codziennych posiłków.",
-          "children": []
-        },
-        {
-          "id": "blendery",
-          "name": "Blendery",
-          "active": true,
-          "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Blendery ręczne i kielichowe do koktajli, zup i sosów.",
-          "children": []
-        },
-        {
-          "id": "frytkownice",
-          "name": "Frytkownice beztłuszczowe",
-          "active": true,
-          "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Chrupiące potrawy z mniejszą ilością tłuszczu.",
-          "children": []
-        },
-        {
-          "id": "czajniki",
-          "name": "Czajniki",
-          "active": true,
-          "image": "assets/categories/male-agd.jpg",
-          "premiumDescription": "Czajniki elektryczne klasyczne, stalowe, szklane i z regulacją temperatury.",
           "children": []
         }
       ]
@@ -381,58 +244,38 @@
     {
       "id": "komputery-telefony",
       "name": "Komputery i telefony",
+      "slug": "komputery-telefony",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/komputery-telefony.jpg",
       "fallback": "assets/categories/komputery-telefony.svg",
-      "premiumDescription": "Laptopy, smartfony, monitory, drukarki i akcesoria dla domu, pracy, nauki oraz rozrywki. Pomagamy dobrać sprzęt rozsądnie, bez przepłacania za zbędne funkcje.",
+      "premiumDescription": "Laptopy, smartfony, monitory, drukarki i akcesoria.",
       "children": [
         {
           "id": "laptopy",
           "name": "Laptopy",
+          "slug": "laptopy",
           "active": true,
           "image": "assets/categories/komputery-telefony.jpg",
-          "premiumDescription": "Laptopy do pracy, szkoły, multimediów i codziennego korzystania.",
+          "premiumDescription": "Laptopy do pracy, szkoły i domu.",
           "children": []
         },
         {
           "id": "smartfony",
           "name": "Smartfony",
+          "slug": "smartfony",
           "active": true,
           "image": "assets/categories/komputery-telefony.jpg",
           "premiumDescription": "Telefony z dobrym aparatem, baterią i płynnym działaniem.",
           "children": []
         },
         {
-          "id": "tablety",
-          "name": "Tablety",
-          "active": true,
-          "image": "assets/categories/komputery-telefony.jpg",
-          "premiumDescription": "Tablety do nauki, rozrywki, pracy i wygodnego przeglądania internetu.",
-          "children": []
-        },
-        {
-          "id": "monitory",
-          "name": "Monitory",
-          "active": true,
-          "image": "assets/categories/komputery-telefony.jpg",
-          "premiumDescription": "Monitory do biura, domu, nauki i gier.",
-          "children": []
-        },
-        {
-          "id": "drukarki",
-          "name": "Drukarki",
-          "active": true,
-          "image": "assets/categories/komputery-telefony.jpg",
-          "premiumDescription": "Drukarki atramentowe, laserowe i wielofunkcyjne.",
-          "children": []
-        },
-        {
           "id": "akcesoria-it",
           "name": "Akcesoria",
+          "slug": "akcesoria-it",
           "active": true,
           "image": "assets/categories/komputery-telefony.jpg",
-          "premiumDescription": "Myszki, klawiatury, ładowarki, kable, etui i dodatki do sprzętu.",
+          "premiumDescription": "Ładowarki, kable, etui i dodatki do sprzętu.",
           "children": []
         }
       ]
@@ -440,50 +283,38 @@
     {
       "id": "serwis",
       "name": "Serwis i doradztwo",
+      "slug": "serwis",
       "active": true,
       "showOnHome": true,
       "image": "assets/categories/serwis.jpg",
       "fallback": "assets/categories/serwis.svg",
-      "premiumDescription": "Fachowe wsparcie przed i po zakupie. Doradzamy, konfigurujemy, pomagamy dobrać sprzęt i wspieramy klientów z Olesna oraz okolic.",
+      "premiumDescription": "Fachowe wsparcie przed i po zakupie.",
       "children": [
         {
           "id": "doradztwo",
-          "name": "Doradztwo zakupowe",
+          "name": "Doradztwo",
+          "slug": "doradztwo",
           "active": true,
           "image": "assets/categories/serwis.jpg",
-          "premiumDescription": "Pomoc w wyborze sprzętu dopasowanego do potrzeb, budżetu i warunków w domu.",
+          "premiumDescription": "Pomoc w wyborze sprzętu dopasowanego do potrzeb.",
           "children": []
         },
         {
           "id": "konfiguracja",
           "name": "Konfiguracja",
+          "slug": "konfiguracja",
           "active": true,
           "image": "assets/categories/serwis.jpg",
-          "premiumDescription": "Pomoc w pierwszym uruchomieniu, ustawieniach i połączeniach urządzeń.",
+          "premiumDescription": "Pomoc w pierwszym uruchomieniu i ustawieniach.",
           "children": []
         },
         {
           "id": "transport",
           "name": "Transport",
+          "slug": "transport",
           "active": true,
           "image": "assets/categories/serwis.jpg",
-          "premiumDescription": "Dostawa sprzętu i pomoc organizacyjna przy większych zakupach.",
-          "children": []
-        },
-        {
-          "id": "montaz",
-          "name": "Montaż",
-          "active": true,
-          "image": "assets/categories/serwis.jpg",
-          "premiumDescription": "Wsparcie przy montażu i przygotowaniu sprzętu do pracy.",
-          "children": []
-        },
-        {
-          "id": "wsparcie-techniczne",
-          "name": "Wsparcie techniczne",
-          "active": true,
-          "image": "assets/categories/serwis.jpg",
-          "premiumDescription": "Pomoc w rozwiązaniu problemów technicznych i użytkowych.",
+          "premiumDescription": "Dostawa lokalna sprzętu.",
           "children": []
         }
       ]

@@ -1,0 +1,16 @@
+ELKASS 6.7 PRIORITY A+B CLOUD READY
+
+Wgraj paczkę.
+
+Sprawdź:
+1. Strona główna: kategorie prowadzą do category.html?cat=...
+2. category.html?cat=agd — pokazuje podkategorie.
+3. Podkategoria końcowa pokazuje produkty lub miejsce na produkty.
+4. product.html?id=lodowka-tcl-rp318bxe2 — karta produktu premium.
+5. /admin/product-wizard-65.html — kreator produktu.
+6. /admin/glossary-manager-65.html — biblioteka terminów.
+7. /admin/media-manager-67.html — media cloud.
+8. /admin/cloud-test-67.html — test chmury.
+9. Supabase: uruchom supabase/schema-67-priority-ab.sql po podstawowym schema.
+
+Po tym podpinamy URL i anon key do cloud-config.js.
