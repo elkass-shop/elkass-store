@@ -1,0 +1,14 @@
+ELKASS 6.4 FOUNDATION
+
+Wgraj całą paczkę do głównego katalogu repozytorium.
+Nie twórz dodatkowego folderu elkass-store-main w środku repo.
+
+Po wdrożeniu:
+1. Ctrl+F5.
+2. Wejdź w /admin/foundation-64.html.
+3. Sprawdź Kategorie i podkategorie.
+4. Sprawdź Media Manager.
+5. Sprawdź Wygląd sklepu: Classic / Premium Pro.
+6. Sprawdź mobilny panel.
+
+Commit: ELKASS 6.4 FOUNDATION

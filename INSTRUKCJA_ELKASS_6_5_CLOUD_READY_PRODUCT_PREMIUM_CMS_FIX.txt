@@ -1,0 +1,16 @@
+ELKASS 6.5 CLOUD READY PRODUCT PREMIUM CMS FIX
+
+Wgraj paczkę do repozytorium.
+
+Po wdrożeniu sprawdź:
+1. /admin/ — Szybki start ma być na górze.
+2. /admin/product-wizard-65.html — kreator produktu.
+3. /admin/glossary-manager-65.html — biblioteka terminów.
+4. /admin/media-manager-65.html — grafiki i media.
+5. product.html?id=lodowka-tcl-rp318bxe2 — karta produktu premium.
+6. Chrome mobile w wersji desktop — panel nie powinien być rozjechany.
+
+Chmura:
+- skonfiguruj cloud-config.js,
+- uruchom supabase/schema.sql,
+- ustaw bucket elkass-media.

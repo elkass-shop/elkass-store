@@ -1,0 +1,10 @@
+ELKASS 6.4.2 UNIFIED ORDER SEASONAL WOW
+
+Wgraj całą paczkę do repozytorium i wybierz zamianę plików.
+
+Po wdrożeniu:
+1. Zrób Ctrl+F5.
+2. Sprawdź standard.
+3. Sprawdź każdy motyw sezonowy.
+4. Kolejność sekcji ma być taka sama w standardzie i sezonach.
+5. Na desktopie i mobile nie powinno być poziomego rozjeżdżania.

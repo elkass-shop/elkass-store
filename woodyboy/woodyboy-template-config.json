@@ -1,0 +1,17 @@
+{
+  "templateVersion": "6.6.1",
+  "base": "ELKASS Premium Store Foundation",
+  "modules": [
+    "cms_quickstart",
+    "product_wizard",
+    "category_tree",
+    "media_manager",
+    "glossary_manager",
+    "premium_product_page",
+    "seasonal_themes",
+    "supabase_cloud_foundation",
+    "local_fallback"
+  ],
+  "migration": "frontend independent, Supabase data layer",
+  "readyForNextStores": true
+}

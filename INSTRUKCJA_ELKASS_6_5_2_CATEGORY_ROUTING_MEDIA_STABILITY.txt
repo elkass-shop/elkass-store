@@ -1,0 +1,10 @@
+ELKASS 6.5.2 CATEGORY ROUTING MEDIA STABILITY
+
+Wgraj paczkę do repozytorium.
+
+Sprawdź:
+1. Na stronie głównej kliknij RTV / AGD / AGD do zabudowy.
+2. Ma otworzyć category.html?cat=...
+3. Na stronie kategorii mają pokazać się podkategorie.
+4. Motywy Boże Narodzenie i Zima — sekcja kategorii nie powinna migać.
+5. Panel /admin — animacje sezonowe nie powinny przeszkadzać.

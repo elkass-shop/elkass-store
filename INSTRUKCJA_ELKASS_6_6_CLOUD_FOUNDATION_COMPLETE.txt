@@ -1,0 +1,16 @@
+ELKASS 6.6 CLOUD FOUNDATION COMPLETE
+
+Wgraj całą paczkę.
+
+Sprawdź:
+1. Strona główna: kafle kategorii prowadzą do category.html?cat=...
+2. category.html?cat=agd pokazuje podkategorie.
+3. Motywy Boże Narodzenie/Zima: sekcja kategorii nie miga.
+4. /admin/ ma Szybki Start.
+5. /admin/product-wizard-65.html działa.
+6. /admin/media-manager-65.html działa.
+7. /admin/glossary-manager-65.html działa.
+8. product.html?id=lodowka-tcl-rp318bxe2 pokazuje kartę produktu premium.
+9. cloud-config.js jest gotowy do wpisania Supabase.
+
+Potem przechodzimy na realną konfigurację chmury.

@@ -1,0 +1,10 @@
+ELKASS 6.5.1 FOUNDATION STABILIZATION
+
+Wgraj paczkę do repozytorium.
+
+Sprawdź:
+1. Strona główna standard — Hero nie powinno kończyć się przed prawą stroną.
+2. Motywy sezonowe — kolejność sekcji bez rozjazdu.
+3. Mobile i desktop mode na telefonie.
+4. /admin/ — Szybki start i brak poziomego rozjazdu.
+5. product.html?id=lodowka-tcl-rp318bxe2 — karta produktu premium.
