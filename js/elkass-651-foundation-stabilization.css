@@ -1,0 +1,226 @@
+/* ELKASS 6.5.1 — Foundation Stabilization
+   Stabilizacja pełnej szerokości Hero, kolejności sekcji, CMS mobile/desktop i layoutu premium.
+*/
+
+/* Globalne zabezpieczenie przed rozjazdem */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  margin: 0;
+}
+
+/* Header nie może ucinać Hero ani tworzyć poziomego scrolla */
+.site-header,
+.header,
+.main-header {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Szybkie wyszukiwanie jako pierwsza sekcja */
+.shop-search-section,
+.quick-search-section,
+.search-section,
+#search,
+#szybkie-wyszukiwanie {
+  width: min(1180px, calc(100vw - 32px)) !important;
+  max-width: min(1180px, calc(100vw - 32px)) !important;
+  margin: 26px auto 24px !important;
+  box-sizing: border-box !important;
+}
+
+/* FIX: Standardowe Hero ma iść do pełnej dostępnej szerokości, a nie kończyć się przed prawą krawędzią */
+.hero-premium,
+.hero-section,
+section.hero,
+.hero,
+.e622-seasonal-hero {
+  width: min(1500px, calc(100vw - 32px)) !important;
+  max-width: min(1500px, calc(100vw - 32px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box !important;
+  border-radius: clamp(22px, 2vw, 34px) !important;
+  overflow: hidden !important;
+}
+
+/* Główne tło Hero / obraz ma zawsze przykrywać całą prawą stronę */
+.hero-premium img,
+.hero-section img,
+section.hero img,
+.hero img,
+.hero-premium picture,
+.hero-section picture,
+section.hero picture,
+.hero picture {
+  max-width: none !important;
+}
+
+.hero-premium .hero-bg,
+.hero-section .hero-bg,
+.hero-background,
+.hero-image,
+.hero-media,
+.hero-visual,
+.hero-premium::before,
+.hero-section::before,
+section.hero::before,
+.hero::before {
+  background-size: cover !important;
+  background-position: center right !important;
+}
+
+/* Jeżeli Hero jest gridem, prawa grafika nie może zostawiać pustej przestrzeni */
+.hero-premium,
+.hero-section,
+section.hero,
+.hero {
+  background-size: cover !important;
+  background-position: center right !important;
+}
+
+.hero-premium > *,
+.hero-section > *,
+section.hero > *,
+.hero > * {
+  box-sizing: border-box !important;
+}
+
+/* Statystyki jako trzecia sekcja, bez nachodzenia na Hero */
+.hero-stats,
+.stats-bar,
+.trust-stats {
+  width: min(1180px, calc(100vw - 32px)) !important;
+  max-width: min(1180px, calc(100vw - 32px)) !important;
+  margin: 0 auto 28px !important;
+  position: relative !important;
+  z-index: 8 !important;
+  box-sizing: border-box !important;
+}
+
+/* HIT TYGODNIA / paski ofert bez rozjazdu */
+.deal-banner-section,
+.promo-strip,
+.deal-strip,
+.top-offers-strip,
+#dealMiniList,
+.deal-mini-list {
+  width: min(1280px, calc(100vw - 32px)) !important;
+  max-width: min(1280px, calc(100vw - 32px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Kategorie i kolejne sekcje stabilnie */
+.promotions-section,
+.categories-section,
+.cta-section,
+.bestsellers-section,
+.local-advantages,
+.reviews-section,
+.gallery-teaser,
+#promocje,
+#oferta,
+#opinie,
+#galeria {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* Produkt premium bez dublowania układów */
+.elkass-product-premium-shell,
+.elkass-product-description-box {
+  width: min(1320px, calc(100vw - 32px)) !important;
+  max-width: min(1320px, calc(100vw - 32px)) !important;
+}
+
+/* Panel CMS — poprawa desktop mode na telefonie i mobile */
+@media (max-width: 1200px) {
+  body:has(.admin-sidebar),
+  body:has(.sidebar),
+  body:has(#adminApp) {
+    overflow-x: hidden !important;
+  }
+
+  .admin-shell,
+  .admin-layout,
+  .cms-layout,
+  .dashboard-layout,
+  #adminApp,
+  .app-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .admin-main,
+  .main-content,
+  .content,
+  .dashboard-content,
+  main {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .elkass-65-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .shop-search-section,
+  .quick-search-section,
+  .search-section,
+  #search,
+  #szybkie-wyszukiwanie {
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    margin: 16px auto 18px !important;
+  }
+
+  .hero-premium,
+  .hero-section,
+  section.hero,
+  .hero,
+  .e622-seasonal-hero {
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+    min-height: 420px !important;
+    border-radius: 22px !important;
+  }
+
+  .hero-premium,
+  .hero-section,
+  section.hero,
+  .hero {
+    background-position: center center !important;
+  }
+
+  .hero-stats,
+  .stats-bar,
+  .trust-stats,
+  .deal-banner-section,
+  .promo-strip,
+  .deal-strip,
+  .top-offers-strip,
+  #dealMiniList,
+  .deal-mini-list {
+    width: calc(100vw - 20px) !important;
+    max-width: calc(100vw - 20px) !important;
+  }
+
+  .elkass-65-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
