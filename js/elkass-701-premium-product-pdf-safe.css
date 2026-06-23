@@ -1,0 +1,453 @@
+/* ELKASS 7.0 STAGE 1 — Premium Product Card + Complete Print PDF */
+
+/* safe: działa tylko na product.html i dodanej karcie */
+.elkass70-product-page {
+  max-width: min(1360px, calc(100vw - 32px));
+  margin: 30px auto 70px;
+  font-family: inherit;
+  color: #07111f;
+}
+
+.elkass70-product-hero {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(360px, 1.05fr);
+  gap: 30px;
+  background: #fff;
+  border-radius: 34px;
+  box-shadow: 0 28px 90px rgba(15,23,42,.13);
+  border: 1px solid rgba(15,23,42,.08);
+  overflow: hidden;
+}
+
+.elkass70-gallery {
+  background: linear-gradient(135deg, #f8fafc, #edf2f7);
+  padding: clamp(22px, 3vw, 38px);
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.elkass70-main-image {
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elkass70-main-image img {
+  max-width: 100%;
+  max-height: 410px;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 44px rgba(15,23,42,.20));
+}
+
+.elkass70-thumbs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.elkass70-thumb {
+  width: 74px;
+  height: 74px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  background: #fff;
+  padding: 6px;
+  cursor: pointer;
+  transition: border .18s ease, transform .18s ease;
+}
+
+.elkass70-thumb:hover,
+.elkass70-thumb.is-active {
+  border-color: #e30613;
+  transform: translateY(-2px);
+}
+
+.elkass70-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.elkass70-info {
+  padding: clamp(28px, 3.5vw, 48px);
+}
+
+.elkass70-breadcrumb {
+  color: #e30613;
+  font-weight: 1000;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.elkass70-info h1 {
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 1.02;
+  letter-spacing: -.06em;
+  margin: 0 0 14px;
+  color: #07111f;
+}
+
+.elkass70-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-weight: 800;
+  margin: 10px 0 18px;
+}
+
+.elkass70-stars {
+  color: #f59e0b;
+  letter-spacing: 1px;
+}
+
+.elkass70-price {
+  display: flex;
+  align-items: end;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin: 18px 0 10px;
+}
+
+.elkass70-price strong {
+  font-size: clamp(38px, 5vw, 62px);
+  color: #e30613;
+  letter-spacing: -.055em;
+  line-height: .95;
+}
+
+.elkass70-old-price {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 900;
+  margin-bottom: 7px;
+}
+
+.elkass70-saving {
+  display: inline-flex;
+  margin: 6px 0 16px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff1f2;
+  color: #e30613;
+  font-weight: 1000;
+}
+
+.elkass70-status {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.elkass70-status span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.elkass70-lead {
+  font-size: 18px;
+  line-height: 1.58;
+  color: #475569;
+  margin: 18px 0;
+}
+
+.elkass70-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 22px 0 18px;
+}
+
+.elkass70-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 52px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 1000;
+  border: 0;
+  cursor: pointer;
+}
+
+.elkass70-btn-primary {
+  background: #e30613;
+  color: #fff;
+  box-shadow: 0 18px 42px rgba(227,6,19,.25);
+}
+
+.elkass70-btn-dark {
+  background: #111827;
+  color: #fff;
+}
+
+.elkass70-btn-light {
+  background: #f1f5f9;
+  color: #07111f;
+}
+
+.elkass70-benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+.elkass70-benefits span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  color: #0f172a;
+  font-weight: 900;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.elkass70-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0;
+  margin: 22px 0 0;
+}
+
+.elkass70-features li {
+  list-style: none;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 12px 14px;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.elkass70-section {
+  background: #fff;
+  border-radius: 28px;
+  padding: clamp(22px, 3vw, 38px);
+  box-shadow: 0 18px 60px rgba(15,23,42,.08);
+  border: 1px solid rgba(15,23,42,.08);
+  margin-top: 22px;
+}
+
+.elkass70-section h2 {
+  margin: 0 0 14px;
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -.045em;
+}
+
+.elkass70-section p {
+  color: #475569;
+  font-size: 17px;
+  line-height: 1.68;
+}
+
+.elkass70-why-grid,
+.elkass70-def-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+}
+
+.elkass70-why-grid div,
+.elkass70-def-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 16px;
+  color: #0f172a;
+  font-weight: 850;
+}
+
+.elkass70-spec {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.elkass70-spec th,
+.elkass70-spec td {
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.elkass70-spec th {
+  width: 34%;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.elkass70-related {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+}
+
+.elkass70-related-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 14px;
+}
+
+.elkass70-related-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 16px;
+}
+
+.elkass70-related-card h3 {
+  margin: 12px 0 8px;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.elkass70-related-card a {
+  display: inline-flex;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 1000;
+  padding: 10px 12px;
+  margin-top: 8px;
+}
+
+/* Ukryj starsze zduplikowane karty produktu pod nową kartą, ale tylko na product.html */
+body.elkass70-product-active .elkass-product-premium-shell:not(.elkass70-product-page *),
+body.elkass70-product-active .product-detail:not(.elkass70-product-page *),
+body.elkass70-product-active .product-page:not(.elkass70-product-page),
+body.elkass70-product-active .product-card-page:not(.elkass70-product-page *) {
+  display: none !important;
+}
+
+/* Seasonal effects behind content on product page */
+body.elkass70-product-active .elkass-seasonal-atmosphere {
+  z-index: 0 !important;
+  opacity: .32 !important;
+}
+body.elkass70-product-active .site-header,
+body.elkass70-product-active main,
+body.elkass70-product-active .elkass70-product-page {
+  position: relative;
+  z-index: 2;
+}
+
+/* PRINT / PDF */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  .elkass70-product-page,
+  .elkass70-product-page * {
+    visibility: visible !important;
+  }
+  .elkass70-product-page {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    color: #111 !important;
+  }
+  .site-header,
+  .header,
+  .main-header,
+  .elkass70-actions,
+  .elkass70-related {
+    display: none !important;
+  }
+  .elkass70-product-hero,
+  .elkass70-section {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    break-inside: avoid;
+  }
+  .elkass70-product-hero {
+    grid-template-columns: 38% 62% !important;
+    gap: 12px !important;
+    border-radius: 0 !important;
+  }
+  .elkass70-gallery {
+    min-height: auto !important;
+    padding: 16px !important;
+  }
+  .elkass70-main-image {
+    min-height: 220px !important;
+  }
+  .elkass70-main-image img {
+    max-height: 220px !important;
+  }
+  .elkass70-thumbs {
+    display: none !important;
+  }
+  .elkass70-info {
+    padding: 16px !important;
+  }
+  .elkass70-info h1 {
+    font-size: 28px !important;
+  }
+  .elkass70-price strong {
+    font-size: 34px !important;
+  }
+  .elkass70-section {
+    margin-top: 12px !important;
+    padding: 16px !important;
+    border-radius: 0 !important;
+  }
+  .elkass70-section h2 {
+    font-size: 22px !important;
+  }
+  .elkass70-section p {
+    font-size: 13px !important;
+  }
+  .elkass70-benefits span,
+  .elkass70-features li {
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+  }
+}
+
+@media(max-width: 880px) {
+  .elkass70-product-hero {
+    grid-template-columns: 1fr;
+    border-radius: 24px;
+  }
+  .elkass70-gallery {
+    min-height: 320px;
+  }
+  .elkass70-main-image {
+    min-height: 260px;
+  }
+  .elkass70-features,
+  .elkass70-why-grid,
+  .elkass70-def-grid,
+  .elkass70-related {
+    grid-template-columns: 1fr;
+  }
+  .elkass70-product-page {
+    max-width: calc(100vw - 20px);
+    margin-top: 18px;
+  }
+}
