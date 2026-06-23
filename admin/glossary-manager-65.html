@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ELKASS — Biblioteka terminów</title>
+<link rel="stylesheet" href="../js/elkass-65-cms-ux-fix.css">
+<style>
+body{margin:0;background:#eef2f7;font-family:Arial,sans-serif;color:#07111f}.wrap{max-width:980px;margin:auto;padding:24px}.card{background:white;border-radius:28px;padding:24px;box-shadow:0 18px 60px rgba(15,23,42,.09)}h1{font-size:38px;letter-spacing:-.05em}label{display:block;font-weight:900;margin:12px 0}input,textarea{width:100%;box-sizing:border-box;border:1px solid #dbe3ef;border-radius:14px;padding:13px;font:inherit;margin-top:7px}textarea{min-height:140px}button{border:0;border-radius:18px;background:#e30613;color:white;font-weight:1000;padding:14px 18px;margin-top:16px}.term{border:1px solid #e5e7eb;border-radius:18px;padding:14px;margin-top:10px;background:#f8fafc}.note{color:#64748b;line-height:1.5}@media(max-width:760px){.wrap{padding:12px}h1{font-size:30px}}
+</style>
+<link rel="stylesheet" href="../js/elkass-65-product-premium.css?v=65">
+</head>
+<body>
+<main class="wrap">
+<a href="index.html">← Panel</a>
+<section class="card">
+<h1>📚 Biblioteka terminów</h1>
+<p class="note">Tak — to jest miejsce na „hasło na stronę + definicja”. Panel może później ubierać to wizualnie i wstawiać w opisy, poradniki oraz karty produktów.</p>
+<label>Hasło<input id="term" placeholder="np. No Frost"></label>
+<label>Definicja<textarea id="definition" placeholder="Krótko i zrozumiale wyjaśnij klientowi, co to oznacza."></textarea></label>
+<button id="save">Zapisz termin</button>
+<div id="list"></div>
+</section>
+</main>
+<script src="../cloud-config.js"></script>
+<script src="../js/elkass-65-cloud-client.js"></script>
+<script>
+async function load(){const arr=await ELKASSCloud.list('glossary');list.innerHTML=(arr||[]).map(x=>'<div class="term"><b>'+x.term+'</b><p>'+x.definition+'</p></div>').join('');}
+function slugify(t){return String(t||'').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').replace(/ł/g,'l').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+save.onclick=async()=>{await ELKASSCloud.save('glossary',{id:slugify(term.value),term:term.value,definition:definition.value});term.value='';definition.value='';load();};load();
+</script>
+<script src="../js/elkass-65-product-premium.js?v=65"></script>
+<script src="../js/elkass-65-cms-ux-fix.js?v=65"></script>
+</body></html>

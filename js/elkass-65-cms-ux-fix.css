@@ -1,0 +1,28 @@
+/* ELKASS 6.5 CMS UX Mobile/Desktop Fix */
+@media(max-width:1024px){
+  body:has(.admin-sidebar), body:has(.sidebar), body:has(#adminApp){overflow-x:hidden!important;background:#eef2f7!important}
+  .admin-shell,.admin-layout,.cms-layout,.dashboard-layout,#adminApp,.app-shell{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important;overflow-x:hidden!important}
+  .sidebar,.admin-sidebar,aside[class*="sidebar"],nav[class*="sidebar"],.admin-menu,.side-menu{
+    position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(84vw,320px)!important;max-width:320px!important;transform:translateX(-105%)!important;transition:transform .22s ease!important;z-index:9998!important;overflow-y:auto!important;overflow-x:hidden!important;border-radius:0 24px 24px 0!important;box-shadow:0 28px 90px rgba(0,0,0,.32)!important;
+  }
+  body.elkass-admin-menu-open .sidebar,body.elkass-admin-menu-open .admin-sidebar,body.elkass-admin-menu-open aside[class*="sidebar"],body.elkass-admin-menu-open nav[class*="sidebar"],body.elkass-admin-menu-open .admin-menu,body.elkass-admin-menu-open .side-menu{transform:translateX(0)!important}
+  .admin-main,.main-content,.content,.dashboard-content,main{width:100%!important;max-width:100%!important;margin-left:0!important;padding:76px 12px 18px!important;box-sizing:border-box!important;overflow-x:hidden!important}
+  .admin-mobile-topbar{display:flex!important}
+  .admin-header .actions,.admin-actions,.top-actions,.panel-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important}
+  .stats,.admin-stats,.dashboard-stats,.stat-grid{display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important}
+  .shortcuts,.admin-shortcuts,.shortcut-grid,.quick-actions,.dashboard-shortcuts{display:grid!important;grid-template-columns:1fr!important;gap:12px!important}
+}
+.admin-mobile-topbar{display:none;position:fixed;top:0;left:0;right:0;z-index:9999;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,23,42,.10);box-shadow:0 12px 35px rgba(15,23,42,.10)}
+.admin-mobile-topbar strong{font-weight:1000;color:#07111f;font-size:15px}
+.admin-mobile-menu-btn,.admin-mobile-close-btn{border:0;border-radius:14px;background:#e30613;color:#fff;font-weight:1000;padding:10px 12px;min-height:42px}
+.admin-mobile-backdrop{display:none;position:fixed;inset:0;background:rgba(3,7,18,.45);z-index:9997}
+body.elkass-admin-menu-open .admin-mobile-backdrop{display:block}
+.elkass-65-quickstart{background:#fff;border-radius:28px;padding:20px;box-shadow:0 18px 60px rgba(15,23,42,.09);margin:18px 0}
+.elkass-65-quickstart h2{margin:0 0 14px;font-size:26px;letter-spacing:-.04em}
+.elkass-65-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.elkass-65-tile{display:flex;flex-direction:column;gap:6px;min-height:104px;border-radius:22px;padding:18px;background:linear-gradient(135deg,#111827,#e30613);color:#fff;text-decoration:none;font-weight:1000;box-shadow:0 18px 45px rgba(227,6,19,.16)}
+.elkass-65-tile:nth-child(2){background:linear-gradient(135deg,#052e16,#22c55e)}
+.elkass-65-tile:nth-child(3){background:linear-gradient(135deg,#1e1b4b,#7c3aed)}
+.elkass-65-tile:nth-child(4){background:linear-gradient(135deg,#111827,#0ea5e9)}
+.elkass-65-tile span{font-size:13px;opacity:.85;font-weight:800}
+@media(max-width:900px){.elkass-65-grid{grid-template-columns:1fr 1fr}.elkass-65-tile{min-height:88px}}

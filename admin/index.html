@@ -17,6 +17,10 @@
 <link rel="stylesheet" href="../js/elkass-64-foundation.css?v=64">
 <link rel="stylesheet" href="../js/elkass-641-premium-nav-product-links-seasonal-fix.css?v=641">
 <link rel="stylesheet" href="../js/elkass-642-unified-order-seasonal-wow.css?v=642">
+<script src="../cloud-config.js?v=65"></script>
+<script src="../js/elkass-65-cloud-client.js?v=65"></script>
+<link rel="stylesheet" href="../js/elkass-65-product-premium.css?v=65">
+<link rel="stylesheet" href="../js/elkass-65-cms-ux-fix.css?v=65">
 </head>
 <body>
   <main id="login-screen" class="login-screen">
@@ -912,5 +916,18 @@ document.addEventListener('DOMContentLoaded',function(){
 <script>document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.sidebar,aside,nav,.admin-sidebar')||document.body;if(!document.querySelector('a[href="category-tree-manager-631.html"]')){var a=document.createElement('a');a.href='category-tree-manager-631.html';a.textContent='📂 Kategorie i podkategorie 6.3.1';a.style.cssText='display:block;margin:10px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#07111f,#e30613);color:#fff;font-weight:900;text-decoration:none';t.prepend(a)}})</script><script id="e64-foundation-link">document.addEventListener('DOMContentLoaded',function(){var t=document.querySelector('.sidebar,aside,nav,.admin-sidebar')||document.body; if(!document.querySelector('a[href="foundation-64.html"]')){var a=document.createElement('a');a.href='foundation-64.html';a.textContent='💎 ELKASS 6.4 Foundation';a.style.cssText='display:block;margin:10px;padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,#07111f,#e30613);color:#fff;font-weight:900;text-decoration:none';t.prepend(a)}})</script><script src="../js/elkass-64-foundation.js?v=64"></script>
 <script src="../js/elkass-641-premium-nav-product-links-seasonal-fix.js?v=641"></script>
 <script src="../js/elkass-642-unified-order-seasonal-wow.js?v=642"></script>
-</body>
+<script src="../js/elkass-65-product-premium.js?v=65"></script>
+<script src="../js/elkass-65-cms-ux-fix.js?v=65"></script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var box=document.querySelector('.elkass-65-quickstart');
+  if(!box && window.location.pathname.indexOf('/admin')>=0){
+    var target=document.querySelector('.dashboard-content,.admin-main,.main-content,main,.content')||document.body;
+    var s=document.createElement('section');
+    s.className='elkass-65-quickstart';
+    s.innerHTML='<h2>🚀 Szybki start</h2><div class="elkass-65-grid"><a class="elkass-65-tile" href="product-wizard-65.html">📦 Dodaj produkt krok po kroku<span>Nazwa, zdjęcie, cena, opis</span></a><a class="elkass-65-tile" href="category-tree-manager-631.html">📂 Kategorie i podkategorie<span>Aktywne, ukryte, grafiki</span></a><a class="elkass-65-tile" href="media-manager-65.html">🖼️ Grafiki i media<span>Hero, kategorie, produkty</span></a><a class="elkass-65-tile" href="glossary-manager-65.html">📚 Biblioteka terminów<span>Hasło + definicja</span></a></div>';
+    target.prepend(s);
+  }
+});
+</script></body>
 </html>
