@@ -1,4 +1,4 @@
--- ELKASS 6.5 Cloud Ready — Supabase schema
+-- ELKASS 6.6 CLOUD FOUNDATION — Supabase schema
 
 create table if not exists products (
   id text primary key,
@@ -70,4 +70,5 @@ create table if not exists glossary (
   updated_at timestamptz default now()
 );
 
--- Storage bucket: utwórz bucket publiczny elkass-media w panelu Supabase.
+-- Storage:
+-- W panelu Supabase utwórz publiczny bucket: elkass-media.

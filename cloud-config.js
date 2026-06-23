@@ -1,6 +1,5 @@
-/* ELKASS 6.5 CLOUD CONFIG
-   Uzupełnij dane Supabase po utworzeniu projektu.
-   Bez danych chmury strona działa lokalnie przez localStorage.
+/* ELKASS 6.6 CLOUD FOUNDATION CONFIG
+   Po utworzeniu Supabase wpisz dane i zmień enabled na true.
 */
 window.ELKASS_CLOUD_CONFIG = {
   enabled: false,
@@ -8,5 +7,7 @@ window.ELKASS_CLOUD_CONFIG = {
   supabaseUrl: "",
   supabaseAnonKey: "",
   storageBucket: "elkass-media",
-  migrationFriendly: true
+  localFallback: true,
+  migrationFriendly: true,
+  version: "6.6"
 };
