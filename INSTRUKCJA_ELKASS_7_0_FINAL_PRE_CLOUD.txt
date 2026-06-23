@@ -1,0 +1,18 @@
+ELKASS 7.0 FINAL PRE-CLOUD
+
+Wgraj całą paczkę.
+
+Sprawdź:
+1. /admin/ — na górze powinien być pasek z przyciskiem Powrót do sklepu.
+2. /admin/product-wizard-clean.html — sekcja Wklej dane producenta.
+3. Wklej tekst z parametrami:
+   Parametr: wartość
+   Program - opis
+4. Kliknij Rozpoznaj i ułóż opis.
+5. Kliknij Wstaw do produktu.
+6. Zapisz produkt.
+7. product.html?id=lodowka-tcl-rp318bxe2 — sprawdź kartę.
+8. Kliknij Drukuj / PDF — opis produktu ma być na wydruku.
+9. Supabase: po Stage 3 uruchom dodatkowo supabase/schema-704-final-precloud.sql.
+
+Po tej paczce przechodzimy na chmurę produkcyjną.

@@ -1,8 +1,10 @@
 <!doctype html><html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ELKASS Cloud Test 6.7</title><style>body{font-family:Arial,sans-serif;background:#eef2f7;margin:0;color:#07111f}.wrap{max-width:900px;margin:auto;padding:24px}.card{background:#fff;border-radius:24px;padding:22px;box-shadow:0 18px 60px rgba(15,23,42,.09)}button{border:0;border-radius:16px;background:#e30613;color:#fff;font-weight:1000;padding:14px 18px}pre{white-space:pre-wrap;background:#f8fafc;border-radius:16px;padding:14px}</style><link rel="stylesheet" href="../js/elkass-67-priority-ab.css?v=67">
 <link rel="stylesheet" href="../js/elkass-701-premium-product-pdf-safe.css?v=701">
 <link rel="stylesheet" href="../js/elkass-702-cms-clean-foundation.css?v=702">
+<link rel="stylesheet" href="../js/elkass-704-final-precloud.css?v=704">
 </head><body><main class="wrap"><a href="index.html">← Panel</a><section class="card"><h1>☁️ Test chmury ELKASS 6.7</h1><p>Sprawdza połączenie z Supabase lub tryb lokalny.</p><button id="run">Uruchom test</button><pre id="out"></pre></section></main><script src="../cloud-config.js"></script><script src="../js/elkass-66-cloud-foundation.js"></script><script>run.onclick=async()=>{out.textContent='Status: '+ELKASSCloud.status()+'\n';const r=await ELKASSCloud.save('settings',{id:'cloud-test',key:'cloud-test',value:{time:new Date().toISOString()}});out.textContent+=JSON.stringify(r,null,2);};</script><script src="../js/elkass-67-priority-ab.js?v=67"></script>
 <script src="../js/elkass-701-premium-product-pdf-safe.js?v=701"></script>
 <script src="../js/elkass-702-cms-clean-foundation.js?v=702"></script>
 <script src="../js/elkass-703-supabase-production.js?v=703"></script>
+<script src="../js/elkass-704-final-precloud.js?v=704"></script>
 </body></html>

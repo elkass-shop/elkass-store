@@ -1,0 +1,180 @@
+/* ELKASS 7.0 FINAL PRE-CLOUD */
+
+/* PANEL: stały pasek powrotu */
+.elkass70-admin-top {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15,23,42,.10);
+  box-shadow: 0 12px 32px rgba(15,23,42,.10);
+  font-family: Arial, sans-serif;
+}
+.elkass70-admin-top-left,
+.elkass70-admin-top-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.elkass70-admin-top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 10px 13px;
+  text-decoration: none;
+  font-weight: 1000;
+  color: #07111f;
+  background: #f1f5f9;
+}
+.elkass70-admin-top a.elkass70-home {
+  background: #e30613;
+  color: #fff;
+}
+.elkass70-admin-mode {
+  font-weight: 1000;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Parser podglądu w kreatorze */
+.elkass70-parser-preview {
+  margin-top: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+  padding: 16px;
+}
+.elkass70-parser-preview h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  letter-spacing: -.03em;
+}
+.elkass70-parser-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.elkass70-parser-table th,
+.elkass70-parser-table td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: left;
+}
+.elkass70-parser-table th {
+  background: #f8fafc;
+}
+.elkass70-function-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 12px;
+  margin-top: 10px;
+}
+.elkass70-function-card strong {
+  display: block;
+  color: #07111f;
+  margin-bottom: 5px;
+}
+.elkass70-parser-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.elkass70-parser-actions button {
+  border: 0;
+  border-radius: 999px;
+  background: #111827;
+  color: #fff;
+  padding: 11px 14px;
+  font-weight: 1000;
+  cursor: pointer;
+}
+
+/* Produkt / PDF final */
+.elkass70-product-page .elkass70-section[data-print-important="true"] {
+  border-left: 5px solid #e30613;
+}
+.elkass70-print-header {
+  display: none;
+}
+.elkass70-expert-note {
+  background: linear-gradient(135deg,#fff7ed,#fff);
+  border: 1px solid #fed7aa;
+  border-radius: 22px;
+  padding: 18px;
+  color: #7c2d12;
+  font-weight: 850;
+  line-height: 1.55;
+}
+
+/* QR placeholder do wydruku */
+.elkass70-qr {
+  width: 96px;
+  height: 96px;
+  border: 2px solid #111827;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  font-weight: 1000;
+  text-align: center;
+  line-height: 1.1;
+  background:
+    linear-gradient(90deg,#111 8px,transparent 8px) 0 0/16px 16px,
+    linear-gradient(#111 8px,transparent 8px) 0 0/16px 16px,
+    #fff;
+  color: transparent;
+}
+.elkass70-qr::after {
+  content: "QR";
+  color: #111;
+  background: #fff;
+  padding: 4px;
+}
+
+@media print {
+  .elkass70-print-header {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 0 0 12px;
+    border-bottom: 2px solid #111;
+    margin-bottom: 12px;
+  }
+  .elkass70-print-header h1 {
+    margin: 0;
+    font-size: 22px !important;
+    letter-spacing: -.02em !important;
+  }
+  .elkass70-print-header p {
+    margin: 3px 0 0;
+    font-size: 11px !important;
+    color: #333 !important;
+  }
+  .elkass70-section[data-print-important="true"] {
+    display: block !important;
+    break-inside: avoid;
+  }
+  .elkass70-section h2 {
+    color: #111 !important;
+  }
+  .elkass70-admin-top {
+    display: none !important;
+  }
+}
+
+@media(max-width: 760px) {
+  .elkass70-admin-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
