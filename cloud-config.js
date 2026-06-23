@@ -1,5 +1,6 @@
-/* ELKASS 6.6 CLOUD FOUNDATION CONFIG
-   Po utworzeniu Supabase wpisz dane i zmień enabled na true.
+/* ELKASS 7.0 STAGE 3 — SUPABASE PRODUCTION CONFIG
+   Wpisz dane z Supabase:
+   Project Settings → API → Project URL oraz anon public key.
 */
 window.ELKASS_CLOUD_CONFIG = {
   enabled: false,
@@ -9,5 +10,5 @@ window.ELKASS_CLOUD_CONFIG = {
   storageBucket: "elkass-media",
   localFallback: true,
   migrationFriendly: true,
-  version: "6.6"
+  version: "7.0-stage3"
 };
