@@ -1,0 +1,15 @@
+ELKASS 7.0 STAGE 2 — CMS CLEAN FOUNDATION
+
+Wgraj całą paczkę.
+
+Sprawdź:
+1. /admin/
+2. Czy na górze jest ELKASS CMS i kafle szybkiego startu.
+3. /admin/product-wizard-clean.html
+4. /admin/category-manager-clean.html
+5. /admin/media-manager-clean.html
+6. /admin/glossary-manager-clean.html
+7. /admin/commerce-manager-clean.html
+8. /admin/theme-manager-clean.html
+
+Stare manager-y zostają w paczce jako backup, ale od teraz używamy wersji clean.
