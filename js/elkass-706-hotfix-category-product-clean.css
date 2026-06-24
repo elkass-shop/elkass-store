@@ -1,0 +1,55 @@
+/* ELKASS 7.0.6 HOTFIX — category/product clean view */
+
+/* Podstrony nie mogą mieć pustego hero ze strony głównej */
+body.elkass706-subpage-clean .elkass706-hidden-home-block {
+  display: none !important;
+}
+
+/* Usuwa wielkie puste czarne kafle na category/product */
+body.elkass706-subpage-clean .hero:empty,
+body.elkass706-subpage-clean .hero-section:empty,
+body.elkass706-subpage-clean .hero-premium:empty {
+  display: none !important;
+}
+
+/* Jeżeli stary hero ma tylko przyciski i brak nagłówka, chowamy */
+body.elkass706-subpage-clean section[data-elkass706-empty-hero="true"],
+body.elkass706-subpage-clean div[data-elkass706-empty-hero="true"] {
+  display: none !important;
+}
+
+/* Podstrony zaczynają się normalnie pod belką */
+body.elkass706-subpage-clean main,
+body.elkass706-subpage-clean .page,
+body.elkass706-subpage-clean .category-page,
+body.elkass706-subpage-clean .product-page {
+  margin-top: 0 !important;
+}
+
+/* Homepage: promocja ma nie rozciągać układu */
+.elkass702-promo-v2 {
+  max-width: 1180px !important;
+}
+.elkass702-promo-v2-hero {
+  overflow: hidden !important;
+}
+
+/* Mobile: usunięcie bocznych rozjazdów i pustych bloków */
+@media(max-width: 760px) {
+  body.elkass706-subpage-clean section,
+  body.elkass706-subpage-clean div {
+    max-width: 100vw;
+  }
+
+  body.elkass706-subpage-clean [data-elkass706-empty-hero="true"] {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .elkass702-promo-v2 {
+    width: calc(100vw - 18px) !important;
+  }
+}

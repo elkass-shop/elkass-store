@@ -6,6 +6,7 @@ body{margin:0;background:#eef2f7;font-family:Arial,sans-serif;color:#07111f}.wra
 <link rel="stylesheet" href="../js/elkass-702-final-ux.css?v=702final">
 <link rel="stylesheet" href="../js/elkass-704-hotfix-promo-mobile-theme.css?v=704hotfix">
 <link rel="stylesheet" href="../js/elkass-705-hotfix-ux-flow.css?v=705">
+<link rel="stylesheet" href="../js/elkass-706-hotfix-category-product-clean.css?v=706">
 </head><body><main class="wrap"><a href="index.html">← Panel</a><section class="card"><h1>🎄 Motywy sezonowe</h1><p class="note">Jeden docelowy zapis aktywnego motywu do ustawień. Efekty sklepu zostają, panel ma tylko spokojny akcent.</p><label>Motyw<select id="theme"><option value="standard">Standard</option><option value="christmas">Boże Narodzenie</option><option value="winter">Zima</option><option value="spring">Wiosna</option><option value="summer">Lato</option><option value="autumn">Jesień</option><option value="easter">Wielkanoc</option><option value="blackweek">Black Week</option><option value="cyberweek">Cyber Week</option></select></label><button id="save">Zapisz motyw</button><pre id="out"></pre></section></main><script src="../cloud-config.js"></script><script src="../js/elkass-66-cloud-foundation.js"></script><script>save.onclick=async()=>{localStorage.setItem('elkass_theme60',theme.value);document.documentElement.setAttribute('data-elkass-theme60',theme.value);const r=await ELKASSCloud.save('settings',{id:'seasonal-theme',key:'seasonal-theme',value:{theme:theme.value}});out.textContent=JSON.stringify(r,null,2);};</script><script src="../js/elkass-702-cms-clean-foundation.js?v=702"></script>
 <script src="../js/elkass-703-supabase-production.js?v=703"></script>
 <script src="../js/elkass-704-final-precloud.js?v=704"></script>
@@ -13,4 +14,5 @@ body{margin:0;background:#eef2f7;font-family:Arial,sans-serif;color:#07111f}.wra
 <script src="../js/elkass-702-final-ux.js?v=702final"></script>
 <script src="../js/elkass-704-hotfix-promo-mobile-theme.js?v=704hotfix"></script>
 <script src="../js/elkass-705-hotfix-ux-flow.js?v=705"></script>
+<script src="../js/elkass-706-hotfix-category-product-clean.js?v=706"></script>
 </body></html>

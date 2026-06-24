@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="../js/elkass-702-final-ux.css?v=702final">
 <link rel="stylesheet" href="../js/elkass-704-hotfix-promo-mobile-theme.css?v=704hotfix">
 <link rel="stylesheet" href="../js/elkass-705-hotfix-ux-flow.css?v=705">
+<link rel="stylesheet" href="../js/elkass-706-hotfix-category-product-clean.css?v=706">
 </head><body><main class="wrap"><a href="index.html">← Panel</a><section class="card"><h1>☁️ Test chmury ELKASS 6.7</h1><p>Sprawdza połączenie z Supabase lub tryb lokalny.</p><button id="run">Uruchom test</button><pre id="out"></pre></section></main><script src="../cloud-config.js"></script><script src="../js/elkass-66-cloud-foundation.js"></script><script>run.onclick=async()=>{out.textContent='Status: '+ELKASSCloud.status()+'\n';const r=await ELKASSCloud.save('settings',{id:'cloud-test',key:'cloud-test',value:{time:new Date().toISOString()}});out.textContent+=JSON.stringify(r,null,2);};</script><script src="../js/elkass-67-priority-ab.js?v=67"></script>
 <script src="../js/elkass-701-premium-product-pdf-safe.js?v=701"></script>
 <script src="../js/elkass-702-cms-clean-foundation.js?v=702"></script>
@@ -15,4 +16,5 @@
 <script src="../js/elkass-702-final-ux.js?v=702final"></script>
 <script src="../js/elkass-704-hotfix-promo-mobile-theme.js?v=704hotfix"></script>
 <script src="../js/elkass-705-hotfix-ux-flow.js?v=705"></script>
+<script src="../js/elkass-706-hotfix-category-product-clean.js?v=706"></script>
 </body></html>
