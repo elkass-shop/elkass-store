@@ -3,8 +3,10 @@ body{margin:0;background:#eef2f7;font-family:Arial,sans-serif;color:#07111f}.wra
 </style><link rel="stylesheet" href="../js/elkass-702-cms-clean-foundation.css?v=702">
 <link rel="stylesheet" href="../js/elkass-704-final-precloud.css?v=704">
 <link rel="stylesheet" href="../js/elkass-701-ux-fix.css?v=7011">
+<link rel="stylesheet" href="../js/elkass-702-final-ux.css?v=702final">
 </head><body><main class="wrap"><a href="index.html">← Panel</a><section class="card"><h1>🛒 Sprzedaż produktu</h1><p class="note">Przygotowanie pod sklep ofertowy lub sprzedaż online. Płatności aktywujemy później.</p><div class="grid"><label>Tryb domyślny<select id="mode"><option value="inquiry">Zapytaj o produkt</option><option value="buy">Kup teraz</option><option value="cart">Koszyk</option><option value="reservation">Rezerwacja / odbiór</option></select></label><label>Raty<select id="installments"><option value="true">Aktywne</option><option value="false">Ukryte</option></select></label></div><button id="save">Zapisz ustawienia</button><pre id="out"></pre></section></main><script src="../cloud-config.js"></script><script src="../js/elkass-66-cloud-foundation.js"></script><script>save.onclick=async()=>{const r=await ELKASSCloud.save('settings',{id:'commerce',key:'commerce',value:{mode:mode.value,installments:installments.value==='true'}});out.textContent=JSON.stringify(r,null,2);};</script><script src="../js/elkass-702-cms-clean-foundation.js?v=702"></script>
 <script src="../js/elkass-703-supabase-production.js?v=703"></script>
 <script src="../js/elkass-704-final-precloud.js?v=704"></script>
 <script src="../js/elkass-701-ux-fix.js?v=7011"></script>
+<script src="../js/elkass-702-final-ux.js?v=702final"></script>
 </body></html>
