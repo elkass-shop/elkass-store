@@ -1,0 +1,91 @@
+/* ELKASS 7.0.7 HOTFIX — safe category routing only */
+
+.elkass707-subcategories {
+  width: min(1180px, calc(100vw - 28px));
+  margin: 24px auto 36px;
+  font-family: inherit;
+}
+.elkass707-subcategories-head {
+  margin-bottom: 16px;
+}
+.elkass707-subcategories-head small {
+  display: inline-flex;
+  color: #e30613;
+  font-weight: 1000;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.elkass707-subcategories-head h1,
+.elkass707-subcategories-head h2 {
+  margin: 0;
+  font-size: clamp(30px, 4vw, 54px);
+  letter-spacing: -.055em;
+  line-height: 1.02;
+  color: #07111f;
+}
+.elkass707-subcategories-head p {
+  margin: 10px 0 0;
+  color: #64748b;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.elkass707-subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+.elkass707-subcategory-card {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  text-decoration: none;
+  color: #07111f;
+  background: linear-gradient(145deg,#fff,#f8fafc);
+  border: 1px solid rgba(15,23,42,.08);
+  border-radius: 24px;
+  padding: 18px;
+  box-shadow: 0 18px 55px rgba(15,23,42,.08);
+}
+.elkass707-subcategory-card span {
+  font-size: 34px;
+}
+.elkass707-subcategory-card strong {
+  display: block;
+  font-size: 20px;
+  letter-spacing: -.025em;
+}
+.elkass707-subcategory-card small {
+  color: #64748b;
+  font-weight: 800;
+}
+.elkass707-subcategory-card em {
+  font-style: normal;
+  display: inline-flex;
+  width: fit-content;
+  border-radius: 999px;
+  background: #07111f;
+  color: #fff;
+  padding: 9px 12px;
+  font-weight: 1000;
+  font-size: 12px;
+}
+.elkass707-home-category-fixed {
+  cursor: pointer;
+}
+
+@media(max-width: 900px){
+  .elkass707-subcategory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media(max-width: 560px){
+  .elkass707-subcategory-grid {
+    grid-template-columns: 1fr;
+  }
+  .elkass707-subcategory-card {
+    min-height: 112px;
+  }
+}
