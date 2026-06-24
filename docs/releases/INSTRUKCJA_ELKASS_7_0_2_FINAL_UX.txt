@@ -1,0 +1,12 @@
+ELKASS 7.0.2 FINAL UX
+
+Sprawdź:
+1. Strona główna — promocja premium pod wyszukiwarką/hero.
+2. Badge premium obok siebie, a nie tekst w jednej linii.
+3. Miniatury promocji prowadzą do produktów.
+4. Produkt — cechy pod ceną.
+5. Produkt — opis jako osobna sekcja.
+6. Produkt — korzyści ELKASS pod opisem.
+7. Produkt — komentarze kategorii.
+8. Panel /admin/product-wizard-clean.html — sekcja promocji, badge i galeria.
+9. Mobile — motywy sezonowe bez migania i przesuwania.

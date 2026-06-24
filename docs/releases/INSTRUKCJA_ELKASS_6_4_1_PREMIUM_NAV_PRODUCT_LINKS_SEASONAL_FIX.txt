@@ -1,0 +1,10 @@
+ELKASS 6.4.1 PREMIUM NAV PRODUCT LINKS SEASONAL FIX
+
+Wgraj całą paczkę do repozytorium i wybierz zamianę plików.
+
+Po wdrożeniu:
+1. Zrób Ctrl+F5.
+2. Sprawdź header.
+3. Sprawdź przyciski usługowe.
+4. Kliknij karty nowości / hit / promocja — powinny prowadzić do product.html?id=...
+5. Sprawdź motywy sezonowe — układ sekcji powinien mieć tę samą kolejność jak główny.

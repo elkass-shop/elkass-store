@@ -1,0 +1,20 @@
+ELKASS 7.0 STAGE 1 — PRODUCT PREMIUM PDF SAFE
+
+Wgraj całą paczkę do repozytorium.
+
+Sprawdź:
+1. product.html?id=lodowka-tcl-rp318bxe2
+2. Karta produktu powinna być premium:
+   - duże zdjęcie,
+   - miniatury,
+   - cena,
+   - opis,
+   - parametry,
+   - dlaczego ELKASS,
+   - produkty podobne,
+   - drukuj/PDF.
+3. Kliknij Drukuj / PDF.
+4. Na wydruku powinien być pełny opis produktu, cechy i parametry.
+5. Sprawdź mobile i desktop.
+
+To jest bezpieczny etap 1 — bez kasowania CMS i bez naruszania Supabase.

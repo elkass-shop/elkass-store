@@ -1,0 +1,18 @@
+ELKASS 7.0 STAGE 3 — SUPABASE PRODUCTION READY
+
+Wgraj paczkę.
+
+Następnie:
+1. Supabase → SQL Editor.
+2. Uruchom plik: supabase/schema-703-production.sql.
+3. Supabase → Storage → New bucket:
+   elkass-media
+   Public bucket: ON
+4. GitHub → cloud-config.js:
+   wpisz Project URL i anon public key.
+   ustaw enabled: true.
+5. Wejdź:
+   /admin/cloud-production-setup.html
+6. Kliknij Test zapisu ustawień.
+
+Jeżeli zobaczysz mode: cloud, ELKASS zapisuje już dane w Supabase.

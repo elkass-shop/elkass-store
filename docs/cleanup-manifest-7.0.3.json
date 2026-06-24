@@ -1,0 +1,53 @@
+{
+  "version": "7.0.3",
+  "purpose": "Cleanup + Cloud Ready",
+  "active_pages": [
+    "index.html",
+    "product.html",
+    "category.html",
+    "gallery.html",
+    "compare.html",
+    "promotions.html"
+  ],
+  "active_admin": [
+    "category-manager-clean.html",
+    "category-manager.html",
+    "cloud-production-setup.html",
+    "cloud-test-67.html",
+    "commerce-manager-clean.html",
+    "foundation-64.html",
+    "glossary-manager-clean.html",
+    "index.html",
+    "layout-switcher-64.html",
+    "media-manager-clean.html",
+    "product-link-import.html",
+    "product-print.html",
+    "product-wizard-clean.html",
+    "seasonal-themes.html",
+    "social-studio-wow.html",
+    "social-studio.html",
+    "theme-manager-clean.html",
+    "theme-rebuild-60.html"
+  ],
+  "archived_admin": [
+    "category-tree-manager-631.html",
+    "category-tree-manager-64.html",
+    "cloud-setup.html",
+    "glossary-manager-65.html",
+    "media-manager-63.html",
+    "media-manager-64.html",
+    "media-manager-65.html",
+    "media-manager-67.html",
+    "premium-product-wizard.html",
+    "product-wizard-65.html"
+  ],
+  "docs_releases_count": 15,
+  "supabase_sql": [
+    "schema-67-priority-ab.sql",
+    "schema-701-ux-fix-comments.sql",
+    "schema-702-final-ux.sql",
+    "schema-703-production.sql",
+    "schema-704-final-precloud.sql",
+    "schema.sql"
+  ]
+}

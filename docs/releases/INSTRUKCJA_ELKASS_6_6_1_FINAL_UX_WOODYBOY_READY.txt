@@ -1,0 +1,16 @@
+ELKASS 6.6.1 FINAL UX + WOODYBOY READY
+
+Wgraj całą paczkę.
+
+Sprawdź:
+1. Strona główna — kategorie prowadzą do category.html?cat=...
+2. category.html?cat=agd — pokazuje podkategorie.
+3. /admin/ — Szybki Start jest na górze.
+4. /admin/product-wizard-65.html — dodawanie produktu krok po kroku.
+5. /admin/media-manager-65.html — miejsca grafik.
+6. /admin/glossary-manager-65.html — biblioteka terminów.
+7. product.html?id=lodowka-tcl-rp318bxe2 — karta produktu premium.
+8. Mobile i Chrome „wersja na komputer” — panel nie powinien się rozjeżdżać.
+9. Folder woodyboy — baza pod kolejne sklepy/witryny.
+
+Po tym przechodzimy do jednego czystego wdrożenia Supabase.
