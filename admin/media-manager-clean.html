@@ -5,10 +5,12 @@ body{margin:0;background:#eef2f7;font-family:Arial,sans-serif;color:#07111f}.wra
 <link rel="stylesheet" href="../js/elkass-701-ux-fix.css?v=7011">
 <link rel="stylesheet" href="../js/elkass-702-final-ux.css?v=702final">
 <link rel="stylesheet" href="../js/elkass-704-hotfix-promo-mobile-theme.css?v=704hotfix">
+<link rel="stylesheet" href="../js/elkass-705-hotfix-ux-flow.css?v=705">
 </head><body><main class="wrap"><a href="index.html">← Panel</a><section class="card"><h1>🖼️ Media Manager clean</h1><p class="note">Jedno miejsce do grafik. Po aktywacji Supabase pliki idą do bucketu <b>elkass-media</b>.</p><div class="grid"><label>Typ<select id="type"><option value="hero">Hero</option><option value="category">Kategoria</option><option value="subcategory">Podkategoria</option><option value="product">Produkt</option><option value="gallery">Galeria</option><option value="seasonal">Motyw sezonowy</option><option value="social">Social</option></select></label><label>Cel / ID<input id="target" placeholder="np. lodowki albo lodowka-tcl"></label></div><label>Plik<input id="file" type="file" accept="image/*"></label><button id="upload">Wyślij do chmury</button><pre id="out"></pre></section></main><script src="../cloud-config.js"></script><script src="../js/elkass-66-cloud-foundation.js"></script><script>function safe(n){return String(n||'file').toLowerCase().replace(/[^a-z0-9.]+/g,'-')}upload.onclick=async()=>{const f=file.files[0];if(!f){out.textContent='Wybierz plik.';return;}const path=type.value+'/'+(target.value||'general')+'/'+Date.now()+'-'+safe(f.name);const r=await ELKASSCloud.uploadMedia(path,f,{type:type.value,label:f.name,target:target.value});out.textContent=JSON.stringify(r,null,2);};</script><script src="../js/elkass-702-cms-clean-foundation.js?v=702"></script>
 <script src="../js/elkass-703-supabase-production.js?v=703"></script>
 <script src="../js/elkass-704-final-precloud.js?v=704"></script>
 <script src="../js/elkass-701-ux-fix.js?v=7011"></script>
 <script src="../js/elkass-702-final-ux.js?v=702final"></script>
 <script src="../js/elkass-704-hotfix-promo-mobile-theme.js?v=704hotfix"></script>
+<script src="../js/elkass-705-hotfix-ux-flow.js?v=705"></script>
 </body></html>
